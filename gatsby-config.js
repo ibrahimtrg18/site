@@ -13,6 +13,7 @@ module.exports = {
     copyright: "Copyright (c) 2021 by Ibrahim Tarigan",
     projects: [
       {
+        image: "",
         title: "Talky",
         description: "Talky Chat app using React-Native and Nest",
         stacks: ["react-native", "nest"],
@@ -21,6 +22,7 @@ module.exports = {
         repoPrivate: false,
       },
       {
+        image: "",
         title: "My Route",
         description: "Talky Chat app using React-Native and Nest",
         stacks: ["react-native", "nest"],
