@@ -6,8 +6,12 @@ import "./style.scss";
 
 const Layout = props => {
   const { children } = props;
-  const [navbarHeight, setNavbarHeight] = useState(0);
   const navbarContainer = useRef(null);
+  const [navbarHeight, setNavbarHeight] = useState(
+    navbarContainer &&
+      navbarContainer.current &&
+      navbarContainer.current.clientHeight
+  );
 
   useEffect(() => {
     if (navbarContainer && navbarContainer.current) {
