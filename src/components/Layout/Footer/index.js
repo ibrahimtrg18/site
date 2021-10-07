@@ -1,7 +1,9 @@
 import React from "react";
+import "./style.scss";
 
-const Footer = () => {
-  return <footer>Copyright (c) 2021 by Ibrahim Tarigan</footer>;
+const Footer = props => {
+  const { copyright } = props;
+  return <footer>{copyright}</footer>;
 };
 
 export default Footer;

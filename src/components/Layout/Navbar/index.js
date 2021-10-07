@@ -3,10 +3,12 @@ import { Link } from "gatsby";
 import "./style.scss";
 
 const Navbar = React.forwardRef((props, ref) => {
+  const { title } = props;
+
   return (
     <nav ref={ref} className="nav">
       <div className="navbar">
-        <div className="title">Ibrahim Tarigan</div>
+        <div className="title">{title}</div>
         <ul>
           <li>
             <Link to="/">Home</Link>

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -19,11 +20,24 @@ const Layout = props => {
     }
   }, [navbarContainer]);
 
+  const data = useStaticQuery(graphql`
+    query SiteInfo {
+      site {
+        siteMetadata {
+          title
+          copyright
+        }
+      }
+    }
+  `);
+
+  const { title, copyright } = data.site.siteMetadata;
+
   return (
     <>
-      <Navbar ref={navbarContainer} />
+      <Navbar ref={navbarContainer} title={title} />
       <Main navbarHeight={navbarHeight}>{children}</Main>
-      <Footer />
+      <Footer copyright={copyright} />
     </>
   );
 };
