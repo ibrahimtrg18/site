@@ -1,0 +1,18 @@
+@import "../../styles/fonts.scss";
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: auto;
+  font-size: 16px;
+  font-family: Josefin Sans, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
