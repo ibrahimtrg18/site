@@ -10,6 +10,7 @@ const Profile = ({ profile }) => {
         reverse
         itemsCenter
         imagePadding={{ x: 16, y: 16 }}
+        imageFull
       />
     </section>
   );
