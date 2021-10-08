@@ -39,8 +39,9 @@ module.exports = {
       },
     ],
     about: {
-      avatar: "",
-      profile: "",
+      avatar: "/images/avatar.png",
+      profile:
+        "Front End Developer with 1+ year of experience designing, developing, implementing applications and also solutions using a range of technologies. Have good understanding Web Design and Responsive Design across devices. Seeking to leverage broad development experience and hands-on technical expertise in a challenging role as a Front End Developer.",
     },
     contacts: [
       {
