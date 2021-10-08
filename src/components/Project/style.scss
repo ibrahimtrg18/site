@@ -1,0 +1,15 @@
+.project {
+  padding: 40px 0;
+  & > .title {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1em;
+  }
+
+  & > .project-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}

@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/Layout";
-import ProjectList from "../components/ProjectList";
+import Project from "../components/Project";
 
-export default function Project() {
+export default function ProjectPage() {
   const data = useStaticQuery(graphql`
     query SiteProjects {
       site {
@@ -26,9 +26,7 @@ export default function Project() {
 
   return (
     <Layout>
-      <div className="project">
-        <ProjectList projects={projects} />
-      </div>
+      <Project projects={projects} />
     </Layout>
   );
 }
