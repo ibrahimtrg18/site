@@ -3,7 +3,8 @@ import classNames from "classnames";
 import "./style.scss";
 
 const Card = props => {
-  const { data, reverse, itemsCenter, imagePadding } = props;
+  const { data, reverse, itemsCenter, imagePadding, imageFull, imageAuto } =
+    props;
 
   const cardClass = classNames({
     card: true,
@@ -11,10 +12,16 @@ const Card = props => {
     "card--items-center": itemsCenter && itemsCenter,
   });
 
+  const cardImageClass = classNames({
+    card__image: true,
+    "card__image--full": imageFull && imageFull,
+    "card__image--auto": imageAuto && imageAuto,
+  });
+
   return (
     <article className={cardClass}>
       <div
-        className="card__image"
+        className={cardImageClass}
         style={{
           padding: imagePadding && `${imagePadding.x}px ${imagePadding.y}px`,
         }}
