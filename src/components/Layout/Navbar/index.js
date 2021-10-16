@@ -11,16 +11,19 @@ const Navbar = React.forwardRef((props, ref) => {
         <div className="title">{title}</div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" state={{ targetFragment: "about" }}>
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/" state={{ targetFragment: "project" }}>
+              Project
+            </Link>
           </li>
           <li>
-            <Link to="/project">Project</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/" state={{ targetFragment: "contact" }}>
+              Contact
+            </Link>
           </li>
         </ul>
       </div>

@@ -4,7 +4,7 @@ import "./style.scss";
 
 const Profile = ({ profile }) => {
   return (
-    <section id="profile" className="profile">
+    <section id="about" className="profile">
       <Card
         data={profile}
         reverse
