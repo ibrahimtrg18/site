@@ -9,20 +9,21 @@ button {
   cursor: pointer;
   outline: none;
 
-  &:before {
+  &:after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: 0;
     width: 0;
     height: 1px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
     background-color: #333333;
-    transition: width ease-in 0.2s;
+    transition: width ease-in-out 0.2s;
   }
 
   &:hover {
     background-color: #f0f0f0;
-    &:before {
+    &:after {
       width: 100%;
     }
   }

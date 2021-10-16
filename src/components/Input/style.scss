@@ -1,4 +1,5 @@
 label {
+  position: relative;
   text-transform: capitalize;
 
   &.full {
@@ -6,21 +7,37 @@ label {
     width: 100%;
   }
 
+  &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background-color: #333333;
+    transition: width ease-in-out 0.2s;
+  }
+
+  &:focus-within {
+    &:after {
+      width: 100%;
+    }
+  }
+
   & > input {
     &.full {
       display: block;
       width: 100%;
-      background-color: #fafafa;
+      background-color: #eaeaea;
       padding: 8px;
       font-size: 1em;
       outline: none;
       border: transparent;
-      border-bottom: 1px solid #d4d4d4;
       color: #333333;
     }
     &:focus {
-      background-color: #ffffff;
-      border-bottom: 1px solid #333333;
+      background-color: #f5f5f5;
     }
   }
 
@@ -28,19 +45,17 @@ label {
     &.full {
       display: block;
       width: 100%;
-      background-color: #fafafa;
+      background-color: #eaeaea;
       padding: 8px;
       font-size: 1em;
       outline: none;
       border: transparent;
-      border-bottom: 1px solid #d4d4d4;
       color: #333333;
       resize: vertical;
       min-height: 80px;
     }
     &:focus {
-      background-color: #ffffff;
-      border-bottom: 1px solid #333333;
+      background-color: #f5f5f5;
     }
   }
 }
