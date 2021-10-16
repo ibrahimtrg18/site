@@ -1,0 +1,29 @@
+button {
+  position: relative;
+  padding: 14px 18px;
+  font-size: 1em;
+  color: #333333;
+  background-color: #ffffff;
+  border: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: #333333;
+    transition: width ease-in 0.2s;
+  }
+
+  &:hover {
+    background-color: #f0f0f0;
+    &:before {
+      width: 100%;
+    }
+  }
+}
