@@ -4,7 +4,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     font-size: 1.5em;
-    padding: 20px;
+    padding: 0 16px;
     background-color: #ffffff;
     font-weight: 800;
 
@@ -22,6 +22,7 @@ nav {
         text-decoration: none;
         font-size: 0.75em;
         font-weight: 600;
+        padding: 20px 0;
       }
     }
   }
