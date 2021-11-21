@@ -7,4 +7,63 @@
   @media (min-width: 480px) {
     padding: 40px 0;
   }
+
+  .profile__content {
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 20%);
+    border-radius: 4px;
+    max-width: 640px;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 8px;
+
+    @media (min-width: 480px) {
+      flex-direction: row;
+    }
+
+    &--items-center {
+      align-items: center;
+    }
+
+    &.reverse {
+      flex-direction: column;
+
+      @media (min-width: 480px) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    & > .card__image {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 300px;
+
+      &--full {
+        flex-basis: 100%;
+      }
+
+      &--auto {
+        flex-basis: auto;
+      }
+
+      & > img {
+        object-fit: cover;
+      }
+    }
+
+    & > .card__content {
+      padding: 16px;
+
+      & > .card__title {
+        font-size: 1.2em;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      & > .card__description {
+        font-size: 0.8em;
+      }
+    }
+  }
 }
