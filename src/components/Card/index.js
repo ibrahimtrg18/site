@@ -31,20 +31,20 @@ const Card = props => {
         </div>
       )}
       <div className="card__content">
-        <div className="card__title">{data.title}</div>
-        <div className="card__description">{data.description}</div>
-        <div className="card__time"></div>
+        <p className="card__title">{data.title}</p>
+        <p className="card__description">{data.description}</p>
+        <p className="card__time"></p>
         {data.stack && (
-          <div className="card__stack">
+          <p className="card__stack">
             {data.stacks.map(stack => (
-              <div className="badge">{stack}</div>
+              <p className="badge">{stack}</p>
             ))}
-          </div>
+          </p>
         )}
         {data.link && (
-          <div className="card__link">
+          <p className="card__link">
             <a href={data.link}>Preview</a>
-          </div>
+          </p>
         )}
       </div>
     </article>
