@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import "./style.scss";
 
 const Navbar = React.forwardRef((props, ref) => {
-  const { title } = props;
+  const { title, positionScroll } = props;
 
   return (
-    <nav ref={ref} className="nav">
+    <nav ref={ref} className={`nav${positionScroll === 0 ? "" : " sticky"}`}>
       <div className="navbar">
         <div className="title">{title}</div>
         <ul>

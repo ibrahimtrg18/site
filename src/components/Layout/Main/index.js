@@ -2,10 +2,10 @@ import React from "react";
 import "./style.scss";
 
 const Main = props => {
-  const { children, navbarHeight } = props;
+  const { children, navbarHeight, positionScroll } = props;
   return (
     <main
-      className="content"
+      className={`content${positionScroll === 0 ? "" : " scrolled"}`}
       style={{
         minHeight: `calc(100vh - (${navbarHeight}px + 16px))`,
       }}

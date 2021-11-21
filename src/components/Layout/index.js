@@ -14,6 +14,17 @@ const Layout = props => {
       navbarContainer.current.clientHeight
   );
 
+  const [positionScroll, setPositionScroll] = useState(0);
+
+  useEffect(() => {
+    document.addEventListener("scroll", onListenScroll);
+    return () => document.removeEventListener("scroll", onListenScroll);
+  }, []);
+
+  const onListenScroll = () => {
+    setPositionScroll(window.pageYOffset);
+  };
+
   useEffect(() => {
     if (navbarContainer && navbarContainer.current) {
       setNavbarHeight(navbarContainer.current.clientHeight);
@@ -35,8 +46,14 @@ const Layout = props => {
 
   return (
     <>
-      <Navbar ref={navbarContainer} title={title} />
-      <Main navbarHeight={navbarHeight}>{children}</Main>
+      <Navbar
+        ref={navbarContainer}
+        title={title}
+        positionScroll={positionScroll}
+      />
+      <Main navbarHeight={navbarHeight} positionScroll={positionScroll}>
+        {children}
+      </Main>
       <Footer copyright={copyright} />
     </>
   );

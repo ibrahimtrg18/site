@@ -1,3 +1,7 @@
 main.content {
   background-color: #f2f2f2;
+
+  &.scrolled {
+    padding-top: 60px;
+  }
 }
