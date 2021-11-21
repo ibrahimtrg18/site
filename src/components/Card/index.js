@@ -20,14 +20,16 @@ const Card = props => {
 
   return (
     <article className={cardClass}>
-      <div
-        className={cardImageClass}
-        style={{
-          padding: imagePadding && `${imagePadding.x}px ${imagePadding.y}px`,
-        }}
-      >
-        <img src={data.image} alt={data.title} />
-      </div>
+      {data.image && (
+        <div
+          className={cardImageClass}
+          style={{
+            padding: imagePadding && `${imagePadding.x}px ${imagePadding.y}px`,
+          }}
+        >
+          <img src={data.image} alt={data.title} />
+        </div>
+      )}
       <div className="card__content">
         <div className="card__title">{data.title}</div>
         <div className="card__description">{data.description}</div>
