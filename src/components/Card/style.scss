@@ -52,5 +52,11 @@
     & > .card__description {
       font-size: 0.8em;
     }
+
+    & > .card__stack {
+      display: flex;
+      font-size: 0.8rem;
+      gap: 4px;
+    }
   }
 }

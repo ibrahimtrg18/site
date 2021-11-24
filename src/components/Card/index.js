@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import Badge from "../Badge";
 import "./style.scss";
 
 const Card = props => {
@@ -33,6 +34,11 @@ const Card = props => {
       <div className="card__content">
         <p className="card__title">{data.title}</p>
         <p className="card__description">{data.description}</p>
+        <div className="card__stack">
+          {data.stacks.map(stack => (
+            <Badge>{stack}</Badge>
+          ))}
+        </div>
         <p className="card__time"></p>
         {data.stack && (
           <p className="card__stack">
