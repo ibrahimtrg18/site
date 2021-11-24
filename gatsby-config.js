@@ -23,6 +23,15 @@ module.exports = {
       },
       {
         image: "",
+        title: "Movie",
+        description: "Movie app with themoviedb.org API",
+        stacks: ["React", "Redux", "Tailwind"],
+        link: "http://talky.ibrahimtarigan.me",
+        repo: "",
+        repoPrivate: false,
+      },
+      {
+        image: "",
         title: "Landing page example",
         description: "Landing page indonesia",
         stacks: ["ReactJS", "Styled-Components", "Google ReCaptcha"],
