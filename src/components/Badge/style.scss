@@ -1,0 +1,8 @@
+@import "../../styles/_variables.scss";
+
+.badge {
+  background-color: $secondaryColor;
+  border-radius: 50px;
+  padding: 0.25rem 0.5rem;
+  color: $whiteColor;
+}
