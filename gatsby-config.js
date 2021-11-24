@@ -26,7 +26,7 @@ module.exports = {
         title: "Movie",
         description: "Movie app with themoviedb.org API",
         stacks: ["React", "Redux", "Tailwind"],
-        link: "http://talky.ibrahimtarigan.me",
+        link: "https://movie-ibrahim.vercel.app/",
         repo: "",
         repoPrivate: true,
       },
