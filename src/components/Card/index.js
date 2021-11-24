@@ -52,7 +52,7 @@ const Card = props => {
         )}
         {data.link && (
           <p className="card__link">
-            <a href={data.link} target="__blank">
+            <a href={data.link} target="_blank">
               Preview
             </a>
           </p>
