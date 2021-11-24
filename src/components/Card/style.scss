@@ -42,11 +42,22 @@
   }
 
   & > .card__content {
+    width: 100%;
     padding: 16px;
 
     & > .card__title {
-      font-size: 1.2em;
-      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & > .name {
+        font-size: 1.2em;
+        font-weight: 700;
+      }
+
+      & > .private {
+        font-size: 0.8em;
+      }
     }
 
     & > .card__description {
@@ -55,8 +66,12 @@
 
     & > .card__stack {
       display: flex;
-      font-size: 0.8rem;
+      font-size: 0.8em;
       gap: 4px;
+    }
+
+    & > .card__link {
+      font-size: 0.8em;
     }
   }
 }

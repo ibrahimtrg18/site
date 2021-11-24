@@ -32,7 +32,10 @@ const Card = props => {
         </div>
       )}
       <div className="card__content">
-        <p className="card__title">{data.title}</p>
+        <div className="card__title">
+          <p className="name">{data.title}</p>
+          <p className="private">{data.repoPrivate ? "Private" : "Public"}</p>
+        </div>
         <p className="card__description">{data.description}</p>
         <div className="card__stack">
           {data.stacks.map(stack => (
