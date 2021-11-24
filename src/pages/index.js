@@ -51,7 +51,7 @@ export default function HomePage(props) {
     <Layout>
       <Profile profile={profile} />
       <Project projects={projects} />
-      <Contact />
+      {/* <Contact /> */}
     </Layout>
   );
 }

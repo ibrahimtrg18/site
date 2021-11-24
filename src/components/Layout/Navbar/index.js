@@ -20,11 +20,11 @@ const Navbar = React.forwardRef((props, ref) => {
               Project
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/" state={{ targetFragment: "contact" }}>
               Contact
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
