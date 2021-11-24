@@ -19,7 +19,7 @@ module.exports = {
         stacks: ["React-Native", "Nest", "Socket.IO"],
         link: "http://talky.ibrahimtarigan.me",
         repo: "",
-        repoPrivate: false,
+        repoPrivate: true,
       },
       {
         image: "",
@@ -28,7 +28,7 @@ module.exports = {
         stacks: ["React", "Redux", "Tailwind"],
         link: "http://talky.ibrahimtarigan.me",
         repo: "",
-        repoPrivate: false,
+        repoPrivate: true,
       },
       {
         image: "",
@@ -37,7 +37,7 @@ module.exports = {
         stacks: ["ReactJS", "Styled-Components", "Google ReCaptcha"],
         link: "https://landing-page-indonesia.vercel.app/",
         repo: "",
-        repoPrivate: false,
+        repoPrivate: true,
       },
       {
         image: "",
@@ -46,7 +46,7 @@ module.exports = {
         stacks: ["SCSS", "ReactJS", "Redux"],
         link: "https://ibrahim-todo.vercel.app/",
         repo: "",
-        repoPrivate: false,
+        repoPrivate: true,
       },
       {
         image: "",
@@ -55,7 +55,7 @@ module.exports = {
         stacks: ["HTML", "CSS", "Materialize", "PWA", "IndexDB"],
         link: "https://dinner-jurney.vercel.app/",
         repo: "",
-        repoPrivate: false,
+        repoPrivate: true,
       },
       {
         image: "",
@@ -64,7 +64,7 @@ module.exports = {
         stacks: ["ReactJS", "Styled-Components", "Google Map API"],
         link: "http://myroute.ibrahimtarigan.me",
         repo: "",
-        repoPrivate: false,
+        repoPrivate: true,
       },
       {
         image: "",
@@ -73,7 +73,7 @@ module.exports = {
         stacks: ["HTML", "CSS", "Materialize", "PWA"],
         link: "https://pwa-dota2.vercel.app/",
         repo: "",
-        repoPrivate: false,
+        repoPrivate: true,
       },
       {
         image: "",
@@ -83,7 +83,7 @@ module.exports = {
         stacks: ["ReactJS", "Tailwind", "ExpressJS", "MySQL", "JWT"],
         link: "",
         repo: "",
-        repoPrivate: false,
+        repoPrivate: true,
       },
     ],
     technologies: [
