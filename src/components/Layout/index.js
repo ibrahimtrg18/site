@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import { Helmet } from "react-helmet";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -37,15 +38,43 @@ const Layout = props => {
         siteMetadata {
           title
           copyright
+          metaDescription
         }
       }
     }
   `);
 
-  const { title, copyright } = data.site.siteMetadata;
+  const {
+    title,
+    copyright,
+    metaDescription,
+    ogSiteName,
+    ogTitle,
+    ogDescription,
+  } = data.site.siteMetadata;
 
   return (
     <>
+      <Helmet
+        htmlAttributes={{ lang: "en" }}
+        title={title}
+        meta={[
+          {
+            name: `title`,
+            content: title,
+          },
+          { name: "description", content: metaDescription },
+          {
+            property: `og:site_name`,
+            content: ogSiteName,
+          },
+          { property: "og:title", content: ogTitle || title },
+          {
+            property: "og:description",
+            content: ogDescription || metaDescription,
+          },
+        ]}
+      />
       <Navbar
         ref={navbarContainer}
         title={title}

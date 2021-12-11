@@ -6,11 +6,23 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [`gatsby-plugin-sass`],
+  plugins: [
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://www.example.com",
+        sitemap: "https://www.example.com/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+  ],
   siteMetadata: {
     title: "Ibrahim Tarigan",
-    description: "Ibrahim Tarigan Portofolio Front end developer",
+    metaDescription: "Ibrahim Tarigan Portofolio Front end developer",
     copyright: "Copyright (c) 2021 by Ibrahim Tarigan",
+    description: "Ibrahim Tarigan Portofolio Front end developer",
     projects: [
       {
         image: "",
