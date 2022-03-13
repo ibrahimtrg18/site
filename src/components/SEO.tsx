@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { useLocation } from "@reach/router";
 import { graphql, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
