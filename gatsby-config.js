@@ -21,6 +21,8 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-styled-components",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -28,7 +30,29 @@ module.exports = {
         path: path.join(__dirname, "src", "images"),
       },
     },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: "GatsbyJS",
+        short_name: "GatsbyJS",
+        start_url: "/",
+        background_color: "#f7f0eb",
+        theme_color: "#a2466c",
+        display: "standalone",
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icons: [
+          {
+            src: `/favicons/icon.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/icon.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+        ], // Add or remove icon sizes as desired
+      },
+    },
   ],
 };
