@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
-import { Container } from "../../Base/Container";
-import { Section } from "../../Base/Section";
+import { Container } from "../../base/Container";
+import { Section } from "../../base/Section";
 import { Content, Introduction, Name, Picture } from "./styled";
 
 const Me = () => {

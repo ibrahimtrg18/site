@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
-import { Container } from "../components/Base/Container";
+import { Container } from "../components/base/Container";
 import Layout from "../components/Layout";
 
 const Content = styled.div`

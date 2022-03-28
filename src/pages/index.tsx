@@ -1,6 +1,6 @@
 import React from "react";
 
-import Me from "../components/Content/Me";
+import Me from "../components/content/Me";
 import Layout from "../components/Layout";
 
 const IndexPage = () => {
