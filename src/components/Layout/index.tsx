@@ -8,7 +8,7 @@ import Navbar from "./Navbar";
 
 interface Props {
   children: React.ReactNode;
-  navbar: boolean;
+  navbar?: boolean;
 }
 
 const Layout: FC<Props> = (props) => {
