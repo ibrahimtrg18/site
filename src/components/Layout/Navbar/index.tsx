@@ -1,6 +1,8 @@
-import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import React, { useMemo } from "react";
 import * as Icon from "react-feather";
 
+import { getInitial } from "../../../helpers/common";
 import {
   AppBar,
   Logo,
@@ -14,17 +16,20 @@ import {
 } from "./styled";
 
 const Navbar = () => {
+  const data = useStaticQuery(query);
+  const logo = useMemo(() => getInitial(data.site.siteMetadata.title), []);
+  const menus = useMemo(() => ["About", "Project", "Resume"], []);
+
+  const renderMenu = () =>
+    menus.map((menu) => <MenuItem key={menu}>{menu}</MenuItem>);
+
   return (
     <NavbarContainer>
       <AppBar>
         <MenuNav>
-          <MenuList>
-            <MenuItem>About</MenuItem>
-            <MenuItem>Project</MenuItem>
-            <MenuItem>Resume</MenuItem>
-          </MenuList>
+          <MenuList>{renderMenu()}</MenuList>
         </MenuNav>
-        <Logo>IT</Logo>
+        <Logo>{logo}</Logo>
         <SocialMediaList>
           <SocialMediaItem>
             <Icon.Twitter />
@@ -46,3 +51,13 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
