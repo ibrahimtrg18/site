@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 
 /** @type {import('gatsby').GatsbyConfig} */
@@ -18,6 +20,28 @@ module.exports = {
       username: "@ibrahimtrg18",
       link: "",
     },
+    socialMedias: [
+      {
+        iconName: "Twitter",
+        username: "@ibrahimtrg18",
+        link: "",
+      },
+      {
+        iconName: "Instagram",
+        username: "@ibrahimtrg18",
+        link: "",
+      },
+      {
+        iconName: "Linkedin",
+        username: "@ibrahimtrg18",
+        link: "",
+      },
+      {
+        iconName: "GitHub",
+        username: "@ibrahimtrg18",
+        link: "",
+      },
+    ],
   },
   plugins: [
     "gatsby-plugin-styled-components",
