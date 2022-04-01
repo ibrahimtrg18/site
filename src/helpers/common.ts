@@ -1,7 +1,7 @@
 interface GetInitialOptions {
   separator: string;
   uppercase: boolean;
-  combiner: "";
+  combiner: string;
 }
 
 export const getInitial = (
