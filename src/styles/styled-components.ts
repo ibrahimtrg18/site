@@ -73,13 +73,13 @@ enum FontType {
 }
 
 const size = {
-  mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "2560px",
+  mobileS: "321px",
+  mobileM: "376px",
+  mobileL: "426px",
+  tablet: "769px",
+  laptop: "1025px",
+  laptopL: "1441px",
+  desktop: "2561px",
 };
 
 export const theme = {
@@ -101,8 +101,14 @@ export const theme = {
     h5: "1.25em",
     h6: "1.125em",
 
-    menu: "1.25em",
-    logo: "3em",
+    menuSm: "1em",
+    menuMd: "1.125em",
+    menuLg: "1.25em",
+    menuXl: "1.75em",
+    menuXl2: "2.5em",
+    logoSm: "2.25em",
+    logoMd: "2.5em",
+    logoLg: "3em",
   },
   color: {
     primary: "#5C8F6A",

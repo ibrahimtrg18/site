@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { theme } from "./config/styled-components";
+import { theme } from "./styles";
 
 type ThemeInterface = typeof theme;
 

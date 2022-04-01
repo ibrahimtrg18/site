@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, theme } from "../../config/styled-components";
+import { GlobalStyle, theme } from "../../styles";
 import SEO from "../SEO";
 import Main from "./Main";
 import Navbar from "./Navbar";
