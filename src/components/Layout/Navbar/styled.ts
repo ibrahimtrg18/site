@@ -1,24 +1,61 @@
 import styled, { css } from "styled-components";
 
-export const NavbarContainer = styled.header``;
+interface NavbarContainerProps {
+  isScrolled?: boolean;
+}
 
-export const AppBar = styled.div`
-  position: relative;
+export const NavbarContainer = styled.div<NavbarContainerProps>`
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: ${(props) => props.theme.color.white};
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease-in-out;
+
+  ${(props) => {
+    if (props.isScrolled) {
+      return css`
+        background-color: ${(props) => props.theme.color.white};
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+        height: 64px;
+
+        @media ${(props) => props.theme.device.tablet} {
+          height: 96px;
+        }
+
+        & ${MenuList} {
+          @media ${(props) => props.theme.device.tablet} {
+            margin: 16px 0 16px 96px;
+          }
+        }
+
+        & ${SocialMediaList} {
+          @media ${(props) => props.theme.device.tablet} {
+            margin: 16px 96px 16px 0;
+          }
+        }
+      `;
+    } else {
+      return css`
+        @media ${(props) => props.theme.device.tablet} {
+          background-color: transparent;
+          box-shadow: unset;
+          height: 124px;
+        }
+      `;
+    }
+  }};
+`;
+
+export const AppBar = styled.nav`
   display: grid;
   align-items: center;
   width: 100%;
-  height: 64px;
-  background-color: #ffffff;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
-
-  .menu {
-    position: absolute;
-    display: block;
-
-    @media ${(props) => props.theme.device.mobileL} {
-      display: none;
-    }
-  }
+  height: 100%;
 
   @media ${(props) => props.theme.device.mobileL} {
     display: grid;
@@ -29,43 +66,39 @@ export const AppBar = styled.div`
     background-color: transparent;
   }
   @media ${(props) => props.theme.device.tablet} {
-    z-index: 1;
-    position: fixed;
-    top: 0;
     display: grid;
     grid-template-columns: auto auto;
     grid-auto-flow: column;
     align-items: center;
-    height: 124px;
     background-color: transparent;
     box-shadow: unset;
   }
-`;
 
-export const MenuNav = styled.nav`
-  display: none;
-
-  @media ${(props) => props.theme.device.mobileL} {
+  & .menu {
+    position: absolute;
     display: block;
-    margin: 0 16px;
-  }
-  @media ${(props) => props.theme.device.tablet} {
-    margin: 24px 0 24px 96px;
-  }
-  @media ${(props) => props.theme.device.laptop} {
-    margin: 48px 0 48px 96px;
+
+    @media ${(props) => props.theme.device.mobileL} {
+      display: none;
+    }
   }
 `;
 
 export const MenuList = styled.ul`
   list-style: none;
-  display: flex;
+  display: none;
   gap: 2em;
 
+  @media ${(props) => props.theme.device.mobileL} {
+    display: flex;
+    margin: 0 16px;
+  }
   @media ${(props) => props.theme.device.tablet} {
+    margin: 24px 0 24px 96px;
     gap: 3em;
   }
   @media ${(props) => props.theme.device.laptop} {
+    margin: 48px 0 48px 96px;
     gap: 4.5em;
   }
 `;
@@ -159,13 +192,18 @@ export const SocialMediaList = styled.ul`
     margin: 24px 96px 24px 0;
 
     & > svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
   }
   @media ${(props) => props.theme.device.laptop} {
     gap: 4.5em;
     margin: 48px 96px 48px 0;
+
+    & > svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 
@@ -191,7 +229,8 @@ export const Sidebar = styled.nav<SidebarProps>`
       `;
     }
   }};
-  position: absolute;
+  z-index: 1;
+  position: fixed;
   top: 0;
   width: 100vw;
   height: 100vh;
