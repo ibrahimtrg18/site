@@ -1,12 +1,23 @@
 import { graphql, useStaticQuery } from "gatsby";
-import React from "react";
+import React, { useMemo } from "react";
 
+import { getInitial } from "../../../helpers/common";
+import { theme } from "../../../styles";
 import { Container } from "../../base/Container";
 import { Section } from "../../base/Section";
 import { Content, Introduction, Name, Picture } from "./styled";
 
 const Me = () => {
   const data = useStaticQuery(query);
+  const shortName = useMemo(
+    () =>
+      getInitial(data.site.siteMetadata.title, {
+        uppercase: false,
+        exclude: ["Ibrahim"],
+        combiner: " ",
+      }),
+    [data]
+  );
 
   return (
     <Section>
@@ -15,7 +26,8 @@ const Me = () => {
           <Introduction>
             Hi,
             <br />
-            I’m <Name>Ibrahim</Name>,
+            I’m <Name>{shortName}.</Name>
+            ,
             <br />
             Frontend Developer
           </Introduction>
@@ -30,6 +42,11 @@ export default Me;
 
 const query = graphql`
   query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     file(relativePath: { eq: "picture.png" }) {
       childImageSharp {
         original {
