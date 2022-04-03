@@ -133,4 +133,7 @@ export const theme = {
     desktop: `(min-width: ${size.desktop})`,
     desktopL: `(min-width: ${size.desktop})`,
   },
+  appBarHeightMobile: "64px",
+  appBarHeightTablet: "96px",
+  appBarHeightDesktop: "124px",
 };

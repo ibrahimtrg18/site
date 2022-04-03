@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { getInitial } from "../../../helpers/common";
 import { Icon, IconName } from "../../base/Icon";
@@ -11,6 +11,7 @@ import {
   MenuList,
   NavbarContainer,
   Sidebar,
+  SocialMediaItem,
   SocialMediaList,
 } from "./styled";
 
@@ -26,8 +27,6 @@ const Navbar = () => {
   const [showSidebarMenu, setShowSidebarMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navbarContainerRef = useRef();
-
   const logo = useMemo(() => getInitial(data.site.siteMetadata.title), []);
   const menus = useMemo(() => ["About", "Project", "Resume"], []);
   const socialMedias: Array<SocialMedia> = useMemo(
@@ -42,7 +41,13 @@ const Navbar = () => {
 
   const renderSocialMedia = useMemo(
     () => () =>
-      socialMedias.map((social, i) => <Icon key={i} name={social.iconName} />),
+      socialMedias.map((social, i) => (
+        <SocialMediaItem key={i}>
+          <a href={social.link} target="_blank" rel="noreferrer">
+            <Icon name={social.iconName} />
+          </a>
+        </SocialMediaItem>
+      )),
     []
   );
 
@@ -71,7 +76,7 @@ const Navbar = () => {
       <AppBar>
         <Icon
           name="Menu"
-          mx="16px"
+          mr="16px"
           className={classNames("menu")}
           onClick={() => setShowSidebarMenu(true)}
         />

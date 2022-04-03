@@ -1,17 +1,19 @@
 import styled, { css } from "styled-components";
 
+import { containerCss } from "../../base/Container";
+
 interface NavbarContainerProps {
   isScrolled?: boolean;
 }
 
 export const NavbarContainer = styled.div<NavbarContainerProps>`
-  z-index: 1;
+  z-index: 10;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: ${(props) => props.theme.appBarHeightMobile};
   background-color: ${(props) => props.theme.color.white};
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease-in-out;
@@ -21,22 +23,10 @@ export const NavbarContainer = styled.div<NavbarContainerProps>`
       return css`
         background-color: ${(props) => props.theme.color.white};
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-        height: 64px;
+        height: ${(props) => props.theme.appBarHeightMobile};
 
         @media ${(props) => props.theme.device.tablet} {
           height: 96px;
-        }
-
-        & ${MenuList} {
-          @media ${(props) => props.theme.device.tablet} {
-            margin: 16px 0 16px 96px;
-          }
-        }
-
-        & ${SocialMediaList} {
-          @media ${(props) => props.theme.device.tablet} {
-            margin: 16px 96px 16px 0;
-          }
         }
       `;
     } else {
@@ -56,6 +46,7 @@ export const AppBar = styled.nav`
   align-items: center;
   width: 100%;
   height: 100%;
+  ${containerCss}
 
   @media ${(props) => props.theme.device.mobileL} {
     display: grid;
@@ -91,14 +82,11 @@ export const MenuList = styled.ul`
 
   @media ${(props) => props.theme.device.mobileL} {
     display: flex;
-    margin: 0 16px;
   }
   @media ${(props) => props.theme.device.tablet} {
-    margin: 24px 0 24px 96px;
     gap: 3em;
   }
   @media ${(props) => props.theme.device.laptop} {
-    margin: 48px 0 48px 96px;
     gap: 4.5em;
   }
 `;
@@ -119,15 +107,19 @@ export const MenuItem = styled.li`
     height: 2px;
     background-color: ${(props) => props.theme.color.text};
     transition: width 0.2s ease-in-out;
+    margin-right: 8px;
+
+    @media ${(props) => props.theme.device.mobileL} {
+      bottom: -5px;
+      margin-right: unset;
+    }
   }
 
   &:hover {
     &:after {
-      margin-right: 8px;
       width: calc(100% - 8px);
 
       @media ${(props) => props.theme.device.mobileL} {
-        bottom: -5px;
         width: 100%;
       }
     }
@@ -156,7 +148,7 @@ export const Logo = styled.h1`
     position: unset;
     transform: unset;
     font-size: ${(props) => props.theme.fontSize.logoMd};
-    margin: 0 16px;
+    margin-right: 32px;
     grid-column-start: 1;
   }
   @media ${(props) => props.theme.device.tablet} {
@@ -173,7 +165,7 @@ export const SocialMediaList = styled.ul`
   list-style: none;
   display: none;
 
-  & > svg {
+  & svg {
     width: 18px;
     height: 18px;
   }
@@ -181,7 +173,6 @@ export const SocialMediaList = styled.ul`
   @media ${(props) => props.theme.device.mobileL} {
     display: flex;
     gap: 2em;
-    margin-right: 16px;
   }
   @media ${(props) => props.theme.device.tablet} {
     display: flex;
@@ -189,18 +180,16 @@ export const SocialMediaList = styled.ul`
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
-    margin: 24px 96px 24px 0;
 
-    & > svg {
+    & svg {
       width: 20px;
       height: 20px;
     }
   }
   @media ${(props) => props.theme.device.laptop} {
     gap: 4.5em;
-    margin: 48px 96px 48px 0;
 
-    & > svg {
+    & svg {
       width: 24px;
       height: 24px;
     }
@@ -208,7 +197,10 @@ export const SocialMediaList = styled.ul`
 `;
 
 export const SocialMediaItem = styled.li`
-  display: inline-flex;
+  & > a {
+    display: flex;
+    color: ${(props) => props.theme.color.dark};
+  }
 `;
 
 interface SidebarProps {
@@ -224,12 +216,12 @@ export const Sidebar = styled.nav<SidebarProps>`
       `;
     } else {
       return css`
-        left: -100%;
+        left: -120%;
         transition: left 1s ease-in-out;
       `;
     }
   }};
-  z-index: 1;
+  z-index: 100;
   position: fixed;
   top: 0;
   width: 100vw;
@@ -240,7 +232,6 @@ export const Sidebar = styled.nav<SidebarProps>`
   & > ${MenuList} {
     display: flex;
     height: 100vh;
-    /* height: calc(100vh - 40%); */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -273,8 +264,8 @@ export const Sidebar = styled.nav<SidebarProps>`
 
   & > .close-menu {
     position: absolute;
-    top: 1em;
-    right: 1em;
+    top: 16px;
+    right: 16px;
 
     ${(props) => {
       if (props.show) {

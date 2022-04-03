@@ -23,23 +23,23 @@ module.exports = {
     socialMedias: [
       {
         iconName: "Twitter",
-        username: "@ibrahimtrg18",
-        link: "",
+        username: "ibrahimtrg18",
+        link: "https://twitter.com/ibrahimtrg18",
       },
       {
         iconName: "Instagram",
-        username: "@ibrahimtrg18",
-        link: "",
-      },
-      {
-        iconName: "Linkedin",
-        username: "@ibrahimtrg18",
-        link: "",
+        username: "ibrahimtrg18",
+        link: "https://instagram.com/ibrahimtrg18",
       },
       {
         iconName: "GitHub",
-        username: "@ibrahimtrg18",
-        link: "",
+        username: "ibrahimtrg18",
+        link: "https://github.com/ibrahimtrg18",
+      },
+      {
+        iconName: "Linkedin",
+        username: "ibrahimtrg18",
+        link: "https://www.linkedin.com/in/ibrahimtrg18/",
       },
     ],
   },

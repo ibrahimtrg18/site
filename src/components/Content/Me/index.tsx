@@ -8,8 +8,6 @@ import { Content, Introduction, Name, Picture } from "./styled";
 const Me = () => {
   const data = useStaticQuery(query);
 
-  console.log(data);
-
   return (
     <Section>
       <Container>
