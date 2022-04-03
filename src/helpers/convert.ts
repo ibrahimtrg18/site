@@ -2,29 +2,30 @@ import { theme } from "../styles";
 import { ColorEnum, UnitEnum } from "../utils/enums";
 
 interface ConvertSpacingOptions {
-  unit: UnitEnum;
+  unit?: UnitEnum;
 }
 
 export const convertSpacing = (
   value: string | number | boolean,
   options?: ConvertSpacingOptions
 ): string => {
-  options = options || {
+  options = {
     unit: UnitEnum.PX,
+    ...options,
   };
   switch (typeof value) {
     case "string":
       if (value === "auto") return "auto";
       else return value;
     case "number":
-      return value + options.unit;
+      return value + options!.unit!;
     default:
       return "auto";
   }
 };
 
 interface ConvertColorOptions {
-  unit: ColorEnum;
+  unit?: ColorEnum;
 }
 
 export type ThemeColorInterface = typeof theme.color;
@@ -33,8 +34,9 @@ export const convertColor = (
   value: string | ThemeColorInterface,
   options?: ConvertColorOptions
 ) => {
-  options = options || {
+  options = {
     unit: ColorEnum.HEX,
+    ...options,
   };
   switch (options.unit) {
     case ColorEnum.HEX:
