@@ -34,13 +34,13 @@ export const Introduction = styled.h1`
   @media ${(props) => props.theme.device.mobileL} {
     text-align: start;
     font-size: 3em;
-    line-height: 150%;
+    line-height: 125%;
   }
 
   @media ${(props) => props.theme.device.tablet} {
     text-align: start;
     font-size: 4em;
-    line-height: 150%;
+    line-height: 125%;
   }
 `;
 
