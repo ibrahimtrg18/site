@@ -13,3 +13,13 @@ export enum UnitEnum {
   VW = "vw",
   VH = "vh",
 }
+
+export enum DeviceEnum {
+  MOBILES = "mobileS",
+  MOBILEM = "mobileM",
+  MOBILEL = "mobileL",
+  TABLET = "tablet",
+  LAPTOP = "laptop",
+  LAPTOPL = "laptopL",
+  DESKTOP = "desktop",
+}

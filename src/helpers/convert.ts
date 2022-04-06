@@ -1,5 +1,5 @@
 import { theme } from "../styles";
-import { ColorEnum, UnitEnum } from "../utils/enums";
+import { ColorEnum, UnitEnum } from "../utils";
 
 interface ConvertSpacingOptions {
   unit?: UnitEnum;

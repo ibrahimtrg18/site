@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 
 import { convertSpacing } from "../helpers/convert";
-import { UnitEnum } from "../utils/enums";
+import { UnitEnum } from "../utils";
 
 interface PaddingProps {
   mt?: boolean | string | number;
