@@ -1,11 +1,49 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
 import { theme } from "../../../styles";
+import { DeviceEnum } from "../../../utils";
 import { Container } from "../../base/Container";
+import { Divider } from "../../base/Divider";
 import { Section } from "../../base/Section";
-import { Content, IMeMyself, StackTechnology } from "./styled";
+import {
+  Content,
+  GridStackTechnology,
+  IMeMyself,
+  StackTechnology,
+} from "./styled";
+
+interface StackTechonology {
+  icon: string;
+  name: string;
+}
 
 const About = () => {
+  const data = useStaticQuery(query);
+  const paragraphs: Array<string> = data.site.siteMetadata.about.paragraphs;
+  const stackTechnologies: Array<StackTechonology> =
+    data.site.siteMetadata.stackTechnologies;
+  const files: Array<any> = data.allFile.edges;
+
+  const renderAboutParagraph = () =>
+    paragraphs.map((paragraph, i) => (
+      <React.Fragment key={i}>
+        <br />
+        <p>{paragraph}</p>
+      </React.Fragment>
+    ));
+
+  const renderStackTechnology = () =>
+    stackTechnologies.map((tech, i) => {
+      const file = files.find(
+        (file) => `${file.node.name}.${file.node.extension}` === tech.icon
+      );
+
+      if (file) {
+        return <img key={i} src={file.node.publicURL} alt={tech.name} />;
+      }
+    });
+
   return (
     <Section backgroundColor={theme.color.secondary + "5F"}>
       <Container>
@@ -17,30 +55,13 @@ const About = () => {
               Me,
               <br />& Myself
             </h1>
-            <br />
-            <p>
-              I’m a Enthusiast Frontend Developer with 2+ years of professional
-              experience design, development, implement, and maintaining
-              applications. I have a serious passion for UI effects, dynamic
-              user experiences, animations, and creating intuitive.
-            </p>
-            <br />
-            <p>
-              Have good understanding Web Design and Responsive on across
-              devices, have ability to write clean code, high attention to
-              detail and problem solver. Also seeking to leverage broad
-              development experience and hands-on technical expertise in role as
-              a Frontend Developer.
-            </p>
-            <br />
-            <p>
-              Interested in the entire frontend spectrum and working on
-              ambitious projects with positive people.
-            </p>
-            <br />
-            <p>Loves animal, old music, anime and pc games.</p>
+            {renderAboutParagraph()}
           </IMeMyself>
-          <StackTechnology></StackTechnology>
+          <Divider direction="vertical" breakpoints={DeviceEnum.TABLET} />
+          <StackTechnology>
+            <h6>Stack Techonologies, I have been used: </h6>
+            <GridStackTechnology>{renderStackTechnology()}</GridStackTechnology>
+          </StackTechnology>
         </Content>
       </Container>
     </Section>
@@ -48,3 +69,28 @@ const About = () => {
 };
 
 export default About;
+
+const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        about {
+          paragraphs
+        }
+        stackTechnologies {
+          icon
+          name
+        }
+      }
+    }
+    allFile {
+      edges {
+        node {
+          name
+          extension
+          publicURL
+        }
+      }
+    }
+  }
+`;
