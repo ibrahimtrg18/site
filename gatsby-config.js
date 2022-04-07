@@ -42,6 +42,60 @@ module.exports = {
         link: "https://www.linkedin.com/in/ibrahimtrg18/",
       },
     ],
+    about: {
+      paragraphs: [
+        "I’m a Enthusiast Frontend Developer with 2+ years of professional experience design, development, implement, and maintaining applications. I have a serious passion for UI effects, dynamic user experiences, animations, and creating intuitive.",
+        "Have good understanding Web Design and Responsive on across devices, have ability to write clean code, high attention to detail and problem solver. Also seeking to leverage broad development experience and hands-on technical expertise in role as a Frontend Developer.",
+        "Interested in the entire frontend spectrum and working on ambitious projects with positive people.",
+        "Loves animal, old music, anime and pc games.",
+      ],
+    },
+    stackTechnologies: [
+      {
+        icon: "icons8-html-5-64.svg",
+        name: "HTML",
+      },
+      {
+        icon: "icons8-css3-64.svg",
+        name: "CSS3",
+      },
+      {
+        icon: "icons8-javascript-64.svg",
+        name: "Javascript",
+      },
+      {
+        icon: "icons8-typescript-64.svg",
+        name: "Typescript",
+      },
+      {
+        icon: "icons8-nodejs-64.svg",
+        name: "Node",
+      },
+      {
+        icon: "icons8-react-64.svg",
+        name: "React",
+      },
+      {
+        icon: "icons8-vue-64.svg",
+        name: "Vue",
+      },
+      {
+        icon: "icons8-graphql-64.svg",
+        name: "GraphQL",
+      },
+      {
+        icon: "icons8-redux-64.svg",
+        name: "Redux",
+      },
+      {
+        icon: "icons8-git-64.svg",
+        name: "Git",
+      },
+      {
+        icon: "icons8-figma-64.svg",
+        name: "Figma",
+      },
+    ],
   },
   plugins: [
     "gatsby-plugin-styled-components",
