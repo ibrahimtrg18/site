@@ -2,9 +2,8 @@ import { graphql, useStaticQuery } from "gatsby";
 import React, { useMemo } from "react";
 
 import { getInitial } from "../../../helpers/common";
-import { theme } from "../../../styles";
-import { Container } from "../../base/Container";
-import { Section } from "../../base/Section";
+import { Container } from "../../Base/Container";
+import { Section } from "../../Base/Section";
 import { Content, Introduction, Name, Picture } from "./styled";
 
 const Me = () => {

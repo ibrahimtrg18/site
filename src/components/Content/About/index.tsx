@@ -3,9 +3,9 @@ import React from "react";
 
 import { theme } from "../../../styles";
 import { DeviceEnum } from "../../../utils";
-import { Container } from "../../base/Container";
-import { Divider } from "../../base/Divider";
-import { Section } from "../../base/Section";
+import { Container } from "../../Base/Container";
+import { Divider } from "../../Base/Divider";
+import { Section } from "../../Base/Section";
 import {
   Content,
   GridStackTechnology,

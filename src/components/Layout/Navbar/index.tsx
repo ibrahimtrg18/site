@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import React, { useEffect, useMemo, useState } from "react";
 
 import { getInitial } from "../../../helpers/common";
-import { Icon, IconName } from "../../base/Icon";
+import { Icon, IconName } from "../../Base/Icon";
 import {
   AppBar,
   Logo,

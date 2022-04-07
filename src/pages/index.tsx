@@ -1,7 +1,7 @@
 import React from "react";
 
-import About from "../components/content/About";
-import Me from "../components/content/Me";
+import About from "../components/Content/About";
+import Me from "../components/Content/Me";
 import Layout from "../components/Layout";
 
 const IndexPage = () => {

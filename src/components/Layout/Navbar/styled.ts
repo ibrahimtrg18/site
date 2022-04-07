@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { containerCss } from "../../base/Container";
+import { containerCss } from "../../Base/Container";
 
 interface NavbarContainerProps {
   isScrolled?: boolean;
