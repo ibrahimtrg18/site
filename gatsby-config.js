@@ -96,6 +96,67 @@ module.exports = {
         name: "Figma",
       },
     ],
+    project: {
+      work: [
+        {
+          name: "Cititex",
+          url: "https://www.cititex.com",
+          image: "cititex.png",
+        },
+        {
+          name: "Cititex Dashboard Master",
+          url: "http://18.136.190.112/testing/master/dashboard",
+          image: "cititex-dashboard-master.png",
+        },
+        {
+          name: "Cititex Dashboard Local",
+          url: "http://18.136.190.112/testing/cititex/dashboard-local",
+          image: "cititex-dashboard-local.png",
+        },
+      ],
+      personal: [
+        {
+          name: "Talky",
+          url: "http://talky.ibrahimtarigan.me",
+          image: "cititex.png",
+        },
+        {
+          name: "Movie DB",
+          url: "https://movie-ibrahim.vercel.app",
+          image: "cititex.png",
+        },
+        {
+          name: "Landing page example",
+          url: "https://landing-page-indonesia.vercel.app",
+          image: "cititex.png",
+        },
+        {
+          name: "Todo",
+          url: "https://ibrahim-todo.vercel.app",
+          image: "cititex.png",
+        },
+        {
+          name: "Dinner Journey",
+          url: "https://dinner-jurney.vercel.app",
+          image: "cititex.png",
+        },
+        {
+          name: "My Route",
+          url: "https://www.google.com",
+          image: "cititex.png",
+        },
+        {
+          name: "Dota 2 PWA",
+          url: "https://pwa-dota2.vercel.app",
+          image: "cititex.png",
+        },
+        {
+          name: "Wak Print",
+          url: "",
+          image: "cititex.png",
+        },
+      ],
+    },
   },
   plugins: [
     "gatsby-plugin-styled-components",
