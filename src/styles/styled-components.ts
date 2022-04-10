@@ -65,6 +65,11 @@ export const GlobalStyle = createGlobalStyle`
       line-height: 130%;
     }
   }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 enum FontType {
@@ -117,7 +122,7 @@ export const theme = {
 
     black: "#000000",
     dark: "#333333",
-    light: "#cccccc",
+    light: "#e5e5e5",
     white: "#ffffff",
 
     text: "#333333",
