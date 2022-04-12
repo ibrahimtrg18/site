@@ -17,7 +17,7 @@ interface ProjectCategory {
   personal: Array<Project>;
 }
 
-const Project = () => {
+const Project = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const data = useStaticQuery(query);
   const files: Array<any> = data.allFile.edges;
 
@@ -45,7 +45,7 @@ const Project = () => {
     });
 
   return (
-    <Section>
+    <Section ref={ref}>
       <Container>
         <Content>
           <ProjectContent>
@@ -62,7 +62,7 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default React.forwardRef(Project);
 
 const query = graphql`
   query {

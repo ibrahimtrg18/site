@@ -9,16 +9,17 @@ import Navbar from "./Navbar";
 interface Props {
   children: React.ReactNode;
   navbar?: boolean;
+  navbarMenus?: Array<any>;
 }
 
 const Layout: FC<Props> = (props) => {
-  const { children, navbar } = props;
+  const { children, navbar, navbarMenus } = props;
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <SEO />
-      {navbar && <Navbar />}
+      {navbar && <Navbar navbarMenus={navbarMenus} />}
       <Main>{children}</Main>
     </ThemeProvider>
   );

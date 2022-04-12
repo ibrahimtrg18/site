@@ -6,7 +6,7 @@ import { Container } from "../../Base/Container";
 import { Section } from "../../Base/Section";
 import { Content, Introduction, Name, Picture } from "./styled";
 
-const Me = () => {
+const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const data = useStaticQuery(query);
   const shortName = useMemo(
     () =>
@@ -19,7 +19,7 @@ const Me = () => {
   );
 
   return (
-    <Section>
+    <Section ref={ref}>
       <Container>
         <Content>
           <Introduction>
@@ -37,7 +37,7 @@ const Me = () => {
   );
 };
 
-export default Me;
+export default React.forwardRef(Me);
 
 const query = graphql`
   query {

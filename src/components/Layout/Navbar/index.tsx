@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 
 import { getInitial } from "../../../helpers/common";
 import { Icon, IconName } from "../../Base/Icon";
@@ -15,41 +15,34 @@ import {
   SocialMediaList,
 } from "./styled";
 
+interface Menu {
+  name: string;
+  ref: React.RefObject<HTMLElement>;
+}
 interface SocialMedia {
   iconName: IconName;
   username: string;
   link: string;
 }
 
-const Navbar = () => {
+interface Props {
+  navbarMenus?: Array<Menu>;
+}
+
+const Navbar: FC<Props> = (props) => {
+  const { navbarMenus } = props;
   const data = useStaticQuery(query);
 
   const [showSidebarMenu, setShowSidebarMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const logo = useMemo(() => getInitial(data.site.siteMetadata.title), []);
-  const menus = useMemo(() => ["About", "Project", "Resume"], []);
   const socialMedias: Array<SocialMedia> = useMemo(
     () => data.site.siteMetadata.socialMedias,
     []
   );
 
-  const renderMenu = useMemo(
-    () => () => menus.map((menu) => <MenuItem key={menu}>{menu}</MenuItem>),
-    []
-  );
-
-  const renderSocialMedia = useMemo(
-    () => () =>
-      socialMedias.map((social, i) => (
-        <SocialMediaItem key={i}>
-          <a href={social.link} target="_blank" rel="noreferrer">
-            <Icon name={social.iconName} />
-          </a>
-        </SocialMediaItem>
-      )),
-    []
-  );
+  console.log(navbarMenus);
 
   useEffect(() => {
     const scrollListener = () => {
@@ -70,6 +63,33 @@ const Navbar = () => {
       document.body.style.removeProperty("overflow");
     }
   }, [showSidebarMenu]);
+
+  const onNavbarMenuClick = (menu: Menu): void => {
+    if (menu.ref.current)
+      menu.ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  const renderMenu = useMemo(
+    () => () =>
+      navbarMenus?.map((menu, i) => (
+        <MenuItem key={i} onClick={() => onNavbarMenuClick(menu)}>
+          {menu.name}
+        </MenuItem>
+      )),
+    []
+  );
+
+  const renderSocialMedia = useMemo(
+    () => () =>
+      socialMedias.map((social, i) => (
+        <SocialMediaItem key={i}>
+          <a href={social.link} target="_blank" rel="noreferrer">
+            <Icon name={social.iconName} />
+          </a>
+        </SocialMediaItem>
+      )),
+    []
+  );
 
   return (
     <NavbarContainer isScrolled={isScrolled}>

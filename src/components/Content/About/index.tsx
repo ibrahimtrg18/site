@@ -18,7 +18,7 @@ interface StackTechonology {
   name: string;
 }
 
-const About = () => {
+const About = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const data = useStaticQuery(query);
   const paragraphs: Array<string> = data.site.siteMetadata.about.paragraphs;
   const stackTechnologies: Array<StackTechonology> =
@@ -45,7 +45,7 @@ const About = () => {
     });
 
   return (
-    <Section backgroundColor={theme.color.secondary + "5F"}>
+    <Section backgroundColor={theme.color.secondary + "5F"} ref={ref}>
       <Container>
         <Content>
           <IMeMyself>
@@ -68,7 +68,7 @@ const About = () => {
   );
 };
 
-export default About;
+export default React.forwardRef(About);
 
 const query = graphql`
   query {
