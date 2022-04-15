@@ -126,7 +126,12 @@ export const theme = {
     white: "#ffffff",
 
     text: "#333333",
+    textTitle: "#333333",
+    textSubTitle: "#757575",
+    textParagraph: "#555555",
+    textParagraphSmall: "#555555",
     bodyBackground: "#ffffff",
+    borderColor: "#757575",
   },
   device: {
     mobileS: `(min-width: ${size.mobileS})`,

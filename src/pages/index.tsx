@@ -3,19 +3,21 @@ import React, { useMemo, useRef } from "react";
 import About from "../components/Content/About";
 import Me from "../components/Content/Me";
 import Project from "../components/Content/Project";
+import Resume from "../components/Content/Resume";
 import Layout from "../components/Layout";
 
 const IndexPage = () => {
+  const meRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const projectRef = useRef<HTMLElement>(null);
-  const ResumeRef = useRef<HTMLElement>(null);
-  const meRef = useRef<HTMLElement>(null);
+  const resumeRef = useRef<HTMLElement>(null);
+
   const menus = useMemo(
     () => [
       { name: "Me", ref: meRef },
       { name: "About", ref: aboutRef },
       { name: "Project", ref: projectRef },
-      { name: "Resume", ref: ResumeRef },
+      { name: "Resume", ref: resumeRef },
     ],
     []
   );
@@ -25,6 +27,7 @@ const IndexPage = () => {
       <Me ref={meRef} />
       <About ref={aboutRef} />
       <Project ref={projectRef} />
+      <Resume ref={resumeRef} />
     </Layout>
   );
 };
