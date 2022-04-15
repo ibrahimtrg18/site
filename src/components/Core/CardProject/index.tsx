@@ -14,7 +14,7 @@ interface CardProps {
   url: string;
 }
 
-const Card: FC<CardProps> = (props) => {
+const CardProject: FC<CardProps> = (props) => {
   const { title, image, url, ...restProps } = props;
 
   return (
@@ -29,4 +29,4 @@ const Card: FC<CardProps> = (props) => {
   );
 };
 
-export default Card;
+export default CardProject;

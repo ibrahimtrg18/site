@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React, { useMemo } from "react";
 
-import Card from "../../Base/Card";
 import { Container } from "../../Base/Container";
 import { Section } from "../../Base/Section";
+import CardProject from "../../Core/CardProject";
 import { Content, ProjectContent, ProjectList } from "./styled";
 
 interface Project {
@@ -35,7 +35,7 @@ const Project = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
       );
 
       return (
-        <Card
+        <CardProject
           key={i}
           title={project.name}
           image={file.node.publicURL}
