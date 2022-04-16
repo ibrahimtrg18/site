@@ -17,6 +17,7 @@ import {
 
 interface Menu {
   name: string;
+  icon: IconName;
   ref: React.RefObject<HTMLElement>;
 }
 interface SocialMedia {
@@ -27,34 +28,20 @@ interface SocialMedia {
 
 interface Props {
   navbarMenus?: Array<Menu>;
+  isScrolled?: boolean;
 }
 
 const Navbar: FC<Props> = (props) => {
-  const { navbarMenus } = props;
+  const { navbarMenus, isScrolled } = props;
   const data = useStaticQuery(query);
 
   const [showSidebarMenu, setShowSidebarMenu] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const logo = useMemo(() => getInitial(data.site.siteMetadata.title), []);
   const socialMedias: Array<SocialMedia> = useMemo(
     () => data.site.siteMetadata.socialMedias,
     []
   );
-
-  console.log(navbarMenus);
-
-  useEffect(() => {
-    const scrollListener = () => {
-      if (window.pageYOffset > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", scrollListener);
-  }, []);
 
   useEffect(() => {
     if (showSidebarMenu) {
@@ -75,6 +62,19 @@ const Navbar: FC<Props> = (props) => {
         <MenuItem key={i} onClick={() => onNavbarMenuClick(menu)}>
           {menu.name}
         </MenuItem>
+      )),
+    []
+  );
+
+  const renderMenuIcon = useMemo(
+    () => () =>
+      navbarMenus?.map((menu, i) => (
+        <Icon
+          key={i}
+          name={menu.icon}
+          className="close-menu"
+          onClick={() => setShowSidebarMenu(false)}
+        />
       )),
     []
   );
@@ -100,11 +100,16 @@ const Navbar: FC<Props> = (props) => {
           className={classNames("menu")}
           onClick={() => setShowSidebarMenu(true)}
         />
-        <MenuList>{renderMenu()}</MenuList>
         <Logo>{logo}</Logo>
+        <MenuList>{renderMenu()}</MenuList>
         <SocialMediaList>{renderSocialMedia()}</SocialMediaList>
       </AppBar>
-      <Sidebar show={showSidebarMenu}>
+      <Sidebar className={classNames("desktop")}>
+        <Logo>{logo}</Logo>
+        <MenuList>{renderMenuIcon()}</MenuList>
+        <SocialMediaList>{renderSocialMedia()}</SocialMediaList>
+      </Sidebar>
+      <Sidebar className={classNames("mobile")} show={showSidebarMenu}>
         <MenuList>{renderMenu()}</MenuList>
         <Icon
           name="X"

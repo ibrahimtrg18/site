@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 import { containerCss } from "../../Base/Container";
+import { Icon } from "../../Base/Icon";
 
 interface NavbarContainerProps {
   isScrolled?: boolean;
@@ -8,7 +9,7 @@ interface NavbarContainerProps {
 
 export const NavbarContainer = styled.div<NavbarContainerProps>`
   z-index: 10;
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 0;
   left: 0;
@@ -21,20 +22,39 @@ export const NavbarContainer = styled.div<NavbarContainerProps>`
   ${(props) => {
     if (props.isScrolled) {
       return css`
-        background-color: ${(props) => props.theme.color.white};
-        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-        height: ${(props) => props.theme.appBarHeightMobile};
+        position: fixed;
+        top: 0;
 
-        @media ${(props) => props.theme.device.tablet} {
-          height: 96px;
+        @media ${(props) => props.theme.device.mobileL} {
+          position: absolute;
+          top: -${props.theme.appBarHeightMobile};
+          height: ${props.theme.appBarHeightTablet};
+          box-shadow: unset;
+          background-color: transparent;
+        }
+
+        & ${Sidebar} {
+          &.desktop {
+            left: -100px;
+            @media ${(props) => props.theme.device.mobileL} {
+              left: 0;
+            }
+          }
         }
       `;
     } else {
       return css`
+        & ${Sidebar} {
+          &.desktop {
+            left: -100px;
+            }
+          }
+        }
+
         @media ${(props) => props.theme.device.tablet} {
           background-color: transparent;
           box-shadow: unset;
-          height: 124px;
+          height: ${(props) => props.theme.appBarHeightDesktop};
         }
       `;
     }
@@ -204,7 +224,7 @@ export const SocialMediaItem = styled.li`
 `;
 
 interface SidebarProps {
-  show: boolean;
+  show?: boolean;
 }
 
 export const Sidebar = styled.nav<SidebarProps>`
@@ -282,5 +302,52 @@ export const Sidebar = styled.nav<SidebarProps>`
         `;
       }
     }};
+  }
+
+  &.desktop {
+    width: 80px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+    left: 0;
+    transition: left 0.5s ease-in-out;
+    height: 100vh;
+    text-align: center;
+    padding: 16px 0;
+    transition: all 0.5s ease-in-out;
+
+    & > ${Logo} {
+      position: unset;
+      transform: unset;
+      margin: unset;
+      font-size: ${(props) => props.theme.fontSize.logoMd};
+    }
+
+    & > ${MenuList} {
+      justify-content: unset;
+      align-items: center;
+      gap: 2em;
+      height: unset;
+
+      & > ${Icon} {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    & > ${SocialMediaList} {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      flex-direction: column;
+      gap: 1em;
+      margin-top: auto;
+
+      & ${Icon} {
+        width: 16px;
+        height: 16px;
+      }
+    }
   }
 `;

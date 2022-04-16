@@ -10,17 +10,18 @@ interface Props {
   children: React.ReactNode;
   navbar?: boolean;
   navbarMenus?: Array<any>;
+  isScrolled?: boolean;
 }
 
 const Layout: FC<Props> = (props) => {
-  const { children, navbar, navbarMenus } = props;
+  const { children, navbar, navbarMenus, isScrolled } = props;
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <SEO />
-      {navbar && <Navbar navbarMenus={navbarMenus} />}
-      <Main>{children}</Main>
+      {navbar && <Navbar navbarMenus={navbarMenus} isScrolled={isScrolled} />}
+      <Main isScrolled={isScrolled}>{children}</Main>
     </ThemeProvider>
   );
 };

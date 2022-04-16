@@ -1,12 +1,5 @@
 import styled, { css } from "styled-components";
 
-const contentCss = css`
-  @media ${(props) => props.theme.device.tablet} {
-    flex-direction: row;
-    margin: calc(72px + ${(props) => props.theme.appBarHeightMobile}) 0;
-  }
-`;
-
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,14 +13,44 @@ export const Content = styled.div`
 
 export const IMeMyself = styled.div`
   flex: 1;
-  margin-top: calc(32px + ${(props) => props.theme.appBarHeightMobile});
-  ${contentCss}
+  padding: 16px 0 0;
+
+  @media ${(props) => props.theme.device.mobileS} {
+    padding: 16px 0 0;
+  }
+  @media ${(props) => props.theme.device.mobileM} {
+    padding: 32px 0 0;
+  }
+  @media ${(props) => props.theme.device.mobileL} {
+    padding: 48px 0 0;
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    padding: 64px 0;
+  }
+  @media ${(props) => props.theme.device.laptop} {
+    padding: 80px 0;
+  }
 `;
 
 export const StackTechnology = styled.div`
   flex: 1;
-  margin-bottom: calc(32px + ${(props) => props.theme.appBarHeightMobile});
-  ${contentCss}
+  padding: 0 0 16px;
+
+  @media ${(props) => props.theme.device.mobileS} {
+    padding: 0 0 16px;
+  }
+  @media ${(props) => props.theme.device.mobileM} {
+    padding: 0 0 32px;
+  }
+  @media ${(props) => props.theme.device.mobileL} {
+    padding: 0 0 48px;
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    padding: 64px 0;
+  }
+  @media ${(props) => props.theme.device.laptop} {
+    padding: 80px 0;
+  }
 `;
 
 export const GridStackTechnology = styled.div`
