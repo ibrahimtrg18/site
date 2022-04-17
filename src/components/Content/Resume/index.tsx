@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
 import { Container } from "../../Base/Container";
@@ -5,7 +6,24 @@ import { Section } from "../../Base/Section";
 import CardResume from "../../Core/CardResume";
 import { Content } from "./styled";
 
+interface Content {
+  title?: string;
+  body?: string;
+}
+interface Resume {
+  company?: string;
+  title?: string;
+  from?: {
+    start?: string;
+    end?: string;
+  };
+  contents?: Array<Content>;
+}
+
 const Resume = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
+  const data = useStaticQuery(query);
+  const resumes: Array<Resume> = data.site.siteMetadata.resume;
+
   const contents: Array<{ title: string; body: string }> = [
     {
       title: "Doing",
@@ -22,12 +40,13 @@ const Resume = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
       <Container>
         <Content>
           <h3 style={{ marginBottom: "32px" }}>Work Experience</h3>
-          {Array.from(Array(4), (v, k) => (
+          {resumes.map((resume, i) => (
             <CardResume
-              key={k}
-              title="Prixa.ai"
-              subTitle="Frontend Engineer"
-              contents={contents}
+              key={i}
+              company={resume.company}
+              title={resume.title}
+              from={resume.from}
+              contents={resume.contents}
             />
           ))}
         </Content>
@@ -35,5 +54,26 @@ const Resume = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
     </Section>
   );
 };
+
+const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        resume {
+          company
+          title
+          from {
+            start
+            end
+          }
+          contents {
+            title
+            body
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default React.forwardRef(Resume);

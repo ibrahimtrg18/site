@@ -1,30 +1,42 @@
 import React, { FC } from "react";
 
 import {
+  CardResumeCompany,
   CardResumeContainer,
   CardResumeContent,
   CardResumeContentBody,
   CardResumeContentTitle,
-  CardResumeSubTitle,
+  CardResumeFrom,
   CardResumeTitle,
+  CardResumeWrapperTitle,
 } from "./styles";
 
-interface CardResumeProps {
+interface Content {
   title?: string;
-  subTitle?: string;
-  contents?: Array<{
-    title?: string;
-    body?: string;
-  }>;
+  body?: string;
+}
+interface CardResumeProps {
+  company?: string;
+  title?: string;
+  from?: {
+    start?: string;
+    end?: string;
+  };
+  contents?: Array<Content>;
 }
 
 const CardResume: FC<CardResumeProps> = (props) => {
-  const { title, subTitle, contents } = props;
+  const { company, title, from, contents } = props;
 
   return (
     <CardResumeContainer>
-      <CardResumeTitle>{title}</CardResumeTitle>
-      <CardResumeSubTitle>{subTitle}</CardResumeSubTitle>
+      <CardResumeWrapperTitle>
+        <CardResumeCompany>{company}</CardResumeCompany>
+        <CardResumeTitle>{title}</CardResumeTitle>
+        <CardResumeFrom>
+          {from?.start} - {from?.end}
+        </CardResumeFrom>
+      </CardResumeWrapperTitle>
       <CardResumeContent>
         {contents?.map((c, i) => (
           <React.Fragment key={i}>

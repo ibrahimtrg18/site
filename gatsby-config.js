@@ -157,6 +157,38 @@ module.exports = {
         },
       ],
     },
+    resume: [
+      {
+        company: "Prixa.ai",
+        title: "Frontend Engineer",
+        from: { start: "03/01/2022", end: "Present" },
+        contents: [
+          {
+            title: "Doing",
+            body: "Web development, SCRUM, Follow UI/UX, Documentation components, Fix bugs, Maintainings Applications, Completed all tasks",
+          },
+          {
+            title: "Stack",
+            body: "HTML, SASS, Javascript, Typescript, Vue, GraphQL, Storybook",
+          },
+        ],
+      },
+      {
+        company: "Cititex",
+        title: "Frontend Developer",
+        from: { start: "14/03/2021", end: "03/01/2022" },
+        contents: [
+          {
+            title: "Doing",
+            body: "Web development, Redesign Existing Applications, Documentation flow diagram, Implement new logic business, Fix bugs, Maintaining applications",
+          },
+          {
+            title: "Stack",
+            body: "HTML, SASS, Javascript, React, React Native, Redux, REST",
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     "gatsby-plugin-styled-components",

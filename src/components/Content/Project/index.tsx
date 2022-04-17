@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import React, { useMemo } from "react";
 
@@ -48,12 +49,13 @@ const Project = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
     <Section ref={ref}>
       <Container>
         <Content>
+          <h3 className={classNames("title")}>Project</h3>
           <ProjectContent>
-            <h6 className="title">Personal</h6>
+            <h6 className={classNames("title")}>Personal</h6>
             <ProjectList>{renderProject(projectPersonal)}</ProjectList>
           </ProjectContent>
           <ProjectContent>
-            <h6 className="title">Work / Contribute</h6>
+            <h6 className={classNames("title")}>Work / Contribute</h6>
             <ProjectList>{renderProject(projectWork)}</ProjectList>
           </ProjectContent>
         </Content>

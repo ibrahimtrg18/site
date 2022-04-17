@@ -1,17 +1,9 @@
 import styled, { css } from "styled-components";
 
-const contentCss = css`
-  @media ${(props) => props.theme.device.tablet} {
-    flex-direction: row;
-  }
-`;
-
 export const Content = styled.div`
-  ${contentCss}
+  padding: 32px 0;
 
-  & .title {
-    text-align: center;
-    text-transform: uppercase;
+  & > .title {
     margin-bottom: 16px;
   }
 `;
@@ -19,21 +11,36 @@ export const Content = styled.div`
 export const ProjectContent = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   gap: 32px;
+  margin-bottom: 32px;
 
   & > .title {
-    width: 150px;
-    min-width: 150px;
-    max-width: 150px;
+    width: 100%;
+  }
+
+  @media ${(props) => props.theme.device.tablet} {
+    flex-direction: row;
+
+    & > .title {
+      width: 150px;
+      min-width: 150px;
+      max-width: 150px;
+    }
   }
 `;
 
 export const ProjectList = styled.div`
   display: flex;
+  /* flex-direction: column; */
   flex-direction: row;
   gap: 32px;
-  padding: 40px 20px;
+  padding: 0;
   overflow: auto;
+
+  @media ${(props) => props.theme.device.tablet} {
+    /* flex-direction: row; */
+    padding: 40px 20px;
+  }
 `;
