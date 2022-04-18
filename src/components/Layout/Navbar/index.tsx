@@ -73,7 +73,7 @@ const Navbar: FC<Props> = (props) => {
           key={i}
           name={menu.icon}
           className="close-menu"
-          onClick={() => setShowSidebarMenu(false)}
+          onClick={() => onNavbarMenuClick(menu)}
         />
       )),
     []
