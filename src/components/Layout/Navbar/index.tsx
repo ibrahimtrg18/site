@@ -54,6 +54,7 @@ const Navbar: FC<Props> = (props) => {
   const onNavbarMenuClick = (menu: Menu): void => {
     if (menu.ref.current)
       menu.ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    setShowSidebarMenu(false);
   };
 
   const renderMenu = useMemo(
