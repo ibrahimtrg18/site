@@ -9,8 +9,8 @@
     "portfolio"
   ],
   "homepage": "https://github.com/ibrahimtrg18/portfolio#readme",
-  "url" : "https://github.com/ibrahimtrg18/portfolio/issues",
-  "email" : "ibrahimtarigan@gmail.com",
+  "url": "https://github.com/ibrahimtrg18/portfolio/issues",
+  "email": "ibrahimtarigan@gmail.com",
   "engines": {
     "node": ">=16.13.1 <15",
     "npm": "~8.1.2"
@@ -25,6 +25,11 @@
     "lint": "eslint --fix ./src"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "babel-plugin-styled-components": "^2.0.6",
     "classnames": "^2.3.1",
     "gatsby": "^4.9.2",

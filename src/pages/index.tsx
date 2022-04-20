@@ -1,3 +1,4 @@
+import { IconName, IconPrefix } from "@fortawesome/fontawesome-common-types";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import About from "../components/Content/About";
@@ -5,6 +6,12 @@ import Me from "../components/Content/Me";
 import Project from "../components/Content/Project";
 import Resume from "../components/Content/Resume";
 import Layout from "../components/Layout";
+
+interface Menu {
+  name: string;
+  icon: [IconPrefix, IconName];
+  ref: React.RefObject<HTMLElement>;
+}
 
 const IndexPage = () => {
   const meRef = useRef<HTMLElement>(null);
@@ -14,12 +21,12 @@ const IndexPage = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const menus = useMemo(
+  const menus: Array<Menu> = useMemo(
     () => [
-      { name: "Me", icon: "AtSign", ref: meRef },
-      { name: "About", icon: "User", ref: aboutRef },
-      { name: "Project", icon: "Code", ref: projectRef },
-      { name: "Resume", icon: "Award", ref: resumeRef },
+      { name: "Me", icon: ["far", "face-smile"], ref: meRef },
+      { name: "About", icon: ["far", "address-card"], ref: aboutRef },
+      { name: "Project", icon: ["fas", "code"], ref: projectRef },
+      { name: "Resume", icon: ["far", "file"], ref: resumeRef },
     ],
     []
   );

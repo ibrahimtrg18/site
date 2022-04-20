@@ -85,7 +85,7 @@ export const AppBar = styled.nav`
     box-shadow: unset;
   }
 
-  & .menu {
+  & ${Icon}.menu {
     position: absolute;
     display: block;
 
@@ -185,7 +185,7 @@ export const SocialMediaList = styled.ul`
   list-style: none;
   display: none;
 
-  & svg {
+  & ${Icon} > svg {
     width: 18px;
     height: 18px;
   }
@@ -201,7 +201,7 @@ export const SocialMediaList = styled.ul`
     align-items: center;
     background-color: transparent;
 
-    & svg {
+    & ${Icon} > svg {
       width: 20px;
       height: 20px;
     }
@@ -209,7 +209,7 @@ export const SocialMediaList = styled.ul`
   @media ${(props) => props.theme.device.laptop} {
     gap: 4.5em;
 
-    & svg {
+    & ${Icon} > svg {
       width: 24px;
       height: 24px;
     }
@@ -282,7 +282,7 @@ export const Sidebar = styled.nav<SidebarProps>`
     }
   }
 
-  & > .close-menu {
+  & > ${Icon}.close-menu {
     position: absolute;
     top: 16px;
     right: 16px;
@@ -332,8 +332,12 @@ export const Sidebar = styled.nav<SidebarProps>`
       height: unset;
 
       & > ${Icon} {
-        width: 20px;
-        height: 20px;
+        cursor: pointer;
+
+        & > svg {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
 
@@ -344,7 +348,7 @@ export const Sidebar = styled.nav<SidebarProps>`
       gap: 1em;
       margin-top: auto;
 
-      & ${Icon} {
+      & ${Icon} > svg {
         width: 16px;
         height: 16px;
       }

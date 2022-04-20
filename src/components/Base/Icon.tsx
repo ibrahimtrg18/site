@@ -1,24 +1,49 @@
-/* eslint-disable import/namespace */
+import { IconName, IconPrefix } from "@fortawesome/fontawesome-common-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
-import * as Icons from "react-feather";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { margin } from "../../styles";
 
-export type IconName = keyof typeof Icons;
-
-interface Props extends React.SVGAttributes<SVGElement>, Icons.IconProps {
-  name: IconName;
+interface Props extends React.HTMLAttributes<HTMLSpanElement> {
+  width?: number;
+  height?: number;
+  icon: [IconPrefix, IconName];
 }
 
 export const IconComponent: FC<Props> = (props) => {
-  const { name, ...restProps } = props;
+  const { icon, width, height, ...restProps } = props;
 
-  const IconComponent = Icons[name];
-
-  return <IconComponent {...restProps} />;
+  return (
+    <IconContainer {...restProps}>
+      <FontAwesomeIcon icon={icon} />
+    </IconContainer>
+  );
 };
 
+const IconContainer = styled.span``;
+
 export const Icon = styled(IconComponent)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   ${margin}
+
+  & > svg {
+    ${(props) => {
+      if (props.width)
+        return css`
+          width: ${props.width}px !important;
+        `;
+    }}
+
+    ${(props) => {
+      if (props.height) {
+        return css`
+          height: ${props.height}px !important;
+        `;
+      }
+    }}
+  }
 `;

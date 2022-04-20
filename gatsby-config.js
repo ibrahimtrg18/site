@@ -22,22 +22,22 @@ module.exports = {
     },
     socialMedias: [
       {
-        iconName: "Twitter",
+        icon: ["fab", "twitter"],
         username: "ibrahimtrg18",
         link: "https://twitter.com/ibrahimtrg18",
       },
       {
-        iconName: "Instagram",
+        icon: ["fab", "instagram"],
         username: "ibrahimtrg18",
         link: "https://instagram.com/ibrahimtrg18",
       },
       {
-        iconName: "GitHub",
+        icon: ["fab", "github"],
         username: "ibrahimtrg18",
         link: "https://github.com/ibrahimtrg18",
       },
       {
-        iconName: "Linkedin",
+        icon: ["fab", "linkedin"],
         username: "ibrahimtrg18",
         link: "https://www.linkedin.com/in/ibrahimtrg18/",
       },

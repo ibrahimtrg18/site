@@ -1,9 +1,10 @@
+import { IconName, IconPrefix } from "@fortawesome/fontawesome-common-types";
 import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import React, { FC, useEffect, useMemo, useState } from "react";
 
 import { getInitial } from "../../../helpers/common";
-import { Icon, IconName } from "../../Base/Icon";
+import { Icon } from "../../Base/Icon";
 import {
   AppBar,
   Logo,
@@ -17,11 +18,11 @@ import {
 
 interface Menu {
   name: string;
-  icon: IconName;
+  icon: [IconPrefix, IconName];
   ref: React.RefObject<HTMLElement>;
 }
 interface SocialMedia {
-  iconName: IconName;
+  icon: [IconPrefix, IconName];
   username: string;
   link: string;
 }
@@ -72,8 +73,7 @@ const Navbar: FC<Props> = (props) => {
       navbarMenus?.map((menu, i) => (
         <Icon
           key={i}
-          name={menu.icon}
-          className="close-menu"
+          icon={menu.icon}
           onClick={() => onNavbarMenuClick(menu)}
         />
       )),
@@ -85,7 +85,7 @@ const Navbar: FC<Props> = (props) => {
       socialMedias.map((social, i) => (
         <SocialMediaItem key={i}>
           <a href={social.link} target="_blank" rel="noreferrer">
-            <Icon name={social.iconName} />
+            <Icon icon={social.icon} />
           </a>
         </SocialMediaItem>
       )),
@@ -96,7 +96,9 @@ const Navbar: FC<Props> = (props) => {
     <NavbarContainer isScrolled={isScrolled}>
       <AppBar>
         <Icon
-          name="Menu"
+          icon={["fas", "bars"]}
+          width={20}
+          height={20}
           mr="16px"
           className={classNames("menu")}
           onClick={() => setShowSidebarMenu(true)}
@@ -113,8 +115,10 @@ const Navbar: FC<Props> = (props) => {
       <Sidebar className={classNames("mobile")} show={showSidebarMenu}>
         <MenuList>{renderMenu()}</MenuList>
         <Icon
-          name="X"
-          className="close-menu"
+          icon={["fas", "x"]}
+          width={20}
+          height={20}
+          className={classNames("close-menu")}
           onClick={() => setShowSidebarMenu(false)}
         />
       </Sidebar>
@@ -130,7 +134,7 @@ const query = graphql`
       siteMetadata {
         title
         socialMedias {
-          iconName
+          icon
           username
           link
         }
