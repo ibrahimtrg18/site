@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { color } from "../../styles/color";
+import { color } from "../../styles";
 
 export const Section = styled.section`
   ${color}
