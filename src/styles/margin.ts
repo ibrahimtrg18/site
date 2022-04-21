@@ -3,7 +3,7 @@ import { css } from "styled-components";
 import { convertSpacing } from "../helpers/convert";
 import { UnitEnum } from "../utils";
 
-interface MarginProps {
+export interface MarginProps {
   mt?: boolean | string | number;
   mr?: boolean | string | number;
   mb?: boolean | string | number;

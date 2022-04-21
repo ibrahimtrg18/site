@@ -3,13 +3,13 @@ import { css } from "styled-components";
 import { convertSpacing } from "../helpers/convert";
 import { UnitEnum } from "../utils";
 
-interface PaddingProps {
-  mt?: boolean | string | number;
-  mr?: boolean | string | number;
-  mb?: boolean | string | number;
-  ml?: boolean | string | number;
-  mx?: boolean | string | number;
-  my?: boolean | string | number;
+export interface PaddingProps {
+  pt?: boolean | string | number;
+  pr?: boolean | string | number;
+  pb?: boolean | string | number;
+  pl?: boolean | string | number;
+  px?: boolean | string | number;
+  py?: boolean | string | number;
   m?:
     | boolean
     | [boolean, boolean]
@@ -30,13 +30,13 @@ interface PaddingProps {
 
 export const padding = css<PaddingProps>`
   padding-top: ${(props) =>
-    props.mt && convertSpacing(props.mt, props.options)};
+    props.pt && convertSpacing(props.pt, props.options)};
   padding-right: ${(props) =>
-    props.mr && convertSpacing(props.mr, props.options)};
+    props.pr && convertSpacing(props.pr, props.options)};
   padding-bottom: ${(props) =>
-    props.mb && convertSpacing(props.mb, props.options)};
+    props.pb && convertSpacing(props.pb, props.options)};
   padding-left: ${(props) =>
-    props.ml && convertSpacing(props.ml, props.options)};
+    props.pl && convertSpacing(props.pl, props.options)};
 
   padding: ${(props) => {
     if (props.m) {
@@ -49,16 +49,16 @@ export const padding = css<PaddingProps>`
       } else {
         return convertSpacing(props.m, props.options);
       }
-    } else if (props.mx && props.my) {
+    } else if (props.px && props.py) {
       return (
-        convertSpacing(props.mx, props.options) +
+        convertSpacing(props.px, props.options) +
         " " +
-        convertSpacing(props.my, props.options)
+        convertSpacing(props.py, props.options)
       );
-    } else if (props.mx) {
-      return "0 " + convertSpacing(props.mx, props.options);
-    } else if (props.my) {
-      return convertSpacing(props.my, props.options) + " 0";
+    } else if (props.px) {
+      return "0 " + convertSpacing(props.px, props.options);
+    } else if (props.py) {
+      return convertSpacing(props.py, props.options) + " 0";
     }
   }};
 `;
