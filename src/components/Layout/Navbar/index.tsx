@@ -1,4 +1,5 @@
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-common-types";
+import { Placement } from "@popperjs/core";
 import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import React, { FC, useEffect, useMemo, useState } from "react";
@@ -75,17 +76,23 @@ const Navbar: FC<Props> = (props) => {
           key={i}
           icon={menu.icon}
           onClick={() => onNavbarMenuClick(menu)}
+          tooltip={menu.name}
+          tooltipOptions={{ placement: "right" }}
         />
       )),
     []
   );
 
   const renderSocialMedia = useMemo(
-    () => () =>
+    () => (placement: Placement) =>
       socialMedias.map((social, i) => (
         <SocialMediaItem key={i}>
           <a href={social.link} target="_blank" rel="noreferrer">
-            <Icon icon={social.icon} />
+            <Icon
+              icon={social.icon}
+              tooltip={"@" + social.username}
+              tooltipOptions={{ placement: placement }}
+            />
           </a>
         </SocialMediaItem>
       )),
@@ -105,12 +112,12 @@ const Navbar: FC<Props> = (props) => {
         />
         <Logo>{logo}</Logo>
         <MenuList>{renderMenu()}</MenuList>
-        <SocialMediaList>{renderSocialMedia()}</SocialMediaList>
+        <SocialMediaList>{renderSocialMedia("bottom")}</SocialMediaList>
       </AppBar>
       <Sidebar className={classNames("desktop")}>
         <Logo>{logo}</Logo>
         <MenuList>{renderMenuIcon()}</MenuList>
-        <SocialMediaList>{renderSocialMedia()}</SocialMediaList>
+        <SocialMediaList>{renderSocialMedia("right")}</SocialMediaList>
       </Sidebar>
       <Sidebar className={classNames("mobile")} show={showSidebarMenu}>
         <MenuList>{renderMenu()}</MenuList>
