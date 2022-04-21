@@ -1,5 +1,11 @@
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-common-types";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import About from "../components/Content/About";
 import Me from "../components/Content/Me";
@@ -31,17 +37,21 @@ const IndexPage = () => {
     []
   );
 
+  const callbackSetIsScolled = useCallback(setIsScrolled, []);
+
   useEffect(() => {
     const scrollListener = () => {
       if (window.pageYOffset > 0) {
-        setIsScrolled(true);
+        callbackSetIsScolled(true);
       } else {
-        setIsScrolled(false);
+        callbackSetIsScolled(false);
       }
     };
 
     window.addEventListener("scroll", scrollListener);
     scrollListener();
+
+    return () => window.removeEventListener("scroll", scrollListener);
   }, []);
 
   return (
