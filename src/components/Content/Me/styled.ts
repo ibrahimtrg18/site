@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { color, margin } from "../../../styles";
+
 export const Content = styled.div`
   position: relative;
   display: flex;
@@ -21,12 +23,16 @@ export const Content = styled.div`
   }
 `;
 
-export const Name = styled.span`
-  color: ${(props) => props.theme.color.primary};
+export const LeftContent = styled.div`
+  z-index: 1;
+  text-align: center;
+
+  @media ${(props) => props.theme.device.mobileL} {
+    text-align: start;
+  }
 `;
 
 export const Introduction = styled.h1`
-  z-index: 1;
   font-size: 2em;
   line-height: 120%;
   text-align: center;
@@ -34,20 +40,26 @@ export const Introduction = styled.h1`
   @media ${(props) => props.theme.device.mobileL} {
     text-align: start;
     font-size: 3em;
-    line-height: 125%;
+    line-height: 115%;
   }
 
   @media ${(props) => props.theme.device.tablet} {
     text-align: start;
     font-size: 4em;
-    line-height: 125%;
+    line-height: 110%;
   }
 `;
 
+export const Profession = styled.p`
+  margin-top: 8px;
+  line-height: 120%;
+`;
+
+export const Name = styled.span`
+  color: ${(props) => props.theme.color.primary};
+`;
+
 export const Picture = styled.img`
-  /* position: absolute;
-  right: 0;
-  transform: translate(0, 50px); */
   width: 240px;
   margin: 48px auto;
 

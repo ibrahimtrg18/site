@@ -4,7 +4,14 @@ import React, { useMemo } from "react";
 import { getInitial } from "../../../helpers/common";
 import { Container } from "../../Base/Container";
 import { Section } from "../../Base/Section";
-import { Content, Introduction, Name, Picture } from "./styled";
+import {
+  Content,
+  Introduction,
+  LeftContent,
+  Name,
+  Picture,
+  Profession,
+} from "./styled";
 
 const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const data = useStaticQuery(query);
@@ -22,14 +29,16 @@ const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
     <Section ref={ref}>
       <Container>
         <Content>
-          <Introduction>
-            Hi,
-            <br />
-            I’m <Name>{shortName}.</Name>
-            ,
-            <br />
-            Frontend Developer
-          </Introduction>
+          <LeftContent>
+            <Introduction>
+              Hi there 👋
+              <br />
+              I’m <Name>{shortName}.</Name>,
+            </Introduction>
+            <Profession color="primary">
+              Enthusiast Frontend Developer, especially using React.
+            </Profession>
+          </LeftContent>
           <Picture src={data.file.childImageSharp.original.src}></Picture>
         </Content>
       </Container>
