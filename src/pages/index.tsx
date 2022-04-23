@@ -8,6 +8,7 @@ import React, {
 } from "react";
 
 import About from "../components/Content/About";
+import Contact from "../components/Content/Contact";
 import Me from "../components/Content/Me";
 import Project from "../components/Content/Project";
 import Resume from "../components/Content/Resume";
@@ -24,6 +25,7 @@ const IndexPage = () => {
   const aboutRef = useRef<HTMLElement>(null);
   const projectRef = useRef<HTMLElement>(null);
   const resumeRef = useRef<HTMLElement>(null);
+  const contactRef = useRef<HTMLElement>(null);
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -33,6 +35,7 @@ const IndexPage = () => {
       { name: "About", icon: ["far", "address-card"], ref: aboutRef },
       { name: "Project", icon: ["fas", "code"], ref: projectRef },
       { name: "Resume", icon: ["far", "file"], ref: resumeRef },
+      { name: "Contact", icon: ["far", "address-book"], ref: contactRef },
     ],
     []
   );
@@ -60,6 +63,7 @@ const IndexPage = () => {
       <About ref={aboutRef} />
       <Project ref={projectRef} />
       <Resume ref={resumeRef} />
+      <Contact ref={contactRef} />
     </Layout>
   );
 };
