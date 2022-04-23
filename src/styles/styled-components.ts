@@ -118,6 +118,7 @@ const color = {
 
   black: "#000000",
   dark: "#333333",
+  gray: "#d4d4d4",
   light: "#f5f5f5",
   white: "#ffffff",
 
@@ -128,6 +129,8 @@ const color = {
   textParagraphSmall: "#555555",
   bodyBackground: "#ffffff",
   borderColor: "#757575",
+
+  placeholder: "#979797",
 };
 
 const device = {
