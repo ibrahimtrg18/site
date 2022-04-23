@@ -39,7 +39,7 @@ export const CardTitle = styled.p`
 
   font-family: ${(props) => props.theme.font.Lora};
   text-transform: uppercase;
-  color: ${(props) => props.theme.color.light};
+  color: ${(props) => props.theme.color.white};
   font-weight: 700;
   transition: all 0.5s ease-in-out;
 `;
