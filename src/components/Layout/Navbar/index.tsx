@@ -1,10 +1,10 @@
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-common-types";
-import { Placement } from "@popperjs/core";
 import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import React, { FC, useEffect, useMemo, useState } from "react";
 
 import { getInitial } from "../../../helpers/common";
+import { Button } from "../../Base/Button";
 import { Icon } from "../../Base/Icon";
 import {
   AppBar,
@@ -13,8 +13,6 @@ import {
   MenuList,
   NavbarContainer,
   Sidebar,
-  SocialMediaItem,
-  SocialMediaList,
 } from "./styled";
 
 interface Menu {
@@ -22,28 +20,19 @@ interface Menu {
   icon: [IconPrefix, IconName];
   ref: React.RefObject<HTMLElement>;
 }
-interface SocialMedia {
-  icon: [IconPrefix, IconName];
-  username: string;
-  link: string;
-}
 
 interface Props {
   navbarMenus?: Array<Menu>;
-  isScrolled?: boolean;
+  pageYOffset?: number;
 }
 
 const Navbar: FC<Props> = (props) => {
-  const { navbarMenus, isScrolled } = props;
+  const { navbarMenus, pageYOffset } = props;
   const data = useStaticQuery(query);
 
   const [showSidebarMenu, setShowSidebarMenu] = useState(false);
 
   const logo = useMemo(() => getInitial(data.site.siteMetadata.title), []);
-  const socialMedias: Array<SocialMedia> = useMemo(
-    () => data.site.siteMetadata.socialMedias,
-    []
-  );
 
   useEffect(() => {
     if (showSidebarMenu) {
@@ -54,54 +43,67 @@ const Navbar: FC<Props> = (props) => {
   }, [showSidebarMenu]);
 
   const onNavbarMenuClick = (menu: Menu): void => {
-    if (menu.ref.current)
-      menu.ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (menu.ref.current) {
+      // menu.ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.scrollTo({
+        top: menu.ref.current.offsetTop,
+        behavior: "smooth",
+      });
+    }
     setShowSidebarMenu(false);
   };
 
-  const renderMenu = useMemo(
-    () => () =>
-      navbarMenus?.map((menu, i) => (
-        <MenuItem key={i} onClick={() => onNavbarMenuClick(menu)}>
-          {menu.name}
-        </MenuItem>
-      )),
-    []
-  );
+  const onGoTopClick = (): void => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const renderMenu = () =>
+    navbarMenus?.map((menu, i) => (
+      <MenuItem
+        key={i}
+        onClick={() => onNavbarMenuClick(menu)}
+        className={classNames({
+          active: Boolean(
+            pageYOffset !== undefined &&
+              menu.ref.current &&
+              Math.ceil(pageYOffset) >= menu.ref.current.offsetTop &&
+              Math.ceil(pageYOffset) + 1 <=
+                menu.ref.current.offsetTop + menu.ref.current.clientHeight
+          ),
+        })}
+      >
+        {menu.name}
+      </MenuItem>
+    ));
 
   const renderMenuIcon = useMemo(
     () => () =>
       navbarMenus?.map((menu, i) => (
         <Icon
           key={i}
-          icon={menu.icon}
+          active={Boolean(
+            pageYOffset !== undefined &&
+              menu.ref.current &&
+              Math.ceil(pageYOffset) >= menu.ref.current.offsetTop &&
+              Math.ceil(pageYOffset) + 1 <=
+                menu.ref.current.offsetTop + menu.ref.current.clientHeight
+          )}
           onClick={() => onNavbarMenuClick(menu)}
+          icon={menu.icon}
           tooltip={menu.name}
           tooltipOptions={{ placement: "right" }}
         />
       )),
-    []
-  );
-
-  const renderSocialMedia = useMemo(
-    () => (placement: Placement) =>
-      socialMedias.map((social, i) => (
-        <SocialMediaItem key={i}>
-          <a href={social.link} target="_blank" rel="noreferrer">
-            <Icon
-              icon={social.icon}
-              tooltip={"@" + social.username}
-              tooltipOptions={{ placement: placement }}
-            />
-          </a>
-        </SocialMediaItem>
-      )),
-    []
+    [pageYOffset, navbarMenus]
   );
 
   return (
-    <NavbarContainer isScrolled={isScrolled}>
+    <NavbarContainer isScrolled={Boolean(pageYOffset)}>
       <AppBar>
+        <Logo>{logo}</Logo>
         <Icon
           icon={["fas", "bars"]}
           width={20}
@@ -110,14 +112,19 @@ const Navbar: FC<Props> = (props) => {
           className={classNames("menu")}
           onClick={() => setShowSidebarMenu(true)}
         />
-        <Logo>{logo}</Logo>
         <MenuList>{renderMenu()}</MenuList>
-        <SocialMediaList>{renderSocialMedia("bottom")}</SocialMediaList>
       </AppBar>
       <Sidebar className={classNames("desktop")}>
         <Logo>{logo}</Logo>
         <MenuList>{renderMenuIcon()}</MenuList>
-        <SocialMediaList>{renderSocialMedia("right")}</SocialMediaList>
+        <Button
+          variant="text"
+          mt="auto"
+          colorType="text"
+          onClick={onGoTopClick}
+        >
+          <Icon icon={["fas", "chevron-up"]} width={20} height={20} />
+        </Button>
       </Sidebar>
       <Sidebar className={classNames("mobile")} show={showSidebarMenu}>
         <MenuList>{renderMenu()}</MenuList>

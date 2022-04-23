@@ -16,7 +16,7 @@ export const NavbarContainer = styled.div<NavbarContainerProps>`
   right: 0;
   height: ${(props) => props.theme.appBarHeightMobile};
   background-color: ${(props) => props.theme.color.white};
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease-in-out;
 
   ${(props) => {
@@ -135,6 +135,10 @@ export const MenuItem = styled.li`
     }
   }
 
+  &.active {
+    color: ${(props) => props.theme.color.primary};
+  }
+
   &:hover {
     &:after {
       width: calc(100% - 8px);
@@ -167,59 +171,9 @@ export const Logo = styled.h1`
   @media ${(props) => props.theme.device.mobileL} {
     position: unset;
     transform: unset;
-    font-size: ${(props) => props.theme.fontSize.logoMd};
+    font-size: ${(props) => props.theme.fontSize.h1};
     margin-right: 32px;
     grid-column-start: 1;
-  }
-  @media ${(props) => props.theme.device.tablet} {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: ${(props) => props.theme.fontSize.logoLg};
-    margin: 0;
-  }
-`;
-
-export const SocialMediaList = styled.ul`
-  list-style: none;
-  display: none;
-
-  & ${Icon} > svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  @media ${(props) => props.theme.device.mobileL} {
-    display: flex;
-    gap: 2em;
-  }
-  @media ${(props) => props.theme.device.tablet} {
-    display: flex;
-    gap: 3em;
-    justify-content: space-between;
-    align-items: center;
-    background-color: transparent;
-
-    & ${Icon} > svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-  @media ${(props) => props.theme.device.laptop} {
-    gap: 4.5em;
-
-    & ${Icon} > svg {
-      width: 24px;
-      height: 24px;
-    }
-  }
-`;
-
-export const SocialMediaItem = styled.li`
-  & > a {
-    display: flex;
-    color: ${(props) => props.theme.color.dark};
   }
 `;
 
@@ -247,7 +201,7 @@ export const Sidebar = styled.nav<SidebarProps>`
   width: 100vw;
   height: 100vh;
   background-color: #ffffff;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 
   & > ${MenuList} {
     display: flex;
@@ -338,19 +292,6 @@ export const Sidebar = styled.nav<SidebarProps>`
           width: 20px;
           height: 20px;
         }
-      }
-    }
-
-    & > ${SocialMediaList} {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      flex-direction: column;
-      gap: 1em;
-      margin-top: auto;
-
-      & ${Icon} > svg {
-        width: 16px;
-        height: 16px;
       }
     }
   }

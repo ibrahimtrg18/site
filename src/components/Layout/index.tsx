@@ -16,18 +16,18 @@ interface Props {
   children: React.ReactNode;
   navbar?: boolean;
   navbarMenus?: Array<any>;
-  isScrolled?: boolean;
+  pageYOffset?: number;
 }
 
 const Layout: FC<Props> = (props) => {
-  const { children, navbar, navbarMenus, isScrolled } = props;
+  const { children, navbar, navbarMenus, pageYOffset } = props;
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <SEO />
-      {navbar && <Navbar navbarMenus={navbarMenus} isScrolled={isScrolled} />}
-      <Main isScrolled={isScrolled}>{children}</Main>
+      {navbar && <Navbar navbarMenus={navbarMenus} pageYOffset={pageYOffset} />}
+      <Main isScrolled={Boolean(pageYOffset)}>{children}</Main>
     </ThemeProvider>
   );
 };

@@ -10,6 +10,7 @@ import { margin } from "../../styles";
 
 interface Props extends React.HTMLAttributes<HTMLSpanElement> {
   icon: [IconPrefix, IconName];
+  active?: boolean;
   tooltip?: string;
   width?: number;
   height?: number;
@@ -22,9 +23,8 @@ interface Props extends React.HTMLAttributes<HTMLSpanElement> {
 export const IconComponent: FC<Props> = (props) => {
   const {
     icon,
+    active,
     tooltip,
-    width,
-    height,
     tooltipOptions = {
       placement: "bottom",
       modifiers: [
@@ -75,7 +75,7 @@ export const IconComponent: FC<Props> = (props) => {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <FontAwesomeIcon icon={icon} />
+        <FontAwesomeIcon icon={active ? ["fas", icon[1]] : icon} />
         <div
           ref={popperElement}
           className={classNames("tooltip", { "tooltip-hidden": !showTooltip })}
