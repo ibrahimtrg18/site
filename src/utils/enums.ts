@@ -1,3 +1,8 @@
+export enum EnumFont {
+  "Lora" = "Lora",
+  "Assistant" = "Assistant",
+}
+
 export enum ColorEnum {
   HEX = "hex",
   RGB = "rgb",

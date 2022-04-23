@@ -1,4 +1,4 @@
-import { theme } from "../styles";
+import { theme, ThemeColor } from "../styles";
 import { ColorEnum, UnitEnum } from "../utils";
 
 interface ConvertSpacingOptions {
@@ -28,10 +28,8 @@ interface ConvertColorOptions {
   unit?: ColorEnum;
 }
 
-export type ThemeColorInterface = typeof theme.color;
-
 export const convertColor = (
-  value: string | ThemeColorInterface,
+  value: string | ThemeColor,
   options?: ConvertColorOptions
 ) => {
   options = {
@@ -65,6 +63,6 @@ export const convertColor = (
       }
       return `hsla(${value})`;
     default:
-      return value;
+      return theme.color[value.toString()];
   }
 };

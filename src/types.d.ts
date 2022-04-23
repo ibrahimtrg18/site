@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { theme } from "./styles";
-
-type ThemeInterface = typeof theme;
+import { Theme } from "./styles";
 
 declare module "styled-components" {
-  interface DefaultTheme extends ThemeInterface {}
+  interface DefaultTheme extends Theme {}
 }

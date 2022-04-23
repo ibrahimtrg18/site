@@ -1,10 +1,11 @@
 import { css } from "styled-components";
 
-import { convertColor, ThemeColorInterface } from "../helpers/convert";
+import { convertColor } from "../helpers/convert";
+import { ThemeColor } from "./styled-components";
 
 interface ColorProps {
-  color?: string | ThemeColorInterface;
-  backgroundColor?: string | ThemeColorInterface;
+  color?: string | ThemeColor;
+  backgroundColor?: string | ThemeColor;
 }
 
 export const color = css<ColorProps>`
