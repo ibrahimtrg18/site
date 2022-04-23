@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import { color } from "../../styles";
+import { backgroundColor } from "../../styles";
 
 export const Section = styled.section`
-  ${color}
+  ${backgroundColor}
   min-height: 100vh;
   height: auto;
   display: grid;

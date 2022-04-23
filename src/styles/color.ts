@@ -14,9 +14,4 @@ export const color = css<ColorProps>`
       return convertColor(props.color);
     }
   }};
-  background-color: ${(props) => {
-    if (props.backgroundColor) {
-      return convertColor(props.backgroundColor);
-    }
-  }};
 `;
