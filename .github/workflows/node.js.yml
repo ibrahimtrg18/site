@@ -41,4 +41,4 @@ jobs:
         run: rm -rf /var/www/ibrahimtarigan.me/html/*
 
       - name: Move builded folder
-        run: mv /root/cicd/portfolio/_work/portfolio/portfolio/public/* /var/www/ibrahimtarigan.me/html
+        run: mv /root/cicd/ibrahim-tarigan/_work/ibrahim-tarigan/ibrahim-tarigan/public/* /var/www/ibrahimtarigan.me/html
