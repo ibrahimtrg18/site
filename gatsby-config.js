@@ -224,5 +224,13 @@ module.exports = {
         ], // Add or remove icon sizes as desired
       },
     },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "http://localhost:3000",
+        sitemap: "http://localhost:3000/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
   ],
 };
