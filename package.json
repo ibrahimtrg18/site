@@ -1,15 +1,16 @@
 {
-  "name": "portfolio",
+  "name": "ibrahim-tarigan",
   "version": "1.0.0",
   "private": true,
   "description": "portfolio created by Ibrahim Tarigan with Love <3",
   "author": "Ibrahim Tarigan",
   "keywords": [
     "gatsby",
-    "portfolio"
+    "portfolio",
+    "ibrahim-tarigan"
   ],
-  "homepage": "https://github.com/ibrahimtrg18/portfolio#readme",
-  "url": "https://github.com/ibrahimtrg18/portfolio/issues",
+  "homepage": "https://github.com/ibrahimtrg18/ibrahim-tarigan#readme",
+  "url": "https://github.com/ibrahimtrg18/ibrahim-tarigan/issues",
   "email": "ibrahimtarigan@gmail.com",
   "engines": {
     "node": ">=16.13.1 <16",
