@@ -15,9 +15,11 @@ import {
 
 const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const data = useStaticQuery(query);
+  const name = data.site.siteMetadata.title;
+
   const shortName = useMemo(
     () =>
-      getInitial(data.site.siteMetadata.title, {
+      getInitial(name, {
         uppercase: false,
         exclude: ["Ibrahim"],
         combiner: " ",
@@ -39,7 +41,7 @@ const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
               Enthusiast Frontend Developer, especially using React.
             </Profession>
           </LeftContent>
-          <Picture src={data.file.childImageSharp.original.src}></Picture>
+          <Picture src={data.file.childImageSharp.original.src} alt={name} />
         </Content>
       </Container>
     </Section>
