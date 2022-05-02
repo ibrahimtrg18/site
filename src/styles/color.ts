@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 
 import { convertColor } from "../helpers/convert";
-import { ThemeColor } from "./styled-components";
+import { ThemeColor } from ".";
 
 interface ColorProps {
   color?: string | ThemeColor;

@@ -7,8 +7,8 @@ import { ThemeProvider } from "styled-components";
 
 import { GlobalStyle, theme } from "../../styles";
 import SEO from "../SEO";
-import Main from "./Main";
-import Navbar from "./Navbar";
+import Main from "./Main/Main";
+import Navbar from "./Navbar/Navbar";
 
 library.add(fab, fas, far);
 

@@ -13,7 +13,7 @@ import {
   MenuList,
   NavbarContainer,
   Sidebar,
-} from "./styled";
+} from "./Navbar.styles";
 
 interface Menu {
   name: string;

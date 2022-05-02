@@ -6,7 +6,7 @@ import {
   CardImage,
   CardOverlay,
   CardTitle,
-} from "./styles";
+} from "./CardProject.styles";
 
 interface CardProps {
   title: string;

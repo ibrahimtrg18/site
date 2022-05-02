@@ -4,8 +4,8 @@ import React, { useMemo } from "react";
 
 import { Container } from "../../Base/Container";
 import { Section } from "../../Base/Section";
-import CardProject from "../../Core/CardProject";
-import { Content, ProjectContent, ProjectList } from "./styled";
+import CardProject from "../../Core/CardProject/CardProject";
+import { Content, ProjectContent, ProjectList } from "./Project.styles";
 
 interface Project {
   name: string;

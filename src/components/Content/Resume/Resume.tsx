@@ -3,8 +3,8 @@ import React from "react";
 
 import { Container } from "../../Base/Container";
 import { Section } from "../../Base/Section";
-import CardResume from "../../Core/CardResume";
-import { Content } from "./styled";
+import CardResume from "../../Core/CardResume/CardResume";
+import { Content } from "./Resume.styles";
 
 interface Content {
   title?: string;

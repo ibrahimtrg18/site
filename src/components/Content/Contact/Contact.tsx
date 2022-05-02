@@ -8,8 +8,8 @@ import { Divider } from "../../Base/Divider";
 import { Input } from "../../Base/Input";
 import { Section } from "../../Base/Section";
 import { Textarea } from "../../Base/Textarea";
-import GoogleMaps from "../../Core/GoogleMaps";
-import { Content, Detail, Form, Maps } from "./styles";
+import GoogleMaps from "../../Core/GoogleMaps/GoogleMaps";
+import { Content, Detail, Form, Maps } from "./Contact.styles";
 
 const Contact = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const [state, setState] = useState({ name: "", email: "", message: "" });

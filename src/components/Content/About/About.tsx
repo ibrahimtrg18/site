@@ -11,7 +11,7 @@ import {
   GridStackTechnology,
   IMeMyself,
   StackTechnology,
-} from "./styled";
+} from "./About.styles";
 
 interface StackTechonology {
   icon: string;

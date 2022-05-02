@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Container } from "../components/Base/Container";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/Layout";
 
 const Content = styled.div`
   display: grid;

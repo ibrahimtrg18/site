@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { color, margin } from "../../../styles";
-
 export const Content = styled.div`
   position: relative;
   display: flex;

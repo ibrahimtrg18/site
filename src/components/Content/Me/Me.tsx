@@ -11,7 +11,7 @@ import {
   Name,
   Picture,
   Profession,
-} from "./styled";
+} from "./Me.styles";
 
 const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const data = useStaticQuery(query);

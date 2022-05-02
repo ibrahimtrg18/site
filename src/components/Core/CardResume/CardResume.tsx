@@ -9,7 +9,7 @@ import {
   CardResumeFrom,
   CardResumeTitle,
   CardResumeWrapperTitle,
-} from "./styles";
+} from "./CardResume.styles";
 
 interface Content {
   title?: string;

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { MainContainer } from "./styled";
+import { MainContainer } from "./Main.styles";
 
 interface Props {
   children: React.ReactNode;

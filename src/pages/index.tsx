@@ -1,12 +1,12 @@
 import { IconName, IconPrefix } from "@fortawesome/fontawesome-common-types";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import About from "../components/Content/About";
-import Contact from "../components/Content/Contact";
-import Me from "../components/Content/Me";
-import Project from "../components/Content/Project";
-import Resume from "../components/Content/Resume";
-import Layout from "../components/Layout";
+import About from "../components/Content/About/About";
+import Contact from "../components/Content/Contact/Contact";
+import Me from "../components/Content/Me/Me";
+import Project from "../components/Content/Project/Project";
+import Resume from "../components/Content/Resume/Resume";
+import Layout from "../components/Layout/Layout";
 
 interface Menu {
   name: string;
