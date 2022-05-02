@@ -113,7 +113,7 @@ export const MenuList = styled.ul`
 
 export const MenuItem = styled.li`
   position: relative;
-  font-family: ${(props) => props.theme.font.Lora};
+  font-family: ${(props) => props.theme.font.RadioCanada};
   font-size: ${(props) => props.theme.fontSize.menuSm};
   font-weight: 400;
   cursor: pointer;
@@ -165,7 +165,7 @@ export const Logo = styled.h1`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-family: ${(props) => props.theme.font.Lora};
+  font-family: ${(props) => props.theme.font.RadioCanada};
   font-size: ${(props) => props.theme.fontSize.logoSm};
 
   @media ${(props) => props.theme.device.mobileL} {

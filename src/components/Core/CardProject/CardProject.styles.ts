@@ -37,7 +37,7 @@ export const CardTitle = styled.p`
   left: 50%;
   transform: translate(-50%, -50%) rotate(-90deg);
 
-  font-family: ${(props) => props.theme.font.Lora};
+  font-family: ${(props) => props.theme.font.RadioCanada};
   text-transform: uppercase;
   color: ${(props) => props.theme.color.white};
   font-weight: 700;

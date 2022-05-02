@@ -232,5 +232,12 @@ module.exports = {
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: ["Assistant", "Radio Canada"],
+        display: "swap",
+      },
+    },
   ],
 };

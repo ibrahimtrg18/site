@@ -1,5 +1,5 @@
 export enum EnumFont {
-  "Lora" = "Lora",
+  "RadioCanada" = "Radio Canada",
   "Assistant" = "Assistant",
 }
 
