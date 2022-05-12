@@ -57,6 +57,7 @@ const ButtonOutline = css<ButtonProps>`
 `;
 
 export const Button = styled.button<ButtonProps & PaddingProps & MarginProps>`
+  display: inline-flex;
   font-size: 1em;
   font-weight: 700;
   font-family: ${(props) => props.theme.font.Assistant};

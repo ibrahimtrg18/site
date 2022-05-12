@@ -124,6 +124,7 @@ export const Icon = styled(IconComponent)`
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
     padding: 4px 8px;
     border-radius: 4px;
+    text-transform: initial;
 
     &.tooltip-hidden {
       opacity: 0;

@@ -44,7 +44,6 @@ const Navbar: FC<Props> = (props) => {
 
   const onNavbarMenuClick = (menu: Menu): void => {
     if (menu.ref.current) {
-      // menu.ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
       window.scrollTo({
         top: menu.ref.current.offsetTop,
         behavior: "smooth",
@@ -123,7 +122,13 @@ const Navbar: FC<Props> = (props) => {
           colorType="text"
           onClick={onGoTopClick}
         >
-          <Icon icon={["fas", "chevron-up"]} width={20} height={20} />
+          <Icon
+            icon={["fas", "chevron-up"]}
+            width={20}
+            height={20}
+            tooltip="Top"
+            tooltipOptions={{ placement: "right" }}
+          />
         </Button>
       </Sidebar>
       <Sidebar className={classNames("mobile")} show={showSidebarMenu}>
