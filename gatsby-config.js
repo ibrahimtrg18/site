@@ -235,7 +235,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: ["Assistant", "Radio Canada"],
+        fonts: [
+          "Assistant:200,300,400,500,600,700,800",
+          `Radio Canada\:300,400,500,600,700`,
+        ],
         display: "swap",
       },
     },
