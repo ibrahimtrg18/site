@@ -203,11 +203,11 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "GatsbyJS",
-        short_name: "GatsbyJS",
+        name: "Ibrahim Tarigan",
+        short_name: "Ibrahim T.",
         start_url: "/",
-        background_color: "#f7f0eb",
-        theme_color: "#a2466c",
+        background_color: "#FFFFFF",
+        theme_color: "#5C8F6A",
         display: "standalone",
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
         icons: [
