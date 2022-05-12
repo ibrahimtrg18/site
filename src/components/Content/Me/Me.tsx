@@ -15,11 +15,11 @@ import {
 
 const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const data = useStaticQuery(query);
-  const name = data.site.siteMetadata.title;
+  const { title, profession } = data.site.siteMetadata;
 
   const shortName = useMemo(
     () =>
-      getInitial(name, {
+      getInitial(title, {
         uppercase: false,
         exclude: ["Ibrahim"],
         combiner: " ",
@@ -37,11 +37,9 @@ const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
               <br />
               I’m <Name>{shortName}.</Name>,
             </Introduction>
-            <Profession color="primary">
-              Enthusiast Frontend Developer, especially using React.
-            </Profession>
+            <Profession color="primary">{profession}</Profession>
           </LeftContent>
-          <Picture src={data.file.childImageSharp.original.src} alt={name} />
+          <Picture src={data.file.childImageSharp.original.src} alt={title} />
         </Content>
       </Container>
     </Section>
@@ -55,6 +53,7 @@ const query = graphql`
     site {
       siteMetadata {
         title
+        profession
       }
     }
     file(relativePath: { eq: "picture.png" }) {

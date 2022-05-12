@@ -14,7 +14,7 @@ interface Props {
 
 const SEO: FC<Props> = ({ title, description, image, article }) => {
   const { pathname } = useLocation();
-  const { site } = useStaticQuery(query);
+  const data = useStaticQuery(query);
 
   const {
     defaultTitle,
@@ -23,12 +23,12 @@ const SEO: FC<Props> = ({ title, description, image, article }) => {
     siteUrl,
     defaultImage,
     twitter,
-  } = site.siteMetadata;
+  } = data.site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: `${image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
   };
 
@@ -79,7 +79,7 @@ const query = graphql`
         defaultTitle: title
         titleTemplate
         defaultDescription: description
-        siteUrl: url
+        siteUrl
         defaultImage: image
         twitter: twitter {
           username

@@ -11,18 +11,13 @@ module.exports = {
   siteMetadata: {
     title: "Ibrahim Tarigan",
     titleTemplate: "%s · Enthusiast Frontend Developer",
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://www.ibrahimtarigan.me",
     description:
       "Ibrahim Tarigan, a dude love and passion in frontend development, and want to be great frontend developer",
-    url: "https://www.ibrahimtarigan.me",
     image: "/",
-    instagram: {
-      username: "@ibrahimtrg18",
-      link: "",
-    },
+    profession: "Fullstack Developer, especially using React/Node.",
     twitter: {
       username: "@ibrahimtrg18",
-      link: "",
     },
     socialMedias: [
       {
@@ -123,6 +118,11 @@ module.exports = {
           name: "Talky",
           url: "http://talky.ibrahimtarigan.me",
           image: "talkyu.png",
+        },
+        {
+          name: "Daily News",
+          url: "http://daily-news.ibrahimtarigan.me",
+          image: "daily-news.png",
         },
         {
           name: "Movie DB",
@@ -227,8 +227,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "http://localhost:3000",
-        sitemap: "http://localhost:3000/sitemap.xml",
+        host: "https://www.ibrahimtarigan.me",
+        sitemap: "https://www.ibrahimtarigan.me/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
