@@ -32,6 +32,10 @@ const ButtonFilled = css<ButtonProps>`
         ? props.theme.color[props.colorType.toString()]
         : props.theme.color.primary};
   ${backgroundColor}
+
+  &:hover {
+    background-color: ${(props) => props.theme.color.primary + "CC"};
+  }
 `;
 
 const ButtonOutline = css<ButtonProps>`
@@ -45,6 +49,11 @@ const ButtonOutline = css<ButtonProps>`
       props.colorType
         ? props.theme.color[props.colorType.toString()]
         : props.theme.color.primary};
+
+  &:hover {
+    background-color: ${(props) => props.theme.color.primary};
+    color: ${(props) => props.theme.color.white};
+  }
 `;
 
 export const Button = styled.button<ButtonProps & PaddingProps & MarginProps>`

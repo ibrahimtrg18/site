@@ -43,7 +43,7 @@ const Contact = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
       <Container>
         <Content>
           <Form onSubmit={(e) => onFormSubmit(e)}>
-            <h2>Contact</h2>
+            <h3>Contact</h3>
             <Input
               type="text"
               name="name"

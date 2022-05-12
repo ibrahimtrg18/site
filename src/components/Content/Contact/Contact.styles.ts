@@ -27,6 +27,11 @@ export const Detail = styled.div`
     border-spacing: 16px 10px;
     & tr {
       vertical-align: top;
+
+      & > td:first-child {
+        color: ${(props) => props.theme.color.primary};
+        font-weight: 700;
+      }
     }
   }
 `;
