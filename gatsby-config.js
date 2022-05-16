@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 require("dotenv").config({
@@ -10,10 +11,10 @@ const path = require("path");
 module.exports = {
   siteMetadata: {
     title: "Ibrahim Tarigan",
-    titleTemplate: "%s · Enthusiast Frontend Developer",
+    titleTemplate: "%s · Enthusiast Fullstack Developer",
     siteUrl: "https://www.ibrahimtarigan.me",
     description:
-      "Ibrahim Tarigan, a dude love and passion in frontend development, and want to be great frontend developer",
+      "Ibrahim Tarigan, a dude love and passion in development web and mobile application, and want to be a Good Software Engineer",
     image: "/",
     profession: "Fullstack Developer, especially using React/Node.",
     twitter: {
@@ -43,55 +44,71 @@ module.exports = {
     ],
     about: {
       paragraphs: [
-        "I’m a Enthusiast Frontend Developer with 2+ years of professional experience design, development, implement, and maintaining applications. I have a serious passion for UI effects, dynamic user experiences, animations, and creating intuitive.",
-        "Have good understanding Web Design and Responsive on across devices, have ability to write clean code, high attention to detail and problem solver. Also seeking to leverage broad development experience and hands-on technical expertise in role as a Frontend Developer.",
-        "Interested in the entire frontend spectrum and working on ambitious projects with positive people.",
-        "Loves animal, old music, anime and pc games.",
+        "Software Engineer with over 1 year of experience development applications also giving solutions for best development solution. I have a serious passion for Web and Mobile Development UI/UX, Animations, and creating intuitive.",
+        "Have good understanding Web and Mobile Design, have ability to write clean code, debugging, and technical feasibilty. I am also seeking hands-on technical expertise in a role as a Good Software Engineer.",
+        "Interested in the entire fullstack spectrum and working on ambitious projects with positive people.",
+        "Loves animal, old music, and games.",
       ],
     },
     stackTechnologies: [
       {
-        icon: "icons8-html-5-64.svg",
+        icon: "html-64.svg",
         name: "HTML",
       },
       {
-        icon: "icons8-css3-64.svg",
-        name: "CSS3",
+        icon: "css-64.svg",
+        name: "CSS",
       },
       {
-        icon: "icons8-javascript-64.svg",
+        icon: "sass-64.svg",
+        name: "SASS",
+      },
+      {
+        icon: "javascript-64.svg",
         name: "Javascript",
       },
       {
-        icon: "icons8-typescript-64.svg",
+        icon: "typescript-64.svg",
         name: "Typescript",
       },
       {
-        icon: "icons8-nodejs-64.svg",
-        name: "Node",
+        icon: "nodejs-64.svg",
+        name: "NodeJS",
       },
       {
-        icon: "icons8-react-64.svg",
+        icon: "react-64.svg",
         name: "React",
       },
       {
-        icon: "icons8-vue-64.svg",
+        icon: "nextjs-64.svg",
+        name: "React",
+      },
+      {
+        icon: "vue-64.svg",
         name: "Vue",
       },
       {
-        icon: "icons8-graphql-64.svg",
-        name: "GraphQL",
-      },
-      {
-        icon: "icons8-redux-64.svg",
+        icon: "redux-64.svg",
         name: "Redux",
       },
       {
-        icon: "icons8-git-64.svg",
+        icon: "nestjs-64.svg",
+        name: "NestJS",
+      },
+      {
+        icon: "graphql-64.svg",
+        name: "GraphQL",
+      },
+      {
+        icon: "git-64.svg",
         name: "Git",
       },
       {
-        icon: "icons8-figma-64.svg",
+        icon: "postman-64.svg",
+        name: "Postman",
+      },
+      {
+        icon: "figma-64.svg",
         name: "Figma",
       },
     ],
@@ -168,7 +185,7 @@ module.exports = {
           },
           {
             title: "Stack",
-            body: "HTML, SASS, Javascript, Typescript, Vue, GraphQL, Storybook",
+            body: "HTML, CSS, SASS, Javascript, Typescript, Ant Design, Tailwind, Vue, Storybook, Figma.",
           },
         ],
       },
@@ -183,7 +200,7 @@ module.exports = {
           },
           {
             title: "Stack",
-            body: "HTML, SASS, Javascript, React, React Native, Redux, REST",
+            body: "HTML, CSS, SASS, Bootstrap, Javascript, Typescript, React, Redux, Nest, MySQL, Moqups, Figma.",
           },
         ],
       },
@@ -236,7 +253,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          "Assistant:200,300,400,500,600,700,800",
+          `Assistant\:200,300,400,500,600,700,800`,
           `Radio Canada\:300,400,500,600,700`,
         ],
         display: "swap",
