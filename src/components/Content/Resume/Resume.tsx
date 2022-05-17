@@ -6,10 +6,6 @@ import { Section } from "../../Base/Section";
 import CardResume from "../../Core/CardResume/CardResume";
 import { Content } from "./Resume.styles";
 
-interface Content {
-  title?: string;
-  body?: string;
-}
 interface Resume {
   company?: string;
   title?: string;
@@ -17,23 +13,12 @@ interface Resume {
     start?: string;
     end?: string;
   };
-  contents?: Array<Content>;
+  contents?: Array<{ title: string; bodies: [string] }>;
 }
 
 const Resume = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
   const data = useStaticQuery(query);
   const resumes: Array<Resume> = data.site.siteMetadata.resume;
-
-  const contents: Array<{ title: string; body: string }> = [
-    {
-      title: "Doing",
-      body: "Web Development | SCRUM | UI Components | Documentation Components",
-    },
-    {
-      title: "Stack",
-      body: "HTML, SASS, Javascript, Typescript, Vue, GraphQL, Storybook",
-    },
-  ];
 
   return (
     <Section ref={ref}>
@@ -68,7 +53,7 @@ const query = graphql`
           }
           contents {
             title
-            body
+            bodies
           }
         }
       }

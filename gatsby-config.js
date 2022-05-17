@@ -181,11 +181,16 @@ module.exports = {
         contents: [
           {
             title: "Doing",
-            body: "Develop and Maintain (Scheck Symptoms, Teleconsultation, Appointment Booking applications), Web development, Agile/SCRUM, Assess UI/UX Feasibility, Create documentation frontend development and components.",
+            bodies: [
+              "Develop and Maintain (Scheck Symptoms, Teleconsultation, Appointment Booking applications).",
+              "Web development, Agile/SCRUM, Assess UI/UX Feasibility, Create documentation frontend development and components.",
+            ],
           },
           {
             title: "Stack",
-            body: "HTML, CSS, SASS, Javascript, Typescript, Ant Design, Tailwind, Vue, Storybook, Figma.",
+            bodies: [
+              "HTML, CSS, SASS, Javascript, Typescript, Ant Design, Tailwind, Vue, Storybook, Figma.",
+            ],
           },
         ],
       },
@@ -196,11 +201,16 @@ module.exports = {
         contents: [
           {
             title: "Doing",
-            body: "Develop and Maintain (Cititex Main, Master Dashboard, and Local Dashboard application), Web development, Redesign existing applications, Documentation flow diagram, Implement new logic business.",
+            bodies: [
+              "Develop and Maintain (Cititex Main, Master Dashboard, and Local Dashboard applications).",
+              "Web development, Redesign existing applications, Documentation flow diagram, Implement new logic business.",
+            ],
           },
           {
             title: "Stack",
-            body: "HTML, CSS, SASS, Bootstrap, Javascript, Typescript, React, Redux, Nest, MySQL, Moqups, Figma.",
+            bodies: [
+              "HTML, CSS, SASS, Bootstrap, Javascript, Typescript, React, Redux, Nest, MySQL, Moqups, Figma.",
+            ],
           },
         ],
       },

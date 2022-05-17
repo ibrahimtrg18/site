@@ -13,7 +13,7 @@ import {
 
 interface Content {
   title?: string;
-  body?: string;
+  bodies?: [string];
 }
 interface CardResumeProps {
   company?: string;
@@ -41,7 +41,11 @@ const CardResume: FC<CardResumeProps> = (props) => {
         {contents?.map((c, i) => (
           <React.Fragment key={i}>
             <CardResumeContentTitle>{c.title}</CardResumeContentTitle>
-            <CardResumeContentBody>{c.body}</CardResumeContentBody>
+            <CardResumeContentBody>
+              {c.bodies?.map((body) => (
+                <p key={i}>{body}</p>
+              ))}
+            </CardResumeContentBody>
           </React.Fragment>
         ))}
       </CardResumeContent>
