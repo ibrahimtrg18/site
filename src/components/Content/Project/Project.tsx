@@ -46,19 +46,19 @@ const Project = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
     });
 
   return (
-    <Section ref={ref}>
+    <Section ref={ref} style={{ display: "block" }}>
       <Container>
         <Content>
           <h3 className={classNames("title")}>Project</h3>
-          <ProjectContent>
-            <h6 className={classNames("title")}>Personal</h6>
-            <ProjectList>{renderProject(projectPersonal)}</ProjectList>
-          </ProjectContent>
-          <ProjectContent>
-            <h6 className={classNames("title")}>Work / Contribute</h6>
-            <ProjectList>{renderProject(projectWork)}</ProjectList>
-          </ProjectContent>
         </Content>
+      </Container>
+      <Container style={{ padding: 0 }}>
+        <ProjectContent>
+          <ProjectList>
+            {renderProject(projectPersonal)}
+            {renderProject(projectWork)}
+          </ProjectList>
+        </ProjectContent>
       </Container>
     </Section>
   );

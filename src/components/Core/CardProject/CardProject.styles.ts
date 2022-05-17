@@ -1,13 +1,10 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.a`
-  flex: 0 0 112px;
   transition: all 0.5s ease-in-out;
-  border-radius: 20px;
   overflow: hidden;
 
   &:hover {
-    flex: 0 0 224px;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
   }
 `;
@@ -35,13 +32,12 @@ export const CardTitle = styled.p`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-90deg);
+  transform: translate(-50%, -50%);
 
   font-family: ${(props) => props.theme.font.RadioCanada};
   text-transform: uppercase;
   color: ${(props) => props.theme.color.white};
   font-weight: 700;
-  transition: all 0.5s ease-in-out;
 `;
 
 export const CardContent = styled.div`
@@ -50,7 +46,6 @@ export const CardContent = styled.div`
 
   &:hover {
     & ${CardTitle} {
-      transform: translate(-50%, -50%) rotate(0);
       color: ${(props) => props.theme.color.white};
     }
 

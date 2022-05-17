@@ -14,7 +14,6 @@ export const ProjectContent = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 32px;
-  margin-bottom: 32px;
 
   & > .title {
     width: 100%;
@@ -32,15 +31,22 @@ export const ProjectContent = styled.div`
 `;
 
 export const ProjectList = styled.div`
-  display: flex;
-  /* flex-direction: column; */
+  display: grid;
+  grid-template-columns: repeat(1, minmax(auto, 1fr));
+  grid-auto-columns: 224px;
   flex-direction: row;
-  gap: 32px;
   padding: 0;
-  overflow: auto;
 
+  @media ${(props) => props.theme.device.mobileS} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media ${(props) => props.theme.device.mobileL} {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   @media ${(props) => props.theme.device.tablet} {
-    /* flex-direction: row; */
-    padding: 40px 20px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  @media ${(props) => props.theme.device.laptop} {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 `;
