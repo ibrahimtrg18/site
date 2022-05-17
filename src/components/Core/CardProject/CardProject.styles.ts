@@ -42,7 +42,7 @@ export const CardTitle = styled.p`
 
 export const CardContent = styled.div`
   position: relative;
-  height: 224px;
+  height: 100%;
 
   &:hover {
     & ${CardTitle} {

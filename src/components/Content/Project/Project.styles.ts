@@ -33,7 +33,7 @@ export const ProjectContent = styled.div`
 export const ProjectList = styled.div`
   display: grid;
   grid-template-columns: repeat(1, minmax(auto, 1fr));
-  grid-auto-columns: 224px;
+  grid-auto-rows: minmax(0, 1fr);
   flex-direction: row;
   padding: 0;
 
