@@ -181,7 +181,7 @@ module.exports = {
         contents: [
           {
             title: "Doing",
-            body: "Web development, SCRUM, Follow UI/UX, Documentation components, Fix bugs, Maintainings Applications, Completed all tasks",
+            body: "Develop and Maintain (Scheck Symptoms, Teleconsultation, Appointment Booking applications), Web development, Agile/SCRUM, Assess UI/UX Feasibility, Create documentation frontend development and components.",
           },
           {
             title: "Stack",
@@ -196,7 +196,7 @@ module.exports = {
         contents: [
           {
             title: "Doing",
-            body: "Web development, Redesign Existing Applications, Documentation flow diagram, Implement new logic business, Fix bugs, Maintaining applications",
+            body: "Develop and Maintain (Cititex Main, Master Dashboard, and Local Dashboard application), Web development, Redesign existing applications, Documentation flow diagram, Implement new logic business.",
           },
           {
             title: "Stack",
