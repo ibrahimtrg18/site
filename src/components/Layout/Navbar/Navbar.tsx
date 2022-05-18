@@ -121,6 +121,7 @@ const Navbar: FC<Props> = (props) => {
           mt="auto"
           colorType="text"
           onClick={onGoTopClick}
+          aria-label="Go to top"
         >
           <Icon
             icon={["fas", "chevron-up"]}

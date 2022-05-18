@@ -74,7 +74,13 @@ const Contact = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
               my={16}
               onChange={(e) => onChange(e)}
             />
-            <Button type="submit" px={8} py={16} variant="outlined">
+            <Button
+              type="submit"
+              px={8}
+              py={16}
+              variant="outlined"
+              aria-label="Send Email"
+            >
               Send
             </Button>
           </Form>
