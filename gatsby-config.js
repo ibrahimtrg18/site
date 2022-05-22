@@ -132,8 +132,8 @@ module.exports = {
       ],
       personal: [
         {
-          name: "Talky",
-          url: "http://talky.ibrahimtarigan.me",
+          name: "Talkyu",
+          url: "http://talkyu.ibrahimtarigan.me",
           image: "talkyu.png",
         },
         {
