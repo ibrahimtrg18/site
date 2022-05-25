@@ -133,7 +133,7 @@ module.exports = {
       personal: [
         {
           name: "Talkyu",
-          url: "http://talkyu.ibrahimtarigan.me",
+          url: "http://talkyu.ibrahimtarigan.me/openapi/",
           image: "talkyu.png",
         },
         {

@@ -46,7 +46,7 @@ const Project = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
     });
 
   return (
-    <Section ref={ref} style={{ display: "block" }}>
+    <Section ref={ref} style={{ display: "block", minHeight: "unset" }}>
       <Container>
         <Content>
           <h3 className={classNames("title")}>Project</h3>

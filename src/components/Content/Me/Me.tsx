@@ -35,7 +35,7 @@ const Me = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
             <Introduction>
               Hi there 👋
               <br />
-              I’m <Name>{shortName}.</Name>,
+              I’m <Name>{shortName}.</Name>
             </Introduction>
             <Profession color="primary">{profession}</Profession>
           </LeftContent>

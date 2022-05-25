@@ -4,7 +4,7 @@ export const Content = styled.div`
   padding: 32px 0;
 
   & > .title {
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
   }
 `;
 
