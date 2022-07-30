@@ -13,7 +13,7 @@
   "url": "https://github.com/ibrahimtrg18/ibrahim-tarigan/issues",
   "email": "ibrahimtarigan@gmail.com",
   "engines": {
-    "node": ">=16.13.1 <16",
+    "node": "~16.13.1",
     "npm": "~8.1.2"
   },
   "scripts": {
