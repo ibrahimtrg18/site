@@ -63,6 +63,7 @@ const IndexPage = () => {
     setMenus(initialMenus);
   }, [meRef, aboutRef, projectRef, resumeRef, contactRef]);
 
+  console.log(process.env);
   return (
     <Layout navbarMenus={menus} pageYOffset={pageYOffset}>
       <Me ref={meRef} />

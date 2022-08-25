@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ibrahimtrg18/ibrahim-tarigan
+    container_name: ibrahim-tarigan
+    volumes:
+      - html:/app/public
+    environment:
+      - GATSBY_GOOGLE_MAPS_API_KEY=${GATSBY_GOOGLE_MAPS_API_KEY}
+      - GATSBY_GETFORMIO_ENDPOINT=${GATSBY_GETFORMIO_ENDPOINT}
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    depends_on:
+      - app
+    volumes:
+      - html:/usr/share/nginx/html
+  
+volumes:
+  html:
