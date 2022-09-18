@@ -1,12 +1,35 @@
 {
   "name": "ibrahim-tarigan",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
+  "author": "Ibrahim Tarigan",
+  "description": "portfolio created by Ibrahim Tarigan with Love <3",
+  "keywords": [
+    "gatsby",
+    "portfolio",
+    "ibrahim-tarigan"
+  ],
+  "homepage": "https://github.com/ibrahimtrg18/ibrahim-tarigan#readme",
+  "url": "https://github.com/ibrahimtrg18/ibrahim-tarigan/issues",
+  "email": "ibrahimtarigan@gmail.com",
+  "engines": {
+    "node": "^16",
+    "npm": "^8"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "npx eslint --fix .",
+    "format": "prettier --write",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run format",
+      "npm run lint:fix"
+    ]
   },
   "dependencies": {
     "next": "12.2.4",
@@ -17,8 +40,18 @@
     "@types/node": "18.6.4",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "typescript": "4.7.4"
   }
 }
