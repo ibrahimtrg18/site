@@ -1,23 +1,16 @@
 version: '3'
 services:
-  ibrahim-tarigan:
+  me:
     build: 
       context: .
       dockerfile: Dockerfile
-    image: ibrahimtrg18/ibrahim-tarigan
-    container_name: ibrahim-tarigan
-    command: ["yarn", "start", "-p", "8080"]
+    image: ibrahimtrg18/me
+    container_name: me
     ports:
       - 8080:8080
-    volumes:
-      - ibrahim-tarigan:/home/ibrahim-tarigan
     networks:
-      - nginx_network
-
-volumes:
-  ibrahim-tarigan:
-    external: true
+      - webserver
 
 networks:
-  nginx_network:
+  webserver:
     external: true
