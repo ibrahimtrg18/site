@@ -1,3 +1,4 @@
+import { send } from "@emailjs/browser";
 import React, { useState } from "react";
 
 import { theme } from "../../../styles";
@@ -11,8 +12,14 @@ import { Textarea } from "../../Base/Textarea";
 import GoogleMaps from "../../Core/GoogleMaps/GoogleMaps";
 import { Content, Detail, Form, Maps } from "./Contact.styles";
 
+const defaultState = { name: "", email: "", message: "" };
+
+const GATSBY_EMAILJS_SERVICE_ID = process.env.GATSBY_EMAILJS_SERVICE_ID || "";
+const GATSBY_EMAILJS_TEMPLATE_ID = process.env.GATSBY_EMAILJS_TEMPLATE_ID || "";
+const GATSBY_EMAILJS_PUBLIC_KEY = process.env.GATSBY_EMAILJS_PUBLIC_KEY || "";
+
 const Contact = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
-  const [state, setState] = useState({ name: "", email: "", message: "" });
+  const [state, setState] = useState(defaultState);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,17 +32,28 @@ const Contact = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", state.name);
-    formData.append("email", state.email);
-    formData.append("message", state.message);
 
-    fetch(process.env.GATSBY_GETFORMIO_ENDPOINT || "", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+    // emailjs
+    send(
+      GATSBY_EMAILJS_SERVICE_ID,
+      GATSBY_EMAILJS_TEMPLATE_ID,
+      {
+        from_name: state.email,
+        to_name: state.name,
+        message: state.message,
+        reply_to: state.email,
+      },
+      GATSBY_EMAILJS_PUBLIC_KEY
+    ).then(
+      (response) => {
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      (err) => {
+        console.log("FAILED...", err);
+      }
+    );
+
+    setState(defaultState);
   };
 
   return (
