@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 
@@ -24,7 +25,7 @@ const Resume = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
     <Section ref={ref}>
       <Container>
         <Content>
-          <h3 style={{ marginBottom: "32px" }}>Work Experience</h3>
+          <h3 className={classNames("title")}>Work Experience</h3>
           {resumes.map((resume, i) => (
             <CardResume
               key={i}

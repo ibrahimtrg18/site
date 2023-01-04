@@ -4,7 +4,20 @@ export const Content = styled.div`
   padding: 32px 0;
 
   & > .title {
-    /* margin-bottom: 16px; */
+    margin-bottom: 8px;
+
+    @media ${(props) => props.theme.device.mobileS} {
+      margin-bottom: 12px;
+    }
+    @media ${(props) => props.theme.device.mobileL} {
+      margin-bottom: 16px;
+    }
+    @media ${(props) => props.theme.device.tablet} {
+      margin-bottom: 24px;
+    }
+    @media ${(props) => props.theme.device.laptop} {
+      margin-bottom: 32px;
+    }
   }
 `;
 
@@ -45,8 +58,5 @@ export const ProjectList = styled.div`
   }
   @media ${(props) => props.theme.device.tablet} {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  @media ${(props) => props.theme.device.laptop} {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 `;

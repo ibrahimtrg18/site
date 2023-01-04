@@ -33,8 +33,8 @@ const IndexPage = () => {
     () => [
       { name: "Me", icon: ["far", "face-smile"], ref: meRef },
       { name: "About", icon: ["far", "address-card"], ref: aboutRef },
-      { name: "Project", icon: ["far", "file-code"], ref: projectRef },
       { name: "Resume", icon: ["far", "file"], ref: resumeRef },
+      { name: "Project", icon: ["far", "file-code"], ref: projectRef },
       { name: "Contact", icon: ["far", "address-book"], ref: contactRef },
     ],
     []
@@ -44,17 +44,16 @@ const IndexPage = () => {
 
   const callbackSetIsScolled = useCallback(setPageYOffset, []);
 
-  useEffect(() => {
-    const scrollListener = () => {
-      if (window.pageYOffset > 0) {
-        callbackSetIsScolled(window.pageYOffset);
-      } else {
-        callbackSetIsScolled(window.pageYOffset);
-      }
-    };
+  const scrollListener = useCallback(() => {
+    if (window.pageYOffset > 0) {
+      callbackSetIsScolled(window.pageYOffset);
+    } else {
+      callbackSetIsScolled(window.pageYOffset);
+    }
+  }, []);
 
+  useEffect(() => {
     window.addEventListener("scroll", scrollListener);
-    scrollListener();
 
     return () => window.removeEventListener("scroll", scrollListener);
   }, []);
@@ -63,13 +62,12 @@ const IndexPage = () => {
     setMenus(initialMenus);
   }, [meRef, aboutRef, projectRef, resumeRef, contactRef]);
 
-  console.log(process.env);
   return (
     <Layout navbarMenus={menus} pageYOffset={pageYOffset}>
       <Me ref={meRef} />
       <About ref={aboutRef} />
-      <Project ref={projectRef} />
       <Resume ref={resumeRef} />
+      <Project ref={projectRef} />
       <Contact ref={contactRef} />
     </Layout>
   );
