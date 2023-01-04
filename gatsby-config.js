@@ -175,21 +175,52 @@ module.exports = {
     },
     resume: [
       {
-        company: "Prixa.ai",
-        title: "Frontend Engineer",
-        from: { start: "03/01/2022", end: "Present" },
+        company: "Delman Data Lab",
+        title: "Software Engineer, Frontend",
+        from: { start: "Sep 2022", end: "Present" },
         contents: [
           {
-            title: "Doing",
             bodies: [
-              "Develop and Maintain (Scheck Symptoms, Teleconsultation, Appointment Booking applications).",
-              "Web development, Agile/SCRUM, Assess UI/UX Feasibility, Create documentation frontend development and components.",
+              "Delman Data Lab is Company Startup that manage your data, and process according to your needs seamlessly through automation.",
             ],
           },
           {
-            title: "Stack",
+            title: "Job Description",
             bodies: [
-              "HTML, CSS, SASS, Javascript, Typescript, Ant Design, Tailwind, Vue, Storybook, Figma.",
+              "- Develop and Maintain a Data Management web app with Next.js",
+              "- UI/UX Feasibility, pairing and helping college workers frontend",
+            ],
+          },
+          {
+            title: "Stack Technologies",
+            bodies: [
+              "HTML, CSS, Javascript, Next.js, React-Hook, Chakra-UI, Jest, Docker, Figma",
+            ],
+          },
+        ],
+      },
+      {
+        company: "Prixa.ai",
+        title: "Frontend Engineer",
+        from: { start: "Jan 2022", end: "Sep 2022" },
+        contents: [
+          {
+            bodies: [
+              "Prixa.ai is a Health Technology Startup management of corporate health benefits accessible on a single platform and use AI for know the health diagnosis",
+            ],
+          },
+          {
+            title: "Job Description",
+            bodies: [
+              "- Develop and Maintain a Scheck Symptoms, Teleconsultation, Appointment Booking web apps with Vue",
+              "- Create UI library components with Storybook/Vue, and doing documentation about the library components",
+              "- UI/UX Feasibility, pairing and helping college workers frontend",
+            ],
+          },
+          {
+            title: "Stack Technologies",
+            bodies: [
+              "HTML, CSS, SASS, Typescript, Ant Design, Tailwind, Vue, Figma",
             ],
           },
         ],
@@ -197,24 +228,42 @@ module.exports = {
       {
         company: "Cititex",
         title: "Frontend Developer",
-        from: { start: "14/03/2021", end: "03/01/2022" },
+        from: { start: "Dec 2020", end: "Dec 2021" },
         contents: [
           {
-            title: "Doing",
             bodies: [
-              "Develop and Maintain (Cititex Main, Master Dashboard, and Local Dashboard applications).",
-              "Web development, Redesign existing applications, Documentation flow diagram, Implement new logic business.",
+              "Cititex is a company selling apparel shirt, jacket, and clothing design having 30+ branch stores in indonesian",
             ],
           },
           {
-            title: "Stack",
+            title: "Job Description",
             bodies: [
-              "HTML, CSS, SASS, Bootstrap, Javascript, Typescript, React, Redux, Nest, MySQL, Moqups, Figma.",
+              "- Develop, Maintain, and Deploy an E-Commerce, 2 Dashboard (Local and Master) web apps with React",
+              "- Also Supporting development Backend with Nest.js",
             ],
+          },
+          {
+            title: "Stack Technologies",
+            bodies: [
+              "HTML, CSS, SASS, Bootstrap, Javascript, Typescript, React, Next.js, Redux, Nest.js, MySQL, Moqups, Figma",
+            ],
+          },
+          {
+            title: "Links",
+            bodies: ["https://www.cititex.com"],
           },
         ],
       },
     ],
+    contact: {
+      location: {
+        name: "Tangerang, Indonesia",
+        lat: -6.347891,
+        lng: 106.741158,
+      },
+      email: "ibrahimtarigan@gmail.com",
+      phoneNumber: "+62 812 6000 9709",
+    },
   },
   plugins: [
     "gatsby-plugin-styled-components",

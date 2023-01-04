@@ -1,7 +1,12 @@
 import { Loader } from "@googlemaps/js-api-loader";
-import React, { useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 
-const GoogleMaps = () => {
+interface GoogleMapsProps {
+  lat: number;
+  lng: number;
+}
+
+const GoogleMaps: FC<GoogleMapsProps> = ({ lat, lng }) => {
   const googleMapsRef = useRef<HTMLDivElement>(null);
 
   const loader = new Loader({
@@ -12,8 +17,8 @@ const GoogleMaps = () => {
 
   const mapOptions = {
     center: {
-      lat: -6.208963,
-      lng: 106.826216,
+      lat,
+      lng,
     },
     zoom: 12,
   };

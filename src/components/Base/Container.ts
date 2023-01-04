@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const containerCss = css`
   padding: 0 16px;
+  width: 100%;
 
   @media ${(props) => props.theme.device.mobileS} {
     padding: 0 16px;

@@ -1,4 +1,5 @@
 import { send } from "@emailjs/browser";
+import { graphql, useStaticQuery } from "gatsby";
 import React, { useState } from "react";
 
 import { theme } from "../../../styles";
@@ -19,7 +20,10 @@ const GATSBY_EMAILJS_TEMPLATE_ID = process.env.GATSBY_EMAILJS_TEMPLATE_ID || "";
 const GATSBY_EMAILJS_PUBLIC_KEY = process.env.GATSBY_EMAILJS_PUBLIC_KEY || "";
 
 const Contact = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
+  const data = useStaticQuery(query);
   const [state, setState] = useState(defaultState);
+
+  const { contact } = data.site.siteMetadata;
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -104,29 +108,26 @@ const Contact = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
           </Form>
           <Divider direction="vertical" breakpoints={DeviceEnum.TABLET} />
           <Maps>
-            <GoogleMaps />
+            <GoogleMaps lat={contact.location.lat} lng={contact.location.lng} />
             <Detail>
               <table>
                 <tbody>
                   <tr>
                     <td>Location</td>
                     <td>
-                      <p>
-                        Jl. Setiabudi I no. 5, Setiabudi, Setiabudi, South
-                        Jakarta, DKI Jakarta
-                      </p>
+                      <p>{contact.location.name}</p>
                     </td>
                   </tr>
                   <tr>
                     <td>Email</td>
                     <td>
-                      <p>ibrahimtarigan@gmail.com</p>
+                      <p>{contact.email}</p>
                     </td>
                   </tr>
                   <tr>
                     <td>Phone</td>
                     <td>
-                      <p>+62 812 6000 9709</p>
+                      <p>{contact.phoneNumber}</p>
                     </td>
                   </tr>
                 </tbody>
@@ -140,3 +141,28 @@ const Contact = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
 };
 
 export default React.forwardRef(Contact);
+
+const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        contact {
+          location {
+            name
+            lat
+            lng
+          }
+          email
+          phoneNumber
+        }
+      }
+    }
+    file(relativePath: { eq: "picture.png" }) {
+      childImageSharp {
+        original {
+          src
+        }
+      }
+    }
+  }
+`;
