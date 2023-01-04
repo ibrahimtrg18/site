@@ -18,7 +18,12 @@ const CardProject: FC<CardProps> = (props) => {
   const { title, image, url, ...restProps } = props;
 
   return (
-    <CardContainer {...restProps} href={url} target="_blank" rel="noreferrer">
+    <CardContainer
+      {...restProps}
+      href={url}
+      target={url ? "_blank" : "_self"}
+      rel="noreferrer"
+    >
       <CardContent>
         <CardImage src={image} alt={title} />
         <CardOverlay>

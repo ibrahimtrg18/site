@@ -52,8 +52,7 @@ const Project = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
           <h3 className={classNames("title")}>Project</h3>
           <ProjectContent>
             <ProjectList>
-              {renderProject(projectPersonal)}
-              {renderProject(projectWork)}
+              {renderProject([...projectWork, ...projectPersonal])}
             </ProjectList>
           </ProjectContent>
         </Content>

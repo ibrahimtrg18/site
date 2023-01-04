@@ -115,6 +115,26 @@ module.exports = {
     project: {
       work: [
         {
+          name: "Delman Data Lab",
+          url: "https://delman.io",
+          image: "delman.png",
+        },
+        {
+          name: "Prixa",
+          url: "https://home.prixa.ai/?pId=817d1193-f4ce-439e-b357-16466695d970&appId=0a7c0983-f8d1-448d-aedc-efaec455f2a3",
+          image: "prixa.png",
+        },
+        {
+          name: "Prixa Teleconsultation",
+          url: "https://telekonsultasi.prixa.ai",
+          image: "prixa-telekonsultasi.png",
+        },
+        {
+          name: "Prixa Dashboard",
+          url: "https://internal-dashboard.prixa.ai",
+          image: "prixa-dashboard.png",
+        },
+        {
           name: "Cititex",
           url: "https://www.cititex.com",
           image: "cititex.png",
@@ -133,7 +153,7 @@ module.exports = {
       personal: [
         {
           name: "Talkyu",
-          url: "http://talkyu.ibrahimtarigan.me/openapi/",
+          url: "http://talkyu.ibrahimtarigan.me/openapi",
           image: "talkyu.png",
         },
         {
@@ -212,7 +232,7 @@ module.exports = {
           {
             title: "Job Description",
             bodies: [
-              "- Develop and Maintain a Scheck Symptoms, Teleconsultation, Appointment Booking web apps with Vue",
+              "- Develop and Maintain a Scheck Symptoms, Teleconsultation, Internal Dashboard web apps with Vue",
               "- Create UI library components with Storybook/Vue, and doing documentation about the library components",
               "- UI/UX Feasibility, pairing and helping college workers frontend",
             ],
