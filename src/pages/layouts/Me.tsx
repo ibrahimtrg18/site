@@ -23,7 +23,7 @@ const Me = () => {
             with positive people. Loves cute animal, music, and game.
           </Text>
           <Text color="blackAlpha.600">
-            I do full-stack using Javascript/Typescript/Node.js
+            I using Javascript/Typescript/Node.js
           </Text>
         </Flex>
       </Stack>
