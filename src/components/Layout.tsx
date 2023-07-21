@@ -1,12 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 
-import { Navbar } from "./Navbar";
+import { Sidepanel } from "./Sidepanel";
 
 type LayoutProps = React.HTMLProps<HTMLElement> & {
-  hasNavbar?: boolean;
+  hasSidepanel?: boolean;
 };
 
-export const Layout = ({ children, hasNavbar = true }: LayoutProps) => {
+export const Layout = ({ children, hasSidepanel = true }: LayoutProps) => {
   return (
     <Flex
       direction="column"
@@ -16,8 +16,12 @@ export const Layout = ({ children, hasNavbar = true }: LayoutProps) => {
       minHeight="100vh"
       bgColor="gray.50"
     >
-      {hasNavbar && <Navbar />}
-      {children}
+      <Flex flex={1} direction="row">
+        {hasSidepanel && <Sidepanel />}
+        <Flex flex={11} padding={4}>
+          {children}
+        </Flex>
+      </Flex>
     </Flex>
   );
 };

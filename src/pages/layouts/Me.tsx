@@ -5,13 +5,18 @@ import { Section } from "../../components/Section";
 
 const Me = () => {
   return (
-    <Section pt="5rem" alignItems="center" justifyContent="center">
+    <Section>
       <Stack direction="row" alignItems="center" gap="2rem">
         {/* Intro */}
         <Flex direction="column" gap="0.5rem">
-          <Text color="blackAlpha.800" fontSize="2rem">
-            Hi there! I just a dude who love and passion in development web and
-            mobile application. ^^
+          <Text color="blackAlpha.800" fontSize="2rem" lineHeight="100%">
+            Hi,
+          </Text>
+          <Text color="blackAlpha.800" fontSize="2rem" lineHeight="100%">
+            I am Ibrahim,
+          </Text>
+          <Text color="blackAlpha.800" fontSize="2rem" lineHeight="100%">
+            Fullstack Developer
           </Text>
           <Text color="blackAlpha.700" fontSize="1.5rem">
             Software Engineer with over 2 years of experience development

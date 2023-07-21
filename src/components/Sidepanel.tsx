@@ -1,36 +1,33 @@
-import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
+import { Avatar, Button, Flex } from "@chakra-ui/react";
 
-export const Navbar = () => {
+export const Sidepanel = () => {
   return (
     <Flex
-      className="Navbar"
-      direction="column"
-      position="absolute"
-      top="0px"
-      left="0px"
-      right="0px"
-      w="100%"
-      h="4rem"
       zIndex="10"
+      direction="column"
+      height="inherit"
+      flex={1}
       bgColor="white"
       justifyContent="center"
+      py={4}
     >
       <Flex
-        direction="row"
+        direction="column"
+        flex={1}
         alignItems="center"
-        px="0.825rem"
         justifyContent="space-between"
       >
         {/* Logo */}
         <Flex>
           <Avatar
-            size="md"
+            size="lg"
             src="https://avatars.githubusercontent.com/u/41787706?s=400&u=fdb9f4fd5b4a0dd56a5fc2e148c23b5b0dc735b5&v=4"
           />
         </Flex>
         {/* Menu */}
-        <Flex alignItems="center" gap="1rem">
+        <Flex w="100%" direction="column" gap="0.5rem">
           <Button
+            borderRadius={0}
             variant="unstyled"
             px="0.5rem"
             _hover={{ bgColor: "gray.200" }}
@@ -38,6 +35,7 @@ export const Navbar = () => {
             Me
           </Button>
           <Button
+            borderRadius={0}
             variant="unstyled"
             px="0.5rem"
             _hover={{ bgColor: "gray.200" }}
@@ -45,6 +43,7 @@ export const Navbar = () => {
             About
           </Button>
           <Button
+            borderRadius={0}
             variant="unstyled"
             px="0.5rem"
             _hover={{ bgColor: "gray.200" }}
@@ -52,6 +51,7 @@ export const Navbar = () => {
             Resume
           </Button>
           <Button
+            borderRadius={0}
             variant="unstyled"
             px="0.5rem"
             _hover={{ bgColor: "gray.200" }}
@@ -59,6 +59,7 @@ export const Navbar = () => {
             Project
           </Button>
           <Button
+            borderRadius={0}
             variant="unstyled"
             px="0.5rem"
             _hover={{ bgColor: "gray.200" }}
