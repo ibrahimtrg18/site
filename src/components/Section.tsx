@@ -10,9 +10,8 @@ export const Section = ({ children, ...restProps }: SectionProps) => {
     <Flex
       direction="column"
       w="100%"
-      h="100%"
+      h="inherit"
       position="relative"
-      padding="1rem"
       {...restProps}
     >
       {children}

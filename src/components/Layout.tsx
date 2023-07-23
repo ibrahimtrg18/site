@@ -1,14 +1,18 @@
 "use client";
 
-import { Flex } from "@chakra-ui/react";
+import { Flex, FlexProps } from "@chakra-ui/react";
 
 import { Sidepanel } from "./Sidepanel";
 
-type LayoutProps = React.HTMLProps<HTMLElement> & {
+type LayoutProps = FlexProps & {
   hasSidepanel?: boolean;
 };
 
-export const Layout = ({ children, hasSidepanel = true }: LayoutProps) => {
+export const Layout = ({
+  children,
+  hasSidepanel = true,
+  ...restProps
+}: LayoutProps) => {
   return (
     <Flex
       direction="column"
@@ -17,6 +21,7 @@ export const Layout = ({ children, hasSidepanel = true }: LayoutProps) => {
       position="relative"
       minHeight="100vh"
       bgColor="gray.50"
+      {...restProps}
     >
       <Flex flex={1} direction="row">
         {hasSidepanel && <Sidepanel />}

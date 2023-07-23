@@ -3,10 +3,10 @@ import { Metadata } from "next";
 import Me from "./components/Me";
 
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Welcome to Next.js",
+  title: "Me | Ibrahim Tarigan ",
+  description: "Me Page",
 };
 
-export default function IndexPage() {
+export default function MePage() {
   return <Me />;
 }

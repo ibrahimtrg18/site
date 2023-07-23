@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import { Layout } from "../components/Layout";
 import Me from "./me/components/Me";
 
 export const metadata: Metadata = {
@@ -8,5 +9,15 @@ export const metadata: Metadata = {
 };
 
 export default function IndexPage() {
-  return <Me />;
+  return (
+    <Layout
+      bgImage="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/384baf102600931.5f3a87daefd56.jpg"
+      bgRepeat="no-repeat"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="cover"
+    >
+      <Me />
+    </Layout>
+  );
 }
