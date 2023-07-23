@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 export default function IndexPage() {
   return (
     <Layout
-      bgImage="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/384baf102600931.5f3a87daefd56.jpg"
-      bgRepeat="no-repeat"
+      bgImage="https://img.freepik.com/premium-vector/abstract-background-with-modern-style-hexagon-pattern_7505-1722.jpg?w=2000"
+      bgRepeat="repeat"
       backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="cover"
+      backgroundRepeat="repeat"
+      backgroundSize="333px"
     >
       <Me />
     </Layout>

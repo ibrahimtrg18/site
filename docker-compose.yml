@@ -1,16 +1,34 @@
-version: '3'
+version: "3.8"
+
 services:
-  me:
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    image: ibrahimtrg18/me
-    container_name: me
+  # Next.js application service
+  nextjs:
+    build:
+      context: . # Use the current directory as the build context
+      dockerfile: Dockerfile # Use the Dockerfile we created for Next.js
+    restart: always
     ports:
-      - 8080:8080
+      - "3000:3000" # Map container port 3000 to host port 3000
     networks:
-      - webserver
+      - shared
+
+  # Caddy service for the reverse proxy and SSL termination
+  caddy:
+    image: caddy:latest
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro # Mount the Caddyfile into the container
+      - caddy_data:/data # Persist Caddy data (e.g., certificates)
+      - caddy_config:/config # Persist Caddy configuration
+    networks:
+      - shared
+
+volumes:
+  caddy_data:
+  caddy_config:
 
 networks:
-  webserver:
-    external: true
+  shared:

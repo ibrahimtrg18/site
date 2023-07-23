@@ -12,10 +12,6 @@
   "homepage": "https://github.com/ibrahimtrg18/ibrahim-tarigan#readme",
   "url": "https://github.com/ibrahimtrg18/ibrahim-tarigan/issues",
   "email": "ibrahimtarigan@gmail.com",
-  "engines": {
-    "node": "^18",
-    "npm": "^8"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -35,7 +31,6 @@
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@ibrahimtrg18/elegance": "^0.0.0",
     "framer-motion": "^10.13.0",
     "next": "^13.4.11",
     "react": "^18.2.0",

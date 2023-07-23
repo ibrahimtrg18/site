@@ -1,16 +1,20 @@
-# Name the node stage "builder"
-FROM node:16-alpine
+# Use the official Node.js LTS image as the base image
+FROM node:18-alpine AS builder
 
-# Set working directory
-WORKDIR /home/me
+# Set the working directory
+WORKDIR /app
 
-# Copy all files from current directory to working dir in image
-COPY . /home/me
+# Copy package.json and package-lock.json (if available) to the working directory
+COPY ./package.json ./
+COPY ./yarn.lock ./
+COPY . .
 
-# Copy nginx configuration file to volume /conf
-COPY ./nginx.conf /home/me/nginx/default.conf.template
+# Install dependencies
+RUN yarn --frozen-lockfile
+RUN CI=false yarn build
 
-# install node modules and build assets
-RUN npm install && npm run build
+# Expose the Next.js application port
+EXPOSE 3000
 
-CMD [ "yarn", "start", "-p", "8080" ]
+# Start the Next.js application
+CMD ["yarn", "start"]

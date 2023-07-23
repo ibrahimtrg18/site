@@ -1,0 +1,5 @@
+localhost {
+    # Proxy requests to the Next.js application container
+    reverse_proxy nextjs:3000
+    <!-- tls ibrahimtarigan@gmail.com -->
+}

@@ -1,6 +1,8 @@
 import { Layout } from "../../components/Layout";
 
-type MeLayoutProps = React.HTMLProps<HTMLElement>;
+type MeLayoutProps = {
+  children: React.ReactNode;
+};
 
 export default function MeLayout({ children }: MeLayoutProps) {
   return (
