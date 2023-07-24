@@ -49,7 +49,7 @@ export const Introduction = styled.h1`
 `;
 
 export const Profession = styled.p`
-  margin-top: 8px;
+  margin: 8px 0;
   line-height: 120%;
 `;
 

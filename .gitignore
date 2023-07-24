@@ -7,3 +7,5 @@ public
 .env.production
 
 package-lock.json
+
+.next

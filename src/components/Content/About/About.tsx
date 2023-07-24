@@ -50,10 +50,10 @@ const About = (_: any, ref: React.ForwardedRef<HTMLElement>) => {
         <Content>
           <IMeMyself>
             <h1>
-              I,
-              <br />
               Me,
-              <br />& Myself
+              <br />
+              Myself,
+              <br />& I
             </h1>
             {renderAboutParagraph()}
           </IMeMyself>
