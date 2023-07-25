@@ -1,35 +1,45 @@
 "use client";
 
 import { Button, Flex, IconButton, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
-import { IoLogoGithub } from "react-icons/io5";
+import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 
 import { Section } from "../../../components/Section";
 
 const Me = () => {
   return (
-    <Section justifyContent="center" gap="1rem">
-      <Flex w="fit-content" bgColor="rgba(255, 255, 255, 0.6)">
-        <IconButton icon={<IoLogoGithub />} aria-label="github" rounded="8px" />
-      </Flex>
+    <Section
+      direction="column"
+      width={{
+        sm: "48rem",
+        md: "48rem",
+        base: "48rem",
+        lg: "72rem",
+        xl: "80rem",
+      }}
+      justifyContent="center"
+      margin="auto"
+      gap="1rem"
+    >
       <Flex
         direction="column"
-        w="fit-content"
-        padding="24px 32px"
+        // padding="24px 32px"
         borderRadius="16px"
-        backdropFilter="blur(1.5px)"
-        bgColor="rgba(255, 255, 255, 0.1)"
-        border="1px solid rgba(255, 255, 255, 0.4)"
-        boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
+        // backdropFilter="blur(1.5px)"
+        // bgColor="rgba(255, 255, 255, 0.1)"
+        // border="1px solid rgba(255, 255, 255, 0.4)"
+        // boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
         gap="10px"
       >
         {/* Intro */}
-        <Text color="blackAlpha.800" fontSize="6rem" lineHeight="110%">
-          Hi,
+        <Text color="gray.700" fontSize="3rem" lineHeight="110%">
+          {`Hello, I'm Ibrahim 👋🏼`}
+        </Text>
+        <Text color="gray.600" fontSize="2.5rem" lineHeight="110%">
+          {`I'm a Software Engineer @ Delman Data Lab,`}
           <br />
-          I am Ibrahim T.
-          <br />
-          Fullstack Developer
+          {`and Living in Indonesia, Tangerang.`}
         </Text>
         {/* <Text color="blackAlpha.700" fontSize="1.5rem">
           Software Engineer with over 2 years of experience development
@@ -40,16 +50,33 @@ const Me = () => {
           entire full-stack spectrum and working on ambitious projects with
           positive people. Loves cute animal, music, and game.
         </Text> */}
-        <Text color="blackAlpha.600" fontSize="1.5rem">
+        {/* <Text color="blackAlpha.600" fontSize="1.25rem">
           I using Javascript/Typescript/Node.js
-        </Text>
+        </Text> */}
       </Flex>
-      <Flex gap="16px">
+      <Flex gap="1rem">
+        <IconButton
+          as={Link}
+          variant="ghost"
+          icon={<IoLogoGithub />}
+          href="https://github.com/ibrahimtrg18"
+          passHref
+          aria-label="Github"
+          rounded="8px"
+        />
+        <IconButton
+          as={Link}
+          variant="ghost"
+          icon={<IoLogoLinkedin />}
+          href="https://www.linkedin.com/in/ibrahimtrg18/"
+          passHref
+          aria-label="LinkedIn"
+          rounded="8px"
+        />
+      </Flex>
+      <Flex gap="2rem">
         <Button colorScheme="black" variant="link">
           Download CV
-        </Button>
-        <Button colorScheme="black" variant="link">
-          Portfolio
         </Button>
       </Flex>
     </Section>

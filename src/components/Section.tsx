@@ -6,15 +6,5 @@ import React from "react";
 type SectionProps = FlexProps;
 
 export const Section = ({ children, ...restProps }: SectionProps) => {
-  return (
-    <Flex
-      direction="column"
-      w="100%"
-      h="inherit"
-      position="relative"
-      {...restProps}
-    >
-      {children}
-    </Flex>
-  );
+  return <Flex {...restProps}>{children}</Flex>;
 };

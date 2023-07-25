@@ -2,7 +2,7 @@
 
 import { Flex, FlexProps } from "@chakra-ui/react";
 
-import { Sidepanel } from "./Sidepanel";
+import { Navbar } from "./Navbar";
 
 type LayoutProps = FlexProps & {
   hasSidepanel?: boolean;
@@ -23,9 +23,9 @@ export const Layout = ({
       bgColor="gray.50"
       {...restProps}
     >
-      <Flex flex={1} direction="row">
-        {hasSidepanel && <Sidepanel />}
-        <Flex flex={11} padding={4}>
+      <Flex direction="column">
+        {hasSidepanel && <Navbar />}
+        <Flex flex={1} padding={4}>
           {children}
         </Flex>
       </Flex>
