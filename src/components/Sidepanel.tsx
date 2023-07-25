@@ -33,20 +33,14 @@ export const Sidepanel = () => {
         </Flex>
         {/* Menu */}
         <Flex as="nav" w="100%" direction="column" gap="0.5rem">
-          <Button as={NextLink} href={{ pathname: "/me" }} variant="nav">
-            Me
+          <Button as={NextLink} href={{ pathname: "/home" }} variant="nav">
+            Home
           </Button>
-          <Button as={NextLink} href={{ pathname: "/about" }} variant="nav">
-            About
+          <Button as={NextLink} href={{ pathname: "/blog" }} variant="nav">
+            Blog
           </Button>
-          <Button as={NextLink} href={{ pathname: "/resume" }} variant="nav">
-            Resume
-          </Button>
-          <Button as={NextLink} href={{ pathname: "/project" }} variant="nav">
-            Project
-          </Button>
-          <Button as={NextLink} href={{ pathname: "/contact" }} variant="nav">
-            Contact
+          <Button as={NextLink} href={{ pathname: "/portfolio" }} variant="nav">
+            Portfolio
           </Button>
         </Flex>
       </Flex>

@@ -1,14 +1,10 @@
-import { Metadata } from "next";
+import { Layout } from "../../components/Layout";
 
-import { Layout } from "../components/Layout";
-import Me from "./me/components/Me";
-
-export const metadata: Metadata = {
-  title: "Home",
-  description: "Welcome to Next.js",
+type MeLayoutProps = {
+  children: React.ReactNode;
 };
 
-export default function IndexPage() {
+export default function MeLayout({ children }: MeLayoutProps) {
   return (
     <Layout
       bgImage="https://img.freepik.com/premium-vector/abstract-background-with-modern-style-hexagon-pattern_7505-1722.jpg?w=2000"
@@ -17,7 +13,7 @@ export default function IndexPage() {
       backgroundRepeat="repeat"
       backgroundSize="333px"
     >
-      <Me />
+      {children}
     </Layout>
   );
 }
