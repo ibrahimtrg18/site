@@ -16,7 +16,6 @@ const navigation = defineStyle({
     transition: "all 0.25s ease-in",
   },
   _hover: {
-    // bg: "linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 20%, rgba(0, 0, 0, 0.12) 100%)",
     _after: {
       width: "100%",
       border: "1px solid black",

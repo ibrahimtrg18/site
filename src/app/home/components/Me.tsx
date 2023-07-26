@@ -6,8 +6,11 @@ import React from "react";
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 
 import { Section } from "../../../components/Section";
+import { ResponseDataGetMeType } from "../../api/me/route";
 
-const Me = () => {
+type MeProps = ResponseDataGetMeType;
+
+const Me = ({ me }: MeProps) => {
   return (
     <Section
       as="section"
@@ -24,37 +27,16 @@ const Me = () => {
       my="2rem"
       gap="1rem"
     >
-      <Flex
-        direction="column"
-        // padding="24px 32px"
-        borderRadius="16px"
-        // backdropFilter="blur(1.5px)"
-        // bgColor="rgba(255, 255, 255, 0.1)"
-        // border="1px solid rgba(255, 255, 255, 0.4)"
-        // boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)"
-        gap="10px"
-      >
+      <Flex direction="column" borderRadius="16px" gap="10px">
         {/* Intro */}
         <Text color="gray.700" fontSize="3rem" lineHeight="110%">
-          {`Hello, I'm Ibrahim 👋🏼`}
+          {me.title}
         </Text>
-        <Text color="gray.600" fontSize="2.5rem" lineHeight="110%">
-          {`I'm a Software Engineer @ Delman Data Lab,`}
-          <br />
-          {`and Living in Indonesia, Tangerang.`}
-        </Text>
-        {/* <Text color="blackAlpha.700" fontSize="1.5rem">
-          Software Engineer with over 2 years of experience development
-          applications also giving solutions for best development solution. Have
-          a good understanding of Web and Mobile Design, have the ability to
-          write clean code, debugging, and technical feasibility. I am also
-          looking for ways to become a Good Software Engineer. Interested in the
-          entire full-stack spectrum and working on ambitious projects with
-          positive people. Loves cute animal, music, and game.
-        </Text> */}
-        {/* <Text color="blackAlpha.600" fontSize="1.25rem">
-          I using Javascript/Typescript/Node.js
-        </Text> */}
+        {me.body.split("\n").map((line) => (
+          <Text key={line} color="gray.600" fontSize="2.5rem" lineHeight="110%">
+            {line}
+          </Text>
+        ))}
       </Flex>
       <Flex gap="1rem">
         <IconButton
