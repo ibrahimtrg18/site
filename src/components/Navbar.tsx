@@ -7,11 +7,15 @@ export const Navbar = () => {
   return (
     <Flex
       as="nav"
-      zIndex="10"
+      position="absolute"
+      top="0"
+      left="0"
+      right="0"
+      w="100%"
+      zIndex={1}
       direction="row"
       minHeight="4rem"
       flex={1}
-      bgColor="transparent"
       justifyContent="center"
       px={4}
     >

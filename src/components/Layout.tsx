@@ -22,8 +22,9 @@ export const Layout = ({
         direction="column"
         w="100%"
         h="100%"
-        minHeight={`calc(100vh - ${navbarHeight})`}
+        minHeight="100vh"
         position="relative"
+        pt={navbarHeight}
         bgColor="gray.50"
         {...restProps}
       >
