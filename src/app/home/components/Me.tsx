@@ -15,25 +15,28 @@ const Me = ({ me }: MeProps) => {
     <Section
       as="section"
       direction="column"
-      width={{
-        sm: "48rem",
-        md: "48rem",
-        base: "48rem",
-        lg: "72rem",
-        xl: "80rem",
-      }}
+      width="100%"
       justifyContent="center"
-      mx="auto"
-      my="2rem"
+      px={["1rem", null, null, "2.5rem", "4rem"]}
+      py="2rem"
       gap="1rem"
     >
       <Flex direction="column" borderRadius="16px" gap="10px">
         {/* Intro */}
-        <Text color="gray.700" fontSize="3rem" lineHeight="110%">
+        <Text
+          color="gray.700"
+          fontSize={["1.75rem", null, "2.5rem", null, "3rem"]}
+          lineHeight="110%"
+        >
           {me.title}
         </Text>
         {me.body.split("\n").map((line) => (
-          <Text key={line} color="gray.600" fontSize="2.5rem" lineHeight="110%">
+          <Text
+            key={line}
+            color="gray.600"
+            fontSize={["1.5rem", null, "1.75rem", null, "2.5rem"]}
+            lineHeight="110%"
+          >
             {line}
           </Text>
         ))}
