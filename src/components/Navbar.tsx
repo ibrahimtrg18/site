@@ -33,13 +33,25 @@ export const Navbar = () => {
         <Spacer />
         {/* Menu */}
         <Flex as="nav" direction="row" gap="1rem">
-          <Button as={NextLink} href={{ pathname: "/home" }} variant="nav">
+          <Button
+            as={NextLink}
+            href={{ pathname: "/home" }}
+            variant="navigation"
+          >
             Home
           </Button>
-          <Button as={NextLink} href={{ pathname: "/blog" }} variant="nav">
+          <Button
+            as={NextLink}
+            href={{ pathname: "/blog" }}
+            variant="navigation"
+          >
             Blog
           </Button>
-          <Button as={NextLink} href={{ pathname: "/portfolio" }} variant="nav">
+          <Button
+            as={NextLink}
+            href={{ pathname: "/portfolio" }}
+            variant="navigation"
+          >
             Portfolio
           </Button>
         </Flex>

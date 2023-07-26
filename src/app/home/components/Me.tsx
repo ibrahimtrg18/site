@@ -10,6 +10,7 @@ import { Section } from "../../../components/Section";
 const Me = () => {
   return (
     <Section
+      as="section"
       direction="column"
       width={{
         sm: "48rem",
@@ -19,7 +20,8 @@ const Me = () => {
         xl: "80rem",
       }}
       justifyContent="center"
-      margin="auto"
+      mx="auto"
+      my="2rem"
       gap="1rem"
     >
       <Flex
