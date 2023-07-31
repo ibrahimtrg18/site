@@ -1,14 +1,21 @@
 import { NextResponse } from "next/server";
 
+type ResponseType<T> = {
+  data: T;
+};
+
+export type ResponseDataGetAboutType = {
+  paragraph: string;
+  technologies: Array<Record<string, string>>;
+};
+
+export type ResponseGetAbout = ResponseType<ResponseDataGetAboutType>;
+
 export async function GET() {
-  return NextResponse.json({
+  const response: ResponseGetAbout = {
     data: {
-      paragraphs: [
-        "Software Engineer with over 1 year of experience development applications also giving solutions for best development solution. I have a serious passion for Web and Mobile Development UI/UX, Animations, and creating intuitive.",
-        "Have good understanding Web and Mobile Design, have ability to write clean code, debugging, and technical feasibilty. I am also seeking hands-on technical expertise in a role as a Good Software Engineer.",
-        "Interested in the entire fullstack spectrum and working on ambitious projects with positive people.",
-        "Loves animal, old music, and games.",
-      ],
+      paragraph:
+        "Software Engineer with over 2 years of experience in hands-on applications and giving solutions for software development. Have a good understanding of developing applications, writing clean code, debugging, and other technical feasibility. I also love to learn more about technical expertise as a software engineer.",
       technologies: [
         {
           icon: "html-64.svg",
@@ -72,5 +79,7 @@ export async function GET() {
         },
       ],
     },
-  });
+  };
+
+  return NextResponse.json(response);
 }

@@ -5,32 +5,23 @@ import Link from "next/link";
 import React from "react";
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 
-import { Section } from "../../../components/Section";
 import { ResponseDataGetMeType } from "../../api/me/route";
 
 type MeProps = ResponseDataGetMeType;
 
 const Me = ({ me }: MeProps) => {
   return (
-    <Section
-      as="section"
-      direction="column"
-      width="100%"
-      justifyContent="center"
-      px={["1rem", null, null, "2.5rem", "4rem"]}
-      py="2rem"
-      gap="1rem"
-    >
-      <Flex direction="column" borderRadius="16px" gap="10px">
+    <Flex direction="column" gap="1rem">
+      <Flex direction="column" borderRadius="16px" gap="0.625rem">
         {/* Intro */}
         <Text
           color="gray.700"
           fontSize={["1.75rem", null, "2.5rem", null, "3rem"]}
           lineHeight="110%"
         >
-          {me.title}
+          {me?.title}
         </Text>
-        {me.body.split("\n").map((line) => (
+        {me?.body.split("\n").map((line) => (
           <Text
             key={line}
             color="gray.600"
@@ -66,7 +57,7 @@ const Me = ({ me }: MeProps) => {
           Download CV
         </Button>
       </Flex>
-    </Section>
+    </Flex>
   );
 };
 
