@@ -5,11 +5,19 @@ import Link from "next/link";
 import React from "react";
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 
-import { ResponseDataGetMeType } from "../../api/me/route";
+import { IAbout } from "../../api/about/route";
 
-type MeProps = ResponseDataGetMeType;
+type MeProps = {
+  about: IAbout;
+};
 
-const Me = ({ me }: MeProps) => {
+const Me = (props: MeProps) => {
+  const {
+    about: {
+      attributes: { greeting, whoiam, cv },
+    },
+  } = props;
+
   return (
     <Flex direction="column" gap="1rem">
       <Flex direction="column" borderRadius="16px" gap="0.625rem">
@@ -19,9 +27,9 @@ const Me = ({ me }: MeProps) => {
           fontSize={["1.75rem", null, "2.5rem", null, "3rem"]}
           lineHeight="110%"
         >
-          {me?.title}
+          {greeting}
         </Text>
-        {me?.body.split("\n").map((line) => (
+        {whoiam.split("\\n").map((line) => (
           <Text
             key={line}
             color="gray.600"
@@ -53,7 +61,7 @@ const Me = ({ me }: MeProps) => {
         />
       </Flex>
       <Flex gap="2rem">
-        <Button colorScheme="black" variant="link">
+        <Button colorScheme="black" variant="link" as={Link} passHref href={cv}>
           Download CV
         </Button>
       </Flex>

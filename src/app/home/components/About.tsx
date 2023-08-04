@@ -2,14 +2,22 @@
 
 import { Text } from "@chakra-ui/react";
 
-import { ResponseDataGetAboutType } from "../../api/about/route";
+import { IAbout } from "../../api/about/route";
 
-type AboutProps = ResponseDataGetAboutType;
+type AboutProps = {
+  about: IAbout;
+};
 
-const About = ({ paragraph }: AboutProps) => {
+const About = (props: AboutProps) => {
+  const {
+    about: {
+      attributes: { description },
+    },
+  } = props;
+
   return (
     <Text fontSize="1.25rem" textAlign="justify">
-      {paragraph}
+      {description}
     </Text>
   );
 };

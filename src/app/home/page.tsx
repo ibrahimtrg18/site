@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 
 import { Section } from "../../components/Section";
-import { get } from "../../utils/fetch";
-import { ResponseGetAbout } from "../api/about/route";
-import { ResponseGetMe } from "../api/me/route";
+import { axios } from "../../utils/fetch";
 import About from "./components/About";
 import Me from "./components/Me";
+import Tech from "./components/Tech";
 
 export const metadata: Metadata = {
   title: "Me | Ibrahim Tarigan ",
@@ -13,8 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function MePage() {
-  const { data: meData } = await get<ResponseGetMe>("/api/me");
-  const { data: aboutData } = await get<ResponseGetAbout>("/api/about");
+  const { data: about } = await axios.get("/api/about");
+  const { data: technologies } = await axios.get("/api/technologies");
 
   return (
     <Section
@@ -27,8 +26,8 @@ export default async function MePage() {
       py="2rem"
       gap="2rem"
     >
-      <Me {...meData} />
-      <About {...aboutData} />
+      <Me about={about} />
+      <About about={about} />
     </Section>
   );
 }

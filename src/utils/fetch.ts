@@ -1,11 +1,21 @@
-import { BASE_URL } from "../contants";
+import { default as Axios } from "axios";
 
-export async function get<T>(URL: string) {
-  const res = await fetch(`${BASE_URL}${URL}`);
+import { API_TOKEN, STRAPI_URL } from "../contants";
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
+const axios = Axios.create({
+  baseURL: STRAPI_URL,
+  headers: {
+    Authorization: "Bearer " + API_TOKEN,
+  },
+});
 
-  return res.json() as unknown as T;
-}
+axios.interceptors.response.use(function (response) {
+  return response.data;
+});
+
+export type IResponse<T, M = undefined> = {
+  data: T;
+  meta: M;
+};
+
+export { axios };
