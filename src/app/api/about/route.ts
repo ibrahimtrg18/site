@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { axios, IResponse } from "../../../utils/fetch";
+import { strapi } from "../../../utils/axios";
+import { IResponse } from "../../../utils/strapi";
 
 export type IAbout = {
   id: number;
@@ -29,7 +30,7 @@ export type IAbout = {
 export type IAboutData = IResponse<IAbout>;
 
 export async function GET() {
-  const data = await axios.get<IAboutData>("/api/about");
+  const data = await strapi.get<IAboutData>("/api/about");
 
   return NextResponse.json(data);
 }
