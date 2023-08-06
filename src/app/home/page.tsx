@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { axios } from "../../utils/axios";
 import About from "./components/About";
@@ -18,19 +19,14 @@ export default async function MePage() {
   const { data: technologies } = await axios.get("/api/technologies");
 
   return (
-    <Section
-      as="section"
-      direction="column"
-      width={["100%", "100%", "45em", "60em", "75em"]}
-      justifyContent="center"
-      mx="auto"
-      px={["1rem", null, null, "2.5rem", "4rem"]}
-      py="2rem"
-      gap="2rem"
+    <Container
+      maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
     >
-      <Me about={about} />
-      <About about={about} />
-      <Tech technologies={technologies} />
-    </Section>
+      <Section gap="2rem">
+        <Me about={about} />
+        <About about={about} />
+        <Tech technologies={technologies} />
+      </Section>
+    </Container>
   );
 }

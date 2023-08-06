@@ -19,6 +19,7 @@ export const Layout = ({
     <>
       {hasNavbar && <Navbar />}
       <Flex
+        as="main"
         direction="column"
         w="100%"
         h="100%"
@@ -26,6 +27,7 @@ export const Layout = ({
         position="relative"
         pt={navbarHeight}
         bgColor="gray.50"
+        overflowY="auto"
         {...restProps}
       >
         {children}

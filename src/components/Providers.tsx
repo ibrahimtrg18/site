@@ -11,7 +11,7 @@ type ProvidersProps = React.HTMLProps<HTMLElement>;
 export const Providers = ({ children }: ProvidersProps) => {
   return (
     <ChakraProvider theme={theme}>
-      <AnimatePresence>{children}</AnimatePresence>
+      <AnimatePresence mode="popLayout">{children}</AnimatePresence>
     </ChakraProvider>
   );
 };

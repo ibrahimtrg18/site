@@ -3,9 +3,13 @@
 import { Button, Flex, Image, Spacer } from "@chakra-ui/react";
 import NextLink from "next/link";
 
+import { Container } from "./Container";
+
 export const Navbar = () => {
   return (
-    <Flex
+    <Container
+      display="flex"
+      maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
       as="nav"
       position="absolute"
       top="0"
@@ -13,7 +17,6 @@ export const Navbar = () => {
       right="0"
       w="100%"
       zIndex={1}
-      direction="row"
       minHeight="4rem"
       flex={1}
       justifyContent="center"
@@ -53,13 +56,13 @@ export const Navbar = () => {
           </Button>
           <Button
             as={NextLink}
-            href={{ pathname: "/portfolio" }}
+            href={{ pathname: "/project" }}
             variant="navigation"
           >
             Portfolio
           </Button>
         </Flex>
       </Flex>
-    </Flex>
+    </Container>
   );
 };
