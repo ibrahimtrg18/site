@@ -5,7 +5,7 @@ import { Section } from "../../components/Section";
 import { axios } from "../../utils/axios";
 import About from "./components/About";
 import Me from "./components/Me";
-import Tech from "./components/Tech";
+import Technology from "./components/Technology";
 
 export const metadata: Metadata = {
   title: "Me | Ibrahim Tarigan ",
@@ -25,7 +25,7 @@ export default async function MePage() {
       <Section gap="2rem">
         <Me about={about} />
         <About about={about} />
-        <Tech technologies={technologies} />
+        <Technology technologies={technologies} />
       </Section>
     </Container>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
 import { IAbout } from "../../api/about/route";
 
@@ -16,9 +16,14 @@ const About = (props: AboutProps) => {
   } = props;
 
   return (
-    <Text fontSize="1.25rem" textAlign="justify">
-      {description}
-    </Text>
+    <Flex direction="column" gap="1rem">
+      <Text as="h1" fontSize="1.5rem" fontWeight="bold">
+        About
+      </Text>
+      <Text fontSize="1.25rem" textAlign="justify">
+        {description}
+      </Text>
+    </Flex>
   );
 };
 
