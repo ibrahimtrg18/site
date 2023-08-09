@@ -6,15 +6,17 @@ import { Navbar } from "./Navbar";
 
 type LayoutProps = FlexProps & {
   hasNavbar?: boolean;
-  navbarHeight?: string;
+  navbarHeight?: number;
 };
 
 export const Layout = ({
   children,
   hasNavbar = true,
-  navbarHeight = "64px",
+  navbarHeight = 4,
   ...restProps
 }: LayoutProps) => {
+  const ptMq = [0, 0, 4, 2, 3].map((v) => `${v + navbarHeight}rem`);
+
   return (
     <>
       {hasNavbar && <Navbar />}
@@ -25,7 +27,7 @@ export const Layout = ({
         h="100%"
         minHeight="100vh"
         position="relative"
-        pt={navbarHeight}
+        pt={ptMq}
         bgColor="gray.50"
         overflowY="auto"
         {...restProps}

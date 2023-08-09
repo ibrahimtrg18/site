@@ -1,18 +1,15 @@
+import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
+import { UnderMaintain } from "../../components/UnderMaintain";
 
 export default function BlogPage() {
   return (
-    <Section
-      as="section"
-      direction="column"
-      width={["100%", "100%", "45em", "60em", "75em"]}
-      justifyContent="center"
-      mx="auto"
-      px={["1rem", null, null, "2.5rem", "4rem"]}
-      py="2rem"
-      gap="2rem"
+    <Container
+      maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
     >
-      Blog
-    </Section>
+      <Section>
+        <UnderMaintain />
+      </Section>
+    </Container>
   );
 }

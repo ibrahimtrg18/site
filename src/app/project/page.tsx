@@ -1,3 +1,15 @@
-export default function PortfolioPage() {
-  return <div>Portfolio</div>;
+import { Container } from "../../components/Container";
+import { Section } from "../../components/Section";
+import { UnderMaintain } from "../../components/UnderMaintain";
+
+export default function ProjectPage() {
+  return (
+    <Container
+      maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
+    >
+      <Section>
+        <UnderMaintain />
+      </Section>
+    </Container>
+  );
 }
