@@ -2,10 +2,58 @@
 
 import { Button, Flex, Image, Spacer } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useMemo, useRef, useState } from "react";
 
 import { Container } from "./Container";
 
 export const Navbar = () => {
+  const pathname = usePathname();
+  const [activeStyles, setActiveStyles] = useState({});
+
+  const menu = {
+    HOME: {
+      title: "Home",
+      pathname: "/home",
+      ref: useRef<HTMLButtonElement>(null),
+    },
+    BLOG: {
+      title: "Blog",
+      pathname: "/blog",
+      ref: useRef<HTMLButtonElement>(null),
+    },
+    PROJECT: {
+      title: "Project",
+      pathname: "/project",
+      ref: useRef<HTMLButtonElement>(null),
+    },
+  };
+
+  const currentPathname = Object.keys(menu).find((key) => {
+    const _key = key as keyof typeof menu;
+
+    return menu[_key].pathname === pathname;
+  }) as keyof typeof menu;
+
+  const clientWidth = useMemo(
+    () => menu[currentPathname].ref.current?.clientWidth + "px",
+    [menu, currentPathname]
+  );
+  const offsetLeft = useMemo(
+    () => menu[currentPathname].ref.current?.offsetLeft + "px",
+    [menu, currentPathname]
+  );
+
+  React.useEffect(() => {
+    setActiveStyles({ width: clientWidth, left: offsetLeft });
+  }, [
+    menu.HOME.ref.current,
+    menu.BLOG.ref.current,
+    menu.PROJECT.ref.current,
+    clientWidth,
+    offsetLeft,
+  ]);
+
   return (
     <Container
       display="flex"
@@ -39,28 +87,36 @@ export const Navbar = () => {
         />
         <Spacer />
         {/* Menu */}
-        <Flex as="nav" direction="row" gap="1rem">
-          <Button
-            as={NextLink}
-            href={{ pathname: "/home" }}
-            variant="navigation"
-          >
-            Home
-          </Button>
-          <Button
-            as={NextLink}
-            href={{ pathname: "/blog" }}
-            variant="navigation"
-          >
-            Blog
-          </Button>
-          <Button
-            as={NextLink}
-            href={{ pathname: "/project" }}
-            variant="navigation"
-          >
-            Portfolio
-          </Button>
+        <Flex
+          as="nav"
+          position="relative"
+          direction="row"
+          gap="1rem"
+          _after={{
+            content: `""`,
+            position: "absolute",
+            bottom: "-4px",
+            height: "2px",
+            backgroundColor: "black",
+            transition: "all 0.5s ease-in-out",
+            ...activeStyles,
+          }}
+        >
+          {Object.keys(menu).map((key) => {
+            const _key = key as keyof typeof menu;
+
+            return (
+              <Button
+                ref={menu[_key].ref}
+                key={menu[_key].pathname}
+                as={NextLink}
+                href={{ pathname: menu[_key].pathname }}
+                variant="navigation"
+              >
+                {menu[_key].title}
+              </Button>
+            );
+          })}
         </Flex>
       </Flex>
     </Container>

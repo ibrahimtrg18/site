@@ -6,7 +6,7 @@ type RootLayoutProps = React.HTMLProps<HTMLElement>;
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ overflowY: "auto" }}>
         <Providers>
           <Layout
             bgImage="https://img.freepik.com/premium-vector/abstract-background-with-modern-style-hexagon-pattern_7505-1722.jpg?w=2000"

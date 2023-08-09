@@ -7,20 +7,6 @@ const navigation = defineStyle({
   alignContent: "center",
   justifyContent: "center",
   px: "0.5rem",
-  _after: {
-    content: `""`,
-    position: "absolute",
-    bottom: "4px",
-    border: "0px solid black",
-    width: "0",
-    transition: "all 0.25s ease-in",
-  },
-  _hover: {
-    _after: {
-      width: "100%",
-      border: "1px solid black",
-    },
-  },
 });
 
 export const Button = {
