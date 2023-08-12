@@ -20,9 +20,11 @@ const Technology = (props: TechnologyProps) => {
       </Text>
       <Grid
         templateColumns={[
-          "repeat(6, minmax(auto, max-content))",
-          null,
-          "repeat(12, minmax(auto, max-content))",
+          "repeat(4, 1fr)",
+          "repeat(6, 1fr)",
+          "repeat(8, 1fr)",
+          "repeat(12, 1fr)",
+          "repeat(16, 1fr)",
         ]}
         gap={6}
       >
