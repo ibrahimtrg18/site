@@ -1,36 +1,84 @@
+import { gql } from "@apollo/client";
 import { NextResponse } from "next/server";
 
-import { strapi } from "../../../utils/axios";
-import { IResponse } from "../../../utils/strapi";
+import { getClient } from "../../../utils/client";
 
 export type IAbout = {
-  id: number;
-  attributes: {
-    fullName: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    locale: string;
-    firstName: string;
-    lastName: string;
-    shortName: string;
-    initialName: string;
-    greeting: string;
-    whoiam: string;
-    description: string;
-    email: string;
-    phoneNumber: string;
-    lat: string;
-    lng: string;
-    location: string;
-    cv: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  shortName: string;
+  initialName: string;
+  email: string;
+  phoneNumber: string;
+  whoiam: string;
+  greeting: string;
+  description: {
+    text: string;
   };
+  cv: string;
+  lat: string;
+  lng: string;
+  location: string;
 };
 
-export type IAboutData = IResponse<IAbout>;
+export type IConfiguration = {
+  about: IAbout;
+};
+
+export type IConfigurations = Array<IConfiguration>;
+
+export type IConfigurationsData = {
+  configurations: IConfigurations;
+};
+
+const query = gql`
+  query Configuration {
+    configurations {
+      id
+      about {
+        firstName
+        lastName
+        fullName
+        shortName
+        initialName
+        email
+        phoneNumber
+        whoiam
+        greeting
+        description {
+          text
+        }
+        cv
+        lat
+        lng
+        location
+      }
+    }
+  }
+`;
 
 export async function GET() {
-  const data = await strapi.get<IAboutData>("/api/about");
+  const {
+    data: { configurations },
+  } = await getClient().query<IConfigurationsData>({
+    query,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
+  });
 
-  return NextResponse.json(data);
+  if (configurations.length) {
+    const { about } = configurations[0];
+
+    return NextResponse.json({
+      data: {
+        about,
+      },
+    });
+  }
+
+  return NextResponse.json({ data: {} });
 }

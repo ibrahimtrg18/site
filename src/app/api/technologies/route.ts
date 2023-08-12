@@ -1,29 +1,49 @@
+import { gql } from "@apollo/client";
 import { NextResponse } from "next/server";
 
-import { strapi } from "../../../utils/axios";
-import { IMedia, IResponse } from "../../../utils/strapi";
+import { getClient } from "../../../utils/client";
+import { IAsset } from "../../../utils/graphql";
 
 export type ITechnology = {
   id: number;
-  attributes: {
-    label: string;
-    experience: number;
-    link: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    logo: IMedia;
-  };
+  label: string;
+  firstUse: string;
+  experience: number;
+  link: string;
+  media: IAsset;
 };
 
 export type ITechnologies = Array<ITechnology>;
 
-export type ITechnologiesData = IResponse<ITechnologies>;
+export type ITechnologiesData = {
+  technologies: ITechnologies;
+};
+
+const query = gql`
+  query Technologies {
+    technologies(first: 100) {
+      id
+      label
+      experience
+      firstUse
+      link
+      media {
+        id
+        url
+      }
+    }
+  }
+`;
 
 export async function GET() {
-  const data = await strapi.get<ITechnologiesData>(
-    "/api/technologies?populate=*"
-  );
+  const data = await getClient().query<ITechnologiesData>({
+    query,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
+  });
 
   return NextResponse.json(data);
 }

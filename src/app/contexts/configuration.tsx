@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useReducer } from "react";
 
-type Maintain = {
+type Maintenance = {
   title?: string;
-  description?: string;
+  text?: string;
   farewell?: string;
   signature?: string;
 };
 
 type ConfigurationState = {
-  maintain?: Partial<Maintain>;
+  maintenance?: Partial<Maintenance>;
 };
 
 type ConfigurationContextProviderProps = React.HTMLProps<HTMLElement> & {
@@ -21,9 +21,9 @@ type ConfigurationAction = {
 };
 
 const initialState: ConfigurationState = {
-  maintain: {
+  maintenance: {
     title: "",
-    description: "",
+    text: "",
     farewell: "",
     signature: "",
   },
@@ -42,13 +42,13 @@ export const configurationReducer = (
 };
 
 export const useConfiguration = (initialState: ConfigurationState) => {
-  const [{ maintain }, dispatch] = useReducer(
+  const [{ maintenance }, dispatch] = useReducer(
     configurationReducer,
     initialState
   );
 
   return {
-    maintain,
+    maintenance,
     dispatch,
   };
 };

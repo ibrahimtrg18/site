@@ -5,6 +5,7 @@ import React from "react";
 
 import { IConfiguration } from "../app/api/configuration/route";
 import { ConfigurationContextProvider } from "../app/contexts/configuration";
+import { ApolloProvider } from "../lib/ApolloProvider";
 import { theme } from "../theme";
 
 type ProvidersProps = React.HTMLProps<HTMLElement> & {
@@ -13,10 +14,12 @@ type ProvidersProps = React.HTMLProps<HTMLElement> & {
 
 export const Providers = ({ children, configuration }: ProvidersProps) => {
   return (
-    <ChakraProvider theme={theme}>
-      <ConfigurationContextProvider configuration={configuration.attributes}>
-        {children}
-      </ConfigurationContextProvider>
-    </ChakraProvider>
+    <ApolloProvider>
+      <ChakraProvider theme={theme}>
+        <ConfigurationContextProvider configuration={configuration}>
+          {children}
+        </ConfigurationContextProvider>
+      </ChakraProvider>
+    </ApolloProvider>
   );
 };

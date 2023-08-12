@@ -15,8 +15,12 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function MePage() {
-  const { data: about } = await axios.get("/api/about");
-  const { data: technologies } = await axios.get("/api/technologies");
+  const {
+    data: { about },
+  } = await axios.get("/api/about");
+  const {
+    data: { technologies },
+  } = await axios.get("/api/technologies");
 
   return (
     <Container

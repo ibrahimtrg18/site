@@ -13,9 +13,7 @@ type MeProps = {
 
 const Me = (props: MeProps) => {
   const {
-    about: {
-      attributes: { greeting, whoiam, cv },
-    },
+    about: { greeting, whoiam, cv },
   } = props;
 
   return (
@@ -29,7 +27,7 @@ const Me = (props: MeProps) => {
         >
           {greeting}
         </Text>
-        {whoiam.split("\\n").map((line) => (
+        {whoiam?.split("\\n").map((line) => (
           <Text
             key={line}
             color="gray.600"

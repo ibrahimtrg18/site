@@ -3,7 +3,6 @@ import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 
-import { STRAPI_URL } from "../../../contants";
 import { ITechnologies } from "../../api/technologies/route";
 
 type TechnologyProps = {
@@ -28,39 +27,22 @@ const Technology = (props: TechnologyProps) => {
         ]}
         gap={6}
       >
-        {technologies.map(
-          ({
-            id,
-            attributes: {
-              label,
-              logo: {
-                data: {
-                  attributes: { url = "", alternativeText = "" },
-                },
-              },
-            },
-          }) => {
-            return (
-              <GridItem
-                key={id}
-                display="flex"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Image
-                  width={50}
-                  height={50}
-                  src={`${STRAPI_URL}${url}`}
-                  alt={alternativeText}
-                />
-                <Text fontSize="0.875rem" fontWeight="light">
-                  {label}
-                </Text>
-              </GridItem>
-            );
-          }
-        )}
+        {technologies.map(({ id, label, media: { url } }) => {
+          return (
+            <GridItem
+              key={id}
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Image width={50} height={50} src={url} alt={label} />
+              <Text fontSize="0.875rem" fontWeight="light">
+                {label}
+              </Text>
+            </GridItem>
+          );
+        })}
       </Grid>
     </Flex>
   );

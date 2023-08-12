@@ -11,7 +11,7 @@ type AboutProps = {
 const About = (props: AboutProps) => {
   const {
     about: {
-      attributes: { description },
+      description: { text },
     },
   } = props;
 
@@ -21,7 +21,7 @@ const About = (props: AboutProps) => {
         About
       </Text>
       <Text fontSize="1.25rem" textAlign="justify">
-        {description}
+        {text}
       </Text>
     </Flex>
   );

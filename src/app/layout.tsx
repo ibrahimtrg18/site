@@ -5,7 +5,10 @@ import { axios } from "../utils/axios";
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const { data: configuration } = await axios.get("/api/configuration");
+  const {
+    data: { configuration },
+  } = await axios.get("/api/configuration");
+
   const LAYOUT_IMAGE_URL =
     "https://img.freepik.com/premium-vector/abstract-background-with-modern-style-hexagon-pattern_7505-1722.jpg?w=2000";
 

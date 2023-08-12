@@ -1,27 +1,60 @@
+import { gql } from "@apollo/client";
 import { NextResponse } from "next/server";
 
-import { strapi } from "../../../utils/axios";
-import { IResponse } from "../../../utils/strapi";
+import { getClient } from "../../../utils/client";
 
 export type IConfiguration = {
-  id: number;
-  attributes: {
-    maintain: {
-      title?: string;
-      description?: string;
-      farewell?: string;
-      signature?: string;
-    };
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
+  maintenance: {
+    title?: string;
+    text?: string;
+    farewell?: string;
+    signature?: string;
   };
 };
 
-export type IConfigurationData = IResponse<IConfiguration>;
+export type IConfigurations = Array<IConfiguration>;
+
+export type IConfigurationsData = {
+  configurations: IConfigurations;
+};
+
+const query = gql`
+  query Configuration {
+    configurations {
+      id
+      maintenance {
+        title
+        text
+        farewell
+        signature
+      }
+    }
+  }
+`;
 
 export async function GET() {
-  const data = await strapi.get<IConfigurationData>("/api/configuration");
+  const {
+    data: { configurations },
+  } = await getClient().query<IConfigurationsData>({
+    query,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
+  });
 
-  return NextResponse.json(data);
+  if (configurations.length) {
+    const configuration = configurations[0];
+
+    return NextResponse.json({
+      data: {
+        configuration,
+      },
+    });
+  }
+
+  return NextResponse.json({
+    data: {},
+  });
 }
