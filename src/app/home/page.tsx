@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Me Page",
 };
 
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export default async function MePage() {
   const {

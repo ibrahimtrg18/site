@@ -28,8 +28,8 @@ export const Layout = ({
         minHeight="100vh"
         position="relative"
         pt={ptMq}
-        bgColor="gray.50"
         overflowY="auto"
+        zIndex={1}
         {...restProps}
       >
         {children}

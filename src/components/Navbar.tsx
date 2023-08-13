@@ -64,7 +64,7 @@ export const Navbar = () => {
       left="0"
       right="0"
       w="100%"
-      zIndex={1}
+      zIndex={10}
       minHeight="4rem"
       flex={1}
       justifyContent="center"

@@ -5,13 +5,5 @@ type MeLayoutProps = {
 };
 
 export default function MeLayout({ children }: MeLayoutProps) {
-  return (
-    <PageTransition
-      initial={{ opacity: 0, y: "100%" }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: "-100%" }}
-    >
-      {children}
-    </PageTransition>
-  );
+  return <PageTransition>{children}</PageTransition>;
 }

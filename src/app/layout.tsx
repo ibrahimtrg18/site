@@ -1,3 +1,4 @@
+import Background from "../components/Background";
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
 import { getConfiguration } from "../gql/configuration";
@@ -9,15 +10,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     data: { configuration },
   } = await getConfiguration();
 
-  const LAYOUT_IMAGE_URL =
-    "https://img.freepik.com/premium-vector/abstract-background-with-modern-style-hexagon-pattern_7505-1722.jpg?w=2000";
-
   return (
     <html lang="en">
       <body style={{ overflowY: "auto" }}>
         <Providers configuration={configuration}>
           <Layout
-            bgImage={LAYOUT_IMAGE_URL}
             bgRepeat="repeat"
             backgroundPosition="center"
             backgroundRepeat="repeat"
@@ -25,6 +22,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           >
             {children}
           </Layout>
+          <Background />
         </Providers>
       </body>
     </html>
