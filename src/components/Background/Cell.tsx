@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "@emotion/styled";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";

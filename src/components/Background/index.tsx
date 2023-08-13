@@ -35,7 +35,7 @@ const Container = styled(motion.div)<ContainerProps>`
   mask-repeat: no-repeat;
 `;
 
-function Grid() {
+export const Background = () => {
   const [columns, setColumns] = useState(0);
   const [rows, setRows] = useState(0);
 
@@ -91,6 +91,4 @@ function Grid() {
       ))}
     </Container>
   );
-}
-
-export default Grid;
+};
