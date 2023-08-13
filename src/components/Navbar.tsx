@@ -11,48 +11,40 @@ export const Navbar = () => {
   const pathname = usePathname();
   const [activeStyles, setActiveStyles] = useState({});
 
-  const menu = {
-    HOME: {
+  const links = [
+    {
       title: "Home",
       pathname: "/home",
       ref: useRef<HTMLButtonElement>(null),
     },
-    BLOG: {
+    {
       title: "Blog",
       pathname: "/blog",
       ref: useRef<HTMLButtonElement>(null),
     },
-    PROJECT: {
+    {
       title: "Project",
       pathname: "/project",
       ref: useRef<HTMLButtonElement>(null),
     },
-  };
+  ];
 
-  const currentPathname = Object.keys(menu).find((key) => {
-    const _key = key as keyof typeof menu;
-
-    return menu[_key].pathname === pathname;
-  }) as keyof typeof menu;
+  const activeLink = links.find((link) => {
+    return link.pathname === pathname;
+  });
 
   const clientWidth = useMemo(
-    () => menu[currentPathname].ref.current?.clientWidth + "px",
-    [menu, currentPathname]
+    () => activeLink?.ref.current?.clientWidth + "px",
+    [activeLink]
   );
   const offsetLeft = useMemo(
-    () => menu[currentPathname].ref.current?.offsetLeft + "px",
-    [menu, currentPathname]
+    () => activeLink?.ref.current?.offsetLeft + "px",
+    [activeLink]
   );
 
   React.useEffect(() => {
     setActiveStyles({ width: clientWidth, left: offsetLeft });
-  }, [
-    menu.HOME.ref.current,
-    menu.BLOG.ref.current,
-    menu.PROJECT.ref.current,
-    clientWidth,
-    offsetLeft,
-  ]);
+  }, [clientWidth, offsetLeft]);
 
   return (
     <Container
@@ -102,18 +94,16 @@ export const Navbar = () => {
             ...activeStyles,
           }}
         >
-          {Object.keys(menu).map((key) => {
-            const _key = key as keyof typeof menu;
-
+          {links.map((link) => {
             return (
               <Button
-                ref={menu[_key].ref}
-                key={menu[_key].pathname}
+                ref={link.ref}
+                key={link.pathname}
                 as={NextLink}
-                href={{ pathname: menu[_key].pathname }}
+                href={{ pathname: link.pathname }}
                 variant="navigation"
               >
-                {menu[_key].title}
+                {link.title}
               </Button>
             );
           })}
