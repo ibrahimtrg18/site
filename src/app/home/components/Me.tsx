@@ -8,7 +8,7 @@ import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 import { IAbout } from "../../api/about/route";
 
 type MeProps = {
-  about: IAbout;
+  about: Partial<IAbout>;
 };
 
 const Me = (props: MeProps) => {

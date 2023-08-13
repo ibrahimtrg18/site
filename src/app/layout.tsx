@@ -1,13 +1,13 @@
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
-import { axios } from "../utils/axios";
+import { getConfiguration } from "../gql/configuration";
 
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   const {
     data: { configuration },
-  } = await axios.get("/api/configuration");
+  } = await getConfiguration();
 
   const LAYOUT_IMAGE_URL =
     "https://img.freepik.com/premium-vector/abstract-background-with-modern-style-hexagon-pattern_7505-1722.jpg?w=2000";

@@ -9,7 +9,7 @@ import { ApolloProvider } from "../lib/ApolloProvider";
 import { theme } from "../theme";
 
 type ProvidersProps = React.HTMLProps<HTMLElement> & {
-  configuration: IConfiguration;
+  configuration: Partial<IConfiguration>;
 };
 
 export const Providers = ({ children, configuration }: ProvidersProps) => {

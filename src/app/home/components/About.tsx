@@ -5,14 +5,12 @@ import { Flex, Text } from "@chakra-ui/react";
 import { IAbout } from "../../api/about/route";
 
 type AboutProps = {
-  about: IAbout;
+  about: Partial<IAbout>;
 };
 
 const About = (props: AboutProps) => {
   const {
-    about: {
-      description: { text },
-    },
+    about: { description },
   } = props;
 
   return (
@@ -21,7 +19,7 @@ const About = (props: AboutProps) => {
         About
       </Text>
       <Text fontSize="1.25rem" textAlign="justify">
-        {text}
+        {description?.text}
       </Text>
     </Flex>
   );

@@ -2,7 +2,8 @@ import { Metadata } from "next";
 
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
-import { axios } from "../../utils/axios";
+import { getAbout } from "../../gql/about";
+import { getTechnology } from "../../gql/technology";
 import About from "./components/About";
 import Me from "./components/Me";
 import Technology from "./components/Technology";
@@ -12,15 +13,15 @@ export const metadata: Metadata = {
   description: "Me Page",
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function MePage() {
   const {
     data: { about },
-  } = await axios.get("/api/about");
+  } = await getAbout();
   const {
     data: { technologies },
-  } = await axios.get("/api/technologies");
+  } = await getTechnology();
 
   return (
     <Container
