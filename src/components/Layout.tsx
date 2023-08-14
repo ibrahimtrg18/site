@@ -2,6 +2,7 @@
 
 import { Flex, FlexProps } from "@chakra-ui/react";
 
+import { Background } from "./Background";
 import { Navbar } from "./Navbar";
 
 type LayoutProps = FlexProps & {
@@ -33,6 +34,7 @@ export const Layout = ({
         {...restProps}
       >
         {children}
+        <Background />
       </Flex>
     </>
   );

@@ -1,4 +1,3 @@
-import { Background } from "../components/Background";
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
 import { getConfiguration } from "../gql/configuration";
@@ -22,7 +21,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           >
             {children}
           </Layout>
-          {typeof window !== "undefined" && <Background />}
         </Providers>
       </body>
     </html>

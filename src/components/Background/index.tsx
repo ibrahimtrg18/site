@@ -77,10 +77,14 @@ export const Background = () => {
   }, []);
 
   const centerMouseX = useTransform<number, number>(mouseX, (newX) => {
-    return newX - window.innerWidth / 2;
+    if (typeof window !== "undefined") return newX - window.innerWidth / 2;
+
+    return 0;
   });
   const centerMouseY = useTransform<number, number>(mouseY, (newY) => {
-    return newY - window.innerHeight / 2;
+    if (typeof window !== "undefined") return newY - window.innerHeight / 2;
+
+    return 0;
   });
   const WebkitMaskPosition = useMotionTemplate`${centerMouseX}px ${centerMouseY}px`;
 
