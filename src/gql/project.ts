@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 import { getClient } from "../utils/client";
-import { IRichText } from "../utils/graphql";
+import { IAsset, IRichText } from "../utils/graphql";
 
 export type IProject = {
   id: number;
@@ -10,6 +10,12 @@ export type IProject = {
   experience: number;
   type: string;
   description: IRichText;
+  markdownFile: IAsset;
+  media: Array<
+    IAsset & {
+      small: string;
+    }
+  >;
 };
 
 export type IProjects = Array<IProject>;
@@ -20,13 +26,25 @@ export type IProjectsData = {
 
 const query = gql`
   query Projects {
-    projects(first: 100) {
+    projects {
       id
       title
       url
       type
+      markdownFile {
+        url
+      }
+      media {
+        small: url(
+          transformation: { image: { resize: { height: 400, width: 400 } } }
+        )
+        url
+      }
       description {
         html
+        markdown
+        text
+        raw
       }
     }
   }

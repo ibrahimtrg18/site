@@ -18,7 +18,7 @@ type ContainerProps = {
 
 const Container = styled(motion.div)<ContainerProps>`
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100vw;
