@@ -4,7 +4,7 @@ import { getClient } from "../utils/client";
 import { IAsset, IRichText } from "../utils/graphql";
 
 export type IProject = {
-  id: number;
+  id: string;
   title: string;
   url: string;
   experience: number;

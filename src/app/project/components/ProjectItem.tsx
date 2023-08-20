@@ -1,73 +1,33 @@
 "use client";
 
 import {
-  Box,
-  Button,
   Card,
   CardBody,
   CardHeader,
   GridItem,
   Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Stack,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { evaluateSync } from "@mdx-js/mdx";
-import * as providers from "@mdx-js/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import * as runtime from "react/jsx-runtime";
 
 import { IProject } from "../../../gql/project";
+import { ProjectDetailModal } from "./ProjectDetailModal";
 
 type ProjectItemProps = IProject;
 
-export const ProjectItem = ({
-  title,
-  description,
-  url,
-  media,
-}: ProjectItemProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export const ProjectItem = (props: ProjectItemProps) => {
+  const { title, description, media } = props;
 
-  const { default: MDXContent } = evaluateSync(description.markdown, {
-    Fragment: Box,
-    ...providers,
-    ...runtime,
-  });
+  // disclosure modal
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{title}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <MDXContent />
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              as={Link}
-              variant="ghost"
-              href={url}
-              passHref
-              target="_blank"
-            >
-              Visit
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <ProjectDetailModal {...props} isOpen={isOpen} onClose={onClose} />
 
       <GridItem
         as={motion.div}
