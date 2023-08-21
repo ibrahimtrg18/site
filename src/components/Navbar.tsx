@@ -5,29 +5,18 @@ import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useMemo, useRef, useState } from "react";
 
+import { useConfigurationContext } from "../app/contexts/configuration";
 import { Container } from "./Container";
 
 export const Navbar = () => {
   const pathname = usePathname();
   const [activeStyles, setActiveStyles] = useState({});
+  const { menu = [] } = useConfigurationContext();
 
-  const links = [
-    {
-      title: "Home",
-      pathname: "/home",
-      ref: useRef<HTMLButtonElement>(null),
-    },
-    {
-      title: "Blog",
-      pathname: "/blog",
-      ref: useRef<HTMLButtonElement>(null),
-    },
-    {
-      title: "Project",
-      pathname: "/project",
-      ref: useRef<HTMLButtonElement>(null),
-    },
-  ];
+  const links = menu.map((menu) => ({
+    ...menu,
+    ref: useRef<HTMLButtonElement>(null),
+  }));
 
   const activeLink = links.find((link) => {
     return link.pathname === pathname;
@@ -103,7 +92,7 @@ export const Navbar = () => {
                 href={{ pathname: link.pathname }}
                 variant="navigation"
               >
-                {link.title}
+                {link.label}
               </Button>
             );
           })}

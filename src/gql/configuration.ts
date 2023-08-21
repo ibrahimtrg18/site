@@ -27,6 +27,13 @@ const query = gql`
         farewell
         signature
       }
+      menu {
+        id
+        label
+        pathname
+        slug
+        href
+      }
     }
   }
 `;

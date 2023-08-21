@@ -7,8 +7,17 @@ type Maintenance = {
   signature?: string;
 };
 
+type Menu = {
+  id?: string;
+  label?: string;
+  pathname?: string;
+  slug?: string;
+  href?: string;
+};
+
 type ConfigurationState = {
   maintenance?: Partial<Maintenance>;
+  menu?: Array<Partial<Menu>>;
 };
 
 type ConfigurationContextProviderProps = React.HTMLProps<HTMLElement> & {
@@ -27,6 +36,7 @@ const initialState: ConfigurationState = {
     farewell: "",
     signature: "",
   },
+  menu: [],
 };
 
 const ConfigurationContext = createContext(initialState);
@@ -42,13 +52,14 @@ export const configurationReducer = (
 };
 
 export const useConfiguration = (initialState: ConfigurationState) => {
-  const [{ maintenance }, dispatch] = useReducer(
+  const [{ maintenance, menu }, dispatch] = useReducer(
     configurationReducer,
     initialState
   );
 
   return {
     maintenance,
+    menu,
     dispatch,
   };
 };
