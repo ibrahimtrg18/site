@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Divider,
   Flex,
   Modal,
   ModalBody,
@@ -17,6 +18,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import * as runtime from "react/jsx-runtime";
+import { MdArrowForward } from "react-icons/md";
 
 import { IProject } from "../../../gql/project";
 
@@ -49,7 +51,8 @@ export const ProjectDetailModal = ({
         <ModalCloseButton />
         <ModalBody>
           <Flex direction="column">
-            <Flex direction="row" gap="4rem">
+            <Flex height="inherit" direction="row" gap="2rem">
+              {/* Left content */}
               <Box flex={1}>
                 {media.map((media) => (
                   <Image
@@ -70,14 +73,27 @@ export const ProjectDetailModal = ({
                 ))}
               </Box>
 
-              <Box flex={1}>
+              <Divider
+                height="inherit"
+                alignSelf="stretch"
+                orientation="vertical"
+              />
+
+              {/* Right content */}
+              <Flex direction="column" flex={1} gap="1rem">
                 <MDXContent />
-              </Box>
+              </Flex>
             </Flex>
           </Flex>
         </ModalBody>
         <ModalFooter>
-          <Button as={Link} variant="ghost" href={url} passHref target="_blank">
+          <Button
+            rightIcon={<MdArrowForward />}
+            as={Link}
+            href={url}
+            passHref
+            target="_blank"
+          >
             Visit
           </Button>
         </ModalFooter>

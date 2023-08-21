@@ -8,6 +8,7 @@ import {
   Heading,
   Stack,
   Text,
+  useChakra,
   useDisclosure,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -25,17 +26,29 @@ export const ProjectItem = (props: ProjectItemProps) => {
   // disclosure modal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const chakra = useChakra();
+
   return (
     <>
       <ProjectDetailModal {...props} isOpen={isOpen} onClose={onClose} />
 
-      <GridItem
-        as={motion.div}
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        onClick={() => onOpen()}
-      >
-        <Card backgroundColor="gray.50" cursor="pointer">
+      <GridItem>
+        <Card
+          as={motion.div}
+          initial={{
+            scale: 1,
+            backgroundColor: chakra.theme.colors.gray[50],
+          }}
+          whileHover={{
+            scale: 1.1,
+            backgroundColor: chakra.theme.colors.gray[100],
+          }}
+          whileTap={{ scale: 0.9 }}
+          backgroundColor="transparent"
+          height="100%"
+          cursor="pointer"
+          onClick={() => onOpen()}
+        >
           <CardHeader>
             <Image
               placeholder="blur"
@@ -55,7 +68,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
           <CardBody>
             <Stack spacing="3">
               <Heading size="md">{title}</Heading>
-              <Text noOfLines={3} textAlign="justify">
+              <Text noOfLines={3} textAlign="justify" color="inherit">
                 {description?.text}
               </Text>
             </Stack>

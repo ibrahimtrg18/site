@@ -35,6 +35,7 @@ const query = gql`
         url
       }
       media {
+        id
         small: url(
           transformation: { image: { resize: { height: 400, width: 400 } } }
         )

@@ -22,7 +22,7 @@ export const ProjectList = ({ projects }: ProjectListProps) => {
       gap={6}
     >
       {projects.map((project) => {
-        return <ProjectItem key={project.title} {...project} />;
+        return <ProjectItem key={project.id} {...project} />;
       })}
     </Grid>
   );
