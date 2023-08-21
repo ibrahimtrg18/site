@@ -1,6 +1,6 @@
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
-import { getConfiguration } from "../gql/configuration";
+import { getConfiguration } from "../graphql/queries/configuration";
 
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
 

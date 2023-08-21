@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-import { getClient } from "../utils/client";
-import { IAsset, IRichText } from "../utils/graphql";
+import { getClient } from "../../utils/client";
+import { IAsset, IRichText } from "../../utils/graphql";
 
 export type IProject = {
   id: string;
@@ -24,7 +24,7 @@ export type IProjectsData = {
   projects: IProjects;
 };
 
-const query = gql`
+const QUERY_GET_ALL_PROJECTS = gql`
   query Projects {
     projects {
       id
@@ -53,7 +53,7 @@ const query = gql`
 
 export async function getProjects() {
   const data = await getClient().query<IProjectsData>({
-    query,
+    query: QUERY_GET_ALL_PROJECTS,
     context: {
       fetchOptions: {
         next: { revalidate: 5 },

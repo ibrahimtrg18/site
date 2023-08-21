@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
-import { IProject } from "../../../gql/project";
+import { IProject } from "../../../graphql/queries/project";
 import { ProjectDetailModal } from "./ProjectDetailModal";
 
 type ProjectItemProps = IProject;

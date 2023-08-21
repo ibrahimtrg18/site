@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-import { getClient } from "../utils/client";
-import { IAsset } from "../utils/graphql";
+import { getClient } from "../../utils/client";
+import { IAsset } from "../../utils/graphql";
 
 export type ITechnology = {
   id: number;
@@ -18,7 +18,7 @@ export type ITechnologiesData = {
   technologies: ITechnologies;
 };
 
-const query = gql`
+const QUERY_GET_ALL_TECHNOLOGIES = gql`
   query Technologies {
     technologies(first: 100) {
       id
@@ -34,9 +34,9 @@ const query = gql`
   }
 `;
 
-export async function getTechnology() {
+export async function getTechnologies() {
   const data = await getClient().query<ITechnologiesData>({
-    query,
+    query: QUERY_GET_ALL_TECHNOLOGIES,
     context: {
       fetchOptions: {
         next: { revalidate: 5 },

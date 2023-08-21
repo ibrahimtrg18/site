@@ -5,16 +5,12 @@ import Link from "next/link";
 import React from "react";
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 
-import { IAbout } from "../../api/about/route";
+import { useConfigurationContext } from "../../../contexts/configuration";
 
-type MeProps = {
-  about: Partial<IAbout>;
-};
+const Me = () => {
+  const { about } = useConfigurationContext();
 
-const Me = (props: MeProps) => {
-  const {
-    about: { greeting, whoiam, cv },
-  } = props;
+  const { greeting, whoiam, cv } = about;
 
   return (
     <Flex direction="column" gap="1rem">

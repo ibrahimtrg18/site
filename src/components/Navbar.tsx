@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useMemo, useRef, useState } from "react";
 
-import { useConfigurationContext } from "../app/contexts/configuration";
+import { useConfigurationContext } from "../contexts/configuration";
 import { Container } from "./Container";
 
 export const Navbar = () => {

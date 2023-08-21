@@ -2,8 +2,7 @@ import { Metadata } from "next";
 
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
-import { getAbout } from "../../gql/about";
-import { getTechnology } from "../../gql/technology";
+import { getTechnologies } from "../../graphql/queries/technology";
 import About from "./components/About";
 import Me from "./components/Me";
 import Technology from "./components/Technology";
@@ -17,19 +16,16 @@ export const metadata: Metadata = {
 
 export default async function MePage() {
   const {
-    data: { about },
-  } = await getAbout();
-  const {
     data: { technologies },
-  } = await getTechnology();
+  } = await getTechnologies();
 
   return (
     <Container
       maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
     >
       <Section gap="2rem">
-        <Me about={about} />
-        <About about={about} />
+        <Me />
+        <About />
         <Technology technologies={technologies} />
       </Section>
     </Container>

@@ -1,6 +1,6 @@
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
-import { getProjects } from "../../gql/project";
+import { getProjects } from "../../graphql/queries/project";
 import { ProjectList } from "./components/ProjectList";
 
 // export const revalidate = 3600;

@@ -1,23 +1,44 @@
 import React, { createContext, useContext, useReducer } from "react";
 
-type Maintenance = {
-  title?: string;
-  text?: string;
-  farewell?: string;
-  signature?: string;
-};
+interface About {
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  shortName: string;
+  initialName: string;
+  email: string;
+  phoneNumber: string;
+  whoiam: string;
+  greeting: string;
+  description: {
+    text: string;
+  };
+  cv: string;
+  lat: null | number;
+  lng: null | number;
+  location: string;
+}
 
-type Menu = {
-  id?: string;
-  label?: string;
-  pathname?: string;
-  slug?: string;
-  href?: string;
-};
+interface Maintenance {
+  title: string;
+  text: string;
+  farewell: string;
+  signature: string;
+}
+
+interface MenuItem {
+  id: string;
+  label: string;
+  pathname: string;
+  slug: string;
+  href: string;
+}
 
 type ConfigurationState = {
-  maintenance?: Partial<Maintenance>;
-  menu?: Array<Partial<Menu>>;
+  id: string;
+  about: Partial<About>;
+  maintenance: Partial<Maintenance>;
+  menu: Partial<MenuItem>[];
 };
 
 type ConfigurationContextProviderProps = React.HTMLProps<HTMLElement> & {
@@ -30,6 +51,25 @@ type ConfigurationAction = {
 };
 
 const initialState: ConfigurationState = {
+  id: "",
+  about: {
+    firstName: "",
+    lastName: "",
+    fullName: "",
+    shortName: "",
+    initialName: "",
+    email: "",
+    phoneNumber: "",
+    whoiam: "",
+    greeting: "",
+    description: {
+      text: "",
+    },
+    cv: "",
+    lat: null,
+    lng: null,
+    location: "",
+  },
   maintenance: {
     title: "",
     text: "",
@@ -52,12 +92,14 @@ export const configurationReducer = (
 };
 
 export const useConfiguration = (initialState: ConfigurationState) => {
-  const [{ maintenance, menu }, dispatch] = useReducer(
+  const [{ id, about, maintenance, menu }, dispatch] = useReducer(
     configurationReducer,
     initialState
   );
 
   return {
+    id,
+    about,
     maintenance,
     menu,
     dispatch,

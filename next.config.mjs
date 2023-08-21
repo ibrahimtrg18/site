@@ -24,9 +24,6 @@ const nextConfig = {
       },
     ];
   },
-  experimental: {
-    mdxRs: true,
-  },
 };
 
 export default nextConfig;

@@ -2,7 +2,7 @@
 
 import { Grid } from "@chakra-ui/react";
 
-import { IProjects } from "../../../gql/project";
+import { IProjects } from "../../../graphql/queries/project";
 import { ProjectItem } from "./ProjectItem";
 
 type ProjectListProps = {

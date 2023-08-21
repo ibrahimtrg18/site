@@ -2,16 +2,12 @@
 
 import { Flex, Text } from "@chakra-ui/react";
 
-import { IAbout } from "../../api/about/route";
+import { useConfigurationContext } from "../../../contexts/configuration";
 
-type AboutProps = {
-  about: Partial<IAbout>;
-};
+const About = () => {
+  const { about } = useConfigurationContext();
 
-const About = (props: AboutProps) => {
-  const {
-    about: { description },
-  } = props;
+  const { description } = about;
 
   return (
     <Flex direction="column" gap="1rem">

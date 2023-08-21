@@ -20,7 +20,7 @@ import React from "react";
 import * as runtime from "react/jsx-runtime";
 import { MdArrowForward } from "react-icons/md";
 
-import { IProject } from "../../../gql/project";
+import { IProject } from "../../../graphql/queries/project";
 
 type ProjectDetailModalProps = Partial<ModalProps> & IProject;
 
