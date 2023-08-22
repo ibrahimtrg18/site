@@ -15,7 +15,7 @@ export const Layout = ({
   navbarHeight = 4,
   ...restProps
 }: LayoutProps) => {
-  const ptMq = [0, 0, 4, 2, 3].map((v) => `${v + navbarHeight}rem`);
+  const pyMq = [0, 0, 4, 2, 3].map((v) => `${v + navbarHeight}rem`);
 
   return (
     <>
@@ -27,7 +27,7 @@ export const Layout = ({
         h="100%"
         minHeight="100vh"
         position="relative"
-        pt={ptMq}
+        py={pyMq}
         overflowY="auto"
         zIndex={1}
         {...restProps}

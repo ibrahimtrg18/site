@@ -11,15 +11,17 @@ export function useFollowPointer(ref: RefObject<HTMLElement>) {
     const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
       const element = ref.current!;
 
-      const x = clientX - element.offsetLeft - element.offsetWidth / 2;
-      const y = clientY - element.offsetTop - element.offsetHeight / 2;
+      const x =
+        clientX - element.offsetLeft - element.offsetWidth / 2 + window.scrollX;
+      const y =
+        clientY - element.offsetTop - element.offsetHeight / 2 + window.scrollY;
       setPoint({ x, y });
     };
 
     window.addEventListener("pointermove", handlePointerMove);
 
     return () => window.removeEventListener("pointermove", handlePointerMove);
-  }, []);
+  }, [window.scrollX, window.scrollY]);
 
   return point;
 }
