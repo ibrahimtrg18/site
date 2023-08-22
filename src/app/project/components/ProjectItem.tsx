@@ -40,10 +40,10 @@ export const ProjectItem = (props: ProjectItemProps) => {
             backgroundColor: chakra.theme.colors.gray[50],
           }}
           whileHover={{
-            scale: 1.1,
+            scale: 1.05,
             backgroundColor: chakra.theme.colors.gray[100],
           }}
-          whileTap={{ scale: 0.9 }}
+          whileTap={{ scale: 0.95 }}
           backgroundColor="transparent"
           height="100%"
           cursor="pointer"
@@ -52,12 +52,12 @@ export const ProjectItem = (props: ProjectItemProps) => {
           <CardHeader>
             <Image
               placeholder="blur"
-              width={300}
-              height={300}
+              width={250}
+              height={250}
               blurDataURL={media[0].small}
               style={{
                 width: "100%",
-                height: "300px",
+                height: "250px",
                 objectFit: "cover",
                 objectPosition: "top",
               }}
