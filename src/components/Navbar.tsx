@@ -1,39 +1,17 @@
 "use client";
 
-import { Button, Flex, Image, Spacer } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Spacer } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useMemo, useRef, useState } from "react";
+import React from "react";
 
 import { useConfigurationContext } from "../contexts/configuration";
 import { Container } from "./Container";
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const [activeStyles, setActiveStyles] = useState({});
-  const { menu = [] } = useConfigurationContext();
-
-  const links = menu.map((menu) => ({
-    ...menu,
-    ref: useRef<HTMLButtonElement>(null),
-  }));
-
-  const activeLink = links.find((link) => {
-    return link.pathname === pathname;
-  });
-
-  const clientWidth = useMemo(
-    () => activeLink?.ref.current?.clientWidth + "px",
-    [activeLink]
-  );
-  const offsetLeft = useMemo(
-    () => activeLink?.ref.current?.offsetLeft + "px",
-    [activeLink]
-  );
-
-  React.useEffect(() => {
-    setActiveStyles({ width: clientWidth, left: offsetLeft });
-  }, [clientWidth, offsetLeft]);
+  const { menu: links = [] } = useConfigurationContext();
 
   return (
     <Container
@@ -68,31 +46,29 @@ export const Navbar = () => {
         />
         <Spacer />
         {/* Menu */}
-        <Flex
-          as="nav"
-          position="relative"
-          direction="row"
-          gap="1rem"
-          _after={{
-            content: `""`,
-            position: "absolute",
-            bottom: "-4px",
-            height: "2px",
-            backgroundColor: "black",
-            transition: "all 0.5s ease-in-out",
-            ...activeStyles,
-          }}
-        >
+        <Flex as="nav" position="relative" direction="row" gap="1rem">
           {links.map((link) => {
             return (
               <Button
-                ref={link.ref}
+                // ref={link.ref}
                 key={link.pathname}
                 as={NextLink}
                 href={{ pathname: link.pathname }}
                 variant="navigation"
               >
                 {link.label}
+                {link.pathname === pathname && (
+                  <Box
+                    as={motion.div}
+                    position="absolute"
+                    bottom="-1px"
+                    left="0"
+                    right="0"
+                    height="1px"
+                    background="black"
+                    layoutId="xxxx"
+                  />
+                )}
               </Button>
             );
           })}
