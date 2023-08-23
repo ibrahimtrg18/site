@@ -20,7 +20,7 @@ export type ITechnologiesData = {
 
 const QUERY_GET_ALL_TECHNOLOGIES = gql`
   query Technologies {
-    technologies(first: 100) {
+    technologies(first: 100, orderBy: label_ASC) {
       id
       label
       experience

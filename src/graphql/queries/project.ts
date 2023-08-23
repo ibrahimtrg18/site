@@ -26,7 +26,7 @@ export type IProjectsData = {
 
 const QUERY_GET_ALL_PROJECTS = gql`
   query Projects {
-    projects {
+    projects(first: 100, orderBy: title_ASC) {
       id
       title
       url
