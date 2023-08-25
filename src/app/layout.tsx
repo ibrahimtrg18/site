@@ -2,7 +2,7 @@ import React from "react";
 
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
-import { getConfiguration } from "../graphql/queries/configuration";
+import { getConfiguration } from "../graphql/api/configuration";
 
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
 
