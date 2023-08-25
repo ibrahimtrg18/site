@@ -1,7 +1,8 @@
 "use client";
 
-import { Box, Button, Flex, Image, Spacer } from "@chakra-ui/react";
+import { Box, Button, Flex, Spacer } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -37,11 +38,11 @@ export const Navbar = () => {
       >
         {/* Logo */}
         <Image
-          width="2rem"
-          height="2rem"
+          width={32}
+          height={32}
           loading="lazy"
-          borderRadius="full"
-          src="https://avatars.githubusercontent.com/u/41787706?s=400&u=fdb9f4fd5b4a0dd56a5fc2e148c23b5b0dc735b5&v=4"
+          style={{ borderRadius: "9999px" }}
+          src="/images/avatar.png"
           alt="Ibrahim Tarigan"
         />
         <Spacer />
