@@ -1,30 +1,6 @@
 import { gql } from "@apollo/client";
 
-import { getClient } from "../../utils/client";
-import { IAsset, IRichText } from "../../utils/graphql";
-
-export type IProject = {
-  id: string;
-  title: string;
-  url: string;
-  experience: number;
-  type: string;
-  description: IRichText;
-  markdownFile: IAsset;
-  media: Array<
-    IAsset & {
-      small: string;
-    }
-  >;
-};
-
-export type IProjects = Array<IProject>;
-
-export type IProjectsData = {
-  projects: IProjects;
-};
-
-const QUERY_GET_ALL_PROJECTS = gql`
+export const QUERY_GET_ALL_PROJECTS = gql`
   query Projects {
     projects(first: 100, orderBy: title_ASC) {
       id
@@ -50,16 +26,3 @@ const QUERY_GET_ALL_PROJECTS = gql`
     }
   }
 `;
-
-export async function getProjects() {
-  const data = await getClient().query<IProjectsData>({
-    query: QUERY_GET_ALL_PROJECTS,
-    context: {
-      fetchOptions: {
-        next: { revalidate: 5 },
-      },
-    },
-  });
-
-  return data;
-}

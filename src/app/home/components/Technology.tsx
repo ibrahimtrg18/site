@@ -3,10 +3,10 @@ import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 
-import { ITechnologies } from "../../../graphql/queries/technology";
+import { Technologies } from "../../../types/Technology";
 
 type TechnologyProps = {
-  technologies: ITechnologies;
+  technologies: Technologies;
 };
 
 const Technology = (props: TechnologyProps) => {

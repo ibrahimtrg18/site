@@ -74,6 +74,7 @@ export const Background = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const centerMouseX = useTransform<number, number>(mouseX, (newX) => {

@@ -15,10 +15,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
-import { IProject } from "../../../graphql/queries/project";
+import { Project } from "../../../types/Project";
 import { ProjectDetailModal } from "./ProjectDetailModal";
 
-type ProjectItemProps = IProject;
+type ProjectItemProps = Project;
 
 export const ProjectItem = (props: ProjectItemProps) => {
   const { title, description, media } = props;

@@ -1,13 +1,13 @@
-export type IData<T> = {
+export type Data<T> = {
   data: T;
 };
 
-export type IAsset = {
+export type Asset = {
   id: string;
   url: string;
 };
 
-export type IRichText = {
+export type RichText = {
   html: string;
   markdown: string;
   raw: string;

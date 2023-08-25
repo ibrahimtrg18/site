@@ -2,11 +2,11 @@
 
 import { Grid } from "@chakra-ui/react";
 
-import { IProjects } from "../../../graphql/queries/project";
+import { Projects } from "../../../types/Project";
 import { ProjectItem } from "./ProjectItem";
 
 type ProjectListProps = {
-  projects: IProjects;
+  projects: Projects;
 };
 
 export const ProjectList = ({ projects }: ProjectListProps) => {
