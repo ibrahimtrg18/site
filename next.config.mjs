@@ -2,9 +2,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    BASE_URL: process.env.BASE_URL,
-    STRAPI_URL: process.env.STRAPI_URL,
-    API_TOKEN: process.env.API_TOKEN,
+    SITE_URL: process.env.SITE_URL,
+    HYGRAPH_GRAPHQL_URI: process.env.HYGRAPH_GRAPHQL_URI,
   },
   images: {
     formats: ["image/avif", "image/webp"],

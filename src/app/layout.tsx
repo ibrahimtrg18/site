@@ -13,6 +13,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="Dgh3-7chmF8XSw4RmI2T13hmdsE370jbAOLx8y43OJ0"
+        />
+      </head>
       <body style={{ overflowY: "auto" }}>
         <Providers configuration={configuration}>
           <Layout
