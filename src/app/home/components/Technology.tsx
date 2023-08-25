@@ -3,7 +3,7 @@ import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 
-import { ITechnologies } from "../../api/technologies/route";
+import { ITechnologies } from "../../../graphql/queries/technology";
 
 type TechnologyProps = {
   technologies: ITechnologies;
