@@ -6,7 +6,7 @@ import React from "react";
 
 import { ConfigurationContextProvider } from "../contexts/configuration";
 import { IConfiguration } from "../graphql/queries/configuration";
-import { ApolloProvider } from "../lib/ApolloProvider";
+import { ApolloProvider } from "../lib/apollo";
 import { theme } from "../theme";
 import { MDXComponents } from "../theme/MDXComponents";
 
