@@ -41,8 +41,10 @@ type ConfigurationState = {
   menu: Partial<MenuItem>[];
 };
 
+type ConfigurationContextProviderValue = ConfigurationState | null;
+
 type ConfigurationContextProviderProps = React.HTMLProps<HTMLElement> & {
-  configuration: ConfigurationState;
+  configuration: ConfigurationState | null;
 };
 
 type ConfigurationAction = {
@@ -91,10 +93,10 @@ export const configurationReducer = (
   }
 };
 
-export const useConfiguration = (initialState: ConfigurationState) => {
+export const useConfiguration = (state: ConfigurationContextProviderValue) => {
   const [{ id, about, maintenance, menu }, dispatch] = useReducer(
     configurationReducer,
-    initialState
+    state || initialState
   );
 
   return {
