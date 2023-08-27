@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import React from "react";
 
 import { Layout } from "../components/Layout";
@@ -30,6 +31,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             {children}
           </Layout>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
