@@ -1,5 +1,5 @@
+import { getClient } from "../../libs/apollo";
 import { ConfigurationsData } from "../../types/Configuration";
-import { getClient } from "../../utils/client";
 import { QUERY_GET_ALL_CONFIGURATION } from "../queries/configuration";
 
 export async function getConfiguration() {

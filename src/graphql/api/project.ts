@@ -1,5 +1,5 @@
+import { getClient } from "../../libs/apollo";
 import { ProjectsData } from "../../types/Project";
-import { getClient } from "../../utils/client";
 import { QUERY_GET_ALL_PROJECTS } from "../queries/project";
 
 export async function getProjects() {

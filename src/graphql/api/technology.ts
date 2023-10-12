@@ -1,5 +1,5 @@
+import { getClient } from "../../libs/apollo";
 import { TechnologiesData } from "../../types/Technology";
-import { getClient } from "../../utils/client";
 import { QUERY_GET_ALL_TECHNOLOGIES } from "../queries/technology";
 
 export async function getTechnologies() {
