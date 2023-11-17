@@ -1,4 +1,4 @@
-import { getClient } from "../../libs/apollo";
+import { getClient } from "../../libs/getClient";
 import { ConfigurationsData } from "../../types/Configuration";
 import { QUERY_GET_ALL_CONFIGURATION } from "../queries/configuration";
 

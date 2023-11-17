@@ -1,4 +1,4 @@
-import { getClient } from "../../libs/apollo";
+import { getClient } from "../../libs/getClient";
 import { ProjectsData } from "../../types/Project";
 import { QUERY_GET_ALL_PROJECTS } from "../queries/project";
 
