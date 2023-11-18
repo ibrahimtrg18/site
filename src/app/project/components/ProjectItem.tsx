@@ -9,6 +9,8 @@ import {
   Stack,
   Text,
   useChakra,
+  useColorMode,
+  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -28,20 +30,29 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
   const chakra = useChakra();
 
+  const { colorMode } = useColorMode();
+
   return (
     <>
       <ProjectDetailModal {...props} isOpen={isOpen} onClose={onClose} />
 
       <GridItem>
         <Card
+          key={colorMode}
           as={motion.div}
           initial={{
             scale: 1,
-            backgroundColor: chakra.theme.colors.gray[50],
+            backgroundColor: useColorModeValue(
+              chakra.theme.colors.gray[50],
+              chakra.theme.colors.gray[800]
+            ),
           }}
           whileHover={{
             scale: 1.05,
-            backgroundColor: chakra.theme.colors.gray[100],
+            backgroundColor: useColorModeValue(
+              chakra.theme.colors.gray[100],
+              chakra.theme.colors.gray[700]
+            ),
           }}
           whileTap={{ scale: 0.95 }}
           backgroundColor="transparent"

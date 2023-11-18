@@ -1,11 +1,19 @@
 "use client";
 
-import { Box, Button, Flex, Spacer } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Spacer,
+  useColorMode,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { IoMoon, IoSunny } from "react-icons/io5";
 
 import { useConfigurationContext } from "../contexts/configuration";
 import { Container } from "./Container";
@@ -13,6 +21,7 @@ import { Container } from "./Container";
 export const Navbar = () => {
   const pathname = usePathname();
   const { menu: links = [] } = useConfigurationContext();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Container
@@ -73,6 +82,12 @@ export const Navbar = () => {
               </Button>
             );
           })}
+
+          <IconButton
+            icon={colorMode === "dark" ? <IoSunny /> : <IoMoon />}
+            onClick={toggleColorMode}
+            aria-label="Toggle Color Mode"
+          />
         </Flex>
       </Flex>
     </Container>

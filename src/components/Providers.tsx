@@ -1,6 +1,6 @@
 "use client";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
 import React from "react";
 
@@ -17,6 +17,7 @@ type ProvidersProps = React.HTMLProps<HTMLElement> & {
 export const Providers = ({ children, configuration }: ProvidersProps) => {
   return (
     <ApolloProvider>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <ChakraProvider theme={theme}>
         <MDXProvider components={MDXComponents}>
           <ConfigurationContextProvider configuration={configuration}>

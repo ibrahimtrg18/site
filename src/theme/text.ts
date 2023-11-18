@@ -1,7 +1,10 @@
 import { defineStyle } from "@chakra-ui/react";
 
 const defaultTextProps = defineStyle({
-  color: "gray.700",
+  color: {
+    light: "black",
+    dark: "white",
+  },
 });
 
 export const Text = {

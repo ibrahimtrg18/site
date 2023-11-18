@@ -17,7 +17,6 @@ const Me = () => {
       <Flex direction="column" borderRadius="16px" gap="0.625rem">
         {/* Intro */}
         <Text
-          color="gray.700"
           fontSize={["1.75rem", null, "2.5rem", null, "3rem"]}
           lineHeight="110%"
         >
@@ -26,7 +25,6 @@ const Me = () => {
         {whoiam?.split("\\n").map((line) => (
           <Text
             key={line}
-            color="gray.600"
             fontSize={["1.5rem", null, "1.75rem", null, "2.5rem"]}
             lineHeight="110%"
           >
