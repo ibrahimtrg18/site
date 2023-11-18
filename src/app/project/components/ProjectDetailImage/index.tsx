@@ -1,9 +1,10 @@
 import { Box } from "@chakra-ui/react";
 import Image from "next/image";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Project } from "../../../types/Project";
-import { ButtonSwiperNavigation } from "./ProjectDetailImage/ButtonSwiperNavigation";
+import { Project } from "../../../../types/Project";
+import { ButtonSwiperNavigation } from "./ButtonSwiperNavigation";
 
 export const ProjectDetailImage = ({
   title = "",
@@ -11,7 +12,17 @@ export const ProjectDetailImage = ({
 }: Partial<Project>) => {
   return (
     <Box flex={1} position="relative">
-      <Swiper spaceBetween={10} slidesPerView={3}>
+      <Swiper
+        spaceBetween={10}
+        slidesPerView={3}
+        autoplay
+        loop
+        navigation
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination, Navigation]}
+      >
         <ButtonSwiperNavigation type="prev" />
         {media.map((media) => (
           <SwiperSlide key={media.id}>

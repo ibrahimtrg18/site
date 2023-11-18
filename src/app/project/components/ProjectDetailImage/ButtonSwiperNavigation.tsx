@@ -1,4 +1,4 @@
-import { IconButton } from "@chakra-ui/react";
+import { Flex, IconButton } from "@chakra-ui/react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useSwiper } from "swiper/react";
 
@@ -20,17 +20,31 @@ export const ButtonSwiperNavigation = ({ type }: ButtonNavigationProps) => {
   };
 
   return (
-    <IconButton
-      width="fit-content"
-      icon={isPrev ? <IoChevronBack /> : <IoChevronForward />}
-      aria-label={type}
-      rounded="full"
+    <Flex
+      height="full"
       zIndex={1}
       position="absolute"
-      top="50%"
-      {...(isPrev ? { left: 4 } : { right: 4 })}
-      translateY="-50%"
+      top="0"
+      width="fit-content"
+      {...(isPrev ? { left: 0 } : { right: 0 })}
+      align="center"
+      cursor="pointer"
       onClick={onButtonClick}
-    />
+      _hover={{
+        background: `linear-gradient(to ${
+          isPrev ? "left" : "right"
+        }, transparent 0%, rgba(0, 0, 0, 0.12) 50%)`,
+      }}
+    >
+      <IconButton
+        icon={isPrev ? <IoChevronBack /> : <IoChevronForward />}
+        aria-label={type}
+        rounded="full"
+        variant="unstyled"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      />
+    </Flex>
   );
 };
