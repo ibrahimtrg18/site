@@ -34,6 +34,7 @@ const Cell = ({ mouseX, mouseY }: CellProps) => {
     // center y coordinate
     const y = rect.top + CELL_SIZE / 2;
     setPosition([x, y]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref.current]);
 
   const direction = useTransform<MotionValue<number>, number>(

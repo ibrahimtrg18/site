@@ -45,7 +45,6 @@ export const Navbar = () => {
         alignItems="center"
         justifyContent="space-between"
       >
-        {/* Logo */}
         <Image
           width={32}
           height={32}
@@ -55,12 +54,10 @@ export const Navbar = () => {
           alt="Ibrahim Tarigan"
         />
         <Spacer />
-        {/* Menu */}
         <Flex as="nav" position="relative" direction="row" gap="1rem">
           {links.map((link) => {
             return (
               <Button
-                // ref={link.ref}
                 key={link.pathname}
                 as={NextLink}
                 href={{ pathname: link.pathname }}
