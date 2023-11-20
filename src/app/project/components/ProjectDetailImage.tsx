@@ -1,15 +1,15 @@
 // Import Swiper styles
+import { CSSProperties, useState } from "react";
+import Image from "next/image";
+import { Box, Flex } from "@chakra-ui/react";
+import type { Swiper as SwiperType } from "swiper";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-
-import { Box, Flex } from "@chakra-ui/react";
-import Image from "next/image";
-import { CSSProperties, useState } from "react";
-import type { Swiper as SwiperType } from "swiper";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Project } from "../../../types/Project";
 

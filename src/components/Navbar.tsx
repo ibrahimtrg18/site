@@ -1,5 +1,9 @@
 "use client";
 
+import React from "react";
+import Image from "next/image";
+import NextLink from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Box,
   Button,
@@ -9,13 +13,10 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import NextLink from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
 import { useConfigurationContext } from "../contexts/configuration";
+
 import { Container } from "./Container";
 
 export const Navbar = () => {

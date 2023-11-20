@@ -1,7 +1,7 @@
 "use client";
-import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 
 import { Technologies } from "../../../types/Technology";
 

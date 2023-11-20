@@ -1,5 +1,5 @@
-import "swiper/css";
-
+import React from "react";
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -16,12 +16,13 @@ import {
 } from "@chakra-ui/react";
 import { evaluateSync } from "@mdx-js/mdx";
 import * as providers from "@mdx-js/react";
-import Link from "next/link";
-import React from "react";
 import * as runtime from "react/jsx-runtime";
 import { MdArrowForward } from "react-icons/md";
 
+import "swiper/css";
+
 import { Project } from "../../../types/Project";
+
 import { ProjectDetailImage } from "./ProjectDetailImage";
 
 type ProjectDetailModalProps = Partial<ModalProps> & Project;

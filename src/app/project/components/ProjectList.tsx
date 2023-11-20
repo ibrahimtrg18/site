@@ -3,6 +3,7 @@
 import { Grid } from "@chakra-ui/react";
 
 import { Projects } from "../../../types/Project";
+
 import { ProjectItem } from "./ProjectItem";
 
 type ProjectListProps = {

@@ -1,6 +1,6 @@
 "use client";
-import { HTMLMotionProps, motion } from "framer-motion";
 import React, { Fragment } from "react";
+import { HTMLMotionProps, motion } from "framer-motion";
 
 type PageTransitionProps = HTMLMotionProps<"div">;
 

@@ -26,17 +26,42 @@
   "plugins": ["react", "@typescript-eslint", "simple-import-sort", "import"],
   "rules": {
     "no-console": "warn",
-    "import/no-unresolved": [2, { "commonjs": true, "amd": true }],
-    "import/named": 0,
-    "import/namespace": 2,
-    "import/default": 2,
-    "import/export": 2,
-    "simple-import-sort/imports": "error",
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "warn",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // `react` first, `next` second, then packages starting with a character
+          ["^react$", "^next", "^[A-Za-z0-9@~#$%^&*]"],
+          // Side effect imports
+          ["^\\u0000"],
+          // Parent imports. Put `..` last.
+          [
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./?$",
+            "^\\.\\./(.*).styles",
+            "^\\.\\./(.*).types"
+          ],
+          // Other relative imports. Put same-folder imports and `.` last.
+          [
+            "^\\./(?=.*/)(?!/?$)",
+            "^\\.(?!/?$)",
+            "^\\./?$",
+            "^\\./(.*).styles",
+            "^\\./(.*).types"
+          ]
+        ]
+      }
+    ],
     "simple-import-sort/exports": "error",
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "react/react-in-jsx-scope": "off",
-    "react-hooks/rules-of-hooks": "warn"
+    "import/no-unresolved": [2, { "commonjs": true, "amd": true }],
+    "import/named": "off",
+    "import/namespace": "off",
+    "import/default": "error",
+    "import/export": "error"
   }
 }

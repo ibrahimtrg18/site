@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import {
   animate,
@@ -8,7 +9,6 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { useEffect, useState } from "react";
 
 import Cell, { CELL_SIZE } from "./Cell";
 

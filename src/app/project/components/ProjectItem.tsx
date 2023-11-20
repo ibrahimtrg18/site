@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+import Image from "next/image";
 import {
   Card,
   CardBody,
@@ -14,10 +16,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import React from "react";
 
 import { Project } from "../../../types/Project";
+
 import { ProjectDetailModal } from "./ProjectDetailModal";
 
 type ProjectItemProps = Project;

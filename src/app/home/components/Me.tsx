@@ -1,8 +1,8 @@
 "use client";
 
-import { Button, Flex, IconButton, Text } from "@chakra-ui/react";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { Button, Flex, IconButton, Text } from "@chakra-ui/react";
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 
 import { useConfigurationContext } from "../../../contexts/configuration";

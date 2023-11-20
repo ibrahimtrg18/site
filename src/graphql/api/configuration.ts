@@ -1,6 +1,6 @@
 import { getClient } from "../../libs/getClient";
-import { ConfigurationsData } from "../../types/Configuration";
 import { QUERY_GET_ALL_CONFIGURATION } from "../queries/configuration";
+import { ConfigurationsData } from "../../types/Configuration";
 
 export async function getConfiguration() {
   const {

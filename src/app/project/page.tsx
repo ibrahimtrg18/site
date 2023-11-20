@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { getProjects } from "../../graphql/api/project";
+
 import { ProjectList } from "./components/ProjectList";
 
 export const revalidate = 3600;

@@ -1,5 +1,5 @@
-import { Analytics } from "@vercel/analytics/react";
 import React from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
