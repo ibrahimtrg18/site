@@ -29,7 +29,7 @@ export const ProjectDetailImage = ({
         justifyContent="center"
         textAlign="center"
         alignSelf="center"
-        width="50%"
+        width={["full", null, "xl"]}
         borderRadius="md"
         boxShadow="0 0 4px 0 rgba(0, 0, 0, 0.12)"
         overflow="hidden"
@@ -54,20 +54,22 @@ export const ProjectDetailImage = ({
         >
           {media.map((media) => (
             <SwiperSlide key={media.id}>
-              <Image
-                placeholder="blur"
-                width={300}
-                height={0}
-                blurDataURL={media.url}
-                style={{
-                  width: "100%",
-                  height: "20rem",
-                  objectFit: "cover",
-                  objectPosition: "top",
-                }}
-                src={media.url}
-                alt={title}
-              />
+              <Box height="xs">
+                <Image
+                  placeholder="blur"
+                  width={300}
+                  height={0}
+                  blurDataURL={media.url}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "top",
+                  }}
+                  src={media.url}
+                  alt={title}
+                />
+              </Box>
             </SwiperSlide>
           ))}
         </Swiper>
@@ -94,7 +96,8 @@ export const ProjectDetailImage = ({
               <Box
                 borderRadius="md"
                 overflow="hidden"
-                opacity={0.12}
+                opacity={0.33}
+                height={[20, null, 40]}
                 {...(slide === index && {
                   opacity: 1,
                   boxShadow: "0 0 4px 0 rgba(0, 0, 0, 0.12)",
@@ -107,7 +110,7 @@ export const ProjectDetailImage = ({
                   blurDataURL={media.url}
                   style={{
                     width: "100%",
-                    height: "10rem",
+                    height: "100%",
                     objectFit: "cover",
                     objectPosition: "top",
                     cursor: "pointer",
