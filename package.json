@@ -5,9 +5,13 @@
   "author": "Ibrahim Tarigan",
   "description": "portfolio created by Ibrahim Tarigan with Love <3",
   "keywords": [
-    "gatsby",
+    "vercel",
+    "nextjs",
     "portfolio",
-    "ibrahim-tarigan"
+    "hygraph",
+    "ibrahim tarigan",
+    "ibrahim-tarigan",
+    "@ibrahimtrg18"
   ],
   "homepage": "https://github.com/ibrahimtrg18/ibrahim-tarigan#readme",
   "url": "https://github.com/ibrahimtrg18/ibrahim-tarigan/issues",
@@ -21,6 +25,9 @@
     "format": "prettier --write",
     "prepare": "husky install",
     "postbuild": "next-sitemap"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
