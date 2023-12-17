@@ -20,3 +20,7 @@ export type Projects = Array<Project>;
 export type ProjectsData = {
   projects: Projects;
 };
+
+export type ProjectData = {
+  project: Project;
+};

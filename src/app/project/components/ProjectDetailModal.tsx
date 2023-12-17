@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import {
@@ -18,8 +20,6 @@ import { evaluateSync } from "@mdx-js/mdx";
 import * as providers from "@mdx-js/react";
 import * as runtime from "react/jsx-runtime";
 import { MdArrowForward } from "react-icons/md";
-
-import "swiper/css";
 
 import { Project } from "../../../types/Project";
 

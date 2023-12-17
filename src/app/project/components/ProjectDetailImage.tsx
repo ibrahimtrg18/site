@@ -1,4 +1,5 @@
-// Import Swiper styles
+"use client";
+
 import { CSSProperties, useState } from "react";
 import Image from "next/image";
 import { Box, Flex } from "@chakra-ui/react";
