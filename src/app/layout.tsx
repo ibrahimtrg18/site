@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
-import { getConfiguration } from "../graphql/api/configuration";
+import { getConfiguration } from "../graphql/api/getConfiguration";
 
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
 

@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
-import { getTechnologies } from "../../graphql/api/technology";
+import { getTechnologies } from "../../graphql/api/getTechnologies";
 
 import About from "./components/About";
 import Me from "./components/Me";
