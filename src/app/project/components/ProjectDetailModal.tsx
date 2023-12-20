@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import {
-  Box,
   Button,
   Divider,
   Flex,
@@ -16,11 +15,9 @@ import {
   ModalOverlay,
   ModalProps,
 } from "@chakra-ui/react";
-import { evaluateSync } from "@mdx-js/mdx";
-import * as providers from "@mdx-js/react";
-import * as runtime from "react/jsx-runtime";
 import { MdArrowForward } from "react-icons/md";
 
+import { evaluateSync } from "../../../libs/mdx";
 import { Project } from "../../../types/Project";
 
 import { ProjectDetailImage } from "./ProjectDetailImage";
@@ -35,11 +32,7 @@ export const ProjectDetailModal = ({
   url,
   media,
 }: ProjectDetailModalProps) => {
-  const { default: MDXContent } = evaluateSync(description.markdown, {
-    Fragment: Box,
-    ...providers,
-    ...runtime,
-  });
+  const MDXContent = evaluateSync(description.markdown);
 
   return (
     <Modal

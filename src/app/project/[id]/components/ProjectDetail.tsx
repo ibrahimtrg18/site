@@ -2,10 +2,8 @@
 
 import React from "react";
 import { Box, Divider, Flex, ModalProps } from "@chakra-ui/react";
-import { evaluateSync } from "@mdx-js/mdx";
-import * as providers from "@mdx-js/react";
-import * as runtime from "react/jsx-runtime";
 
+import { evaluateSync } from "../../../../libs/mdx";
 import { ProjectDetailImage } from "../../components/ProjectDetailImage";
 import { Project } from "../../../../types/Project";
 
@@ -16,11 +14,7 @@ export const ProjectDetail = ({
   description,
   media,
 }: ProjectDetailModalProps) => {
-  const { default: MDXContent } = evaluateSync(description.markdown, {
-    Fragment: Box,
-    ...providers,
-    ...runtime,
-  });
+  const MDXContent = evaluateSync(description.markdown);
 
   return (
     <Flex direction="column">
