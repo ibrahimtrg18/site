@@ -1,6 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Personal Website
 
-# Open Source Project Personal Website
+This project is source-available for you to use for creating personal website.
 
 Requirement, Need install [Node.js](https://nodejs.org/en) v18+ and [Yarn](https://yarnpkg.com/) v1.22+
 
@@ -15,36 +15,37 @@ Stack Technology I used In this project:
 
 ## Getting Started
 
-First you need to clone it:
+Clone the project to local machine:
 
 ```bash
 git clone https://github.com/ibrahimtrg18/ibrahim-tarigan.git
 ```
 
-Second, you need to copy `.env.template` to root folder as `.env` file, and fill it with your own environment variables.
+you need to copy `.env.template` to root folder as `.env` file, and fill it with your own environment variables.
 
-> IF YOU DON'T HAVE HYGRAPH TEMPLATE CONFIG, AND WANT IT, JUST SEND ME EMAIL @ ibrahimtarigan@gmail.com 🙂
+> NOTE: If you don't have Hygraph Template CMS, you can send me an email to ibrahimtarigan@gmail.com
 
 ```bash
-HYGRAPH_GRAPHQL_URI=[YOUR HYGRAPH_GRAPHQL_URI] ex: https://api-ap-southeast-2.hygraph.com/v2/xxx/master
-SITE_URL=[YOUR CURRENT HOST] ex: https://ibrahimtarigan.vercel.app
+HYGRAPH_GRAPHQL_URI=[YOUR HYGRAPH_GRAPHQL_URI]
+SITE_URL=[YOUR SITE HOST]
+GOOGLE_ANALYTICS_ID=[YOUR GOOGLE ANALYTICS ID]
 ```
 
-Last thing, run the development server:
+Run Development in Local machine:
 
 ```bash
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your favorite browser.
 
-## Learn More
+## References
 
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 - [Hygraph](https://hygraph.com/) - a Build Scalable Content Experiences
+- [Google Analytics](https://analytics.google.com) - Monitoring and Analytics your website.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
