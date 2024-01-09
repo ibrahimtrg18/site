@@ -1,8 +1,9 @@
 import React from "react";
-import { Analytics } from "@vercel/analytics/react";
 
+import GoogleAnalytics from "../components/GoogleAnalytics";
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
+import { GOOGLE_ANALYTICS_ID } from "../contants";
 import { getConfiguration } from "../graphql/api/getConfiguration";
 
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body style={{ overflowY: "auto" }}>
+        <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
         <Providers configuration={configuration}>
           <Layout
             bgRepeat="repeat"
@@ -31,7 +33,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             {children}
           </Layout>
         </Providers>
-        <Analytics />
       </body>
     </html>
   );
