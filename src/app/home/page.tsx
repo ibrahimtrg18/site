@@ -4,9 +4,9 @@ import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { getTechnologies } from "../../graphql/api/getTechnologies";
 
-import About from "./components/About";
-import Me from "./components/Me";
-import Technology from "./components/Technology";
+import About from "./Fragments/About";
+import Me from "./Fragments/Me";
+import Technology from "./Fragments/Technology";
 
 export const revalidate = 3600;
 export const metadata: Metadata = {

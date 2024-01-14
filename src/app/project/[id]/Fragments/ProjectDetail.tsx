@@ -4,7 +4,7 @@ import React from "react";
 import { Box, Divider, Flex, ModalProps } from "@chakra-ui/react";
 
 import { evaluateSync } from "../../../../libs/mdx";
-import { ProjectDetailImage } from "../../components/ProjectDetailImage";
+import { ProjectDetailImage } from "../../Fragments/ProjectDetailImage";
 import { Project } from "../../../../types/Project";
 
 type ProjectDetailModalProps = Partial<ModalProps> & Project;

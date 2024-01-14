@@ -5,7 +5,7 @@ import { Section } from "../../../components/Section";
 import { SITE_URL } from "../../../contants";
 import { getProjectById } from "../../../graphql/api/getProjectById";
 
-import { ProjectDetail } from "./components/ProjectDetail";
+import { ProjectDetail } from "./Fragments/ProjectDetail";
 
 type Props = {
   params: { id: string };
