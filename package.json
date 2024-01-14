@@ -31,8 +31,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "yarn format",
-      "yarn lint:fix"
+      "npm run format",
+      "npm run lint:fix"
     ]
   },
   "dependencies": {
