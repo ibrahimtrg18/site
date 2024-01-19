@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   Card,
   CardBody,
@@ -17,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
+import { useQuery } from "../../../hooks/useQuery";
 import { Project } from "../../../types/Project";
 
 import { ProjectDetailModal } from "./ProjectDetailModal";
@@ -24,18 +26,30 @@ import { ProjectDetailModal } from "./ProjectDetailModal";
 type ProjectItemProps = Project;
 
 export const ProjectItem = (props: ProjectItemProps) => {
-  const { title, description, media } = props;
-
-  // disclosure modal
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const { id, title, description, media } = props;
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const chakra = useChakra();
-
   const { colorMode } = useColorMode();
+  const { updateQuery, removeQuery } = useQuery();
+  const projectId = searchParams.get("projectId");
+
+  /**
+   * Disclosure Modal
+   * will open when the page has query projectId /project?projectId=
+   */
+  const { isOpen } = useDisclosure({
+    isOpen: projectId === id,
+  });
 
   return (
     <>
-      <ProjectDetailModal {...props} isOpen={isOpen} onClose={onClose} />
+      <ProjectDetailModal
+        {...props}
+        isOpen={isOpen}
+        onClose={() => router.push(pathname + "?" + removeQuery("projectId"))}
+      />
 
       <GridItem>
         <Card
@@ -59,7 +73,9 @@ export const ProjectItem = (props: ProjectItemProps) => {
           backgroundColor="transparent"
           height="100%"
           cursor="pointer"
-          onClick={() => onOpen()}
+          onClick={() =>
+            router.push(pathname + "?" + updateQuery("projectId", id))
+          }
         >
           <CardHeader>
             <Image
