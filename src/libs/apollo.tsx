@@ -8,7 +8,7 @@ import {
   SSRMultipartLink,
 } from "@apollo/experimental-nextjs-app-support/ssr";
 
-import { HYGRAPH_GRAPHQL_URI } from "../contants";
+import { HYGRAPH_GRAPHQL_URI } from "../constants";
 
 function makeClient() {
   const httpLink = new HttpLink({

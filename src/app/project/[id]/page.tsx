@@ -2,7 +2,7 @@ import { Metadata, ResolvingMetadata } from "next";
 
 import { Container } from "../../../components/Container";
 import { Section } from "../../../components/Section";
-import { SITE_URL } from "../../../contants";
+import { SITE_URL } from "../../../constants";
 import { getProjectById } from "../../../graphql/api/getProjectById";
 
 import { ProjectDetail } from "./Fragments/ProjectDetail";
