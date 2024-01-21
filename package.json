@@ -24,7 +24,8 @@
     "lint:fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix --quiet",
     "format": "prettier --write",
     "prepare": "husky install",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "tsc:test": "tsc --project tsconfig.test.json"
   },
   "engines": {
     "node": ">=18.0.0"
