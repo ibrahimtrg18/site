@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body style={{ overflowY: "auto" }}>
-        <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+        {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
         <Providers configuration={configuration}>
           <Layout
             bgRepeat="repeat"
