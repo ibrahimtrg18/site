@@ -1,45 +1,8 @@
 import React, { createContext, useContext, useReducer } from "react";
 
-interface About {
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  shortName: string;
-  initialName: string;
-  email: string;
-  phoneNumber: string;
-  whoiam: string;
-  greeting: string;
-  description: {
-    text: string;
-  };
-  cv: string;
-  lat: null | number;
-  lng: null | number;
-  location: string;
-}
+import { Configuration } from "../types/Configuration";
 
-interface Maintenance {
-  title: string;
-  text: string;
-  farewell: string;
-  signature: string;
-}
-
-interface MenuItem {
-  id: string;
-  label: string;
-  pathname: string;
-  slug: string;
-  href: string;
-}
-
-type ConfigurationState = {
-  id: string;
-  about: Partial<About>;
-  maintenance: Partial<Maintenance>;
-  menu: Partial<MenuItem>[];
-};
+type ConfigurationState = Configuration;
 
 type ConfigurationContextProviderValue = ConfigurationState | null;
 
@@ -79,6 +42,7 @@ const initialState: ConfigurationState = {
     signature: "",
   },
   menu: [],
+  socials: [],
 };
 
 const ConfigurationContext = createContext(initialState);
@@ -94,7 +58,7 @@ export const configurationReducer = (
 };
 
 export const useConfiguration = (state: ConfigurationContextProviderValue) => {
-  const [{ id, about, maintenance, menu }, dispatch] = useReducer(
+  const [{ id, about, maintenance, menu, socials }, dispatch] = useReducer(
     configurationReducer,
     state || initialState
   );
@@ -104,6 +68,7 @@ export const useConfiguration = (state: ConfigurationContextProviderValue) => {
     about,
     maintenance,
     menu,
+    socials,
     dispatch,
   };
 };

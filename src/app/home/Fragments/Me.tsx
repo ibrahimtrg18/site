@@ -1,14 +1,13 @@
 "use client";
-
 import React from "react";
 import Link from "next/link";
 import { Button, Flex, IconButton, Text } from "@chakra-ui/react";
-import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
+import * as SocialIcon from "react-icons/io5";
 
 import { useConfigurationContext } from "../../../contexts/configuration";
 
 const Me = () => {
-  const { about } = useConfigurationContext();
+  const { about, socials } = useConfigurationContext();
 
   const { greeting, whoiam, cv } = about;
 
@@ -32,31 +31,41 @@ const Me = () => {
           </Text>
         ))}
       </Flex>
-      <Flex gap="1rem">
-        <IconButton
-          as={Link}
-          variant="ghost"
-          icon={<IoLogoGithub />}
-          href="https://github.com/ibrahimtrg18"
-          passHref
-          aria-label="Github"
-          rounded="8px"
-        />
-        <IconButton
-          as={Link}
-          variant="ghost"
-          icon={<IoLogoLinkedin />}
-          href="https://www.linkedin.com/in/ibrahimtrg18/"
-          passHref
-          aria-label="LinkedIn"
-          rounded="8px"
-        />
-      </Flex>
-      <Flex gap="2rem">
-        <Button colorScheme="black" variant="link" as={Link} passHref href={cv}>
-          Download CV
-        </Button>
-      </Flex>
+      {socials.length && (
+        <Flex gap="1rem">
+          {socials.map(({ id, icon, label: _label, link: _link }) => {
+            const Icon = SocialIcon[icon as unknown as keyof typeof SocialIcon];
+            const link = _link as string;
+            const label = _label as string;
+
+            return (
+              <IconButton
+                key={id}
+                as={Link}
+                variant="ghost"
+                icon={<Icon />}
+                href={link}
+                passHref
+                aria-label={label}
+                rounded="8px"
+              />
+            );
+          })}
+        </Flex>
+      )}
+      {cv && (
+        <Flex gap="2rem">
+          <Button
+            colorScheme="black"
+            variant="link"
+            as={Link}
+            passHref
+            href={cv}
+          >
+            Download CV
+          </Button>
+        </Flex>
+      )}
     </Flex>
   );
 };

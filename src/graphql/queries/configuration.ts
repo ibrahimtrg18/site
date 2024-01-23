@@ -35,6 +35,13 @@ export const QUERY_GET_ALL_CONFIGURATION = gql`
         slug
         href
       }
+      socials: social {
+        id
+        label
+        link
+        icon
+        stage
+      }
     }
   }
 `;
