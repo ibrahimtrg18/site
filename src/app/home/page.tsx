@@ -3,10 +3,9 @@ import { Metadata } from "next";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { getTechnologies } from "../../graphql/api/getTechnologies";
-
-import About from "./Fragments/About";
-import Me from "./Fragments/Me";
-import Technology from "./Fragments/Technology";
+import About from "../../views/Home/About";
+import Me from "../../views/Home/Me";
+import Technology from "../../views/Home/Technology";
 
 export const revalidate = 3600;
 export const metadata: Metadata = {

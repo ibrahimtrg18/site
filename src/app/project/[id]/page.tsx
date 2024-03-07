@@ -4,8 +4,7 @@ import { Container } from "../../../components/Container";
 import { Section } from "../../../components/Section";
 import { SITE_URL } from "../../../constants";
 import { getProjectById } from "../../../graphql/api/getProjectById";
-
-import { ProjectDetail } from "./Fragments/ProjectDetail";
+import { ProjectDetail } from "../../../views/ProjectDetails/ProjectDetail";
 
 type Props = {
   params: { id: string };

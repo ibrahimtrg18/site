@@ -18,8 +18,8 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import { useQuery } from "../../../hooks/useQuery";
-import { Project } from "../../../types/Project";
+import { useQuery } from "../../hooks/useQuery";
+import { Project } from "../../types/Project";
 
 import { ProjectDetailModal } from "./ProjectDetailModal";
 

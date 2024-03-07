@@ -17,8 +17,8 @@ import {
 } from "@chakra-ui/react";
 import { MdArrowForward } from "react-icons/md";
 
-import { evaluateSync } from "../../../libs/mdx";
-import { Project } from "../../../types/Project";
+import { evaluateSync } from "../../libs/mdx";
+import { Project } from "../../types/Project";
 
 import { ProjectDetailImage } from "./ProjectDetailImage";
 

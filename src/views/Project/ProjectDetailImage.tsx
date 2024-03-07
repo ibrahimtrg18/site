@@ -12,7 +12,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import { Project } from "../../../types/Project";
+import { Project } from "../../types/Project";
 
 export const ProjectDetailImage = ({
   title = "",
