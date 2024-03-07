@@ -1,7 +1,6 @@
-import { Text } from "@chakra-ui/react";
+import { List, ListItem, Text } from "@chakra-ui/react";
 
 export const MDXComponents = {
-  p: Text,
   h1: ({ children }: React.HTMLProps<HTMLHeadingElement>) => (
     <Text as="h1" variant="h1">
       {children}
@@ -32,4 +31,7 @@ export const MDXComponents = {
       {children}
     </Text>
   ),
+  p: Text,
+  ul: List,
+  li: ListItem,
 };
