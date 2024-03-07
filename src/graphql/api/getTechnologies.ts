@@ -1,4 +1,4 @@
-import { getClient } from "../../libs/getClient";
+import { getClient } from "../../libs/apollo/ssr";
 import { QUERY_GET_ALL_TECHNOLOGIES } from "../queries/technology";
 import { TechnologiesData } from "../../types/Technology";
 
