@@ -12,8 +12,8 @@ export default async function ProjectLayout({ children }: ProjectLayoutProps) {
   } = await getProjects();
 
   return (
-    <PageTransition>
-      <ProjectProvider projects={projects}>{children}</ProjectProvider>
-    </PageTransition>
+    <ProjectProvider projects={projects}>
+      <PageTransition>{children}</PageTransition>
+    </ProjectProvider>
   );
 }

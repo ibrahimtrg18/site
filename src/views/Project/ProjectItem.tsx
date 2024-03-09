@@ -77,7 +77,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
             router.push(pathname + "?" + updateQuery("projectId", id))
           }
         >
-          <CardHeader>
+          <CardHeader padding={0}>
             <Image
               placeholder="blur"
               width={250}
