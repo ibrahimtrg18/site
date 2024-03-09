@@ -2,7 +2,6 @@ import { Metadata } from "next";
 
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
-import { getProjects } from "../../graphql/api/getProjects";
 import { ProjectList } from "../../views/Project/ProjectList";
 
 export const revalidate = 3600;
@@ -13,16 +12,12 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectPage() {
-  const {
-    data: { projects },
-  } = await getProjects();
-
   return (
     <Container
       maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
     >
       <Section gap="2rem">
-        <ProjectList projects={projects} />
+        <ProjectList />
       </Section>
     </Container>
   );

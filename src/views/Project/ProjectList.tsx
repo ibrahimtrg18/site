@@ -2,15 +2,13 @@
 
 import { Grid } from "@chakra-ui/react";
 
-import { Projects } from "../../types/Project";
+import { useProjectContext } from "../../contexts/ProjectContext/ProjectContext";
 
 import { ProjectItem } from "./ProjectItem";
 
-type ProjectListProps = {
-  projects: Projects;
-};
+export const ProjectList = () => {
+  const { projects } = useProjectContext();
 
-export const ProjectList = ({ projects }: ProjectListProps) => {
   return (
     <Grid
       templateColumns={[
