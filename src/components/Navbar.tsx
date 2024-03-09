@@ -15,13 +15,13 @@ import {
 import { motion } from "framer-motion";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
-import { useConfigurationContext } from "../contexts/configuration";
+import { useAppContext } from "../contexts/AppContext/AppContext";
 
 import { Container } from "./Container";
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const { menu: links = [] } = useConfigurationContext();
+  const { menu: links = [] } = useAppContext();
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (

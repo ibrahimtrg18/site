@@ -4,6 +4,7 @@ import GoogleAnalytics from "../components/GoogleAnalytics";
 import { Layout } from "../components/Layout";
 import { Providers } from "../components/Providers";
 import { GOOGLE_ANALYTICS_ID } from "../constants";
+import { getApp } from "../graphql/api/getApp";
 import { getConfiguration } from "../graphql/api/getConfiguration";
 
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
@@ -12,6 +13,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const {
     data: { configuration },
   } = await getConfiguration();
+  const {
+    data: { app },
+  } = await getApp();
 
   return (
     <html lang="en">
@@ -23,7 +27,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body style={{ overflowY: "auto" }}>
         {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
-        <Providers configuration={configuration}>
+        <Providers configuration={configuration} app={app}>
           <Layout
             bgRepeat="repeat"
             backgroundPosition="center"

@@ -4,10 +4,12 @@ import Link from "next/link";
 import { Button, Flex, IconButton, Text } from "@chakra-ui/react";
 import * as SocialIcon from "react-icons/io5";
 
+import { useAppContext } from "../../contexts/AppContext/AppContext";
 import { useConfigurationContext } from "../../contexts/configuration";
 
 const Me = () => {
-  const { about, socials } = useConfigurationContext();
+  const { about } = useConfigurationContext();
+  const { socials } = useAppContext();
 
   const { greeting, whoiam, cv } = about;
 

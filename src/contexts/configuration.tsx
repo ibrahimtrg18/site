@@ -41,8 +41,6 @@ const initialState: ConfigurationState = {
     farewell: "",
     signature: "",
   },
-  menu: [],
-  socials: [],
 };
 
 const ConfigurationContext = createContext(initialState);
@@ -58,7 +56,7 @@ export const configurationReducer = (
 };
 
 export const useConfiguration = (state: ConfigurationContextProviderValue) => {
-  const [{ id, about, maintenance, menu, socials }, dispatch] = useReducer(
+  const [{ id, about, maintenance }, dispatch] = useReducer(
     configurationReducer,
     state || initialState
   );
@@ -67,8 +65,6 @@ export const useConfiguration = (state: ConfigurationContextProviderValue) => {
     id,
     about,
     maintenance,
-    menu,
-    socials,
     dispatch,
   };
 };

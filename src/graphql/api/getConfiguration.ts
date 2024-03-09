@@ -1,11 +1,11 @@
 import { getClient } from "../../libs/apollo/ssr";
 import { QUERY_GET_ALL_CONFIGURATION } from "../queries/configuration";
-import { ConfigurationsData } from "../../types/Configuration";
+import { ResponseConfigurations } from "../../types/Configuration";
 
 export async function getConfiguration() {
   const {
     data: { configurations },
-  } = await getClient().query<ConfigurationsData>({
+  } = await getClient().query<ResponseConfigurations>({
     query: QUERY_GET_ALL_CONFIGURATION,
     context: {
       fetchOptions: {
