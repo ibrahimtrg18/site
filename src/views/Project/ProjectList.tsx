@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import { Flex, Grid, Spinner } from "@chakra-ui/react";
 
-import { useProjectContext } from "../../contexts/ProjectContext/ProjectContext";
+import { useProjectContext } from "@/contexts/ProjectContext/ProjectContext";
 
 import { ProjectItem } from "./ProjectItem";
 

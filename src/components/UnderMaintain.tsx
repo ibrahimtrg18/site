@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Flex, Text } from "@chakra-ui/react";
 
-import { useConfigurationContext } from "../contexts/configuration";
+import { useConfigurationContext } from "@/contexts/configuration";
 
 export const UnderMaintain = () => {
   const { maintenance } = useConfigurationContext();

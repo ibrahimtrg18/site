@@ -1,6 +1,6 @@
-import { getClient } from "../../libs/apollo/ssr";
-import { QUERY_GET_ALL_CONFIGURATION } from "../queries/configuration";
-import { ResponseConfigurations } from "../../types/Configuration";
+import { QUERY_GET_ALL_CONFIGURATION } from "@/graphql/queries/configuration";
+import { getClient } from "@/libs/apollo/ssr";
+import { ResponseConfigurations } from "@/types/Configuration";
 
 export async function getConfiguration() {
   const {

@@ -1,4 +1,4 @@
-import { App } from "../../types/App";
+import { App } from "@/types/App";
 
 export enum PROJECT_ACTION {}
 

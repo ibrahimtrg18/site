@@ -1,11 +1,11 @@
 import React from "react";
 
-import GoogleAnalytics from "../components/GoogleAnalytics";
-import { Layout } from "../components/Layout";
-import { Providers } from "../components/Providers";
-import { GOOGLE_ANALYTICS_ID } from "../constants";
-import { getApp } from "../graphql/api/getApp";
-import { getConfiguration } from "../graphql/api/getConfiguration";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Layout } from "@/components/Layout";
+import { Providers } from "@/components/Providers";
+import { GOOGLE_ANALYTICS_ID } from "@/constants";
+import { getApp } from "@/graphql/api/getApp";
+import { getConfiguration } from "@/graphql/api/getConfiguration";
 
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
 

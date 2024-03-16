@@ -15,7 +15,7 @@ import {
 import { motion } from "framer-motion";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
-import { useAppContext } from "../contexts/AppContext/AppContext";
+import { useAppContext } from "@/contexts/AppContext/AppContext";
 
 import { Container } from "./Container";
 

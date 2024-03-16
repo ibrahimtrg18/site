@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 
-import { useFollowPointer } from "../hooks/useFollowPointer";
+import { useFollowPointer } from "@/hooks/useFollowPointer";
 
 export const FollowPointer = () => {
   const ref = useRef(null);

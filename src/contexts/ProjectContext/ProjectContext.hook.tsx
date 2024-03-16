@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-import { Project } from "../../types/Project";
+import { Project } from "@/types/Project";
 
 import {
   PROJECT_ACTION,

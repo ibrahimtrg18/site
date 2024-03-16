@@ -1,4 +1,4 @@
-import PageTransition from "../../components/PageTransition";
+import PageTransition from "@/components/PageTransition";
 
 type BlogLayoutProps = {
   children: React.ReactNode;

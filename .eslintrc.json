@@ -34,6 +34,8 @@
         "groups": [
           // `react` first, `next` second, then packages starting with a character
           ["^react$", "^next", "^[A-Za-z0-9@~#$%^&*]"],
+          // @/** alias folder
+          ["^@/?"],
           // Side effect imports
           ["^\\u0000"],
           // Parent imports. Put `..` last.
@@ -63,5 +65,12 @@
     "import/namespace": "off",
     "import/default": "error",
     "import/export": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": ["./tsconfig.json"]
+      }
+    }
   }
 }

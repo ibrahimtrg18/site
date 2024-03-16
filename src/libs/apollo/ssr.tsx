@@ -5,7 +5,7 @@ import {
   NextSSRInMemoryCache,
 } from "@apollo/experimental-nextjs-app-support/ssr";
 
-import { HYGRAPH_GRAPHQL_URI } from "../../constants";
+import { HYGRAPH_GRAPHQL_URI } from "@/constants";
 
 export const { getClient } = registerApolloClient(() => {
   return new NextSSRApolloClient({

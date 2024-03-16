@@ -1,6 +1,6 @@
-import { getClient } from "../../libs/apollo/ssr";
-import { QUERY_GET_ALL_PROJECTS } from "../queries/project";
-import { ProjectsData } from "../../types/Project";
+import { QUERY_GET_ALL_PROJECTS } from "@/graphql/queries/project";
+import { getClient } from "@/libs/apollo/ssr";
+import { ProjectsData } from "@/types/Project";
 
 export async function getProjects() {
   const data = await getClient().query<ProjectsData>({

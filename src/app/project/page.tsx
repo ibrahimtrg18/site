@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
-import { Container } from "../../components/Container";
-import { Section } from "../../components/Section";
-import { ProjectList } from "../../views/Project/ProjectList";
+import { Container } from "@/components/Container";
+import { Section } from "@/components/Section";
+import { ProjectList } from "@/views/Project/ProjectList";
 
 export const revalidate = 3600;
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
-import PageTransition from "../../components/PageTransition";
-import { ProjectProvider } from "../../contexts/ProjectContext/ProjectContext";
-import { getProjects } from "../../graphql/api/getProjects";
+import PageTransition from "@/components/PageTransition";
+import { ProjectProvider } from "@/contexts/ProjectContext/ProjectContext";
+import { getProjects } from "@/graphql/api/getProjects";
 
 type ProjectLayoutProps = {
   children: React.ReactNode;

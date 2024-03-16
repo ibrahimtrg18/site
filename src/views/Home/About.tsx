@@ -2,7 +2,7 @@
 
 import { Flex, Text } from "@chakra-ui/react";
 
-import { useConfigurationContext } from "../../contexts/configuration";
+import { useConfigurationContext } from "@/contexts/configuration";
 
 const About = () => {
   const { about } = useConfigurationContext();

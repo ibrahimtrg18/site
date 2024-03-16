@@ -1,6 +1,6 @@
-import { Container } from "../../components/Container";
-import { Section } from "../../components/Section";
-import { UnderMaintain } from "../../components/UnderMaintain";
+import { Container } from "@/components/Container";
+import { Section } from "@/components/Section";
+import { UnderMaintain } from "@/components/UnderMaintain";
 
 // export const revalidate = 3600;
 

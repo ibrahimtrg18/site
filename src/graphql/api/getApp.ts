@@ -1,6 +1,6 @@
-import { getClient } from "../../libs/apollo/ssr";
-import { QUERY_GET_ALL_APP } from "../queries/appQueries";
-import { ResponseGetApp } from "../../types/App";
+import { QUERY_GET_ALL_APP } from "@/graphql/queries/appQueries";
+import { getClient } from "@/libs/apollo/ssr";
+import { ResponseGetApp } from "@/types/App";
 
 export async function getApp() {
   const {

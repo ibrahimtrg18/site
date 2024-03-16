@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
 
-import { Configuration } from "../types/Configuration";
+import { Configuration } from "@/types/Configuration";
 
 type ConfigurationState = Configuration;
 
