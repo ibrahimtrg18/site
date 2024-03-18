@@ -1,4 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 
 import { Container } from "@/components/Container";
 import { Section } from "@/components/Section";
@@ -20,6 +21,10 @@ export async function generateMetadata(
   const {
     data: { project },
   } = await getProjectById(id);
+
+  if (!project) {
+    return notFound();
+  }
 
   const previousImages = (await parent).openGraph?.images || [];
 
