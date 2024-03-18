@@ -1,7 +1,9 @@
 import { useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export const useQuery = () => {
+export const useNavigation = () => {
+  const pathname = usePathname();
+  const router = useRouter();
   const searchParams = useSearchParams();
 
   /**
@@ -14,7 +16,8 @@ export const useQuery = () => {
       const params = new URLSearchParams(searchParams.toString());
       params.set(name, value);
 
-      return params.toString();
+      router.push(pathname + "?" + params.toString());
+      return;
     },
     [searchParams]
   );
@@ -28,12 +31,14 @@ export const useQuery = () => {
       const params = new URLSearchParams(searchParams.toString());
       params.delete(name);
 
-      return params.toString();
+      router.push(pathname + "?" + params.toString());
+      return;
     },
     [searchParams]
   );
 
   return {
+    router,
     updateQuery,
     removeQuery,
   };

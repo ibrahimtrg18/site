@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import {
   Card,
   CardBody,
@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-import { useQuery } from "@/hooks/useQuery";
+import { useNavigation } from "@/hooks/useNavigation";
 import { Project } from "@/types/Hygraph/models/Project";
 
 import { ProjectDetailModal } from "./ProjectDetailModal";
@@ -27,12 +27,10 @@ type ProjectItemProps = Project;
 
 export const ProjectItem = (props: ProjectItemProps) => {
   const { id, title, description, media } = props;
-  const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const chakra = useChakra();
   const { colorMode } = useColorMode();
-  const { updateQuery, removeQuery } = useQuery();
+  const { updateQuery, removeQuery } = useNavigation();
   const projectId = searchParams.get("projectId");
 
   /**
@@ -48,7 +46,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
       <ProjectDetailModal
         {...props}
         isOpen={isOpen}
-        onClose={() => router.push(pathname + "?" + removeQuery("projectId"))}
+        onClose={() => removeQuery("projectId")}
       />
 
       <GridItem>
@@ -73,9 +71,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
           backgroundColor="transparent"
           height="100%"
           cursor="pointer"
-          onClick={() =>
-            router.push(pathname + "?" + updateQuery("projectId", id))
-          }
+          onClick={() => updateQuery("projectId", id)}
         >
           <CardHeader padding={0}>
             <Image

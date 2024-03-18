@@ -1,14 +1,27 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Flex, Grid, Spinner } from "@chakra-ui/react";
 
 import { useProjectContext } from "@/contexts/ProjectContext/ProjectContext";
+import { useNavigation } from "@/hooks/useNavigation";
 
 import { ProjectItem } from "./ProjectItem";
 
 export const ProjectList = () => {
   const { projects } = useProjectContext();
+  const searchParams = useSearchParams();
+  const projectId = searchParams.get("projectId");
+  const { removeQuery } = useNavigation();
+
+  useEffect(() => {
+    if (projects.findIndex((project) => project.id === projectId) >= 0) {
+      return;
+    }
+
+    removeQuery("projectId");
+  }, []);
 
   return (
     <Suspense
