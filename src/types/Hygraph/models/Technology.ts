@@ -1,4 +1,4 @@
-import { Asset } from "./Hygraph";
+import { Asset } from "..";
 
 export type Technology = {
   id: number;
@@ -10,7 +10,3 @@ export type Technology = {
 };
 
 export type Technologies = Array<Technology>;
-
-export type TechnologiesData = {
-  technologies: Technologies;
-};

@@ -7,7 +7,15 @@ import {
 type ContainerProps = ChakraContainerProps;
 
 export const Container = (props: ContainerProps) => {
-  const { children, ...rest } = props;
+  const {
+    children,
+    maxW = ["container.sm", "container.md", "container.lg", "container.xl"],
+    ...rest
+  } = props;
 
-  return <ChakraContainer {...rest}>{children}</ChakraContainer>;
+  return (
+    <ChakraContainer maxW={maxW} {...rest}>
+      {children}
+    </ChakraContainer>
+  );
 };

@@ -27,7 +27,6 @@ export const Navbar = () => {
   return (
     <Container
       display="flex"
-      maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
       as="nav"
       position="absolute"
       top="0"

@@ -27,20 +27,12 @@ export const QUERY_GET_ALL_CONFIGURATION = gql`
         text
         farewell
         signature
-      }
-      menu {
-        id
-        label
-        pathname
-        slug
-        href
-      }
-      socials: social {
-        id
-        label
-        link
-        icon
-        stage
+        description {
+          html
+          markdown
+          text
+          raw
+        }
       }
     }
   }

@@ -1,6 +1,9 @@
+import { Page } from "../components/Page";
+
 export interface App {
   menu: Menu[];
   socials: Social[];
+  page: Page;
 }
 
 export interface Menu {
@@ -20,7 +23,3 @@ export interface Social {
 }
 
 export type Apps = App[];
-
-export type ResponseGetApp = {
-  apps: Apps;
-};

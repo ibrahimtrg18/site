@@ -1,9 +1,9 @@
-import { QUERY_GET_ALL_PROJECTS } from "@/graphql/queries/project";
+import { QUERY_GET_ALL_PROJECTS } from "@/graphql/queries/projectQueries";
 import { getClient } from "@/libs/apollo/ssr";
-import { ProjectsData } from "@/types/Project";
+import { ResponseGetProjects } from "@/types/response";
 
 export async function getProjects() {
-  const data = await getClient().query<ProjectsData>({
+  const data = await getClient().query<ResponseGetProjects>({
     query: QUERY_GET_ALL_PROJECTS,
     context: {
       fetchOptions: {

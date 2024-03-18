@@ -18,7 +18,7 @@ import {
 import { MdArrowForward } from "react-icons/md";
 
 import { evaluateSync } from "@/libs/mdx";
-import { Project } from "@/types/Project";
+import { Project } from "@/types/Hygraph/models/Project";
 
 import { ProjectDetailImage } from "./ProjectDetailImage";
 

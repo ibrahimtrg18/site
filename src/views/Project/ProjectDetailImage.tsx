@@ -7,7 +7,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Project } from "@/types/Project";
+import { Project } from "@/types/Hygraph/models/Project";
 
 import "swiper/css";
 import "swiper/css/free-mode";

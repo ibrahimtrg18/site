@@ -19,7 +19,7 @@ import {
 import { motion } from "framer-motion";
 
 import { useQuery } from "@/hooks/useQuery";
-import { Project } from "@/types/Project";
+import { Project } from "@/types/Hygraph/models/Project";
 
 import { ProjectDetailModal } from "./ProjectDetailModal";
 

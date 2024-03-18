@@ -1,17 +1,26 @@
 import { Container } from "@/components/Container";
+import { Maintenance } from "@/components/Maintenance";
 import { Section } from "@/components/Section";
-import { UnderMaintain } from "@/components/UnderMaintain";
+import { getApp } from "@/graphql/api/getApp";
 
 // export const revalidate = 3600;
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const {
+    data: { app },
+  } = await getApp();
+
+  if (!app?.page.blogPage.show) {
+    return (
+      <Container>
+        <Maintenance />
+      </Container>
+    );
+  }
+
   return (
-    <Container
-      maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
-    >
-      <Section>
-        <UnderMaintain />
-      </Section>
+    <Container>
+      <Section>Blog Page</Section>
     </Container>
   );
 }

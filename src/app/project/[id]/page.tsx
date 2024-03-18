@@ -48,9 +48,7 @@ export default async function ProjectPage({ params: { id } }: Props) {
   } = await getProjectById(id);
 
   return (
-    <Container
-      maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
-    >
+    <Container>
       <Section gap="2rem">
         <ProjectDetail {...project} />
       </Section>

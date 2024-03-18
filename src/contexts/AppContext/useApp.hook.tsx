@@ -12,10 +12,24 @@ const appReducer = (state: AppState, action: AppAction) => {
 export const initialAppState: AppState = {
   menu: [],
   socials: [],
+  page: {
+    homePage: {
+      show: false,
+      reason: "normal",
+    },
+    projectPage: {
+      show: false,
+      reason: "normal",
+    },
+    blogPage: {
+      show: false,
+      reason: "normal",
+    },
+  },
 };
 
 export const useApp = (initialApp: AppState | null) => {
-  const [{ menu, socials }] = useReducer(
+  const [{ menu, socials, page }] = useReducer(
     appReducer,
     initialApp || initialAppState
   );
@@ -23,5 +37,6 @@ export const useApp = (initialApp: AppState | null) => {
   return {
     menu,
     socials,
+    page,
   };
 };

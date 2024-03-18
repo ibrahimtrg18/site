@@ -1,4 +1,4 @@
-import { Asset, RichText } from "./Hygraph";
+import { Asset, RichText } from "..";
 
 export type Project = {
   id: string;
@@ -16,11 +16,3 @@ export type Project = {
 };
 
 export type Projects = Array<Project>;
-
-export type ProjectsData = {
-  projects: Projects;
-};
-
-export type ProjectData = {
-  project: Project;
-};

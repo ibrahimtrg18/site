@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from "react";
 
-import { initialAppState, useApp } from "./AppContext.hook";
+import { initialAppState, useApp } from "./useApp.hook";
 import { AppProviderProps } from "./AppContext.types";
 
 const AppContext = createContext(initialAppState);

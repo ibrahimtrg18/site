@@ -9,8 +9,8 @@ import { ConfigurationContextProvider } from "@/contexts/configuration";
 import { ApolloProvider } from "@/libs/apollo/client";
 import { theme } from "@/theme";
 import { MDXComponents } from "@/theme/MDXComponents";
-import { App } from "@/types/App";
-import { Configuration } from "@/types/Configuration";
+import { App } from "@/types/Hygraph/models/App";
+import { Configuration } from "@/types/Hygraph/models/Configuration";
 
 type ProvidersProps = React.HTMLProps<HTMLElement> & {
   configuration: Configuration | null;

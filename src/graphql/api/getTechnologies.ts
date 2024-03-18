@@ -1,9 +1,9 @@
-import { QUERY_GET_ALL_TECHNOLOGIES } from "@/graphql/queries/technology";
+import { QUERY_GET_ALL_TECHNOLOGIES } from "@/graphql/queries/technologyQueries";
 import { getClient } from "@/libs/apollo/ssr";
-import { TechnologiesData } from "@/types/Technology";
+import { ResponseGetTechnologies } from "@/types/response";
 
 export async function getTechnologies() {
-  const data = await getClient().query<TechnologiesData>({
+  const data = await getClient().query<ResponseGetTechnologies>({
     query: QUERY_GET_ALL_TECHNOLOGIES,
     context: {
       fetchOptions: {

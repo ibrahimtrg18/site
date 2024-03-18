@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from "react";
 
-import { initialProjectState, useProject } from "./ProjectContext.hook";
+import { initialProjectState, useProject } from "./useProject.hook";
 import { ProjectProviderProps } from "./ProjectContext.types";
 
 const ProjectContext = createContext(initialProjectState);

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
 
-import { Configuration } from "@/types/Configuration";
+import { Configuration } from "@/types/Hygraph/models/Configuration";
 
 type ConfigurationState = Configuration;
 

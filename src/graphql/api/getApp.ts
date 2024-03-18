@@ -1,11 +1,11 @@
 import { QUERY_GET_ALL_APP } from "@/graphql/queries/appQueries";
 import { getClient } from "@/libs/apollo/ssr";
-import { ResponseGetApp } from "@/types/App";
+import { ResponseGetApps } from "@/types/response";
 
 export async function getApp() {
   const {
     data: { apps },
-  } = await getClient().query<ResponseGetApp>({
+  } = await getClient().query<ResponseGetApps>({
     query: QUERY_GET_ALL_APP,
     context: {
       fetchOptions: {

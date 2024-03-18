@@ -17,6 +17,16 @@ export const QUERY_GET_ALL_APP = gql`
         icon
         stage
       }
+      page {
+        homePage {
+          show
+          reason
+        }
+        projectPage {
+          show
+          reason
+        }
+      }
     }
   }
 `;

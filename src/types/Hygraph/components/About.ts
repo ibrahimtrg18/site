@@ -1,4 +1,4 @@
-export interface About {
+export type About = {
   firstName: string;
   lastName: string;
   fullName: string;
@@ -15,4 +15,4 @@ export interface About {
   lat: null | number;
   lng: null | number;
   location: string;
-}
+};

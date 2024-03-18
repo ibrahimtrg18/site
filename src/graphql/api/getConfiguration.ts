@@ -1,11 +1,11 @@
-import { QUERY_GET_ALL_CONFIGURATION } from "@/graphql/queries/configuration";
+import { QUERY_GET_ALL_CONFIGURATION } from "@/graphql/queries/configurationQueries";
 import { getClient } from "@/libs/apollo/ssr";
-import { ResponseConfigurations } from "@/types/Configuration";
+import { ResponseGetConfigurations } from "@/types/response";
 
 export async function getConfiguration() {
   const {
     data: { configurations },
-  } = await getClient().query<ResponseConfigurations>({
+  } = await getClient().query<ResponseGetConfigurations>({
     query: QUERY_GET_ALL_CONFIGURATION,
     context: {
       fetchOptions: {

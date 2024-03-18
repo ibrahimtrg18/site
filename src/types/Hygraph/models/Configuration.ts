@@ -1,5 +1,5 @@
-import { About } from "./About";
-import { Maintenance } from "./Maintainance";
+import { About } from "../components/About";
+import { Maintenance } from "../components/Maintenance";
 
 export type Configuration = {
   id: string;
@@ -8,7 +8,3 @@ export type Configuration = {
 };
 
 export type Configurations = Configuration[];
-
-export type ResponseConfigurations = {
-  configurations: Configurations;
-};
