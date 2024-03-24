@@ -23,8 +23,6 @@ export const ProjectList = () => {
     removeQuery("projectId");
   }, []);
 
-  console.log(projects);
-
   return (
     <Suspense
       fallback={
