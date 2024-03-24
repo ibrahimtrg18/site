@@ -19,9 +19,9 @@ export const ProjectDetail = ({
   return (
     <Flex direction="column">
       <Flex height="inherit" direction="column" gap="2rem">
-        <ProjectDetailImage media={media} title={title} />
+        {media.length > 0 && <ProjectDetailImage media={media} title={title} />}
 
-        <Divider orientation="horizontal" />
+        {media.length > 0 && <Divider orientation="horizontal" />}
 
         <Flex direction="column" flex={1} gap="1rem">
           <Box>

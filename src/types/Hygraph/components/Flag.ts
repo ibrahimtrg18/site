@@ -1,3 +1,3 @@
 export type Flag = {
-  show: boolean;
+  show?: boolean;
 };

@@ -2,6 +2,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Container } from "@/components/Container";
+import { Maintenance } from "@/components/Maintenance";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
 import { getProjectById } from "@/graphql/api/getProjectById";
@@ -51,6 +52,14 @@ export default async function ProjectPage({ params: { id } }: Props) {
   const {
     data: { project },
   } = await getProjectById(id);
+
+  if (!project?.projectDetailPage?.show) {
+    return (
+      <Container>
+        <Maintenance />
+      </Container>
+    );
+  }
 
   return (
     <Container>

@@ -18,7 +18,7 @@ export default async function ProjectPage() {
     data: { app },
   } = await getApp();
 
-  if (!app?.page.projectPage.show) {
+  if (!app?.page.projectPage?.show) {
     return (
       <Container>
         <Maintenance />

@@ -48,9 +48,11 @@ export const ProjectDetailModal = ({
         <ModalBody>
           <Flex direction="column">
             <Flex height="inherit" direction="column" gap="2rem">
-              <ProjectDetailImage media={media} title={title} />
+              {media.length > 0 && (
+                <ProjectDetailImage media={media} title={title} />
+              )}
 
-              <Divider orientation="horizontal" />
+              {media.length > 0 && <Divider orientation="horizontal" />}
 
               <Flex direction="column" flex={1} gap="1rem">
                 <MDXContent />
@@ -59,15 +61,17 @@ export const ProjectDetailModal = ({
           </Flex>
         </ModalBody>
         <ModalFooter>
-          <Button
-            rightIcon={<MdArrowForward />}
-            as={Link}
-            href={url}
-            passHref
-            target="_blank"
-          >
-            Visit
-          </Button>
+          {url && (
+            <Button
+              rightIcon={<MdArrowForward />}
+              as={Link}
+              href={url}
+              passHref
+              target="_blank"
+            >
+              Visit
+            </Button>
+          )}
         </ModalFooter>
       </ModalContent>
     </Modal>

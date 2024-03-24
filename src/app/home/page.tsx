@@ -24,7 +24,7 @@ export default async function MePage() {
     data: { app },
   } = await getApp();
 
-  if (!app?.page.homePage.show) {
+  if (!app?.page.homePage?.show) {
     return (
       <Container>
         <Maintenance />

@@ -1,3 +1,4 @@
+import { Flag } from "../components/Flag";
 import { Asset, RichText } from "..";
 
 export type Project = {
@@ -13,6 +14,8 @@ export type Project = {
       small: string;
     }
   >;
+  projectPage: Flag;
+  projectDetailPage: Flag;
 };
 
 export type Projects = Array<Project>;

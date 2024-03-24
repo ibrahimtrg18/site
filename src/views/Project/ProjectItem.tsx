@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import { useSearchParams } from "next/navigation";
 import {
   Card,
@@ -41,6 +41,26 @@ export const ProjectItem = (props: ProjectItemProps) => {
     isOpen: projectId === id,
   });
 
+  const MediaImage = ({
+    src = "/images/no-image.png",
+    blurDataURL,
+  }: Partial<ImageProps>) => (
+    <Image
+      placeholder="blur"
+      width={250}
+      height={250}
+      blurDataURL={blurDataURL}
+      style={{
+        width: "100%",
+        height: "250px",
+        objectFit: "cover",
+        objectPosition: "top",
+      }}
+      src={src}
+      alt={title}
+    />
+  );
+
   return (
     <>
       <ProjectDetailModal
@@ -74,20 +94,14 @@ export const ProjectItem = (props: ProjectItemProps) => {
           onClick={() => updateQuery("projectId", id)}
         >
           <CardHeader padding={0}>
-            <Image
-              placeholder="blur"
-              width={250}
-              height={250}
-              blurDataURL={media[0].small}
-              style={{
-                width: "100%",
-                height: "250px",
-                objectFit: "cover",
-                objectPosition: "top",
-              }}
-              src={media[0].url}
-              alt={title}
-            />
+            {media.length ? (
+              <MediaImage blurDataURL={media[0].small} src={media[0].url} />
+            ) : (
+              <MediaImage
+                blurDataURL="/images/no-image.png"
+                src="/images/no-image.png"
+              />
+            )}
           </CardHeader>
           <CardBody>
             <Stack spacing="3">

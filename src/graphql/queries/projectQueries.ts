@@ -23,6 +23,9 @@ export const QUERY_GET_ALL_PROJECTS = gql`
         text
         raw
       }
+      projectPage {
+        show
+      }
     }
   }
 `;
@@ -49,6 +52,9 @@ export const QUERY_GET_PROJECT_BY_ID = gql`
         markdown
         text
         raw
+      }
+      projectDetailPage {
+        show
       }
     }
   }

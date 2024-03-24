@@ -10,7 +10,7 @@ export default async function BlogPage() {
     data: { app },
   } = await getApp();
 
-  if (!app?.page.blogPage.show) {
+  if (!app?.page.blogPage?.show) {
     return (
       <Container>
         <Maintenance />
