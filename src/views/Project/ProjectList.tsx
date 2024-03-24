@@ -1,8 +1,8 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { Flex, Grid, Spinner } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 
 import { useProjectContext } from "@/contexts/ProjectContext/ProjectContext";
 import { useNavigation } from "@/hooks/useNavigation";
@@ -24,36 +24,23 @@ export const ProjectList = () => {
   }, []);
 
   return (
-    <Suspense
-      fallback={
-        <Flex
-          w="100%"
-          minHeight="100vh"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Spinner />
-        </Flex>
-      }
+    <Grid
+      templateColumns={[
+        "repeat(1, 1fr)",
+        "repeat(1, 1fr)",
+        "repeat(2, 1fr)",
+        "repeat(3, 1fr)",
+        "repeat(3, 1fr)",
+      ]}
+      gap={6}
     >
-      <Grid
-        templateColumns={[
-          "repeat(1, 1fr)",
-          "repeat(1, 1fr)",
-          "repeat(2, 1fr)",
-          "repeat(3, 1fr)",
-          "repeat(3, 1fr)",
-        ]}
-        gap={6}
-      >
-        {projects.map((project) => {
-          if (!project.projectPage?.show) {
-            return null;
-          }
+      {projects.map((project) => {
+        if (!project.projectPage?.show) {
+          return null;
+        }
 
-          return <ProjectItem key={project.id} {...project} />;
-        })}
-      </Grid>
-    </Suspense>
+        return <ProjectItem key={project.id} {...project} />;
+      })}
+    </Grid>
   );
 };
