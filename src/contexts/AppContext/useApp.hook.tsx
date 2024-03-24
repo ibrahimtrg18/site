@@ -15,15 +15,12 @@ export const initialAppState: AppState = {
   page: {
     homePage: {
       show: false,
-      reason: "normal",
     },
     projectPage: {
       show: false,
-      reason: "normal",
     },
     blogPage: {
       show: false,
-      reason: "normal",
     },
   },
 };

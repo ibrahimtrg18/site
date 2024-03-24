@@ -20,11 +20,9 @@ export const QUERY_GET_ALL_APP = gql`
       page {
         homePage {
           show
-          reason
         }
         projectPage {
           show
-          reason
         }
       }
     }
