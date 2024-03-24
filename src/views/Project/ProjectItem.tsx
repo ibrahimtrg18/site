@@ -94,7 +94,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
           onClick={() => updateQuery("projectId", id)}
         >
           <CardHeader padding={0}>
-            {media.length ? (
+            {media.length > 0 ? (
               <MediaImage blurDataURL={media[0].small} src={media[0].url} />
             ) : (
               <MediaImage

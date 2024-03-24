@@ -5,7 +5,7 @@ import { Container } from "@/components/Container";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
 import { getProjectById } from "@/graphql/api/getProjectById";
-import { ProjectDetail } from "@/views/ProjectDetails/ProjectDetail";
+import { ProjectDetailsPolicy } from "@/views/ProjectDetailsPolicy/ProjectDetailsPolicy";
 
 type Props = {
   params: { id: string };
@@ -28,15 +28,15 @@ export async function generateMetadata(
 
   const previousImages = (await parent).openGraph?.images || [];
 
-  const images = project?.media?.map((m) => m.small);
+  const images = project?.media?.map((m) => m.small) || [];
 
   return {
-    title: `${project.title} | Ibrahim Tarigan`,
-    description: project.description.text,
+    title: `${project?.title} | Ibrahim Tarigan`,
+    description: project?.description.text,
     metadataBase: new URL(SITE_URL),
     openGraph: {
-      title: `${project.title} | Ibrahim Tarigan`,
-      description: project.description.text,
+      title: `${project?.title} | Ibrahim Tarigan`,
+      description: project?.description?.text,
       images: [...images, ...previousImages],
       url: `${SITE_URL}/project/${id}`,
     },
@@ -52,14 +52,12 @@ export default async function ProjectPage({ params: { id } }: Props) {
     data: { project },
   } = await getProjectById(id);
 
-  if (!project?.projectDetailPage?.show) {
-    return notFound();
-  }
-
   return (
-    <Container>
+    <Container
+      maxW={["container.sm", "container.md", "container.lg", "container.xl"]}
+    >
       <Section gap="2rem">
-        <ProjectDetail {...project} />
+        <ProjectDetailsPolicy {...project} />
       </Section>
     </Container>
   );

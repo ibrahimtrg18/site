@@ -53,6 +53,14 @@ export const QUERY_GET_PROJECT_BY_ID = gql`
         text
         raw
       }
+      privacyPolicy {
+        text {
+          html
+          markdown
+          raw
+          text
+        }
+      }
       projectDetailPage {
         show
       }
