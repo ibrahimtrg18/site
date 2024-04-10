@@ -7,6 +7,7 @@ export const QUERY_GET_ALL_PROJECTS = gql`
       title
       url
       type
+      slug
       markdownFile {
         url
       }
@@ -33,6 +34,45 @@ export const QUERY_GET_ALL_PROJECTS = gql`
 export const QUERY_GET_PROJECT_BY_ID = gql`
   query ProjectById($projectId: ID!) {
     project(where: { id: $projectId }) {
+      id
+      title
+      url
+      type
+      slug
+      markdownFile {
+        url
+      }
+      media {
+        id
+        small: url(
+          transformation: { image: { resize: { height: 400, width: 400 } } }
+        )
+        url
+      }
+      description {
+        html
+        markdown
+        text
+        raw
+      }
+      privacyPolicy {
+        text {
+          html
+          markdown
+          raw
+          text
+        }
+      }
+      projectDetailPage {
+        show
+      }
+    }
+  }
+`;
+
+export const QUERY_GET_PROJECT_BY_SLUG = gql`
+  query ProjectById($slug: String!) {
+    project(where: { slug: $slug }) {
       id
       title
       url

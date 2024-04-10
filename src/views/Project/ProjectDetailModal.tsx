@@ -15,7 +15,6 @@ import {
   ModalOverlay,
   ModalProps,
 } from "@chakra-ui/react";
-import { MdArrowForward } from "react-icons/md";
 
 import { evaluateSync } from "@/libs/mdx";
 import { Project } from "@/types/Hygraph/models/Project";
@@ -30,6 +29,7 @@ export const ProjectDetailModal = ({
   title,
   description,
   url,
+  slug,
   media,
 }: ProjectDetailModalProps) => {
   const MDXContent = evaluateSync(description.markdown);
@@ -61,17 +61,18 @@ export const ProjectDetailModal = ({
           </Flex>
         </ModalBody>
         <ModalFooter>
-          {url && (
-            <Button
-              rightIcon={<MdArrowForward />}
-              as={Link}
-              href={url}
-              passHref
-              target="_blank"
-            >
-              Visit
-            </Button>
-          )}
+          <Flex flexDirection="row" gap={3}>
+            {url && (
+              <Button as={Link} href={url} passHref target="_blank">
+                Visit
+              </Button>
+            )}
+            {slug && (
+              <Button as={Link} href={slug} passHref target="_blank">
+                Detail
+              </Button>
+            )}
+          </Flex>
         </ModalFooter>
       </ModalContent>
     </Modal>

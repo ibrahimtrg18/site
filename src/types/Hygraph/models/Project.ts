@@ -7,6 +7,7 @@ export type Project = {
   url: string;
   experience: number;
   type: string;
+  slug: string;
   description: RichText;
   markdownFile: Asset;
   media: Array<

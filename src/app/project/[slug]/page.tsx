@@ -4,23 +4,23 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
-import { getProjectById } from "@/graphql/api/getProjectById";
+import { getProjectBySlug } from "@/graphql/api/getProjectBySlug";
 import { ProjectDetail } from "@/views/ProjectDetails/ProjectDetail";
 
 type Props = {
-  params: { id: string };
+  params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export const revalidate = 3600;
 
 export async function generateMetadata(
-  { params: { id } }: Props,
+  { params: { slug } }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const {
     data: { project },
-  } = await getProjectById(id);
+  } = await getProjectBySlug("/project/" + slug);
 
   if (!project) {
     return notFound();
@@ -38,7 +38,7 @@ export async function generateMetadata(
       title: `${project.title} | Ibrahim Tarigan`,
       description: project.description.text,
       images: [...images, ...previousImages],
-      url: `${SITE_URL}/project/${id}`,
+      url: `${SITE_URL}/project/${slug}`,
     },
     robots: {
       index: true,
@@ -47,10 +47,10 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProjectPage({ params: { id } }: Props) {
+export default async function ProjectPage({ params: { slug } }: Props) {
   const {
     data: { project },
-  } = await getProjectById(id);
+  } = await getProjectBySlug("/project/" + slug);
 
   if (!project?.projectDetailPage?.show) {
     return notFound();
