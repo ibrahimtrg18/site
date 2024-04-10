@@ -5,7 +5,7 @@ import { Button, Flex, IconButton, Text } from "@chakra-ui/react";
 import * as SocialIcon from "react-icons/io5";
 
 import { useAppContext } from "@/contexts/AppContext/AppContext";
-import { useConfigurationContext } from "@/contexts/configuration";
+import { useConfigurationContext } from "@/contexts/ConfigurationContext/ConfigurationContext";
 
 const Me = () => {
   const { about } = useConfigurationContext();

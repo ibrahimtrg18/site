@@ -2,7 +2,7 @@
 
 import { Flex } from "@chakra-ui/react";
 
-import { useConfigurationContext } from "@/contexts/configuration";
+import { useConfigurationContext } from "@/contexts/ConfigurationContext/ConfigurationContext";
 import { evaluateSync } from "@/libs/mdx";
 
 export const Maintenance = () => {
