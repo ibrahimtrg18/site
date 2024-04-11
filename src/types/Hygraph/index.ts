@@ -13,9 +13,3 @@ export type RichText = {
   raw: string;
   text: string;
 };
-
-export type PrivacyPolicy = {
-  privacyPolicy: {
-    text: RichText | null;
-  };
-};

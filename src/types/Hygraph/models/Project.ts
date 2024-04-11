@@ -1,5 +1,6 @@
 import { Flag } from "../components/Flag";
-import { Asset, PrivacyPolicy, RichText } from "..";
+import { PrivacyPolicy } from "../components/PrivacyPolicy";
+import { Asset, RichText } from "..";
 
 export type Project = {
   id: string;
