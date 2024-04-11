@@ -1,4 +1,4 @@
-import { Asset } from "..";
+import { Asset } from "../hygraph";
 
 export type Technology = {
   id: number;

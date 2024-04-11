@@ -1,4 +1,4 @@
-import { RichText } from "..";
+import { RichText } from "../hygraph";
 
 export type Maintenance = {
   title: string;
