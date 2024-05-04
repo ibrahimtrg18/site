@@ -47,7 +47,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
   }: Partial<ImageProps>) => (
     <Image
       placeholder="blur"
-      width={250}
+      width={400}
       height={250}
       blurDataURL={blurDataURL}
       style={{

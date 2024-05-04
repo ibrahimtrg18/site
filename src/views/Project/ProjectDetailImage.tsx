@@ -58,7 +58,7 @@ export const ProjectDetailImage = ({
               <Box height="xs">
                 <Image
                   placeholder="blur"
-                  width={300}
+                  width={800}
                   height={0}
                   blurDataURL={media.url}
                   style={{
@@ -106,7 +106,7 @@ export const ProjectDetailImage = ({
               >
                 <Image
                   placeholder="blur"
-                  width={300}
+                  width={400}
                   height={0}
                   blurDataURL={media.url}
                   style={{
