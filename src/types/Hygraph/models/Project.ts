@@ -5,12 +5,12 @@ import { Asset, RichText } from "../hygraph";
 export type Project = {
   id: string;
   title: string;
-  url: string;
   experience: number;
   type: string;
   slug: string;
   description: RichText;
   markdownFile: Asset;
+  links: { [key: string]: string };
   media: Array<
     Asset & {
       small: string;

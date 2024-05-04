@@ -28,9 +28,8 @@ export const ProjectDetailModal = ({
   onClose = () => {},
   title,
   description,
-  url,
-  slug,
   media,
+  links,
 }: ProjectDetailModalProps) => {
   const MDXContent = evaluateSync(description.markdown);
 
@@ -62,16 +61,18 @@ export const ProjectDetailModal = ({
         </ModalBody>
         <ModalFooter>
           <Flex flexDirection="row" gap={3}>
-            {url && (
-              <Button as={Link} href={url} passHref target="_blank">
-                Visit
+            {Object.entries(links).map(([key, value]) => (
+              <Button
+                key={key + value}
+                as={Link}
+                href={value}
+                passHref
+                target="_blank"
+                textTransform="capitalize"
+              >
+                {key}
               </Button>
-            )}
-            {slug && (
-              <Button as={Link} href={slug} passHref target="_blank">
-                Detail
-              </Button>
-            )}
+            ))}
           </Flex>
         </ModalFooter>
       </ModalContent>

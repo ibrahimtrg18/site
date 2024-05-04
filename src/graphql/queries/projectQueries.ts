@@ -5,9 +5,9 @@ export const QUERY_GET_ALL_PROJECTS = gql`
     projects(first: 100, orderBy: title_ASC) {
       id
       title
-      url
       type
       slug
+      links
       markdownFile {
         url
       }
@@ -36,9 +36,9 @@ export const QUERY_GET_PROJECT_BY_ID = gql`
     project(where: { id: $projectId }) {
       id
       title
-      url
       type
       slug
+      links
       markdownFile {
         url
       }
@@ -75,8 +75,9 @@ export const QUERY_GET_PROJECT_BY_SLUG = gql`
     project(where: { slug: $slug }) {
       id
       title
-      url
       type
+      slug
+      links
       markdownFile {
         url
       }
