@@ -2,6 +2,7 @@ import React from "react";
 
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Layout } from "@/components/Layout";
+import PageTransition from "@/components/PageTransition";
 import { Providers } from "@/components/Providers";
 import { GOOGLE_ANALYTICS_ID } from "@/constants";
 import { getApp } from "@/graphql/api/getApp";
@@ -13,6 +14,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   const {
     data: { configuration },
   } = await getConfiguration();
+
   const {
     data: { app },
   } = await getApp();
@@ -34,7 +36,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             backgroundRepeat="repeat"
             backgroundSize="333px"
           >
-            {children}
+            <PageTransition>{children}</PageTransition>
           </Layout>
         </Providers>
       </body>

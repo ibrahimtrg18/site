@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
 import { useAppContext } from "@/contexts/AppContext/AppContext";
+import { useConfigurationContext } from "@/contexts/ConfigurationContext/ConfigurationContext";
 
 import { Container } from "./Container";
 
@@ -23,6 +24,7 @@ export const Navbar = () => {
   const pathname = usePathname();
   const { menu: links = [] } = useAppContext();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { about } = useConfigurationContext();
 
   return (
     <Container
@@ -51,7 +53,7 @@ export const Navbar = () => {
           loading="lazy"
           style={{ borderRadius: "9999px" }}
           src="/images/avatar.png"
-          alt="Ibrahim Tarigan"
+          alt={about.fullName || "Avatar image picture"}
         />
         <Spacer />
         <Flex as="nav" position="relative" direction="row" gap="1rem">
