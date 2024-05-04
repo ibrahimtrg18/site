@@ -1,8 +1,8 @@
-# My Personal Website
+# Personal Website
 
-This project is source-available for you to use for creating personal website.
+This project is source-available for you to use for creating a personal website.
 
-Requirement, Need install [Node.js](https://nodejs.org/en) v18+ and [Yarn](https://yarnpkg.com/) v1.22+
+Requirement, Need install [Node.js](https://nodejs.org/en) v18+ and [NPM](https://www.npmjs.com/) v9+
 
 Stack Technology I used In this project:
 
@@ -11,19 +11,19 @@ Stack Technology I used In this project:
 - [GrahpQL](https://graphql.org/)
 - [Chakra-UI](https://chakra-ui.com/)
 - [Docker](https://www.docker.com/)
-- More... just check my package.json bruh 😂
+- More... check [package.json](https://github.com/ibrahimtrg18/ibrahim-tarigan/blob/main/package.json)
 
 ## Getting Started
 
-Clone the project to local machine:
+Clone the project to a local machine:
 
 ```bash
 git clone https://github.com/ibrahimtrg18/ibrahim-tarigan.git
 ```
 
-you need to copy `.env.template` to root folder as `.env` file, and fill it with your own environment variables.
+you need to copy `.env.template` to the root folder as a `.env` file and fill it with your environment variables.
 
-> NOTE: If you don't have Hygraph Template CMS, you can send me an email to ibrahimtarigan@gmail.com
+> NOTE: If you don't have Hygraph Template CMS, please go to [Clone Hygraph](https://app.hygraph.com/clone/4e93c7ed0b984641bb6ae8ca17e36518?name=ibrahim-tarigan)
 
 ```bash
 HYGRAPH_GRAPHQL_URI=[YOUR HYGRAPH_GRAPHQL_URI]
@@ -34,7 +34,7 @@ GOOGLE_ANALYTICS_ID=[YOUR GOOGLE ANALYTICS ID]
 Run Development in Local machine:
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your favorite browser.
@@ -43,7 +43,7 @@ Open [http://localhost:3000](http://localhost:3000) with your favorite browser.
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
 - [Hygraph](https://hygraph.com/) - a Build Scalable Content Experiences
 - [Google Analytics](https://analytics.google.com) - Monitoring and Analytics your website.
 
