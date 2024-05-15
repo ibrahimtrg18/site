@@ -32,6 +32,10 @@ export const initialConfigurationState: ConfigurationState = {
     farewell: "",
     signature: "",
   },
+  avatar: {
+    id: "",
+    url: "",
+  },
 };
 
 export const configurationReducer = (
@@ -45,7 +49,7 @@ export const configurationReducer = (
 };
 
 export const useConfiguration = (state: ConfigurationContextProviderValue) => {
-  const [{ id, about, maintenance }, dispatch] = useReducer(
+  const [{ id, about, maintenance, avatar }, dispatch] = useReducer(
     configurationReducer,
     state || initialConfigurationState
   );
@@ -54,6 +58,7 @@ export const useConfiguration = (state: ConfigurationContextProviderValue) => {
     id,
     about,
     maintenance,
+    avatar,
     dispatch,
   };
 };

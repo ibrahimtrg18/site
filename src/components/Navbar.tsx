@@ -24,7 +24,7 @@ export const Navbar = () => {
   const pathname = usePathname();
   const { menu: links = [] } = useAppContext();
   const { colorMode, toggleColorMode } = useColorMode();
-  const { about } = useConfigurationContext();
+  const { about, avatar } = useConfigurationContext();
 
   return (
     <Container
@@ -52,7 +52,7 @@ export const Navbar = () => {
           height={32}
           loading="lazy"
           style={{ borderRadius: "9999px" }}
-          src="/images/avatar.png"
+          src={avatar.url}
           alt={about.fullName || "Avatar image picture"}
         />
         <Spacer />
