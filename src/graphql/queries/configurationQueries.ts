@@ -34,6 +34,10 @@ export const QUERY_GET_ALL_CONFIGURATION = gql`
           raw
         }
       }
+      avatar {
+        id
+        url
+      }
     }
   }
 `;

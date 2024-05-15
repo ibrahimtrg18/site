@@ -26,6 +26,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           name="google-site-verification"
           content="Dgh3-7chmF8XSw4RmI2T13hmdsE370jbAOLx8y43OJ0"
         />
+        <link rel="icon" href={configuration?.avatar.url} sizes="any" />
       </head>
       <body style={{ overflowY: "auto" }}>
         {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
