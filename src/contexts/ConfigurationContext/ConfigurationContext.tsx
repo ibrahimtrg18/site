@@ -26,7 +26,7 @@ export const useConfigurationContext = () => {
 
   if (!context) {
     throw new Error(
-      "useThemeContext must be used within a ThemeContextProvider"
+      "useConfigurationContext must be used within a ConfigurationContextProvider"
     );
   }
 
