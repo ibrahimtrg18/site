@@ -11,7 +11,7 @@ const Me = () => {
   const { about } = useConfigurationContext();
   const { socials } = useAppContext();
 
-  const { greeting, whoiam, cv } = about;
+  const { greeting, whoami, cv } = about;
 
   return (
     <Flex direction="column" gap="1rem">
@@ -23,7 +23,7 @@ const Me = () => {
         >
           {greeting}
         </Text>
-        {whoiam?.split("\\n").map((line) => (
+        {whoami?.split("\\n").map((line) => (
           <Text
             key={line}
             fontSize={["1.5rem", null, "1.75rem", null, "2.5rem"]}

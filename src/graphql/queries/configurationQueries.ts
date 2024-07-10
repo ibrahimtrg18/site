@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 
+// TODO: fix this
 export const QUERY_GET_ALL_CONFIGURATION = gql`
   query Configuration {
     configurations {
@@ -12,7 +13,7 @@ export const QUERY_GET_ALL_CONFIGURATION = gql`
         initialName
         email
         phoneNumber
-        whoiam
+        whoami
         greeting
         description {
           text

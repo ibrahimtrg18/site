@@ -6,7 +6,7 @@ export type About = {
   initialName: string;
   email: string;
   phoneNumber: string;
-  whoiam: string;
+  whoami: string;
   greeting: string;
   description: {
     text: string;
