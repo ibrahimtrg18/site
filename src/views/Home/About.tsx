@@ -12,7 +12,7 @@ const About = () => {
   return (
     <Flex direction="column" gap="1rem">
       <Text as="h1" fontSize="1.5rem" fontWeight="bold">
-        About
+        About me
       </Text>
       <Text fontSize="1.25rem" textAlign="justify">
         {description?.text}
