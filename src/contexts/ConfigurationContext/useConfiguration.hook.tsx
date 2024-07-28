@@ -16,7 +16,7 @@ export const initialConfigurationState: ConfigurationState = {
     initialName: "",
     email: "",
     phoneNumber: "",
-    whoiam: "",
+    whoami: "",
     greeting: "",
     description: {
       text: "",

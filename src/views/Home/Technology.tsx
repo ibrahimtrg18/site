@@ -15,7 +15,7 @@ const Technology = (props: TechnologyProps) => {
   return (
     <Flex direction="column" gap="1rem" justifyItems="baseline">
       <Text as="h1" fontSize="1.5rem" fontWeight="bold">
-        Technologies and Tools
+        Stack technologies that I use
       </Text>
       <Grid
         templateColumns={[

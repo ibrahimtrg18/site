@@ -20,5 +20,5 @@ export const useAppContext = () => {
     throw new Error("useAppContext must be used within a AppProvider");
   }
 
-  return useContext(AppContext);
+  return context;
 };

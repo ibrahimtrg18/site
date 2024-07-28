@@ -12,10 +12,9 @@ type LayoutProps = FlexProps & {
 export const Layout = ({
   children,
   hasNavbar = true,
-  navbarHeight = 4,
   ...restProps
 }: LayoutProps) => {
-  const pyMq = [0, 0, 4, 2, 3].map((v) => `${v + navbarHeight}rem`);
+  const pt = [4, 5, 6].map((v) => `${v}rem`);
 
   return (
     <>
@@ -27,7 +26,7 @@ export const Layout = ({
         h="100%"
         minHeight="100vh"
         position="relative"
-        py={pyMq}
+        pt={pt}
         overflowY="auto"
         zIndex={1}
         {...restProps}
