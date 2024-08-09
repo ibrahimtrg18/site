@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
-import { getConfiguration } from "@/graphql/api/getConfiguration";
+import { getApps } from "@/graphql/api/getApp";
 import { getProjectBySlug } from "@/graphql/api/getProjectBySlug";
 import { ProjectDetailsPolicy } from "@/views/ProjectDetailsPolicy/ProjectDetailsPolicy";
 
@@ -19,9 +19,8 @@ export async function generateMetadata(
   { params: { slug } }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const {
-    data: { configuration },
-  } = await getConfiguration();
+  const { data } = await getApps();
+  const app = data?.apps[0];
 
   const {
     data: { project },
@@ -36,11 +35,11 @@ export async function generateMetadata(
   const images = project?.media?.map((m) => m.small) || [];
 
   return {
-    title: `${project?.title} | ${configuration?.about.fullName}`,
+    title: `${project?.title} | ${app?.fullname}`,
     description: project?.description.text,
     metadataBase: new URL(SITE_URL),
     openGraph: {
-      title: `${project?.title} | ${configuration?.about.fullName}`,
+      title: `${project?.title} | ${app?.fullname}`,
       description: project?.description?.text,
       images: [...images, ...previousImages],
       url: `${SITE_URL}/project/${slug}`,

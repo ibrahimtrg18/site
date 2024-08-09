@@ -3,14 +3,10 @@ import React from "react";
 import Image from "next/image";
 import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 
-import { Technology } from "@/types/Hygraph/models/App";
+import { useAppContext } from "@/contexts/AppContext/AppContext";
 
-type TechnologyProps = {
-  technologies: Technology[];
-};
-
-const Technology = (props: TechnologyProps) => {
-  const { technologies } = props;
+const Technology = () => {
+  const { technologies } = useAppContext();
 
   return (
     <Flex direction="column" gap="1rem" justifyItems="baseline">
@@ -27,7 +23,7 @@ const Technology = (props: TechnologyProps) => {
         ]}
         gap={6}
       >
-        {technologies.map(({ id, label, media: { url = "" } }) => {
+        {technologies.map(({ id, label = "", media: { url = "" } }) => {
           return (
             <GridItem
               key={id}
