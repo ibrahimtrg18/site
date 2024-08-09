@@ -23,9 +23,9 @@ import { Container } from "./Container";
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const { menu: links = [] } = useAppContext();
+  const { menu: links = [], avatar } = useAppContext();
   const layoudId = useId();
-  const { about, avatar } = useConfigurationContext();
+  const { about } = useConfigurationContext();
   const { colorMode, toggleColorMode } = useColorMode();
   const { scrollY } = useScroll();
   const color = useColorModeValue("black", "white");
@@ -67,7 +67,7 @@ export const Navbar = () => {
             height={32}
             loading="lazy"
             style={{ borderRadius: "9999px" }}
-            src={avatar.url}
+            src={avatar.url || ""}
             alt={about.fullName || "Avatar image picture"}
           />
           <Spacer />

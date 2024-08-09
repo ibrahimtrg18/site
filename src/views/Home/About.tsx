@@ -2,21 +2,28 @@
 
 import { Flex, Text } from "@chakra-ui/react";
 
-import { useConfigurationContext } from "@/contexts/ConfigurationContext/ConfigurationContext";
+import { useAppContext } from "@/contexts/AppContext/AppContext";
+import { evaluateSync } from "@/libs/mdx";
 
 const About = () => {
-  const { about } = useConfigurationContext();
+  const { about } = useAppContext();
 
-  const { description } = about;
+  const MDXContent = evaluateSync(String(about?.markdown));
 
   return (
     <Flex direction="column" gap="1rem">
       <Text as="h1" fontSize="1.5rem" fontWeight="bold">
         About me
       </Text>
-      <Text fontSize="1.25rem" textAlign="justify">
-        {description?.text}
-      </Text>
+      <MDXContent
+        components={{
+          p: ({ children }) => (
+            <Text fontSize="1.25rem" textAlign="justify">
+              {children}
+            </Text>
+          ),
+        }}
+      />
     </Flex>
   );
 };

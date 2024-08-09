@@ -13,7 +13,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export async function generateMetadata(
   { params: { slug } }: Props,

@@ -9,31 +9,48 @@ const appReducer = (state: AppState, action: AppAction) => {
   }
 };
 
-export const initialAppState: AppState = {
+export const initialAppState: AppState | undefined = {
+  id: "",
+  avatar: {},
+  fullname: "",
+  nickname: "",
+  email: "",
+  phoneNumber: "",
+  about: {},
+  greeting: {},
   menu: [],
   socials: [],
-  page: {
-    homePage: {
-      show: false,
-    },
-    projectPage: {
-      show: false,
-    },
-    blogPage: {
-      show: false,
-    },
-  },
+  technologies: [],
 };
 
-export const useApp = (initialApp: AppState | null) => {
-  const [{ menu, socials, page }] = useReducer(
-    appReducer,
-    initialApp || initialAppState
-  );
+export const useApp = (initialApp: AppState | undefined = initialAppState) => {
+  const [
+    {
+      id,
+      avatar,
+      fullname,
+      nickname,
+      email,
+      phoneNumber,
+      about,
+      greeting,
+      menu,
+      socials,
+      technologies,
+    },
+  ] = useReducer(appReducer, initialApp);
 
   return {
+    id,
+    avatar,
+    fullname,
+    nickname,
+    email,
+    phoneNumber,
+    about,
+    greeting,
     menu,
     socials,
-    page,
+    technologies,
   };
 };

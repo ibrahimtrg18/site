@@ -3,10 +3,10 @@ import React from "react";
 import Image from "next/image";
 import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 
-import { Technologies } from "@/types/Hygraph/models/Technology";
+import { Technology } from "@/types/Hygraph/models/App";
 
 type TechnologyProps = {
-  technologies: Technologies;
+  technologies: Technology[];
 };
 
 const Technology = (props: TechnologyProps) => {
@@ -27,7 +27,7 @@ const Technology = (props: TechnologyProps) => {
         ]}
         gap={6}
       >
-        {technologies.map(({ id, label, media: { url } }) => {
+        {technologies.map(({ id, label, media: { url = "" } }) => {
           return (
             <GridItem
               key={id}

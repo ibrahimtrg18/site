@@ -1,10 +1,10 @@
-import { Apps } from "./Hygraph/models/App";
+import { GetAppsResponse } from "./Hygraph/models/App";
 import { Configurations } from "./Hygraph/models/Configuration";
 import { Project, Projects } from "./Hygraph/models/Project";
 import { Technologies } from "./Hygraph/models/Technology";
 
 export type ResponseGetApps = {
-  apps: Apps;
+  apps: GetAppsResponse;
 };
 
 export type ResponseGetConfigurations = {

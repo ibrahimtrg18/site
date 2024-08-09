@@ -14,5 +14,5 @@ export type AppContext = {
 };
 
 export type AppProviderProps = React.ComponentPropsWithoutRef<"div"> & {
-  app: AppState | null;
+  app?: AppState;
 };

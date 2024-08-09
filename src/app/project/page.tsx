@@ -8,7 +8,7 @@ import { getApp } from "@/graphql/api/getApp";
 import { getConfiguration } from "@/graphql/api/getConfiguration";
 import { ProjectList } from "@/views/Project/ProjectList";
 
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   const {
