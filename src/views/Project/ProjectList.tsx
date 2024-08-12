@@ -35,10 +35,6 @@ export const ProjectList = () => {
       gap={6}
     >
       {projects.map((project) => {
-        if (!project.projectPage?.show) {
-          return null;
-        }
-
         return <ProjectItem key={project.id} {...project} />;
       })}
     </Grid>

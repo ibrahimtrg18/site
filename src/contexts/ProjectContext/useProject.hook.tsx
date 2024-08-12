@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-import { Project } from "@/types/Hygraph/models/Project";
+import { Project } from "@/generated/graphql";
 
 import {
   PROJECT_ACTION,

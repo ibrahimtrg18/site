@@ -3,8 +3,8 @@
 import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
+import { Project } from "@/generated/graphql";
 import { evaluateSync } from "@/libs/mdx";
-import { Project } from "@/types/Hygraph/models/Project";
 
 type ProjectDetailModalProps = Project;
 

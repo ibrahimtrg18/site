@@ -1,0 +1,32 @@
+query GetProjectBySlug($slug: String!) {
+  project(where: {slug: $slug}) {
+    id
+    title
+    slug
+    content {
+      ... on Content {
+        id
+        component {
+          ... on ProjectComponent {
+            id
+            title
+            link
+            slug
+            stage
+            description {
+              markdown
+            }
+            enabled
+            media {
+              url
+              small: url(
+                transformation: { image: { resize: { height: 400, width: 400 } } }
+              )
+            }
+          }
+        }
+        version
+      }
+    }
+  }
+}

@@ -7,17 +7,27 @@ import type { Swiper as SwiperType } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Project } from "@/types/Hygraph/models/Project";
+import { Project, ProjectComponent } from "@/generated/graphql";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
+type ProjectComponentContent = Extract<
+  Project["content"][number]["component"],
+  ProjectComponent
+>;
+
+type ProjectDetailImageProps = {
+  title: ProjectComponentContent["title"];
+  media: ProjectComponentContent["media"];
+};
+
 export const ProjectDetailImage = ({
   title = "",
   media = [],
-}: Partial<Project>) => {
+}: ProjectDetailImageProps) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [slide, setSlide] = useState<number | null>(null);
 
@@ -68,7 +78,7 @@ export const ProjectDetailImage = ({
                     objectPosition: "top",
                   }}
                   src={media.url}
-                  alt={title}
+                  alt={String(title)}
                 />
               </Box>
             </SwiperSlide>
@@ -117,7 +127,7 @@ export const ProjectDetailImage = ({
                     cursor: "pointer",
                   }}
                   src={media.url}
-                  alt={title}
+                  alt={String(title)}
                 />
               </Box>
             </SwiperSlide>

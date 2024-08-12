@@ -1,0 +1,28 @@
+query GetProjects {
+  projects {
+    id
+    title
+    content {
+      ... on Content {
+        id
+        component {
+          ... on ProjectComponent {
+            id
+            title
+            link
+            slug
+            stage
+            description {
+              markdown
+            }
+            media {
+              url(transformation: {image: {resize: {height: 1920, width: 1920}}})
+            }
+            enabled
+          }
+        }
+        version
+      }
+    }
+  }
+}

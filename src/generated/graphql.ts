@@ -851,7 +851,7 @@ export type AssetCreateInput = {
   height?: InputMaybe<Scalars["Float"]["input"]>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
-  mediaProjectItem?: InputMaybe<ProjectItemCreateManyInlineInput>;
+  mediaProjectItem?: InputMaybe<ProjectComponentCreateManyInlineInput>;
   mediaTechStack?: InputMaybe<TechStackCreateManyInlineInput>;
   mimeType?: InputMaybe<Scalars["String"]["input"]>;
   size?: InputMaybe<Scalars["Float"]["input"]>;
@@ -1036,7 +1036,7 @@ export type AssetUpdateInput = {
   height?: InputMaybe<Scalars["Float"]["input"]>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
-  mediaProjectItem?: InputMaybe<ProjectItemUpdateManyInlineInput>;
+  mediaProjectItem?: InputMaybe<ProjectComponentUpdateManyInlineInput>;
   mediaTechStack?: InputMaybe<TechStackUpdateManyInlineInput>;
   mimeType?: InputMaybe<Scalars["String"]["input"]>;
   size?: InputMaybe<Scalars["Float"]["input"]>;
@@ -2647,16 +2647,16 @@ export type ContentWhereUniqueInput = {
   id?: InputMaybe<Scalars["ID"]["input"]>;
 };
 
-export type ContentcomponentUnion = BlogItem | ProjectItem;
+export type ContentcomponentUnion = BlogItem | ProjectComponent;
 
 export type ContentcomponentUnionConnectInput = {
   BlogItem?: InputMaybe<BlogItemConnectInput>;
-  ProjectItem?: InputMaybe<ProjectItemConnectInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentConnectInput>;
 };
 
 export type ContentcomponentUnionCreateInput = {
   BlogItem?: InputMaybe<BlogItemCreateInput>;
-  ProjectItem?: InputMaybe<ProjectItemCreateInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentCreateInput>;
 };
 
 export type ContentcomponentUnionCreateManyInlineInput = {
@@ -2671,12 +2671,12 @@ export type ContentcomponentUnionCreateOneInlineInput = {
 
 export type ContentcomponentUnionCreateWithPositionInput = {
   BlogItem?: InputMaybe<BlogItemCreateWithPositionInput>;
-  ProjectItem?: InputMaybe<ProjectItemCreateWithPositionInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentCreateWithPositionInput>;
 };
 
 export type ContentcomponentUnionUpdateInput = {
   BlogItem?: InputMaybe<BlogItemUpdateInput>;
-  ProjectItem?: InputMaybe<ProjectItemUpdateInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentUpdateInput>;
 };
 
 export type ContentcomponentUnionUpdateManyInlineInput = {
@@ -2696,7 +2696,7 @@ export type ContentcomponentUnionUpdateManyInlineInput = {
 
 export type ContentcomponentUnionUpdateManyWithNestedWhereInput = {
   BlogItem?: InputMaybe<BlogItemUpdateManyWithNestedWhereInput>;
-  ProjectItem?: InputMaybe<ProjectItemUpdateManyWithNestedWhereInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentUpdateManyWithNestedWhereInput>;
 };
 
 export type ContentcomponentUnionUpdateOneInlineInput = {
@@ -2712,32 +2712,32 @@ export type ContentcomponentUnionUpdateOneInlineInput = {
 
 export type ContentcomponentUnionUpdateWithNestedWhereUniqueAndPositionInput = {
   BlogItem?: InputMaybe<BlogItemUpdateWithNestedWhereUniqueAndPositionInput>;
-  ProjectItem?: InputMaybe<ProjectItemUpdateWithNestedWhereUniqueAndPositionInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentUpdateWithNestedWhereUniqueAndPositionInput>;
 };
 
 export type ContentcomponentUnionUpdateWithNestedWhereUniqueInput = {
   BlogItem?: InputMaybe<BlogItemUpdateWithNestedWhereUniqueInput>;
-  ProjectItem?: InputMaybe<ProjectItemUpdateWithNestedWhereUniqueInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentUpdateWithNestedWhereUniqueInput>;
 };
 
 export type ContentcomponentUnionUpsertWithNestedWhereUniqueAndPositionInput = {
   BlogItem?: InputMaybe<BlogItemUpsertWithNestedWhereUniqueAndPositionInput>;
-  ProjectItem?: InputMaybe<ProjectItemUpsertWithNestedWhereUniqueAndPositionInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentUpsertWithNestedWhereUniqueAndPositionInput>;
 };
 
 export type ContentcomponentUnionUpsertWithNestedWhereUniqueInput = {
   BlogItem?: InputMaybe<BlogItemUpsertWithNestedWhereUniqueInput>;
-  ProjectItem?: InputMaybe<ProjectItemUpsertWithNestedWhereUniqueInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentUpsertWithNestedWhereUniqueInput>;
 };
 
 export type ContentcomponentUnionWhereInput = {
   BlogItem?: InputMaybe<BlogItemWhereInput>;
-  ProjectItem?: InputMaybe<ProjectItemWhereInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentWhereInput>;
 };
 
 export type ContentcomponentUnionWhereUniqueInput = {
   BlogItem?: InputMaybe<BlogItemWhereUniqueInput>;
-  ProjectItem?: InputMaybe<ProjectItemWhereUniqueInput>;
+  ProjectComponent?: InputMaybe<ProjectComponentWhereUniqueInput>;
 };
 
 export enum DocumentFileTypes {
@@ -2823,7 +2823,7 @@ export enum EntityTypeName {
   Maintenance = "Maintenance",
   Menu = "Menu",
   Project = "Project",
-  ProjectItem = "ProjectItem",
+  ProjectComponent = "ProjectComponent",
   Resume = "Resume",
   /** Scheduled Operation system model */
   ScheduledOperation = "ScheduledOperation",
@@ -4501,7 +4501,7 @@ export type PageInfo = {
 export type Project = Entity &
   Node & {
     __typename?: "Project";
-    contents: Array<ProjectcontentsUnion>;
+    content: Array<ProjectcontentUnion>;
     /** The time the document was created */
     createdAt: Scalars["DateTime"]["output"];
     /** User that created this document */
@@ -4517,6 +4517,7 @@ export type Project = Entity &
     /** User that last published this document */
     publishedBy?: Maybe<User>;
     scheduledIn: Array<ScheduledOperation>;
+    slug?: Maybe<Scalars["String"]["output"]>;
     /** System stage field */
     stage: Stage;
     title?: Maybe<Scalars["String"]["output"]>;
@@ -4526,7 +4527,7 @@ export type Project = Entity &
     updatedBy?: Maybe<User>;
   };
 
-export type ProjectContentsArgs = {
+export type ProjectContentArgs = {
   after?: InputMaybe<Scalars["String"]["input"]>;
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
@@ -4574,6 +4575,441 @@ export type ProjectUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
+export type ProjectComponent = Entity & {
+  __typename?: "ProjectComponent";
+  description?: Maybe<RichText>;
+  enabled?: Maybe<Scalars["Boolean"]["output"]>;
+  /** The unique identifier */
+  id: Scalars["ID"]["output"];
+  link?: Maybe<Scalars["Json"]["output"]>;
+  media: Array<Asset>;
+  slug?: Maybe<Scalars["String"]["output"]>;
+  /** System stage field */
+  stage: Stage;
+  title?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type ProjectComponentMediaArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  forceParentLocale?: InputMaybe<Scalars["Boolean"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<AssetOrderByInput>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<AssetWhereInput>;
+};
+
+export type ProjectComponentConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: ProjectComponentWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type ProjectComponentConnection = {
+  __typename?: "ProjectComponentConnection";
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<ProjectComponentEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type ProjectComponentCreateInput = {
+  description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  link?: InputMaybe<Scalars["Json"]["input"]>;
+  media?: InputMaybe<AssetCreateManyInlineInput>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type ProjectComponentCreateManyInlineInput = {
+  /** Create and connect multiple existing ProjectComponent documents */
+  create?: InputMaybe<Array<ProjectComponentCreateInput>>;
+};
+
+export type ProjectComponentCreateOneInlineInput = {
+  /** Create and connect one ProjectComponent document */
+  create?: InputMaybe<ProjectComponentCreateInput>;
+};
+
+export type ProjectComponentCreateWithPositionInput = {
+  /** Document to create */
+  data: ProjectComponentCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type ProjectComponentEdge = {
+  __typename?: "ProjectComponentEdge";
+  /** A cursor for use in pagination. */
+  cursor: Scalars["String"]["output"];
+  /** The item at the end of the edge. */
+  node: ProjectComponent;
+};
+
+/** Identifies documents */
+export type ProjectComponentManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ProjectComponentWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ProjectComponentWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ProjectComponentWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars["String"]["input"]>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  enabled_not?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values containing the given json path. */
+  link_json_path_exists?: InputMaybe<Scalars["String"]["input"]>;
+  /**
+   * Recursively tries to find the provided JSON scalar value inside the field.
+   * It does use an exact match when comparing values.
+   * If you pass `null` as value the filter will be ignored.
+   * Note: This filter fails if you try to look for a non scalar JSON value!
+   */
+  link_value_recursive?: InputMaybe<Scalars["Json"]["input"]>;
+  media_every?: InputMaybe<AssetWhereInput>;
+  media_none?: InputMaybe<AssetWhereInput>;
+  media_some?: InputMaybe<AssetWhereInput>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  title_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export enum ProjectComponentOrderByInput {
+  EnabledAsc = "enabled_ASC",
+  EnabledDesc = "enabled_DESC",
+  IdAsc = "id_ASC",
+  IdDesc = "id_DESC",
+  SlugAsc = "slug_ASC",
+  SlugDesc = "slug_DESC",
+  TitleAsc = "title_ASC",
+  TitleDesc = "title_DESC",
+}
+
+export type ProjectComponentParent = Content;
+
+export type ProjectComponentParentConnectInput = {
+  Content?: InputMaybe<ContentConnectInput>;
+};
+
+export type ProjectComponentParentCreateInput = {
+  Content?: InputMaybe<ContentCreateInput>;
+};
+
+export type ProjectComponentParentCreateManyInlineInput = {
+  /** Create and connect multiple existing ProjectComponentParent documents */
+  create?: InputMaybe<Array<ProjectComponentParentCreateInput>>;
+};
+
+export type ProjectComponentParentCreateOneInlineInput = {
+  /** Create and connect one ProjectComponentParent document */
+  create?: InputMaybe<ProjectComponentParentCreateInput>;
+};
+
+export type ProjectComponentParentCreateWithPositionInput = {
+  Content?: InputMaybe<ContentCreateWithPositionInput>;
+};
+
+export type ProjectComponentParentUpdateInput = {
+  Content?: InputMaybe<ContentUpdateInput>;
+};
+
+export type ProjectComponentParentUpdateManyInlineInput = {
+  /** Create and connect multiple ProjectComponentParent component instances */
+  create?: InputMaybe<Array<ProjectComponentParentCreateWithPositionInput>>;
+  /** Delete multiple ProjectComponentParent documents */
+  delete?: InputMaybe<Array<ProjectComponentParentWhereUniqueInput>>;
+  /** Update multiple ProjectComponentParent component instances */
+  update?: InputMaybe<
+    Array<ProjectComponentParentUpdateWithNestedWhereUniqueAndPositionInput>
+  >;
+  /** Upsert multiple ProjectComponentParent component instances */
+  upsert?: InputMaybe<
+    Array<ProjectComponentParentUpsertWithNestedWhereUniqueAndPositionInput>
+  >;
+};
+
+export type ProjectComponentParentUpdateManyWithNestedWhereInput = {
+  Content?: InputMaybe<ContentUpdateManyWithNestedWhereInput>;
+};
+
+export type ProjectComponentParentUpdateOneInlineInput = {
+  /** Create and connect one ProjectComponentParent document */
+  create?: InputMaybe<ProjectComponentParentCreateInput>;
+  /** Delete currently connected ProjectComponentParent document */
+  delete?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Update single ProjectComponentParent document */
+  update?: InputMaybe<ProjectComponentParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ProjectComponentParent document */
+  upsert?: InputMaybe<ProjectComponentParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ProjectComponentParentUpdateWithNestedWhereUniqueAndPositionInput =
+  {
+    Content?: InputMaybe<ContentUpdateWithNestedWhereUniqueAndPositionInput>;
+  };
+
+export type ProjectComponentParentUpdateWithNestedWhereUniqueInput = {
+  Content?: InputMaybe<ContentUpdateWithNestedWhereUniqueInput>;
+};
+
+export type ProjectComponentParentUpsertWithNestedWhereUniqueAndPositionInput =
+  {
+    Content?: InputMaybe<ContentUpsertWithNestedWhereUniqueAndPositionInput>;
+  };
+
+export type ProjectComponentParentUpsertWithNestedWhereUniqueInput = {
+  Content?: InputMaybe<ContentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ProjectComponentParentWhereInput = {
+  Content?: InputMaybe<ContentWhereInput>;
+};
+
+export type ProjectComponentParentWhereUniqueInput = {
+  Content?: InputMaybe<ContentWhereUniqueInput>;
+};
+
+export type ProjectComponentUpdateInput = {
+  description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  link?: InputMaybe<Scalars["Json"]["input"]>;
+  media?: InputMaybe<AssetUpdateManyInlineInput>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type ProjectComponentUpdateManyInlineInput = {
+  /** Create and connect multiple ProjectComponent component instances */
+  create?: InputMaybe<Array<ProjectComponentCreateWithPositionInput>>;
+  /** Delete multiple ProjectComponent documents */
+  delete?: InputMaybe<Array<ProjectComponentWhereUniqueInput>>;
+  /** Update multiple ProjectComponent component instances */
+  update?: InputMaybe<
+    Array<ProjectComponentUpdateWithNestedWhereUniqueAndPositionInput>
+  >;
+  /** Upsert multiple ProjectComponent component instances */
+  upsert?: InputMaybe<
+    Array<ProjectComponentUpsertWithNestedWhereUniqueAndPositionInput>
+  >;
+};
+
+export type ProjectComponentUpdateManyInput = {
+  description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  link?: InputMaybe<Scalars["Json"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type ProjectComponentUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: ProjectComponentUpdateManyInput;
+  /** Document search */
+  where: ProjectComponentWhereInput;
+};
+
+export type ProjectComponentUpdateOneInlineInput = {
+  /** Create and connect one ProjectComponent document */
+  create?: InputMaybe<ProjectComponentCreateInput>;
+  /** Delete currently connected ProjectComponent document */
+  delete?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Update single ProjectComponent document */
+  update?: InputMaybe<ProjectComponentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ProjectComponent document */
+  upsert?: InputMaybe<ProjectComponentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ProjectComponentUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<ProjectComponentUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: ProjectComponentWhereUniqueInput;
+};
+
+export type ProjectComponentUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: ProjectComponentUpdateInput;
+  /** Unique document search */
+  where: ProjectComponentWhereUniqueInput;
+};
+
+export type ProjectComponentUpsertInput = {
+  /** Create document if it didn't exist */
+  create: ProjectComponentCreateInput;
+  /** Update document if it exists */
+  update: ProjectComponentUpdateInput;
+};
+
+export type ProjectComponentUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<ProjectComponentUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: ProjectComponentWhereUniqueInput;
+};
+
+export type ProjectComponentUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: ProjectComponentUpsertInput;
+  /** Unique document search */
+  where: ProjectComponentWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type ProjectComponentWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ProjectComponentWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ProjectComponentWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ProjectComponentWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars["String"]["input"]>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  enabled_not?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
+  /** All values containing the given json path. */
+  link_json_path_exists?: InputMaybe<Scalars["String"]["input"]>;
+  /**
+   * Recursively tries to find the provided JSON scalar value inside the field.
+   * It does use an exact match when comparing values.
+   * If you pass `null` as value the filter will be ignored.
+   * Note: This filter fails if you try to look for a non scalar JSON value!
+   */
+  link_value_recursive?: InputMaybe<Scalars["Json"]["input"]>;
+  media_every?: InputMaybe<AssetWhereInput>;
+  media_none?: InputMaybe<AssetWhereInput>;
+  media_some?: InputMaybe<AssetWhereInput>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  title_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** References ProjectComponent record uniquely */
+export type ProjectComponentWhereUniqueInput = {
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+};
+
 export type ProjectConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
   position?: InputMaybe<ConnectPositionInput>;
@@ -4592,8 +5028,9 @@ export type ProjectConnection = {
 };
 
 export type ProjectCreateInput = {
-  contents?: InputMaybe<ProjectcontentsUnionCreateManyInlineInput>;
+  content?: InputMaybe<ProjectcontentUnionCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
 };
@@ -4621,439 +5058,6 @@ export type ProjectEdge = {
   node: Project;
 };
 
-export type ProjectItem = Entity & {
-  __typename?: "ProjectItem";
-  description?: Maybe<RichText>;
-  flag?: Maybe<Scalars["Boolean"]["output"]>;
-  /** The unique identifier */
-  id: Scalars["ID"]["output"];
-  link?: Maybe<Scalars["Json"]["output"]>;
-  media: Array<Asset>;
-  slug?: Maybe<Scalars["String"]["output"]>;
-  /** System stage field */
-  stage: Stage;
-  title?: Maybe<Scalars["String"]["output"]>;
-};
-
-export type ProjectItemMediaArgs = {
-  after?: InputMaybe<Scalars["String"]["input"]>;
-  before?: InputMaybe<Scalars["String"]["input"]>;
-  first?: InputMaybe<Scalars["Int"]["input"]>;
-  forceParentLocale?: InputMaybe<Scalars["Boolean"]["input"]>;
-  last?: InputMaybe<Scalars["Int"]["input"]>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<AssetOrderByInput>;
-  skip?: InputMaybe<Scalars["Int"]["input"]>;
-  where?: InputMaybe<AssetWhereInput>;
-};
-
-export type ProjectItemConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: ProjectItemWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type ProjectItemConnection = {
-  __typename?: "ProjectItemConnection";
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<ProjectItemEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type ProjectItemCreateInput = {
-  description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
-  flag?: InputMaybe<Scalars["Boolean"]["input"]>;
-  link?: InputMaybe<Scalars["Json"]["input"]>;
-  media?: InputMaybe<AssetCreateManyInlineInput>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
-};
-
-export type ProjectItemCreateManyInlineInput = {
-  /** Create and connect multiple existing ProjectItem documents */
-  create?: InputMaybe<Array<ProjectItemCreateInput>>;
-};
-
-export type ProjectItemCreateOneInlineInput = {
-  /** Create and connect one ProjectItem document */
-  create?: InputMaybe<ProjectItemCreateInput>;
-};
-
-export type ProjectItemCreateWithPositionInput = {
-  /** Document to create */
-  data: ProjectItemCreateInput;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-};
-
-/** An edge in a connection. */
-export type ProjectItemEdge = {
-  __typename?: "ProjectItemEdge";
-  /** A cursor for use in pagination. */
-  cursor: Scalars["String"]["output"];
-  /** The item at the end of the edge. */
-  node: ProjectItem;
-};
-
-/** Identifies documents */
-export type ProjectItemManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ProjectItemWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ProjectItemWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ProjectItemWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars["String"]["input"]>;
-  flag?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Any other value that exists and is not equal to the given value. */
-  flag_not?: InputMaybe<Scalars["Boolean"]["input"]>;
-  id?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values containing the given json path. */
-  link_json_path_exists?: InputMaybe<Scalars["String"]["input"]>;
-  /**
-   * Recursively tries to find the provided JSON scalar value inside the field.
-   * It does use an exact match when comparing values.
-   * If you pass `null` as value the filter will be ignored.
-   * Note: This filter fails if you try to look for a non scalar JSON value!
-   */
-  link_value_recursive?: InputMaybe<Scalars["Json"]["input"]>;
-  media_every?: InputMaybe<AssetWhereInput>;
-  media_none?: InputMaybe<AssetWhereInput>;
-  media_some?: InputMaybe<AssetWhereInput>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values containing the given string. */
-  slug_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values ending with the given string. */
-  slug_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are contained in given list. */
-  slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  slug_not?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not containing the given string. */
-  slug_not_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not ending with the given string */
-  slug_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are not contained in given list. */
-  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** All values not starting with the given string. */
-  slug_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values starting with the given string. */
-  slug_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values containing the given string. */
-  title_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values ending with the given string. */
-  title_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are contained in given list. */
-  title_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  title_not?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not containing the given string. */
-  title_not_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not ending with the given string */
-  title_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are not contained in given list. */
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** All values not starting with the given string. */
-  title_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values starting with the given string. */
-  title_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-};
-
-export enum ProjectItemOrderByInput {
-  FlagAsc = "flag_ASC",
-  FlagDesc = "flag_DESC",
-  IdAsc = "id_ASC",
-  IdDesc = "id_DESC",
-  SlugAsc = "slug_ASC",
-  SlugDesc = "slug_DESC",
-  TitleAsc = "title_ASC",
-  TitleDesc = "title_DESC",
-}
-
-export type ProjectItemParent = Content;
-
-export type ProjectItemParentConnectInput = {
-  Content?: InputMaybe<ContentConnectInput>;
-};
-
-export type ProjectItemParentCreateInput = {
-  Content?: InputMaybe<ContentCreateInput>;
-};
-
-export type ProjectItemParentCreateManyInlineInput = {
-  /** Create and connect multiple existing ProjectItemParent documents */
-  create?: InputMaybe<Array<ProjectItemParentCreateInput>>;
-};
-
-export type ProjectItemParentCreateOneInlineInput = {
-  /** Create and connect one ProjectItemParent document */
-  create?: InputMaybe<ProjectItemParentCreateInput>;
-};
-
-export type ProjectItemParentCreateWithPositionInput = {
-  Content?: InputMaybe<ContentCreateWithPositionInput>;
-};
-
-export type ProjectItemParentUpdateInput = {
-  Content?: InputMaybe<ContentUpdateInput>;
-};
-
-export type ProjectItemParentUpdateManyInlineInput = {
-  /** Create and connect multiple ProjectItemParent component instances */
-  create?: InputMaybe<Array<ProjectItemParentCreateWithPositionInput>>;
-  /** Delete multiple ProjectItemParent documents */
-  delete?: InputMaybe<Array<ProjectItemParentWhereUniqueInput>>;
-  /** Update multiple ProjectItemParent component instances */
-  update?: InputMaybe<
-    Array<ProjectItemParentUpdateWithNestedWhereUniqueAndPositionInput>
-  >;
-  /** Upsert multiple ProjectItemParent component instances */
-  upsert?: InputMaybe<
-    Array<ProjectItemParentUpsertWithNestedWhereUniqueAndPositionInput>
-  >;
-};
-
-export type ProjectItemParentUpdateManyWithNestedWhereInput = {
-  Content?: InputMaybe<ContentUpdateManyWithNestedWhereInput>;
-};
-
-export type ProjectItemParentUpdateOneInlineInput = {
-  /** Create and connect one ProjectItemParent document */
-  create?: InputMaybe<ProjectItemParentCreateInput>;
-  /** Delete currently connected ProjectItemParent document */
-  delete?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Update single ProjectItemParent document */
-  update?: InputMaybe<ProjectItemParentUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ProjectItemParent document */
-  upsert?: InputMaybe<ProjectItemParentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ProjectItemParentUpdateWithNestedWhereUniqueAndPositionInput = {
-  Content?: InputMaybe<ContentUpdateWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type ProjectItemParentUpdateWithNestedWhereUniqueInput = {
-  Content?: InputMaybe<ContentUpdateWithNestedWhereUniqueInput>;
-};
-
-export type ProjectItemParentUpsertWithNestedWhereUniqueAndPositionInput = {
-  Content?: InputMaybe<ContentUpsertWithNestedWhereUniqueAndPositionInput>;
-};
-
-export type ProjectItemParentUpsertWithNestedWhereUniqueInput = {
-  Content?: InputMaybe<ContentUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ProjectItemParentWhereInput = {
-  Content?: InputMaybe<ContentWhereInput>;
-};
-
-export type ProjectItemParentWhereUniqueInput = {
-  Content?: InputMaybe<ContentWhereUniqueInput>;
-};
-
-export type ProjectItemUpdateInput = {
-  description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
-  flag?: InputMaybe<Scalars["Boolean"]["input"]>;
-  link?: InputMaybe<Scalars["Json"]["input"]>;
-  media?: InputMaybe<AssetUpdateManyInlineInput>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
-};
-
-export type ProjectItemUpdateManyInlineInput = {
-  /** Create and connect multiple ProjectItem component instances */
-  create?: InputMaybe<Array<ProjectItemCreateWithPositionInput>>;
-  /** Delete multiple ProjectItem documents */
-  delete?: InputMaybe<Array<ProjectItemWhereUniqueInput>>;
-  /** Update multiple ProjectItem component instances */
-  update?: InputMaybe<
-    Array<ProjectItemUpdateWithNestedWhereUniqueAndPositionInput>
-  >;
-  /** Upsert multiple ProjectItem component instances */
-  upsert?: InputMaybe<
-    Array<ProjectItemUpsertWithNestedWhereUniqueAndPositionInput>
-  >;
-};
-
-export type ProjectItemUpdateManyInput = {
-  description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
-  flag?: InputMaybe<Scalars["Boolean"]["input"]>;
-  link?: InputMaybe<Scalars["Json"]["input"]>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
-};
-
-export type ProjectItemUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: ProjectItemUpdateManyInput;
-  /** Document search */
-  where: ProjectItemWhereInput;
-};
-
-export type ProjectItemUpdateOneInlineInput = {
-  /** Create and connect one ProjectItem document */
-  create?: InputMaybe<ProjectItemCreateInput>;
-  /** Delete currently connected ProjectItem document */
-  delete?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Update single ProjectItem document */
-  update?: InputMaybe<ProjectItemUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ProjectItem document */
-  upsert?: InputMaybe<ProjectItemUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ProjectItemUpdateWithNestedWhereUniqueAndPositionInput = {
-  /** Document to update */
-  data?: InputMaybe<ProjectItemUpdateInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: ProjectItemWhereUniqueInput;
-};
-
-export type ProjectItemUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: ProjectItemUpdateInput;
-  /** Unique document search */
-  where: ProjectItemWhereUniqueInput;
-};
-
-export type ProjectItemUpsertInput = {
-  /** Create document if it didn't exist */
-  create: ProjectItemCreateInput;
-  /** Update document if it exists */
-  update: ProjectItemUpdateInput;
-};
-
-export type ProjectItemUpsertWithNestedWhereUniqueAndPositionInput = {
-  /** Document to upsert */
-  data?: InputMaybe<ProjectItemUpsertInput>;
-  /** Position in the list of existing component instances, will default to appending at the end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Unique component instance search */
-  where: ProjectItemWhereUniqueInput;
-};
-
-export type ProjectItemUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: ProjectItemUpsertInput;
-  /** Unique document search */
-  where: ProjectItemWhereUniqueInput;
-};
-
-/** Identifies documents */
-export type ProjectItemWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ProjectItemWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ProjectItemWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ProjectItemWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars["String"]["input"]>;
-  flag?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Any other value that exists and is not equal to the given value. */
-  flag_not?: InputMaybe<Scalars["Boolean"]["input"]>;
-  id?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars["ID"]["input"]>;
-  /** All values containing the given json path. */
-  link_json_path_exists?: InputMaybe<Scalars["String"]["input"]>;
-  /**
-   * Recursively tries to find the provided JSON scalar value inside the field.
-   * It does use an exact match when comparing values.
-   * If you pass `null` as value the filter will be ignored.
-   * Note: This filter fails if you try to look for a non scalar JSON value!
-   */
-  link_value_recursive?: InputMaybe<Scalars["Json"]["input"]>;
-  media_every?: InputMaybe<AssetWhereInput>;
-  media_none?: InputMaybe<AssetWhereInput>;
-  media_some?: InputMaybe<AssetWhereInput>;
-  slug?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values containing the given string. */
-  slug_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values ending with the given string. */
-  slug_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are contained in given list. */
-  slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  slug_not?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not containing the given string. */
-  slug_not_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not ending with the given string */
-  slug_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are not contained in given list. */
-  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** All values not starting with the given string. */
-  slug_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values starting with the given string. */
-  slug_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  title?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values containing the given string. */
-  title_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values ending with the given string. */
-  title_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are contained in given list. */
-  title_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  title_not?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not containing the given string. */
-  title_not_contains?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values not ending with the given string */
-  title_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values that are not contained in given list. */
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
-  /** All values not starting with the given string. */
-  title_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-  /** All values starting with the given string. */
-  title_starts_with?: InputMaybe<Scalars["String"]["input"]>;
-};
-
-/** References ProjectItem record uniquely */
-export type ProjectItemWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>;
-};
-
 /** Identifies documents */
 export type ProjectManyWhereInput = {
   /** Logical AND on all given filters. */
@@ -5065,9 +5069,9 @@ export type ProjectManyWhereInput = {
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars["String"]["input"]>;
   /** All values in which the union is empty. */
-  contents_empty?: InputMaybe<Scalars["Boolean"]["input"]>;
+  content_empty?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Matches if the modular component contains at least one connection to the item provided to the filter */
-  contents_some?: InputMaybe<ProjectcontentsUnionWhereInput>;
+  content_some?: InputMaybe<ProjectcontentUnionWhereInput>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -5129,6 +5133,25 @@ export type ProjectManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
   /** All values containing the given string. */
   title_contains?: InputMaybe<Scalars["String"]["input"]>;
@@ -5175,6 +5198,8 @@ export enum ProjectOrderByInput {
   IdDesc = "id_DESC",
   PublishedAtAsc = "publishedAt_ASC",
   PublishedAtDesc = "publishedAt_DESC",
+  SlugAsc = "slug_ASC",
+  SlugDesc = "slug_DESC",
   TitleAsc = "title_ASC",
   TitleDesc = "title_DESC",
   UpdatedAtAsc = "updatedAt_ASC",
@@ -5182,7 +5207,8 @@ export enum ProjectOrderByInput {
 }
 
 export type ProjectUpdateInput = {
-  contents?: InputMaybe<ProjectcontentsUnionUpdateManyInlineInput>;
+  content?: InputMaybe<ProjectcontentUnionUpdateManyInlineInput>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
@@ -5267,9 +5293,9 @@ export type ProjectWhereInput = {
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars["String"]["input"]>;
   /** All values in which the union is empty. */
-  contents_empty?: InputMaybe<Scalars["Boolean"]["input"]>;
+  content_empty?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Matches if the modular component contains at least one connection to the item provided to the filter */
-  contents_some?: InputMaybe<ProjectcontentsUnionWhereInput>;
+  content_some?: InputMaybe<ProjectcontentUnionWhereInput>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -5331,6 +5357,25 @@ export type ProjectWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars["String"]["input"]>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
   /** All values containing the given string. */
   title_contains?: InputMaybe<Scalars["String"]["input"]>;
@@ -5387,87 +5432,88 @@ export type ProjectWhereStageInput = {
 /** References Project record uniquely */
 export type ProjectWhereUniqueInput = {
   id?: InputMaybe<Scalars["ID"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
 };
 
-export type ProjectcontentsUnion = Content;
+export type ProjectcontentUnion = Content;
 
-export type ProjectcontentsUnionConnectInput = {
+export type ProjectcontentUnionConnectInput = {
   Content?: InputMaybe<ContentConnectInput>;
 };
 
-export type ProjectcontentsUnionCreateInput = {
+export type ProjectcontentUnionCreateInput = {
   Content?: InputMaybe<ContentCreateInput>;
 };
 
-export type ProjectcontentsUnionCreateManyInlineInput = {
-  /** Create and connect multiple existing ProjectcontentsUnion documents */
-  create?: InputMaybe<Array<ProjectcontentsUnionCreateInput>>;
+export type ProjectcontentUnionCreateManyInlineInput = {
+  /** Create and connect multiple existing ProjectcontentUnion documents */
+  create?: InputMaybe<Array<ProjectcontentUnionCreateInput>>;
 };
 
-export type ProjectcontentsUnionCreateOneInlineInput = {
-  /** Create and connect one ProjectcontentsUnion document */
-  create?: InputMaybe<ProjectcontentsUnionCreateInput>;
+export type ProjectcontentUnionCreateOneInlineInput = {
+  /** Create and connect one ProjectcontentUnion document */
+  create?: InputMaybe<ProjectcontentUnionCreateInput>;
 };
 
-export type ProjectcontentsUnionCreateWithPositionInput = {
+export type ProjectcontentUnionCreateWithPositionInput = {
   Content?: InputMaybe<ContentCreateWithPositionInput>;
 };
 
-export type ProjectcontentsUnionUpdateInput = {
+export type ProjectcontentUnionUpdateInput = {
   Content?: InputMaybe<ContentUpdateInput>;
 };
 
-export type ProjectcontentsUnionUpdateManyInlineInput = {
-  /** Create and connect multiple ProjectcontentsUnion component instances */
-  create?: InputMaybe<Array<ProjectcontentsUnionCreateWithPositionInput>>;
-  /** Delete multiple ProjectcontentsUnion documents */
-  delete?: InputMaybe<Array<ProjectcontentsUnionWhereUniqueInput>>;
-  /** Update multiple ProjectcontentsUnion component instances */
+export type ProjectcontentUnionUpdateManyInlineInput = {
+  /** Create and connect multiple ProjectcontentUnion component instances */
+  create?: InputMaybe<Array<ProjectcontentUnionCreateWithPositionInput>>;
+  /** Delete multiple ProjectcontentUnion documents */
+  delete?: InputMaybe<Array<ProjectcontentUnionWhereUniqueInput>>;
+  /** Update multiple ProjectcontentUnion component instances */
   update?: InputMaybe<
-    Array<ProjectcontentsUnionUpdateWithNestedWhereUniqueAndPositionInput>
+    Array<ProjectcontentUnionUpdateWithNestedWhereUniqueAndPositionInput>
   >;
-  /** Upsert multiple ProjectcontentsUnion component instances */
+  /** Upsert multiple ProjectcontentUnion component instances */
   upsert?: InputMaybe<
-    Array<ProjectcontentsUnionUpsertWithNestedWhereUniqueAndPositionInput>
+    Array<ProjectcontentUnionUpsertWithNestedWhereUniqueAndPositionInput>
   >;
 };
 
-export type ProjectcontentsUnionUpdateManyWithNestedWhereInput = {
+export type ProjectcontentUnionUpdateManyWithNestedWhereInput = {
   Content?: InputMaybe<ContentUpdateManyWithNestedWhereInput>;
 };
 
-export type ProjectcontentsUnionUpdateOneInlineInput = {
-  /** Create and connect one ProjectcontentsUnion document */
-  create?: InputMaybe<ProjectcontentsUnionCreateInput>;
-  /** Delete currently connected ProjectcontentsUnion document */
+export type ProjectcontentUnionUpdateOneInlineInput = {
+  /** Create and connect one ProjectcontentUnion document */
+  create?: InputMaybe<ProjectcontentUnionCreateInput>;
+  /** Delete currently connected ProjectcontentUnion document */
   delete?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Update single ProjectcontentsUnion document */
-  update?: InputMaybe<ProjectcontentsUnionUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single ProjectcontentsUnion document */
-  upsert?: InputMaybe<ProjectcontentsUnionUpsertWithNestedWhereUniqueInput>;
+  /** Update single ProjectcontentUnion document */
+  update?: InputMaybe<ProjectcontentUnionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ProjectcontentUnion document */
+  upsert?: InputMaybe<ProjectcontentUnionUpsertWithNestedWhereUniqueInput>;
 };
 
-export type ProjectcontentsUnionUpdateWithNestedWhereUniqueAndPositionInput = {
+export type ProjectcontentUnionUpdateWithNestedWhereUniqueAndPositionInput = {
   Content?: InputMaybe<ContentUpdateWithNestedWhereUniqueAndPositionInput>;
 };
 
-export type ProjectcontentsUnionUpdateWithNestedWhereUniqueInput = {
+export type ProjectcontentUnionUpdateWithNestedWhereUniqueInput = {
   Content?: InputMaybe<ContentUpdateWithNestedWhereUniqueInput>;
 };
 
-export type ProjectcontentsUnionUpsertWithNestedWhereUniqueAndPositionInput = {
+export type ProjectcontentUnionUpsertWithNestedWhereUniqueAndPositionInput = {
   Content?: InputMaybe<ContentUpsertWithNestedWhereUniqueAndPositionInput>;
 };
 
-export type ProjectcontentsUnionUpsertWithNestedWhereUniqueInput = {
+export type ProjectcontentUnionUpsertWithNestedWhereUniqueInput = {
   Content?: InputMaybe<ContentUpsertWithNestedWhereUniqueInput>;
 };
 
-export type ProjectcontentsUnionWhereInput = {
+export type ProjectcontentUnionWhereInput = {
   Content?: InputMaybe<ContentWhereInput>;
 };
 
-export type ProjectcontentsUnionWhereUniqueInput = {
+export type ProjectcontentUnionWhereUniqueInput = {
   Content?: InputMaybe<ContentWhereUniqueInput>;
 };
 
@@ -8890,6 +8936,69 @@ export type GetAppsQuery = {
   }>;
 };
 
+export type GetProjectBySlugQueryVariables = Exact<{
+  slug: Scalars["String"]["input"];
+}>;
+
+export type GetProjectBySlugQuery = {
+  __typename?: "Query";
+  project?: {
+    __typename?: "Project";
+    id: string;
+    title?: string | null;
+    slug?: string | null;
+    content: Array<{
+      __typename?: "Content";
+      id: string;
+      version?: string | null;
+      component?:
+        | { __typename?: "BlogItem" }
+        | {
+            __typename?: "ProjectComponent";
+            id: string;
+            title?: string | null;
+            link?: any | null;
+            slug?: string | null;
+            stage: Stage;
+            enabled?: boolean | null;
+            description?: { __typename?: "RichText"; markdown: string } | null;
+            media: Array<{ __typename?: "Asset"; url: string; small: string }>;
+          }
+        | null;
+    }>;
+  } | null;
+};
+
+export type GetProjectsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetProjectsQuery = {
+  __typename?: "Query";
+  projects: Array<{
+    __typename?: "Project";
+    id: string;
+    title?: string | null;
+    content: Array<{
+      __typename?: "Content";
+      id: string;
+      version?: string | null;
+      component?:
+        | { __typename?: "BlogItem" }
+        | {
+            __typename?: "ProjectComponent";
+            id: string;
+            title?: string | null;
+            link?: any | null;
+            slug?: string | null;
+            stage: Stage;
+            enabled?: boolean | null;
+            description?: { __typename?: "RichText"; markdown: string } | null;
+            media: Array<{ __typename?: "Asset"; url: string }>;
+          }
+        | null;
+    }>;
+  }>;
+};
+
 export const GetAppsDocument = gql`
   query GetApps {
     apps {
@@ -8986,4 +9095,207 @@ export type GetAppsSuspenseQueryHookResult = ReturnType<
 export type GetAppsQueryResult = Apollo.QueryResult<
   GetAppsQuery,
   GetAppsQueryVariables
+>;
+export const GetProjectBySlugDocument = gql`
+  query GetProjectBySlug($slug: String!) {
+    project(where: { slug: $slug }) {
+      id
+      title
+      slug
+      content {
+        ... on Content {
+          id
+          component {
+            ... on ProjectComponent {
+              id
+              title
+              link
+              slug
+              stage
+              description {
+                markdown
+              }
+              enabled
+              media {
+                url
+                small: url(
+                  transformation: {
+                    image: { resize: { height: 400, width: 400 } }
+                  }
+                )
+              }
+            }
+          }
+          version
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetProjectBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetProjectBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProjectBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProjectBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetProjectBySlugQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetProjectBySlugQuery,
+    GetProjectBySlugQueryVariables
+  > &
+    (
+      | { variables: GetProjectBySlugQueryVariables; skip?: boolean }
+      | { skip: boolean }
+    )
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetProjectBySlugQuery, GetProjectBySlugQueryVariables>(
+    GetProjectBySlugDocument,
+    options
+  );
+}
+export function useGetProjectBySlugLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetProjectBySlugQuery,
+    GetProjectBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetProjectBySlugQuery,
+    GetProjectBySlugQueryVariables
+  >(GetProjectBySlugDocument, options);
+}
+export function useGetProjectBySlugSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    GetProjectBySlugQuery,
+    GetProjectBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    GetProjectBySlugQuery,
+    GetProjectBySlugQueryVariables
+  >(GetProjectBySlugDocument, options);
+}
+export type GetProjectBySlugQueryHookResult = ReturnType<
+  typeof useGetProjectBySlugQuery
+>;
+export type GetProjectBySlugLazyQueryHookResult = ReturnType<
+  typeof useGetProjectBySlugLazyQuery
+>;
+export type GetProjectBySlugSuspenseQueryHookResult = ReturnType<
+  typeof useGetProjectBySlugSuspenseQuery
+>;
+export type GetProjectBySlugQueryResult = Apollo.QueryResult<
+  GetProjectBySlugQuery,
+  GetProjectBySlugQueryVariables
+>;
+export const GetProjectsDocument = gql`
+  query GetProjects {
+    projects {
+      id
+      title
+      content {
+        ... on Content {
+          id
+          component {
+            ... on ProjectComponent {
+              id
+              title
+              link
+              slug
+              stage
+              description {
+                markdown
+              }
+              media {
+                url(
+                  transformation: {
+                    image: { resize: { height: 1920, width: 1920 } }
+                  }
+                )
+              }
+              enabled
+            }
+          }
+          version
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetProjectsQuery__
+ *
+ * To run a query within a React component, call `useGetProjectsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProjectsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetProjectsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetProjectsQuery,
+    GetProjectsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetProjectsQuery, GetProjectsQueryVariables>(
+    GetProjectsDocument,
+    options
+  );
+}
+export function useGetProjectsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetProjectsQuery,
+    GetProjectsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetProjectsQuery, GetProjectsQueryVariables>(
+    GetProjectsDocument,
+    options
+  );
+}
+export function useGetProjectsSuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    GetProjectsQuery,
+    GetProjectsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<GetProjectsQuery, GetProjectsQueryVariables>(
+    GetProjectsDocument,
+    options
+  );
+}
+export type GetProjectsQueryHookResult = ReturnType<typeof useGetProjectsQuery>;
+export type GetProjectsLazyQueryHookResult = ReturnType<
+  typeof useGetProjectsLazyQuery
+>;
+export type GetProjectsSuspenseQueryHookResult = ReturnType<
+  typeof useGetProjectsSuspenseQuery
+>;
+export type GetProjectsQueryResult = Apollo.QueryResult<
+  GetProjectsQuery,
+  GetProjectsQueryVariables
 >;

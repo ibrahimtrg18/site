@@ -18,20 +18,22 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
+import { Project, ProjectComponent } from "@/generated/graphql";
 import { useNavigation } from "@/hooks/useNavigation";
-import { Project } from "@/types/Hygraph/models/Project";
 
 import { ProjectDetailModal } from "./ProjectDetailModal";
 
 type ProjectItemProps = Project;
 
 export const ProjectItem = (props: ProjectItemProps) => {
-  const { id, title, description, media } = props;
+  const { id, title = "" } = props;
   const searchParams = useSearchParams();
   const chakra = useChakra();
   const { colorMode } = useColorMode();
   const { updateQuery, removeQuery } = useNavigation();
   const projectId = searchParams.get("projectId");
+  const content = props.content[0].component;
+  const { description, media } = content as ProjectComponent;
 
   /**
    * Disclosure Modal
@@ -56,7 +58,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
             objectPosition: "top",
           }}
           src={src}
-          alt={title}
+          alt={String(title)}
         />
       );
     },
@@ -65,11 +67,14 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
   return (
     <GridItem>
-      <ProjectDetailModal
-        {...props}
-        isOpen={isOpen}
-        onClose={() => removeQuery("projectId")}
-      />
+      {content?.__typename === "ProjectComponent" && (
+        <ProjectDetailModal
+          {...props}
+          content={content}
+          isOpen={isOpen}
+          onClose={() => removeQuery("projectId")}
+        />
+      )}
       <Card
         key={colorMode}
         as={motion.div}
@@ -94,8 +99,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
         onClick={() => updateQuery("projectId", id)}
       >
         <CardHeader padding={0}>
-          {media.length > 0 ? (
-            <MediaImage blurDataURL={media[0].small} src={media[0].url} />
+          {media?.length > 0 ? (
+            <MediaImage blurDataURL={media[0].url} src={media[0].url} />
           ) : (
             <MediaImage
               blurDataURL="/images/no-image.png"

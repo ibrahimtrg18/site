@@ -3,18 +3,18 @@
 import React from "react";
 import { Box, Divider, Flex, ModalProps } from "@chakra-ui/react";
 
+import { Project, ProjectComponent } from "@/generated/graphql";
 import { evaluateSync } from "@/libs/mdx";
-import { Project } from "@/types/Hygraph/models/Project";
 import { ProjectDetailImage } from "@/views/Project/ProjectDetailImage";
 
-type ProjectDetailModalProps = Partial<ModalProps> & Project;
+type ProjectDetailModalProps = Partial<ModalProps> & {
+  content: Extract<Project["content"][number]["component"], ProjectComponent>;
+};
 
-export const ProjectDetail = ({
-  title,
-  description,
-  media,
-}: ProjectDetailModalProps) => {
-  const MDXContent = evaluateSync(description.markdown);
+export const ProjectDetail = ({ content }: ProjectDetailModalProps) => {
+  const { title, media, description } = content;
+
+  const MDXContent = evaluateSync(String(description?.markdown));
 
   return (
     <Flex direction="column">
