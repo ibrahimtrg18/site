@@ -11,16 +11,26 @@ const appReducer = (state: AppState, action: AppAction) => {
 
 export const initialAppState: AppState | undefined = {
   id: "",
-  avatar: {},
+  avatar: null,
   fullname: "",
   nickname: "",
   email: "",
   phoneNumber: "",
-  about: {},
-  greeting: {},
+  about: {
+    html: "",
+    text: "",
+    markdown: "",
+    raw: "",
+  },
+  greeting: {
+    html: "",
+    text: "",
+    markdown: "",
+    raw: "",
+  },
   menu: [],
-  socials: [],
-  technologies: [],
+  social: [],
+  technology: [],
 };
 
 export const useApp = (initialApp: AppState | undefined = initialAppState) => {
@@ -35,8 +45,8 @@ export const useApp = (initialApp: AppState | undefined = initialAppState) => {
       about,
       greeting,
       menu,
-      socials,
-      technologies,
+      social,
+      technology,
     },
   ] = useReducer(appReducer, initialApp);
 
@@ -50,7 +60,7 @@ export const useApp = (initialApp: AppState | undefined = initialAppState) => {
     about,
     greeting,
     menu,
-    socials,
-    technologies,
+    social,
+    technology,
   };
 };

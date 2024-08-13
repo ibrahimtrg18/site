@@ -15,7 +15,7 @@ export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await getApps();
-  const app = data?.apps[0];
+  const [app] = data?.apps ?? [];
 
   return {
     title: `Home | ${app?.fullname}`,

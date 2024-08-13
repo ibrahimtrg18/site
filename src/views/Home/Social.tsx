@@ -8,9 +8,9 @@ import * as SocialIcon from "react-icons/io5";
 import { useAppContext } from "@/contexts/AppContext/AppContext";
 
 const Social = () => {
-  const { socials } = useAppContext();
+  const { social: socials } = useAppContext();
 
-  if (!socials.length) {
+  if (!socials?.length) {
     return null;
   }
 

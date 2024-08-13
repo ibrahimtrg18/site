@@ -70,6 +70,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
     []
   );
 
+  const [firstMedia] = media;
+
   return (
     <GridItem>
       {component?.__typename === "ProjectComponent" && (
@@ -104,8 +106,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
         onClick={() => updateQuery("projectId", id)}
       >
         <CardHeader padding={0}>
-          {media?.length > 0 ? (
-            <MediaImage blurDataURL={media[0].url} src={media[0].url} />
+          {firstMedia ? (
+            <MediaImage blurDataURL={firstMedia.url} src={firstMedia.url} />
           ) : (
             <MediaImage
               blurDataURL="/images/no-image.png"

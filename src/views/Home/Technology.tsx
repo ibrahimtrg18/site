@@ -6,7 +6,7 @@ import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import { useAppContext } from "@/contexts/AppContext/AppContext";
 
 const Technology = () => {
-  const { technologies } = useAppContext();
+  const { technology: technologies } = useAppContext();
 
   return (
     <Flex direction="column" gap="1rem" justifyItems="baseline">
@@ -23,7 +23,7 @@ const Technology = () => {
         ]}
         gap={6}
       >
-        {technologies.map(({ id, label = "", media: { url = "" } }) => {
+        {technologies?.map(({ id, label = "", media }) => {
           return (
             <GridItem
               key={id}
@@ -32,7 +32,12 @@ const Technology = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Image width={50} height={50} src={url} alt={label} />
+              <Image
+                width={50}
+                height={50}
+                src={String(media?.url)}
+                alt={String(label)}
+              />
               <Text fontSize="0.875rem" fontWeight="light">
                 {label}
               </Text>

@@ -2,7 +2,7 @@ import { GetAppsDocument, GetAppsQuery } from "@/generated/graphql";
 import { getClient } from "@/libs/apollo/ssr";
 
 export async function getApps() {
-  const { data, error, loading } = await getClient().query<GetAppsQuery>({
+  const data = await getClient().query<GetAppsQuery>({
     query: GetAppsDocument,
     context: {
       fetchOptions: {
@@ -11,5 +11,5 @@ export async function getApps() {
     },
   });
 
-  return { data, error, loading };
+  return data;
 }

@@ -67,7 +67,7 @@ export const Navbar = () => {
             height={32}
             loading="lazy"
             style={{ borderRadius: "9999px" }}
-            src={avatar.url || ""}
+            src={String(avatar?.url)}
             alt={about.fullName || "Avatar image picture"}
           />
           <Spacer />

@@ -5,14 +5,15 @@ import { Layout } from "@/components/Layout";
 import PageTransition from "@/components/PageTransition";
 import { Providers } from "@/components/Providers";
 import { GOOGLE_ANALYTICS_ID } from "@/constants";
+import { App } from "@/generated/graphql";
 import { getApps } from "@/graphql/api/getApp";
-import { App } from "@/types/Hygraph/models/App";
 
 type RootLayoutProps = React.HTMLProps<HTMLElement>;
 
 export default async function RootLayout({ children }: RootLayoutProps) {
   const { data } = await getApps();
-  const app = data?.apps[0] as App;
+  const apps = data?.apps;
+  const [app] = apps as unknown as App[];
 
   return (
     <html lang="en">
