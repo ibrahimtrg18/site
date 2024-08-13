@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { Flex } from "@chakra-ui/react";
 
 import { Container } from "@/components/Container";
-// import { Maintenance } from "@/components/Maintenance";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
 import { getApps } from "@/graphql/api/getApp";
@@ -12,7 +11,7 @@ import Me from "@/views/Home/Me";
 import Social from "@/views/Home/Social";
 import Technology from "@/views/Home/Technology";
 
-// export const revalidate = 3600;
+export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await getApps();

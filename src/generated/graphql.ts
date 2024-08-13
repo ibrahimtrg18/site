@@ -4508,6 +4508,7 @@ export type Project = Entity &
     createdBy?: Maybe<User>;
     /** Get the document in other stages */
     documentInStages: Array<Project>;
+    enabled?: Maybe<Scalars["Boolean"]["output"]>;
     /** List of Project versions */
     history: Array<Version>;
     /** The unique identifier */
@@ -4578,11 +4579,11 @@ export type ProjectUpdatedByArgs = {
 export type ProjectComponent = Entity & {
   __typename?: "ProjectComponent";
   description?: Maybe<RichText>;
-  enabled?: Maybe<Scalars["Boolean"]["output"]>;
   /** The unique identifier */
   id: Scalars["ID"]["output"];
   link?: Maybe<Scalars["Json"]["output"]>;
   media: Array<Asset>;
+  privacyAndPolicy?: Maybe<RichText>;
   slug?: Maybe<Scalars["String"]["output"]>;
   /** System stage field */
   stage: Stage;
@@ -4620,9 +4621,9 @@ export type ProjectComponentConnection = {
 
 export type ProjectComponentCreateInput = {
   description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
-  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   link?: InputMaybe<Scalars["Json"]["input"]>;
   media?: InputMaybe<AssetCreateManyInlineInput>;
+  privacyAndPolicy?: InputMaybe<Scalars["RichTextAST"]["input"]>;
   slug?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -4663,9 +4664,6 @@ export type ProjectComponentManyWhereInput = {
   OR?: InputMaybe<Array<ProjectComponentWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars["String"]["input"]>;
-  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Any other value that exists and is not equal to the given value. */
-  enabled_not?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["ID"]["input"]>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars["ID"]["input"]>;
@@ -4738,8 +4736,6 @@ export type ProjectComponentManyWhereInput = {
 };
 
 export enum ProjectComponentOrderByInput {
-  EnabledAsc = "enabled_ASC",
-  EnabledDesc = "enabled_DESC",
   IdAsc = "id_ASC",
   IdDesc = "id_DESC",
   SlugAsc = "slug_ASC",
@@ -4834,9 +4830,9 @@ export type ProjectComponentParentWhereUniqueInput = {
 
 export type ProjectComponentUpdateInput = {
   description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
-  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   link?: InputMaybe<Scalars["Json"]["input"]>;
   media?: InputMaybe<AssetUpdateManyInlineInput>;
+  privacyAndPolicy?: InputMaybe<Scalars["RichTextAST"]["input"]>;
   slug?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -4858,8 +4854,8 @@ export type ProjectComponentUpdateManyInlineInput = {
 
 export type ProjectComponentUpdateManyInput = {
   description?: InputMaybe<Scalars["RichTextAST"]["input"]>;
-  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   link?: InputMaybe<Scalars["Json"]["input"]>;
+  privacyAndPolicy?: InputMaybe<Scalars["RichTextAST"]["input"]>;
   slug?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -4931,9 +4927,6 @@ export type ProjectComponentWhereInput = {
   OR?: InputMaybe<Array<ProjectComponentWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars["String"]["input"]>;
-  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
-  /** Any other value that exists and is not equal to the given value. */
-  enabled_not?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["ID"]["input"]>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars["ID"]["input"]>;
@@ -5030,6 +5023,7 @@ export type ProjectConnection = {
 export type ProjectCreateInput = {
   content?: InputMaybe<ProjectcontentUnionCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   slug?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
@@ -5093,6 +5087,9 @@ export type ProjectManyWhereInput = {
   documentInStages_every?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_none?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_some?: InputMaybe<ProjectWhereStageInput>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  enabled_not?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["ID"]["input"]>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars["ID"]["input"]>;
@@ -5194,6 +5191,8 @@ export type ProjectManyWhereInput = {
 export enum ProjectOrderByInput {
   CreatedAtAsc = "createdAt_ASC",
   CreatedAtDesc = "createdAt_DESC",
+  EnabledAsc = "enabled_ASC",
+  EnabledDesc = "enabled_DESC",
   IdAsc = "id_ASC",
   IdDesc = "id_DESC",
   PublishedAtAsc = "publishedAt_ASC",
@@ -5208,6 +5207,7 @@ export enum ProjectOrderByInput {
 
 export type ProjectUpdateInput = {
   content?: InputMaybe<ProjectcontentUnionUpdateManyInlineInput>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   slug?: InputMaybe<Scalars["String"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -5230,6 +5230,7 @@ export type ProjectUpdateManyInlineInput = {
 };
 
 export type ProjectUpdateManyInput = {
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
@@ -5317,6 +5318,9 @@ export type ProjectWhereInput = {
   documentInStages_every?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_none?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_some?: InputMaybe<ProjectWhereStageInput>;
+  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Any other value that exists and is not equal to the given value. */
+  enabled_not?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["ID"]["input"]>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars["ID"]["input"]>;
@@ -8960,9 +8964,12 @@ export type GetProjectBySlugQuery = {
             link?: any | null;
             slug?: string | null;
             stage: Stage;
-            enabled?: boolean | null;
             description?: { __typename?: "RichText"; markdown: string } | null;
-            media: Array<{ __typename?: "Asset"; url: string; small: string }>;
+            media: Array<{ __typename?: "Asset"; url: string }>;
+            privacyAndPolicy?: {
+              __typename?: "RichText";
+              markdown: string;
+            } | null;
           }
         | null;
     }>;
@@ -8977,6 +8984,7 @@ export type GetProjectsQuery = {
     __typename?: "Project";
     id: string;
     title?: string | null;
+    slug?: string | null;
     content: Array<{
       __typename?: "Content";
       id: string;
@@ -8990,7 +8998,6 @@ export type GetProjectsQuery = {
             link?: any | null;
             slug?: string | null;
             stage: Stage;
-            enabled?: boolean | null;
             description?: { __typename?: "RichText"; markdown: string } | null;
             media: Array<{ __typename?: "Asset"; url: string }>;
           }
@@ -9115,14 +9122,11 @@ export const GetProjectBySlugDocument = gql`
               description {
                 markdown
               }
-              enabled
               media {
                 url
-                small: url(
-                  transformation: {
-                    image: { resize: { height: 400, width: 400 } }
-                  }
-                )
+              }
+              privacyAndPolicy {
+                markdown
               }
             }
           }
@@ -9207,6 +9211,7 @@ export const GetProjectsDocument = gql`
     projects {
       id
       title
+      slug
       content {
         ... on Content {
           id
@@ -9221,13 +9226,8 @@ export const GetProjectsDocument = gql`
                 markdown
               }
               media {
-                url(
-                  transformation: {
-                    image: { resize: { height: 1920, width: 1920 } }
-                  }
-                )
+                url
               }
-              enabled
             }
           }
           version

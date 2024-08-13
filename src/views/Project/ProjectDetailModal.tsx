@@ -30,7 +30,7 @@ export const ProjectDetailModal = ({
   onClose = () => {},
   content,
 }: ProjectDetailModalProps) => {
-  const { title, media, link: links } = content;
+  const { title, media, link: links = {} } = content;
   const MDXContent = evaluateSync(String(content?.description?.markdown));
 
   return (

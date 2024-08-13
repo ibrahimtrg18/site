@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
+import { ProjectComponent } from "@/generated/graphql";
 import { getApps } from "@/graphql/api/getApp";
 import { getProjectBySlug } from "@/graphql/api/getProjectBySlug";
 import { ProjectDetail } from "@/views/ProjectDetails/ProjectDetail";
@@ -13,18 +14,18 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-// export const revalidate = 3600;
+export const revalidate = 3600;
 
 export async function generateMetadata(
   { params: { slug } }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { data } = await getApps();
-  const app = data?.apps[0];
+  const app = (await getApps()).data.apps[0];
 
-  const {
-    data: { project },
-  } = await getProjectBySlug("/project/" + slug);
+  const project = (await getProjectBySlug("/projects/" + slug)).data.project;
+
+  const content = project?.content?.[project.content.length - 1]
+    .component as ProjectComponent;
 
   if (!project) {
     return notFound();
@@ -32,15 +33,15 @@ export async function generateMetadata(
 
   const previousImages = (await parent).openGraph?.images || [];
 
-  const images = project?.media?.map((m) => m.small);
+  const images = content?.media?.map((m) => m.url);
 
   return {
     title: `${project.title} | ${app?.fullname}`,
-    description: project.description.text,
+    description: content?.description?.text,
     metadataBase: new URL(SITE_URL),
     openGraph: {
       title: `${project.title} | ${app?.fullname}`,
-      description: project.description.text,
+      description: content?.description?.text,
       images: [...images, ...previousImages],
       url: `${SITE_URL}/project/${slug}`,
     },
@@ -52,18 +53,17 @@ export async function generateMetadata(
 }
 
 export default async function ProjectPage({ params: { slug } }: Props) {
-  const {
-    data: { project },
-  } = await getProjectBySlug("/project/" + slug);
-
-  if (!project?.projectDetailPage?.show) {
-    return notFound();
-  }
+  const project = (await getProjectBySlug("/projects/" + slug)).data.project;
 
   return (
     <Container>
       <Section gap="2rem">
-        <ProjectDetail {...project} />
+        <ProjectDetail
+          content={
+            project?.content[project.content.length - 1]
+              .component as ProjectComponent
+          }
+        />
       </Section>
     </Container>
   );

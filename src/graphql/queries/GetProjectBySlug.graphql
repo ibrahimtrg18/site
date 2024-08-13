@@ -1,5 +1,5 @@
 query GetProjectBySlug($slug: String!) {
-  project(where: {slug: $slug}) {
+  project(where: { slug: $slug }) {
     id
     title
     slug
@@ -16,12 +16,11 @@ query GetProjectBySlug($slug: String!) {
             description {
               markdown
             }
-            enabled
             media {
               url
-              small: url(
-                transformation: { image: { resize: { height: 400, width: 400 } } }
-              )
+            }
+            privacyAndPolicy {
+              markdown
             }
           }
         }
