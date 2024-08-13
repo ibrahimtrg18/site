@@ -27,5 +27,6 @@ query GetProjectBySlug($slug: String!) {
         version
       }
     }
+    enabled
   }
 }

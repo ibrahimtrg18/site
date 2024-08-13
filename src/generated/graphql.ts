@@ -2286,7 +2286,7 @@ export type ConnectPositionInput = {
 export type Content = Entity & {
   __typename?: "Content";
   component?: Maybe<ContentcomponentUnion>;
-  enabled?: Maybe<Scalars["Boolean"]["output"]>;
+  enabled: Scalars["Boolean"]["output"];
   /** The unique identifier */
   id: Scalars["ID"]["output"];
   /** System stage field */
@@ -2318,7 +2318,7 @@ export type ContentConnection = {
 
 export type ContentCreateInput = {
   component?: InputMaybe<ContentcomponentUnionCreateOneInlineInput>;
-  enabled?: InputMaybe<Scalars["Boolean"]["input"]>;
+  enabled: Scalars["Boolean"]["input"];
   version?: InputMaybe<Scalars["String"]["input"]>;
 };
 
@@ -8951,6 +8951,7 @@ export type GetProjectBySlugQuery = {
     id: string;
     title?: string | null;
     slug?: string | null;
+    enabled?: boolean | null;
     content: Array<{
       __typename?: "Content";
       id: string;
@@ -8985,6 +8986,7 @@ export type GetProjectsQuery = {
     id: string;
     title?: string | null;
     slug?: string | null;
+    enabled?: boolean | null;
     content: Array<{
       __typename?: "Content";
       id: string;
@@ -9133,6 +9135,7 @@ export const GetProjectBySlugDocument = gql`
           version
         }
       }
+      enabled
     }
   }
 `;
@@ -9233,6 +9236,7 @@ export const GetProjectsDocument = gql`
           version
         }
       }
+      enabled
     }
   }
 `;

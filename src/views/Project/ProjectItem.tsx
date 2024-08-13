@@ -26,14 +26,19 @@ import { ProjectDetailModal } from "./ProjectDetailModal";
 type ProjectItemProps = Project;
 
 export const ProjectItem = (props: ProjectItemProps) => {
-  const { id, title = "" } = props;
+  const { id, title = "", content, enabled } = props;
   const searchParams = useSearchParams();
   const chakra = useChakra();
   const { colorMode } = useColorMode();
   const { updateQuery, removeQuery } = useNavigation();
   const projectId = searchParams.get("projectId");
-  const content = props.content[0].component;
-  const { description, media } = content as ProjectComponent;
+  const component = content[content.length - 1].component as ProjectComponent;
+  const { description, media } = component;
+
+  // Only render enabled projects
+  if (!enabled) {
+    return null;
+  }
 
   /**
    * Disclosure Modal
@@ -67,10 +72,10 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
   return (
     <GridItem>
-      {content?.__typename === "ProjectComponent" && (
+      {component?.__typename === "ProjectComponent" && (
         <ProjectDetailModal
           {...props}
-          content={content}
+          content={component}
           isOpen={isOpen}
           onClose={() => removeQuery("projectId")}
         />
