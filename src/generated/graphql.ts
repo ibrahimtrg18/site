@@ -8923,14 +8923,14 @@ export type GetAppsQuery = {
       slug?: string | null;
       href?: string | null;
     }>;
-    socials: Array<{
+    social: Array<{
       __typename?: "Social";
       id: string;
       label?: string | null;
       link?: string | null;
       icon?: string | null;
     }>;
-    technologies: Array<{
+    technology: Array<{
       __typename?: "TechStack";
       id: string;
       label?: string | null;
@@ -9032,13 +9032,13 @@ export const GetAppsDocument = gql`
         slug
         href
       }
-      socials: social {
+      social: social {
         id
         label
         link
         icon
       }
-      technologies: technology(first: 100) {
+      technology: technology(first: 100) {
         id
         label
         link
