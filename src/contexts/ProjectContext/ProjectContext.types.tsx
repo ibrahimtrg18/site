@@ -1,4 +1,4 @@
-import { Project } from "@/types/Hygraph/models/Project";
+import { Project } from "@/generated/graphql";
 
 export enum PROJECT_ACTION {
   SET_PROJECT_LIST = "SET_PROJECT_LIST",

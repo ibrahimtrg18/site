@@ -24,6 +24,7 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint", "simple-import-sort", "import"],
+  "ignorePatterns": ["src/generated/graphql.ts"],
   "rules": {
     "no-console": "error",
     "react/react-in-jsx-scope": "off",

@@ -25,7 +25,8 @@
     "format": "prettier --write",
     "prepare": "husky install",
     "postbuild": "next-sitemap",
-    "typecheck": "tsc --project tsconfig.test.json"
+    "typecheck": "tsc --project tsconfig.test.json",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -37,17 +38,21 @@
     ]
   },
   "dependencies": {
-    "@apollo/client": "^3.9.9",
+    "@apollo/client": "^3.11.4",
     "@apollo/experimental-nextjs-app-support": "^0.8.0",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.9",
+    "@graphql-codegen/typescript-operations": "^4.2.3",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@types/mdx": "^2.0.12",
     "framer-motion": "11.0.20",
-    "graphql": "^16.8.1",
+    "graphql": "^16.9.0",
     "lodash": "^4.17.21",
     "next": "^14.1.4",
     "next-sitemap": "^4.2.3",

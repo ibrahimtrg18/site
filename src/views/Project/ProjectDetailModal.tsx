@@ -16,22 +16,22 @@ import {
   ModalProps,
 } from "@chakra-ui/react";
 
+import { Project, ProjectComponent } from "@/generated/graphql";
 import { evaluateSync } from "@/libs/mdx";
-import { Project } from "@/types/Hygraph/models/Project";
 
 import { ProjectDetailImage } from "./ProjectDetailImage";
 
-type ProjectDetailModalProps = Partial<ModalProps> & Project;
+type ProjectDetailModalProps = Partial<ModalProps> & {
+  content: Extract<Project["content"][number]["component"], ProjectComponent>;
+};
 
 export const ProjectDetailModal = ({
   isOpen = false,
   onClose = () => {},
-  title,
-  description,
-  media,
-  links,
+  content,
 }: ProjectDetailModalProps) => {
-  const MDXContent = evaluateSync(description.markdown);
+  const { title, media, link: links = {} } = content;
+  const MDXContent = evaluateSync(String(content?.description?.markdown));
 
   return (
     <Modal
@@ -42,7 +42,7 @@ export const ProjectDetailModal = ({
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{title}</ModalHeader>
+        <ModalHeader>{content.title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Flex direction="column">
@@ -65,7 +65,7 @@ export const ProjectDetailModal = ({
               <Button
                 key={key + value}
                 as={Link}
-                href={value}
+                href={String(value)}
                 passHref
                 target="_blank"
                 textTransform="capitalize"

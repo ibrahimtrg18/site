@@ -1,4 +1,4 @@
-import { App } from "@/types/Hygraph/models/App";
+import { App } from "@/generated/graphql";
 
 export enum PROJECT_ACTION {}
 
@@ -7,12 +7,12 @@ export type AppAction = {
   payload?: unknown;
 };
 
-export type AppState = App;
+export type AppState = Partial<App>;
 
 export type AppContext = {
-  apps: Array<App>;
+  apps: Partial<App>[];
 };
 
 export type AppProviderProps = React.ComponentPropsWithoutRef<"div"> & {
-  app: AppState | null;
+  app?: AppState;
 };

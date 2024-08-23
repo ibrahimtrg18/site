@@ -1,4 +1,5 @@
 import { ProjectProvider } from "@/contexts/ProjectContext/ProjectContext";
+import { Project } from "@/generated/graphql";
 import { getProjects } from "@/graphql/api/getProjects";
 
 type ProjectLayoutProps = {
@@ -6,9 +7,8 @@ type ProjectLayoutProps = {
 };
 
 export default async function ProjectLayout({ children }: ProjectLayoutProps) {
-  const {
-    data: { projects },
-  } = await getProjects();
+  const { data } = await getProjects();
+  const projects = data?.projects as Project[];
 
   return <ProjectProvider projects={projects}>{children}</ProjectProvider>;
 }

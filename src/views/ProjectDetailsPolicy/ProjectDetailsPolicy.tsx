@@ -3,15 +3,17 @@
 import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
+import { Project, ProjectComponent } from "@/generated/graphql";
 import { evaluateSync } from "@/libs/mdx";
-import { Project } from "@/types/Hygraph/models/Project";
 
-type ProjectDetailModalProps = Project;
+type ProjectDetailsPolicyProps = {
+  content: Extract<Project["content"][number]["component"], ProjectComponent>;
+};
 
 export const ProjectDetailsPolicy = ({
-  privacyPolicy,
-}: ProjectDetailModalProps) => {
-  const MDXContent = evaluateSync(String(privacyPolicy?.text?.markdown));
+  content,
+}: ProjectDetailsPolicyProps) => {
+  const MDXContent = evaluateSync(String(content?.privacyAndPolicy?.markdown));
 
   return (
     <Flex direction="column">

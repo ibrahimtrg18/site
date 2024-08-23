@@ -1,12 +1,9 @@
-import { QUERY_GET_ALL_APP } from "@/graphql/queries/appQueries";
+import { GetAppsDocument, GetAppsQuery } from "@/generated/graphql";
 import { getClient } from "@/libs/apollo/ssr";
-import { ResponseGetApps } from "@/types/response";
 
-export async function getApp() {
-  const {
-    data: { apps },
-  } = await getClient().query<ResponseGetApps>({
-    query: QUERY_GET_ALL_APP,
+export async function getApps() {
+  const data = await getClient().query<GetAppsQuery>({
+    query: GetAppsDocument,
     context: {
       fetchOptions: {
         next: { revalidate: 5 },
@@ -14,19 +11,5 @@ export async function getApp() {
     },
   });
 
-  if (apps.length) {
-    const app = apps[0];
-
-    return {
-      data: {
-        app,
-      },
-    };
-  }
-
-  return {
-    data: {
-      app: null,
-    },
-  };
+  return data;
 }
