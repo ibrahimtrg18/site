@@ -15,6 +15,8 @@ Stack Technology I used In this project:
 
 ## Getting Started
 
+### Development
+
 Clone the project to a local machine:
 
 ```bash
@@ -22,8 +24,6 @@ git clone https://github.com/ibrahimtrg18/ibrahim-tarigan.git
 ```
 
 you need to copy `.env.template` to the root folder as a `.env` file and fill it with your environment variables.
-
-> NOTE: If you don't have Hygraph Template CMS, please go to [Clone Hygraph](https://app.hygraph.com/clone/4e93c7ed0b984641bb6ae8ca17e36518?name=ibrahim-tarigan)
 
 ```bash
 HYGRAPH_GRAPHQL_URI=[YOUR HYGRAPH_GRAPHQL_URI]
@@ -38,6 +38,19 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your favorite browser.
+
+For Content CMS, Please do the following steps:
+
+> NOTE: If you don't have Hygraph Template CMS, please go to [Clone Hygraph](https://app.hygraph.com/clone/616e21b4e9d24da6b472ff0462392a89?name=ibrahim-tarigan)
+
+Understanding the CMS data structure:
+
+1. Home Page
+   ![Home](./docs/assets/home.png)
+2. Projects Page
+   ![Projects](./docs/assets/projects.png)
+3. Project Detail Modal
+   ![Project Detail](./docs/assets/project-detail.png)
 
 ## References
 
