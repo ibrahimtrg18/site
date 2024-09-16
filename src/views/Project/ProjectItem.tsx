@@ -42,7 +42,7 @@ export const ProjectItem = (props: ProjectItemProps) => {
 
   /**
    * Disclosure Modal
-   * will open when the page has query projectId /project?projectId=
+   * will open when the page has query projectId /projects?projectId=
    */
   const { isOpen } = useDisclosure({
     isOpen: projectId === id,
