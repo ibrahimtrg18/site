@@ -7,3 +7,4 @@ Host: https://ibrahimtarigan.vercel.app
 
 # Sitemaps
 Sitemap: https://ibrahimtarigan.vercel.app/sitemap.xml
+Sitemap: https://ibrahimtarigan.vercel.app/server-sitemap-index.xml
