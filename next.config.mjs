@@ -18,6 +18,17 @@ const nextConfig = {
       },
     ],
   },
+  ...(isProd && {
+    redirects: async () => {
+      return [
+        {
+          source: "/:path*/editor", // Match any path ending with /editor
+          destination: "/:path*", // Redirect to the same path without /editor
+          permanent: true, // Use a 301 redirect for a permanent move
+        },
+      ];
+    },
+  }),
 };
 
 export default nextConfig;
