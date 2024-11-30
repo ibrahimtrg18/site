@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useId } from "react";
-import Image from "next/image";
+import React, { Fragment, useId } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -16,14 +15,24 @@ import {
 import { motion, useScroll, useTransform } from "framer-motion";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
-import { useAppContext } from "@/contexts/AppContext/AppContext";
+import { Container } from "@/components/Container";
+import { Image } from "@/components/Image";
 import { useConfigurationContext } from "@/contexts/ConfigurationContext/ConfigurationContext";
+import { App } from "@/generated/graphql";
 
-import { Container } from "./Container";
+type NavbarProps = {
+  avatar: App["avatar"];
+  links: App["menu"];
+  hasNavbar?: boolean;
+};
 
-export const Navbar = () => {
+export const Navbar = (props: NavbarProps) => {
   const pathname = usePathname();
-  const { menu: links = [], avatar } = useAppContext();
+  const {
+    links = [],
+    avatar,
+    hasNavbar = !pathname.endsWith("/editor"),
+  } = props;
   const layoudId = useId();
   const { about } = useConfigurationContext();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -36,6 +45,10 @@ export const Navbar = () => {
   );
 
   const _boxShadow = useTransform(scrollY, [0, 10], ["none", boxShadow]);
+
+  if (!hasNavbar) {
+    return <Fragment />;
+  }
 
   return (
     <Box
@@ -67,7 +80,7 @@ export const Navbar = () => {
             height={32}
             loading="lazy"
             style={{ borderRadius: "9999px" }}
-            src={String(avatar?.url)}
+            src={avatar?.url}
             alt={about.fullName || "Avatar image picture"}
           />
           <Spacer />

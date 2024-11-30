@@ -1,0 +1,11 @@
+mutation UpdatePage($id: ID!, $name: String!, $path: String!, $config: Json!) {
+  updatePage(
+    data: { name: $name, path: $path, config: $config }
+    where: { id: $id }
+  ) {
+    id
+    name
+    path
+    config
+  }
+}

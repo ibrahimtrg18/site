@@ -1,4 +1,5 @@
 const isProd = process.env.NODE_ENV === "production";
+const isDev = process.env.NODE_ENV === "development";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,6 +8,9 @@ const nextConfig = {
   env: {
     SITE_URL: process.env.SITE_URL,
     HYGRAPH_GRAPHQL_URI: process.env.HYGRAPH_GRAPHQL_URI,
+    ...(isDev && {
+      HYGRAPH_PERMANENT_TOKEN: process.env.HYGRAPH_PERMANENT_TOKEN,
+    }),
     ...(isProd && { GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID }),
   },
   images: {

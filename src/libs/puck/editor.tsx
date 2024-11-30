@@ -6,16 +6,14 @@ import "@measured/puck/puck.css";
 
 import { config } from ".";
 
-// Describe the initial data
-const initialData = {};
-
-// Save the data to your database
-const save = (data: Data<DefaultComponentProps>) => {
-  // eslint-disable-next-line no-console
-  console.log(data);
+export type EditorProps = {
+  data: Partial<Data<DefaultComponentProps>>;
+  onPublish: (data: Data<DefaultComponentProps>) => void;
 };
 
 // Render Puck editor
-export function Editor() {
-  return <Puck config={config} data={initialData} onPublish={save} />;
+export function Editor(props: EditorProps) {
+  const { data = {}, onPublish } = props;
+
+  return <Puck config={config} data={data} onPublish={onPublish} />;
 }

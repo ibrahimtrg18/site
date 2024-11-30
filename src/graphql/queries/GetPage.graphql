@@ -1,0 +1,8 @@
+query GetPage($path: String!) {
+  page(where: { path: $path }) {
+    id
+    name
+    path
+    config
+  }
+}

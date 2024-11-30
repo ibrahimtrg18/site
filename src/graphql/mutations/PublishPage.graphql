@@ -1,0 +1,8 @@
+mutation PublishPage($path: String!) {
+  publishPage(where: { path: $path }) {
+    id
+    name
+    path
+    config
+  }
+}
