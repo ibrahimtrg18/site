@@ -50,7 +50,7 @@
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@measured/puck": "^0.16.1",
+    "@measured/puck": "^0.16.2",
     "@types/mdx": "^2.0.12",
     "framer-motion": "11.0.20",
     "graphql": "^16.9.0",
