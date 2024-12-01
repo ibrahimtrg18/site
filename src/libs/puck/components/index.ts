@@ -1,7 +1,9 @@
 import { Container } from "./Container";
 import { Grid } from "./Grid";
 import { Heading } from "./Heading";
+import { IconButton } from "./IconButton";
 import { Stack } from "./Stack";
+
 // import { Navbar } from "./Navbar";
 
 export const components = {
@@ -10,5 +12,6 @@ export const components = {
   Heading,
   // Navbar,
   Grid,
+  IconButton,
   Stack,
 };
