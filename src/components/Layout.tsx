@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { Flex, FlexProps } from "@chakra-ui/react";
 
 import { useAppContext } from "@/contexts/AppContext/AppContext";
@@ -17,8 +18,15 @@ export const Layout = ({
   ...restProps
 }: LayoutProps) => {
   const { menu: links = [], avatar } = useAppContext();
+  const pathname = usePathname();
+
+  const isEdit = pathname.endsWith("/edit");
 
   const pt = [4, 5, 6].map((v) => `${v}rem`);
+
+  if (isEdit) {
+    return children;
+  }
 
   return (
     <>

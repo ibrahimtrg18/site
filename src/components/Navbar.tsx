@@ -20,7 +20,7 @@ import { Image } from "@/components/Image";
 import { useConfigurationContext } from "@/contexts/ConfigurationContext/ConfigurationContext";
 import { App } from "@/generated/graphql";
 
-type NavbarProps = {
+export type NavbarProps = {
   avatar: App["avatar"];
   links: App["menu"];
   hasNavbar?: boolean;
