@@ -9,11 +9,12 @@ import { config } from ".";
 export type EditorProps = {
   data: Partial<Data<DefaultComponentProps>>;
   onPublish: (data: Data<DefaultComponentProps>) => void;
+  path: string;
 };
 
 // Render Puck editor
 export function Editor(props: EditorProps) {
-  const { data = {}, onPublish } = props;
+  const { data = {}, path, onPublish } = props;
 
   return (
     <Puck
@@ -23,11 +24,9 @@ export function Editor(props: EditorProps) {
       overrides={{
         headerActions: ({ children }) => (
           <>
-            <div>
-              <Button href="/" newTab variant="secondary">
-                View page
-              </Button>
-            </div>
+            <Button href={path} newTab variant="secondary">
+              View page
+            </Button>
 
             {children}
           </>
