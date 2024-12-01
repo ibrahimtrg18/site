@@ -3,6 +3,7 @@ import { Grid } from "./Grid";
 import { Heading } from "./Heading";
 import { IconButton } from "./IconButton";
 import { Stack } from "./Stack";
+import { Text } from "./Text";
 
 // import { Navbar } from "./Navbar";
 
@@ -14,4 +15,5 @@ export const components = {
   Grid,
   IconButton,
   Stack,
+  Text,
 };
