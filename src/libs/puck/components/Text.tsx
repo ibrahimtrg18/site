@@ -3,18 +3,11 @@ import { ComponentConfig } from "@measured/puck";
 
 export const Text: ComponentConfig<TextProps> = {
   fields: {
-    "aria-label": { type: "text" },
-    variant: {
-      type: "select",
-      options: [{ label: "Body", value: "body" }],
+    children: {
+      type: "text",
     },
-    size: {
-      type: "select",
-      options: [
-        { label: "Small", value: "sm" },
-        { label: "Medium", value: "md" },
-        { label: "Large", value: "lg" },
-      ],
+    fontSize: {
+      type: "text",
     },
   },
   defaultProps: {

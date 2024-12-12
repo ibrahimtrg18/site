@@ -12,12 +12,18 @@ import {
 } from "@/generated/graphql";
 import { config, Editor } from "@/libs/puck";
 
+type ClientProps = {
+  path: string;
+  isEdit: boolean;
+  isPreview: boolean;
+};
+
 /**
  * @param {Object} props Props defined in the page component
  * @param {string} props.path The path of the page after slice/remove "/edit" in path (e.g. /edit to /)
  * @param {boolean} props.isEdit If the page is in edit mode
  */
-function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
+const Client = ({ path, isEdit, isPreview }: ClientProps) => {
   const { data, loading } = useGetPageQuery({ variables: { path } });
   const [updatePage] = useUpdatePageMutation();
   const [publishPage] = usePublishPageMutation();
@@ -45,7 +51,13 @@ function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   }
 
   if (isEdit) {
-    return <Editor data={page?.config} path={path} onPublish={onPublish} />;
+    return <Editor path={path} data={page?.config} onPublish={onPublish} />;
+  }
+
+  if (isPreview) {
+    return (
+      <Editor isPreview path={path} data={page?.config} onPublish={onPublish} />
+    );
   }
 
   if (page?.config) {
@@ -53,6 +65,6 @@ function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   }
 
   return redirect(path);
-}
+};
 
 export default Client;

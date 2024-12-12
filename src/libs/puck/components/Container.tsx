@@ -34,9 +34,9 @@ export const Container: ComponentConfig = {
   defaultProps: {
     maxW: ["container.sm", "container.md", "container.lg", "container.xl"],
   },
-  render: () => {
+  render: (props) => {
     return (
-      <_Container>
+      <_Container {...props}>
         <DropZone zone={`components`} />
       </_Container>
     );

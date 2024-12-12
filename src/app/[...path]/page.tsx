@@ -36,7 +36,7 @@ export default async function Page({
 }: {
   params: { framework: string; uuid: string; path: string[] };
 }) {
-  const { isEdit, path } = resolverPath(params.path);
+  const { isEdit, isPreview, path } = resolverPath(params.path);
 
-  return <Client isEdit={isEdit} path={path} />;
+  return <Client isEdit={isEdit} isPreview={isPreview} path={path} />;
 }
