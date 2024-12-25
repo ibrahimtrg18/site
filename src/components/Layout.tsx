@@ -9,11 +9,9 @@ type LayoutProps = FlexProps & {
   navbarHeight?: number;
 };
 
-export const Layout = ({
-  children,
-  hasNavbar = true,
-  ...restProps
-}: LayoutProps) => {
+const Layout = (props: LayoutProps) => {
+  const { children, hasNavbar = true, ...restProps } = props;
+
   const pt = [4, 5, 6].map((v) => `${v}rem`);
 
   return (
@@ -36,3 +34,5 @@ export const Layout = ({
     </>
   );
 };
+
+export default Layout;

@@ -1,7 +1,7 @@
 import React from "react";
 
+import { Layout } from "@/components";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import { Layout } from "@/components/Layout";
 import PageTransition from "@/components/PageTransition";
 import { Providers } from "@/components/Providers";
 import { GOOGLE_ANALYTICS_ID } from "@/constants";
