@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Flex } from "@chakra-ui/react";
 
-import { Container } from "@/components/Container";
+import { Container } from "@/components";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
 import { getApps } from "@/graphql/api/getApp";

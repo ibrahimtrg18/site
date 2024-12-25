@@ -1,7 +1,7 @@
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Container } from "@/components/Container";
+import { Container } from "@/components";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
 import { ProjectComponent } from "@/generated/graphql";

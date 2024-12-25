@@ -16,10 +16,9 @@ import {
 import { motion, useScroll, useTransform } from "framer-motion";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
+import { Container } from "@/components";
 import { useAppContext } from "@/contexts/AppContext/AppContext";
 import { useConfigurationContext } from "@/contexts/ConfigurationContext/ConfigurationContext";
-
-import { Container } from "./Container";
 
 export const Navbar = () => {
   const pathname = usePathname();

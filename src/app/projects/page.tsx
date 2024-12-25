@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { Container } from "@/components/Container";
+import { Container } from "@/components";
 import { Section } from "@/components/Section";
 import { SITE_URL } from "@/constants";
 import { getApps } from "@/graphql/api/getApp";
