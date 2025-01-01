@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { Container } from "@/components";
 import { Section } from "@/components/Section";
-import { SITE_URL } from "@/constants";
+import { BASE_URL } from "@/constants";
 import { ProjectComponent } from "@/generated/graphql";
 import { getApps } from "@/graphql/api/getApp";
 import { getProjectBySlug } from "@/graphql/api/getProjectBySlug";
@@ -38,12 +38,12 @@ export async function generateMetadata(
   return {
     title: `${project.title} | ${app?.fullname}`,
     description: content?.description?.text,
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(BASE_URL),
     openGraph: {
       title: `${project.title} | ${app?.fullname}`,
       description: content?.description?.text,
       images: [...images, ...previousImages],
-      url: `${SITE_URL}/projects/${slug}`,
+      url: `${BASE_URL}/projects/${slug}`,
     },
     robots: {
       index: true,

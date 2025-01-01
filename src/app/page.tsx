@@ -3,7 +3,7 @@ import { Flex } from "@chakra-ui/react";
 
 import { Container } from "@/components";
 import { Section } from "@/components/Section";
-import { SITE_URL } from "@/constants";
+import { BASE_URL } from "@/constants";
 import { getApps } from "@/graphql/api/getApp";
 import About from "@/views/Home/About";
 import DownloadCV from "@/views/Home/DownloadCV";
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `Home | ${app?.fullname}`,
     description: app?.about?.text,
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(BASE_URL),
   };
 }
 

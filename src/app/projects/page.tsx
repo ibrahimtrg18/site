@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { Container } from "@/components";
 import { Section } from "@/components/Section";
-import { SITE_URL } from "@/constants";
+import { BASE_URL } from "@/constants";
 import { getApps } from "@/graphql/api/getApp";
 import { ProjectList } from "@/views/Project/ProjectList";
 
@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `Project | ${app?.fullname}`,
     description: app?.about?.text,
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(BASE_URL),
   };
 }
 

@@ -9,7 +9,9 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   env: {
-    SITE_URL: process.env.SITE_URL,
+    BASE_URL: isProd
+      ? "https://ibrahimtarigan.vercel.app"
+      : process.env.BASE_URL,
     HYGRAPH_GRAPHQL_URI: process.env.HYGRAPH_GRAPHQL_URI,
     ...(isProd && { GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID }),
   },

@@ -26,8 +26,8 @@ git clone https://github.com/ibrahimtrg18/ibrahim-tarigan.git
 you need to copy `.env.template` to the root folder as a `.env` file and fill it with your environment variables.
 
 ```bash
+BASE_URL=[YOUR SITE HOST]
 HYGRAPH_GRAPHQL_URI=[YOUR HYGRAPH_GRAPHQL_URI]
-SITE_URL=[YOUR SITE HOST]
 GOOGLE_ANALYTICS_ID=[YOUR GOOGLE ANALYTICS ID]
 ```
 
