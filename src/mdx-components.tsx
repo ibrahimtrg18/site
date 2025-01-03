@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import type { MDXComponents } from "mdx/types";
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
+export function useMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ...components,
     h1: (props) => <Heading as="h1" size="3xl" my={3} {...props} />,

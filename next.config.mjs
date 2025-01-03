@@ -1,8 +1,10 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-import mdx from "@next/mdx";
+import createMDX from "@next/mdx";
+import rehypeHighlight from "rehype-highlight";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 const isProd = process.env.NODE_ENV === "production";
-const withMDX = mdx();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -25,5 +27,18 @@ const nextConfig = {
     ],
   },
 };
+
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [
+      remarkGfm,
+      remarkFrontmatter,
+      [remarkMdxFrontmatter, { name: "metadata" }],
+    ],
+    rehypePlugins: [rehypeHighlight],
+  },
+});
 
 export default withMDX(nextConfig);
