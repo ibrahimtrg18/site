@@ -21,7 +21,7 @@ export const ProjectList = () => {
     }
 
     removeQuery("projectId");
-  }, []);
+  }, [projectId, projects, removeQuery]);
 
   return (
     <Grid

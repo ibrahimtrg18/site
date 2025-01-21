@@ -17,7 +17,7 @@
   "url": "https://github.com/ibrahimtrg18/ibrahim-tarigan/issues",
   "email": "ibrahimtarigan@gmail.com",
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -81,6 +81,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",

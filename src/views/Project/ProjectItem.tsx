@@ -35,11 +35,6 @@ export const ProjectItem = (props: ProjectItemProps) => {
   const component = content[content.length - 1].component as ProjectComponent;
   const { description, media } = component;
 
-  // Only render enabled projects
-  if (!enabled) {
-    return null;
-  }
-
   /**
    * Disclosure Modal
    * will open when the page has query projectId /projects?projectId=
@@ -67,10 +62,25 @@ export const ProjectItem = (props: ProjectItemProps) => {
         />
       );
     },
-    []
+    [title]
   );
 
   const [firstMedia] = media;
+
+  const initialBackgroundColor = useColorModeValue(
+    chakra.theme.colors.gray[50],
+    chakra.theme.colors.gray[800]
+  );
+
+  const whileHoverBackgroundColor = useColorModeValue(
+    chakra.theme.colors.gray[100],
+    chakra.theme.colors.gray[700]
+  );
+
+  // Only render enabled projects
+  if (!enabled) {
+    return null;
+  }
 
   return (
     <GridItem>
@@ -87,17 +97,11 @@ export const ProjectItem = (props: ProjectItemProps) => {
         as={motion.div}
         initial={{
           top: 0,
-          backgroundColor: useColorModeValue(
-            chakra.theme.colors.gray[50],
-            chakra.theme.colors.gray[800]
-          ),
+          backgroundColor: initialBackgroundColor,
         }}
         whileHover={{
           top: -10,
-          backgroundColor: useColorModeValue(
-            chakra.theme.colors.gray[100],
-            chakra.theme.colors.gray[700]
-          ),
+          backgroundColor: whileHoverBackgroundColor,
         }}
         whileTap={{ top: 10 }}
         backgroundColor="transparent"

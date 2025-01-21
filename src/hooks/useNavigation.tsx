@@ -19,7 +19,7 @@ export const useNavigation = () => {
       router.push(pathname + "?" + params.toString());
       return;
     },
-    [searchParams]
+    [pathname, router, searchParams]
   );
 
   /**
@@ -34,7 +34,7 @@ export const useNavigation = () => {
       router.push(pathname + "?" + params.toString());
       return;
     },
-    [searchParams]
+    [pathname, router, searchParams]
   );
 
   return {
