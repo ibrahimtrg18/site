@@ -9,7 +9,7 @@ type SocialMediaProps = IconButtonProps & {
   platform?: string;
 };
 
-const SocialMedia = (props: SocialMediaProps) => {
+export const SocialMedia = (props: SocialMediaProps) => {
   const { id, platform, ...restProps } = props;
 
   const platforms = useMemo(
@@ -65,5 +65,3 @@ const SocialMedia = (props: SocialMediaProps) => {
     />
   );
 };
-
-export default SocialMedia;

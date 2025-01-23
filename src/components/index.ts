@@ -1,5 +1,6 @@
-export { default as Container } from "./Container";
+export * from "./GoogleAnalytics";
 export * from "./Image";
-export { default as Layout } from "./Layout";
+export * from "./Layout";
+export * from "./PageTransition";
 export * from "./Project";
-export { default as SocialMedia } from "./SocialMedia";
+export * from "./SocialMedia";

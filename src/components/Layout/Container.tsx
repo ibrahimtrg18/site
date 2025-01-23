@@ -10,7 +10,7 @@ import {
 
 type ContainerProps = ChakraContainerProps;
 
-const Container = (props: ContainerProps) => {
+export const Container = (props: ContainerProps) => {
   const {
     children,
     maxW = ["container.sm", "container.md", "container.lg", "container.xl"],
@@ -39,5 +39,3 @@ const Container = (props: ContainerProps) => {
     </Suspense>
   );
 };
-
-export default Container;

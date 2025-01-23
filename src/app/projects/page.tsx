@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
-import { Container } from "@/components";
-import { Section } from "@/components/Section";
+import { Container, Section } from "@/components";
 import { BASE_URL } from "@/constants";
 import { getApps } from "@/graphql/api/getApp";
 import { ProjectList } from "@/views/Project/ProjectList";

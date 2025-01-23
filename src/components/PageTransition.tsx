@@ -4,7 +4,7 @@ import { HTMLMotionProps, motion } from "framer-motion";
 
 type PageTransitionProps = HTMLMotionProps<"div">;
 
-function PageTransition(props: PageTransitionProps) {
+export function PageTransition(props: PageTransitionProps) {
   const { children, ...restProps } = props;
 
   return (
@@ -20,5 +20,3 @@ function PageTransition(props: PageTransitionProps) {
     </Fragment>
   );
 }
-
-export default PageTransition;

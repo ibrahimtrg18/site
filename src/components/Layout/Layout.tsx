@@ -2,14 +2,14 @@
 
 import { Flex, FlexProps } from "@chakra-ui/react";
 
-import { Navbar } from "./Navbar";
+import { Navbar } from "@/components";
 
 type LayoutProps = FlexProps & {
   hasNavbar?: boolean;
   navbarHeight?: number;
 };
 
-const Layout = (props: LayoutProps) => {
+export const Layout = (props: LayoutProps) => {
   const { children, hasNavbar = true, ...restProps } = props;
 
   const pt = [4, 5, 6].map((v) => `${v}rem`);
@@ -34,5 +34,3 @@ const Layout = (props: LayoutProps) => {
     </>
   );
 };
-
-export default Layout;
