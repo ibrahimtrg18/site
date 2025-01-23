@@ -28,7 +28,7 @@ export default async function ProjectPage({ params }: Props) {
       await import(`@/markdown/projects/${title}.mdx`);
 
     return (
-      <Flex flexDirection="column" gap="1rem">
+      <Flex flexDirection="column" paddingBottom="1rem">
         <Content />
       </Flex>
     );

@@ -16,7 +16,9 @@ export default async function ProjectsPage() {
 
       const slug = `/mdx/projects/${fileName.replace(/\.mdx?$/, "")}`; // @TODO remove /mdx
 
-      return <ProjectCard key={metadata.title} {...metadata} href={slug} />;
+      return (
+        <ProjectCard key={metadata.title} {...metadata.project} href={slug} />
+      );
     })
   );
 

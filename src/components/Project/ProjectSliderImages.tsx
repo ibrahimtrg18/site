@@ -3,7 +3,13 @@
 import { CSSProperties, useState } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 import type { Swiper as SwiperType } from "swiper";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import {
+  Autoplay,
+  FreeMode,
+  Navigation,
+  Pagination,
+  Thumbs,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Image } from "@/components";
@@ -49,11 +55,16 @@ export const ProjectSliderImages = ({
           }
           loop={true}
           navigation={true}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
           thumbs={{
             swiper:
               thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
-          modules={[FreeMode, Navigation, Thumbs]}
+          modules={[FreeMode, Navigation, Pagination, Thumbs, Autoplay]}
         >
           {media.map((media) => (
             <SwiperSlide key={media.url}>

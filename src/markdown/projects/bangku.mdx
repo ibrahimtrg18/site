@@ -1,6 +1,10 @@
 ---
 title: Bangku | Ibrahim Tarigan
 description: Mandarin application jobs
+
+project:
+  title: Bangku
+  description: Mandarin application jobs
 ---
 
 import { ProjectSliderImages } from '@/components'
@@ -8,11 +12,11 @@ import { ProjectSliderImages } from '@/components'
 export const assets = {
   images: [
     { url: "/assets/projects/bangku-web/1.0.0/home-page.png" },
-    { url: "/assets/projects/bangku-web/1.0.0/home-page-pop-up.png" },
+    { url: "/assets/projects/bangku-web/1.0.0/home-page-pop-up-login.png" },
     { url: "/assets/projects/bangku-web/1.0.0/home-page-sign-in-google.png" },
     { url: "/assets/projects/bangku-web/1.0.0/register-page.png" },
     { url: "/assets/projects/bangku-web/1.0.0/detail-job-page.png" },
-    { url: "/assets/projects/bangku-web/1.0.0/detail-job-page-sign-in.png" },
+    { url: "/assets/projects/bangku-web/1.0.0/detail-job-page-sign-in-google.png" },
     { url: "/assets/projects/bangku-web/1.0.0/detail-job-page-pop-up-login.png" },
     { url: "/assets/projects/bangku-web/1.0.0/detail-job-page-open-modal-quick-apply.png" },
     { url: "/assets/projects/bangku-web/1.0.0/detail-job-page-modal-login.png" },
@@ -22,6 +26,33 @@ export const assets = {
   ]
 }
 
-<ProjectSliderImages images={assets.images}/>
+<ProjectSliderImages images={assets.images} mb={4}/>
 
-No Description.
+<br/>
+## Bangku
+
+Developed a job listing management system that optimizes API fetching and integrates Firebase authentication to enhance user experience and application performance. The system includes dynamic job display, secure API calls with authorization, and custom user notifications.
+
+### Role
+
+- Designed and implemented a paginated job listing UI using react-query for efficient data management.
+- Integrated Firebase authentication with dynamic token-based API requests for enhanced security.
+- Optimized redundant API calls by leveraging react-query cache and query key management.
+- Built custom toast notifications with react-toastify, including personalized icons, themes, and styles.
+- Created reusable utility functions for localStorage to handle client-side data persistence.
+- Ensured seamless user experience by refetching API data when authentication status changes.
+
+### Technology Used
+
+- Frontend: React, TypeScript, React Query, React Toastify.
+- Backend Integration: Firebase Auth, Axios.
+- Styling: Emotion CSS-in-JS.
+- Tools: Browser LocalStorage, REST APIs.
+
+<br/>
+---
+<br/>
+
+**More Detail:**
+- [Website](https://bangkerja.com)
+- [Github](https://github.com/ibrahimtrg18/bangku-web)
