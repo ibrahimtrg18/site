@@ -44,7 +44,10 @@ export const ProjectItem = (props: ProjectItemProps) => {
   });
 
   const MediaImage = useCallback(
-    ({ src = "/images/no-image.png", blurDataURL }: Partial<ImageProps>) => {
+    ({
+      src = "/assets/images/no-image.png",
+      blurDataURL,
+    }: Partial<ImageProps>) => {
       return (
         <Image
           placeholder="blur"
@@ -114,8 +117,8 @@ export const ProjectItem = (props: ProjectItemProps) => {
             <MediaImage blurDataURL={firstMedia.url} src={firstMedia.url} />
           ) : (
             <MediaImage
-              blurDataURL="/images/no-image.png"
-              src="/images/no-image.png"
+              blurDataURL="/assets/images/no-image.png"
+              src="/assets/images/no-image.png"
             />
           )}
         </CardHeader>

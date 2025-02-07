@@ -8,7 +8,7 @@ export const Image = (props: ImageProps) => {
     fill = true,
     width = "100%",
     height = "100%",
-    src = "/images/no-image.png",
+    src = "/assets/images/no-image.png",
     ...restProps
   } = props;
 

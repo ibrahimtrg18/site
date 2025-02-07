@@ -1,29 +1,38 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Flex } from "@chakra-ui/react";
+import fs from "fs";
+import path from "path";
 
-import { Container, Section } from "@/components";
-import { BASE_URL } from "@/constants";
-import { getApps } from "@/graphql/api/getApp";
-import { ProjectList } from "@/views/Project/ProjectList";
-
-export const revalidate = 3600;
+import { ProjectCard } from "@/components";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getApps();
-  const app = data?.apps[0];
+  try {
+    const { data } = await import(`@/markdown/projects.mdx`);
 
-  return {
-    title: `Project | ${app?.fullname}`,
-    description: app?.about?.text,
-    metadataBase: new URL(BASE_URL),
-  };
+    return data.metadata;
+  } catch (error) {
+    notFound();
+  }
 }
 
-export default async function ProjectPage() {
+export default async function ProjectsPage() {
+  const folderPath = path.join(process.cwd(), "src", "markdown", "projects"); // Absolute path to the folder
+  const files = fs.readdirSync(folderPath); // Read folder contents
+
+  const projects = await Promise.all(
+    files.map(async (fileName) => {
+      const { data } = await import(`@/markdown/projects/${fileName}`);
+
+      const slug = `/projects/${fileName.replace(/\.mdx?$/, "")}`;
+
+      return <ProjectCard key={data.title} {...data.project} href={slug} />;
+    })
+  );
+
   return (
-    <Container>
-      <Section gap="2rem">
-        <ProjectList />
-      </Section>
-    </Container>
+    <Flex direction="column" gap={2}>
+      {projects}
+    </Flex>
   );
 }

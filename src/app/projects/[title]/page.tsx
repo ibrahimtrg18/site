@@ -12,9 +12,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { title } = params;
 
-    const { metadata } = await import(`@/markdown/projects/${title}.mdx`);
+    const { data } = await import(`@/markdown/projects/${title}.mdx`);
 
-    return metadata;
+    return data.metadata;
   } catch (error) {
     notFound();
   }

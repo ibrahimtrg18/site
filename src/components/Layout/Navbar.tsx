@@ -22,7 +22,7 @@ import { useConfigurationContext } from "@/contexts/ConfigurationContext/Configu
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const { menu: links = [], avatar } = useAppContext();
+  const { menu: menus = [], icon } = useAppContext();
   const layoudId = useId();
   const { about } = useConfigurationContext();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -66,7 +66,7 @@ export const Navbar = () => {
             height={32}
             loading="lazy"
             style={{ borderRadius: "9999px" }}
-            src={String(avatar?.url)}
+            src={String(icon)}
             alt={about.fullName || "Avatar image picture"}
           />
           <Spacer />
@@ -77,17 +77,17 @@ export const Navbar = () => {
             gap="1rem"
             alignItems="center"
           >
-            {links.map((link) => {
+            {menus.map((menu) => {
               return (
                 <Button
-                  key={link.pathname}
+                  key={menu?.pathname}
                   as={NextLink}
-                  href={{ pathname: link.pathname }}
+                  href={{ pathname: menu.pathname }}
                   variant="navigation"
                   fontSize="inherit"
                 >
-                  {link.label}
-                  {link.pathname === pathname && (
+                  {menu.label}
+                  {menu.pathname === pathname && (
                     <Box
                       as={motion.div}
                       position="absolute"
