@@ -1,10 +1,16 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export const useNavigation = () => {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isNested, setIsNested] = useState<boolean>(false);
+
+  useEffect(() => {
+    const isNested = pathname.split("/").length > 2;
+    setIsNested(isNested);
+  }, [pathname]);
 
   /**
    * hooks to help create/update search parameters in url
@@ -39,6 +45,7 @@ export const useNavigation = () => {
 
   return {
     router,
+    isNested,
     updateQuery,
     removeQuery,
   };

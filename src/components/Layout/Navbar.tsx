@@ -3,7 +3,7 @@
 import React, { useId } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Box,
   Button,
@@ -14,13 +14,15 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { IoMoon, IoSunny } from "react-icons/io5";
+import { IoChevronBack, IoMoon, IoSunny } from "react-icons/io5";
 
 import { Container } from "@/components";
 import { useAppContext } from "@/contexts/AppContext/AppContext";
+import { useNavigation } from "@/hooks/useNavigation";
 
 export const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const { menu: menus = [], icon } = useAppContext();
   const layoudId = useId();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -31,8 +33,13 @@ export const Navbar = () => {
     "0 1px 2px 0 rgba(0, 0, 0, 0.10)",
     "0 1px 2px 0 rgba(255, 255, 255, 0.10)"
   );
+  const { isNested } = useNavigation();
 
   const _boxShadow = useTransform(scrollY, [0, 10], ["none", boxShadow]);
+
+  const handleGoBack = () => {
+    router.back();
+  };
 
   return (
     <Box
@@ -59,14 +66,24 @@ export const Navbar = () => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Image
-            width={32}
-            height={32}
-            loading="lazy"
-            style={{ borderRadius: "9999px" }}
-            src={String(icon)}
-            alt="Avatar image picture"
-          />
+          <Flex gap="1rem" alignItems="center">
+            {isNested && (
+              <IconButton
+                icon={<IoChevronBack />}
+                variant="ghost"
+                onClick={handleGoBack}
+                aria-label="Toggle Color Mode"
+              />
+            )}
+            <Image
+              width={32}
+              height={32}
+              loading="lazy"
+              style={{ borderRadius: "9999px" }}
+              src={String(icon)}
+              alt="Avatar image picture"
+            />
+          </Flex>
           <Spacer />
           <Flex
             as="nav"
