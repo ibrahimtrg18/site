@@ -8,13 +8,21 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
+const getProject = async (title: string) => {
+  const data = await import(`@/markdown/projects/${title}.mdx`);
+  return data;
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { title } = params;
 
-    const { data } = await import(`@/markdown/projects/${title}.mdx`);
+    const { metadata } = await getProject(title);
 
-    return data.metadata;
+    return {
+      title: metadata.title,
+      description: metadata.description,
+    };
   } catch (error) {
     notFound();
   }

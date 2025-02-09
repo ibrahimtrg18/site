@@ -7,11 +7,8 @@ import { MDXProvider } from "@mdx-js/react";
 import { AppProvider } from "@/contexts/AppContext/AppContext";
 import { useMDXComponents } from "@/mdx-components";
 import { theme } from "@/theme";
-import { Configuration } from "@/types/Hygraph/models/Configuration";
 
-type ProvidersProps = React.HTMLProps<HTMLElement> & {
-  configuration?: Configuration | null;
-};
+type ProvidersProps = React.HTMLProps<HTMLElement>;
 
 export const Providers = ({ children }: ProvidersProps) => {
   const mdxComponents = useMDXComponents();

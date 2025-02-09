@@ -35,7 +35,7 @@ const withMDX = createMDX({
     remarkPlugins: [
       remarkGfm,
       remarkFrontmatter,
-      [remarkMdxFrontmatter, { name: "data" }],
+      [remarkMdxFrontmatter, { name: "metadata" }],
     ],
     rehypePlugins: [rehypeHighlight],
   },

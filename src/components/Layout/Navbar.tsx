@@ -18,13 +18,11 @@ import { IoMoon, IoSunny } from "react-icons/io5";
 
 import { Container } from "@/components";
 import { useAppContext } from "@/contexts/AppContext/AppContext";
-import { useConfigurationContext } from "@/contexts/ConfigurationContext/ConfigurationContext";
 
 export const Navbar = () => {
   const pathname = usePathname();
   const { menu: menus = [], icon } = useAppContext();
   const layoudId = useId();
-  const { about } = useConfigurationContext();
   const { colorMode, toggleColorMode } = useColorMode();
   const { scrollY } = useScroll();
   const color = useColorModeValue("black", "white");
@@ -67,7 +65,7 @@ export const Navbar = () => {
             loading="lazy"
             style={{ borderRadius: "9999px" }}
             src={String(icon)}
-            alt={about.fullName || "Avatar image picture"}
+            alt="Avatar image picture"
           />
           <Spacer />
           <Flex

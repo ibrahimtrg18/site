@@ -6,33 +6,52 @@ import path from "path";
 
 import { ProjectCard } from "@/components";
 
+const getProjects = async () => {
+  const folderPath = path.join(process.cwd(), "src", "markdown", "projects"); // Absolute path to the folder
+  const files = fs.readdirSync(folderPath); // Read folder contents
+  const projects = await Promise.all(
+    files.map(async (fileName) => {
+      const { metadata } = await import(`@/markdown/projects/${fileName}`);
+
+      const slug = `/projects/${fileName.replace(/\.mdx?$/, "")}`;
+
+      return {
+        ...metadata,
+        slug,
+      };
+    })
+  );
+
+  return projects;
+};
+
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const { data } = await import(`@/markdown/projects.mdx`);
+    const { metadata } = (await import(
+      `@/markdown/projects.mdx`
+    )) as unknown as { metadata: Metadata };
 
-    return data.metadata;
+    return {
+      title: metadata.title,
+      description: metadata.description,
+    };
   } catch (error) {
     notFound();
   }
 }
 
 export default async function ProjectsPage() {
-  const folderPath = path.join(process.cwd(), "src", "markdown", "projects"); // Absolute path to the folder
-  const files = fs.readdirSync(folderPath); // Read folder contents
-
-  const projects = await Promise.all(
-    files.map(async (fileName) => {
-      const { data } = await import(`@/markdown/projects/${fileName}`);
-
-      const slug = `/projects/${fileName.replace(/\.mdx?$/, "")}`;
-
-      return <ProjectCard key={data.title} {...data.project} href={slug} />;
-    })
-  );
+  const projects = await getProjects();
 
   return (
     <Flex direction="column" gap={2}>
-      {projects}
+      {projects.map((project) => (
+        <ProjectCard
+          key={project.title}
+          {...project.properties}
+          href={project.slug}
+        />
+      ))}
     </Flex>
   );
 }
