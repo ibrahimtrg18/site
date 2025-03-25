@@ -1,11 +1,8 @@
 "use client";
 
-import { Suspense, useMemo } from "react";
 import {
   Container as ChakraContainer,
   ContainerProps as ChakraContainerProps,
-  Flex,
-  Spinner,
 } from "@chakra-ui/react";
 
 type ContainerProps = ChakraContainerProps;
@@ -17,25 +14,9 @@ export const Container = (props: ContainerProps) => {
     ...restProps
   } = props;
 
-  const fallback = useMemo(
-    () => (
-      <Flex
-        w="100%"
-        minHeight="100vh"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Spinner />
-      </Flex>
-    ),
-    []
-  );
-
   return (
-    <Suspense fallback={fallback}>
-      <ChakraContainer maxW={maxW} {...restProps}>
-        {children}
-      </ChakraContainer>
-    </Suspense>
+    <ChakraContainer maxW={maxW} {...restProps}>
+      {children}
+    </ChakraContainer>
   );
 };

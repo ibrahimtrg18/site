@@ -1,6 +1,7 @@
 "use client";
 
-import { Flex, FlexProps } from "@chakra-ui/react";
+import { Suspense, useMemo } from "react";
+import { Flex, FlexProps, Spinner } from "@chakra-ui/react";
 
 import { Navbar } from "@/components";
 
@@ -14,8 +15,22 @@ export const Layout = (props: LayoutProps) => {
 
   const pt = [4, 5, 6].map((v) => `${v}rem`);
 
+  const fallback = useMemo(
+    () => (
+      <Flex
+        w="100%"
+        minHeight="100vh"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Spinner />
+      </Flex>
+    ),
+    []
+  );
+
   return (
-    <>
+    <Suspense fallback={fallback}>
       {hasNavbar && <Navbar />}
       <Flex
         as="main"
@@ -31,6 +46,6 @@ export const Layout = (props: LayoutProps) => {
       >
         {children}
       </Flex>
-    </>
+    </Suspense>
   );
 };
