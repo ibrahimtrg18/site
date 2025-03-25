@@ -14,7 +14,6 @@ const nextConfig = {
     BASE_URL: isProd
       ? "https://ibrahimtarigan.vercel.app"
       : process.env.BASE_URL,
-    HYGRAPH_GRAPHQL_URI: process.env.HYGRAPH_GRAPHQL_URI,
     ...(isProd && { GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID }),
   },
   images: {
