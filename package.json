@@ -17,7 +17,7 @@
   "url": "https://github.com/ibrahimtrg18/ibrahim-tarigan/issues",
   "email": "ibrahimtarigan@gmail.com",
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev -p 4000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
