@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  Container,
-  GoogleAnalytics,
-  Layout,
-  PageTransition,
-} from "@/components";
+import { Container, GoogleAnalytics, Layout } from "@/components";
 import { Providers } from "@/components/Providers";
 import { GOOGLE_ANALYTICS_ID } from "@/constants";
 
@@ -32,16 +27,14 @@ export default function IndexLayout({
             backgroundRepeat="repeat"
             backgroundSize="333px"
           >
-            <PageTransition>
-              <Container
-                bgRepeat="repeat"
-                backgroundPosition="center"
-                backgroundRepeat="repeat"
-                backgroundSize="333px"
-              >
-                {children}
-              </Container>
-            </PageTransition>
+            <Container
+              bgRepeat="repeat"
+              backgroundPosition="center"
+              backgroundRepeat="repeat"
+              backgroundSize="333px"
+            >
+              {children}
+            </Container>
           </Layout>
         </Providers>
       </body>
