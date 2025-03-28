@@ -1,30 +1,57 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Flex } from "@chakra-ui/react";
+import fs from "fs";
+import path from "path";
 
-import { Container } from "@/components/Container";
-import { Section } from "@/components/Section";
-import { SITE_URL } from "@/constants";
-import { getApps } from "@/graphql/api/getApp";
-import { ProjectList } from "@/views/Project/ProjectList";
+import { ProjectCard } from "@/components";
 
-export const revalidate = 3600;
+const getProjects = async () => {
+  const folderPath = path.join(process.cwd(), "src", "markdown", "projects"); // Absolute path to the folder
+  const files = fs.readdirSync(folderPath); // Read folder contents
+  const projects = await Promise.all(
+    files.map(async (fileName) => {
+      const { metadata } = await import(`@/markdown/projects/${fileName}`);
+
+      const slug = `/projects/${fileName.replace(/\.mdx?$/, "")}`;
+
+      return {
+        ...metadata,
+        slug,
+      };
+    })
+  );
+
+  return projects;
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getApps();
-  const app = data?.apps[0];
+  try {
+    const { metadata } = (await import(
+      `@/markdown/projects.mdx`
+    )) as unknown as { metadata: Metadata };
 
-  return {
-    title: `Project | ${app?.fullname}`,
-    description: app?.about?.text,
-    metadataBase: new URL(SITE_URL),
-  };
+    return {
+      title: metadata.title,
+      description: metadata.description,
+    };
+  } catch (error) {
+    notFound();
+  }
 }
 
-export default async function ProjectPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   return (
-    <Container>
-      <Section gap="2rem">
-        <ProjectList />
-      </Section>
-    </Container>
+    <Flex direction="column" gap={2}>
+      {projects.map((project) => (
+        <ProjectCard
+          key={project.title}
+          {...project.properties}
+          href={project.slug}
+        />
+      ))}
+    </Flex>
   );
 }

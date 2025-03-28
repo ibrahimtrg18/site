@@ -26,8 +26,7 @@ git clone https://github.com/ibrahimtrg18/ibrahim-tarigan.git
 you need to copy `.env.template` to the root folder as a `.env` file and fill it with your environment variables.
 
 ```bash
-HYGRAPH_GRAPHQL_URI=[YOUR HYGRAPH_GRAPHQL_URI]
-SITE_URL=[YOUR SITE HOST]
+BASE_URL=[YOUR SITE HOST]
 GOOGLE_ANALYTICS_ID=[YOUR GOOGLE ANALYTICS ID]
 ```
 
@@ -39,25 +38,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your favorite browser.
 
-For Content CMS, Please do the following steps:
-
-> NOTE: If you don't have Hygraph Template CMS, please go to [Clone Hygraph](https://app.hygraph.com/clone/616e21b4e9d24da6b472ff0462392a89?name=ibrahim-tarigan)
-
-Understanding the CMS data structure:
-
-1. Home Page
-   ![Home](./docs/assets/home.png)
-2. Projects Page
-   ![Projects](./docs/assets/projects.png)
-3. Project Detail Modal
-   ![Project Detail](./docs/assets/project-detail.png)
-
 ## References
 
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
-- [Hygraph](https://hygraph.com/) - a Build Scalable Content Experiences
 - [Google Analytics](https://analytics.google.com) - Monitoring and Analytics your website.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!

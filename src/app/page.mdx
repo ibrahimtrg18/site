@@ -1,0 +1,27 @@
+---
+title: "Home | Ibrahim Tarigan"
+description: "Hello I'm Ibrahim Tarigan, a passionate Software Engineer with over 4 years of experience in the industry."
+---
+
+import { Flex, Box } from "@chakra-ui/react";
+import { SocialMedia } from "@/components";
+import { BASE_URL } from "@/constants";
+import About from "@/markdown/about.mdx";
+import TechnologyStack from "@/markdown/technology-stack.mdx";
+
+<Flex flexDirection="column" gap={2}>
+
+
+<Flex gap="1rem">
+  <SocialMedia platform="Email" />
+  <SocialMedia platform="Phone" />
+  <SocialMedia platform="CV" />
+  <SocialMedia platform="Github" />
+  <SocialMedia platform="LinkedIn" />
+</Flex>
+
+<About />
+
+<TechnologyStack />
+
+</Flex>

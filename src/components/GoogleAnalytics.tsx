@@ -4,7 +4,7 @@ type GoogleAnalyticsProps = {
   gaId: string;
 };
 
-const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
+export const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
   const { gaId } = props;
 
   return (
@@ -28,5 +28,3 @@ const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
     </>
   );
 };
-
-export default GoogleAnalytics;

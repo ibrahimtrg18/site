@@ -1,20 +1,14 @@
 import React from "react";
 
-import GoogleAnalytics from "@/components/GoogleAnalytics";
-import { Layout } from "@/components/Layout";
-import PageTransition from "@/components/PageTransition";
+import { Container, GoogleAnalytics, Layout } from "@/components";
 import { Providers } from "@/components/Providers";
 import { GOOGLE_ANALYTICS_ID } from "@/constants";
-import { App } from "@/generated/graphql";
-import { getApps } from "@/graphql/api/getApp";
 
-type RootLayoutProps = React.HTMLProps<HTMLElement>;
-
-export default async function RootLayout({ children }: RootLayoutProps) {
-  const { data } = await getApps();
-  const apps = data?.apps;
-  const [app] = apps as unknown as App[];
-
+export default function IndexLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
@@ -22,18 +16,25 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           name="google-site-verification"
           content="Dgh3-7chmF8XSw4RmI2T13hmdsE370jbAOLx8y43OJ0"
         />
-        <link rel="icon" href={app?.avatar?.url} sizes="any" />
+        <link rel="icon" href="/assets/icon.png" sizes="any" />
       </head>
       <body style={{ overflowY: "auto" }}>
         {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
-        <Providers app={app}>
+        <Providers>
           <Layout
             bgRepeat="repeat"
             backgroundPosition="center"
             backgroundRepeat="repeat"
             backgroundSize="333px"
           >
-            <PageTransition>{children}</PageTransition>
+            <Container
+              bgRepeat="repeat"
+              backgroundPosition="center"
+              backgroundRepeat="repeat"
+              backgroundSize="333px"
+            >
+              {children}
+            </Container>
           </Layout>
         </Providers>
       </body>

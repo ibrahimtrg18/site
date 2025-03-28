@@ -28,7 +28,6 @@
   "rules": {
     "no-console": "error",
     "react/react-in-jsx-scope": "off",
-    "react-hooks/rules-of-hooks": "warn",
     "simple-import-sort/imports": [
       "error",
       {

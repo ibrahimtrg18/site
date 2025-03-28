@@ -5,31 +5,32 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
 
 import { AppProvider } from "@/contexts/AppContext/AppContext";
-import { App } from "@/generated/graphql";
-// import { ConfigurationContextProvider } from "@/contexts/ConfigurationContext/ConfigurationContext";
-import { ApolloProvider } from "@/libs/apollo/client";
+import { useMDXComponents } from "@/mdx-components";
 import { theme } from "@/theme";
-import { MDXComponents } from "@/theme/MDXComponents";
-import { Configuration } from "@/types/Hygraph/models/Configuration";
 
-type ProvidersProps = React.HTMLProps<HTMLElement> & {
-  configuration?: Configuration | null;
-  app?: App;
-};
+type ProvidersProps = React.HTMLProps<HTMLElement>;
 
-export const Providers = ({ children, app }: ProvidersProps) => {
+export const Providers = ({ children }: ProvidersProps) => {
+  const mdxComponents = useMDXComponents();
+
   return (
-    <ApolloProvider>
+    <>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <ChakraProvider theme={theme}>
-        <MDXProvider components={MDXComponents}>
-          <AppProvider app={app}>
-            {/* <ConfigurationContextProvider configuration={configuration}> */}
+        <MDXProvider components={mdxComponents}>
+          <AppProvider
+            app={{
+              icon: "/assets/icon.png",
+              menu: [
+                { pathname: "/", label: "Home" },
+                { pathname: "/projects", label: "Projects" },
+              ],
+            }}
+          >
             {children}
-            {/* </ConfigurationContextProvider> */}
           </AppProvider>
         </MDXProvider>
       </ChakraProvider>
-    </ApolloProvider>
+    </>
   );
 };
