@@ -1,8 +1,13 @@
 import React from "react";
 
-import { Container, GoogleAnalytics, Layout } from "@/components";
+import {
+  Container,
+  GoogleAnalytics,
+  GoogleTagManager,
+  Layout,
+} from "@/components";
 import { Providers } from "@/components/Providers";
-import { GOOGLE_ANALYTICS_ID } from "@/constants";
+import { GOOGLE_ANALYTICS_ID, GOOGLE_TAG_MANAGER_ID } from "@/constants";
 
 export default function IndexLayout({
   children,
@@ -20,6 +25,9 @@ export default function IndexLayout({
       </head>
       <body style={{ overflowY: "auto" }}>
         {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
+        {GOOGLE_ANALYTICS_ID && (
+          <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />
+        )}
         <Providers>
           <Layout
             bgRepeat="repeat"
