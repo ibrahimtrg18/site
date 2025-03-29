@@ -3,8 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: http://localhost:3000
+Host: https://ibrahimtarigan.vercel.app
 
 # Sitemaps
-Sitemap: http://localhost:3000/sitemap.xml
-Sitemap: http://localhost:3000/server-sitemap-project.xml
+Sitemap: https://ibrahimtarigan.vercel.app/sitemap.xml
+Sitemap: https://ibrahimtarigan.vercel.app/server-sitemap-project.xml
