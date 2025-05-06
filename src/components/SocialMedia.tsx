@@ -27,7 +27,7 @@ export const SocialMedia = (props: SocialMediaProps) => {
       {
         label: "CV",
         icon: "IoDocument",
-        href: "https://drive.google.com/file/d/11ZBzlYul7CDTPlfO3Ix1BlD-9X1h4zHG/view?usp=sharing",
+        href: "https://drive.google.com/file/d/1JFWQCAuNlXWJ-eHoMESrFtl-2JkGsITp/view?usp=sharing",
       },
       {
         label: "Github",
