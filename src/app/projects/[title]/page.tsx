@@ -9,7 +9,7 @@ type Props = {
 };
 
 const getProject = async (title: string) => {
-  const data = await import(`@/markdown/projects/${title}.mdx`);
+  const data = await import(`@/modules/project/${title}.mdx`);
   return data;
 };
 
@@ -33,7 +33,7 @@ export default async function ProjectPage({ params }: Props) {
 
   try {
     const { default: Content }: { default: (props: MDXProps) => Element } =
-      await import(`@/markdown/projects/${title}.mdx`);
+      await import(`@/modules/project/${title}.mdx`);
 
     return (
       <Flex flexDirection="column" paddingBottom="1rem">

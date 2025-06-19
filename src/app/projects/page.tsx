@@ -7,11 +7,12 @@ import path from "path";
 import { ProjectCard } from "@/components";
 
 const getProjects = async () => {
-  const folderPath = path.join(process.cwd(), "src", "markdown", "projects"); // Absolute path to the folder
-  const files = fs.readdirSync(folderPath); // Read folder contents
+  const folderPath = path.join(process.cwd(), "src", "modules", "project");
+  const files = fs.readdirSync(folderPath);
+  const excludedFiles = files.filter((file) => file !== "projects.mdx");
   const projects = await Promise.all(
-    files.map(async (fileName) => {
-      const { metadata } = await import(`@/markdown/projects/${fileName}`);
+    excludedFiles.map(async (fileName) => {
+      const { metadata } = await import(`@/modules/project/${fileName}`);
 
       const slug = `/projects/${fileName.replace(/\.mdx?$/, "")}`;
 
@@ -28,7 +29,7 @@ const getProjects = async () => {
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const { metadata } = (await import(
-      `@/markdown/projects.mdx`
+      `@/modules/project/projects.mdx`
     )) as unknown as { metadata: Metadata };
 
     return {
