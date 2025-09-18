@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import fs from "fs";
 import path from "path";
 
@@ -44,15 +44,20 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ProjectsPage() {
   const projects = await getProjects();
 
+  const Content = (await import(`@/modules/project/projects.mdx`)).default;
+
   return (
-    <Flex direction="column" gap={2}>
-      {projects.map((project) => (
-        <ProjectCard
-          key={project.title}
-          {...project.properties}
-          href={project.slug}
-        />
-      ))}
-    </Flex>
+    <Box>
+      <Content />
+      <Flex direction="column" gap={2}>
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.title}
+            {...project.properties}
+            href={project.slug}
+          />
+        ))}
+      </Flex>
+    </Box>
   );
 }

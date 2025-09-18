@@ -3,25 +3,65 @@ title: "Home | Ibrahim Tarigan"
 description: "Hello I'm Ibrahim Tarigan, a passionate Software Engineer with over 4 years of experience in the industry."
 ---
 
-import { Flex, Box } from "@chakra-ui/react";
-import { SocialMedia } from "@/components";
-import { BASE_URL } from "@/constants";
-import About from "@/modules/me/about.mdx";
-import TechnologyStack from "@/modules/techstack/technology-stack.mdx";
-
-<Flex flexDirection="column" gap={2}>
-
+import { Flex, Box, IconButton } from "@chakra-ui/react";
 
 <Flex gap="1rem">
-  <SocialMedia platform="Email" />
-  <SocialMedia platform="Phone" />
-  <SocialMedia platform="CV" />
-  <SocialMedia platform="Github" />
-  <SocialMedia platform="LinkedIn" />
+  <IconButton
+    href="mailto:ibrahimtarigan@gmail.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    variant="ghost"
+    passHref
+    rounded="8px"
+  >
+    <i className="fas fa-envelope"></i>
+  </IconButton>
+  <IconButton
+    href="tel:+6281260009709"
+    target="_blank"
+    rel="noopener noreferrer"
+    variant="ghost"
+    passHref
+    rounded="8px"
+  >
+    <i className="fas fa-phone"></i>
+  </IconButton>
+  <IconButton
+    href="https://drive.google.com/file/d/1JFWQCAuNlXWJ-eHoMESrFtl-2JkGsITp/view?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer"
+    variant="ghost"
+    passHref
+    rounded="8px"
+  >
+    <i className="fas fa-file"></i>
+  </IconButton>
+  <IconButton
+    href="https://github.com/ibrahimtrg18"
+    target="_blank"
+    rel="noopener noreferrer"
+    variant="ghost"
+    passHref
+    rounded="8px"
+  >
+    <i className="fab fa-github"></i>
+  </IconButton>
+  <IconButton
+    href="https://www.linkedin.com/in/ibrahimtrg18"
+    target="_blank"
+    rel="noopener noreferrer"
+    variant="ghost"
+    passHref
+    rounded="8px"
+  >
+    <i class="fab fa-linkedin"></i>
+  </IconButton>
 </Flex>
 
-<About />
+##### Hello I'm Ibrahim Tarigan
 
-{/* <TechnologyStack /> */}
-
-</Flex>
+a passionate Software Engineer with over 4 years of experience in the industry.
+I specialize in Fullstack Development, crafting seamless and robust applications from the backend to the frontend.
+Whether it’s building efficient APIs, designing dynamic user interfaces, or solving challenging problems, I thrive on creating impactful solutions.
+When I’m not coding, I enjoy exploring new technologies, contributing to open-source projects, or engaging in casual tech discussions.
+Let’s connect—whether it’s for a project, collaboration, or just some tech chitchat!

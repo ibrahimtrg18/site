@@ -14,7 +14,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { IoChevronBack, IoMoon, IoSunny } from "react-icons/io5";
 
 import { Container } from "@/components";
 import { useAppContext } from "@/contexts/AppContext/AppContext";
@@ -69,7 +68,7 @@ export const Navbar = () => {
           <Flex gap="1rem" alignItems="center">
             {isNested && (
               <IconButton
-                icon={<IoChevronBack />}
+                icon={<i className="fa-solid fa-chevron-left"></i>}
                 variant="ghost"
                 onClick={handleGoBack}
                 aria-label="Toggle Color Mode"
@@ -118,7 +117,13 @@ export const Navbar = () => {
               );
             })}
             <IconButton
-              icon={colorMode === "dark" ? <IoSunny /> : <IoMoon />}
+              icon={
+                colorMode === "dark" ? (
+                  <i className="fa-solid fa-sun"></i>
+                ) : (
+                  <i className="fa-solid fa-moon"></i>
+                )
+              }
               variant="ghost"
               onClick={toggleColorMode}
               aria-label="Toggle Color Mode"

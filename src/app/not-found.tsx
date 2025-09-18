@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
-import { MdArrowBack } from "react-icons/md";
 
 export default function NotFound() {
   return (
@@ -15,7 +14,7 @@ export default function NotFound() {
       <Text>Could not find requested resource</Text>
       <Button
         variant="ghost"
-        leftIcon={<MdArrowBack />}
+        leftIcon={<i className="fa-solid fa-arrow-left"></i>}
         as={Link}
         href="/"
         passHref
