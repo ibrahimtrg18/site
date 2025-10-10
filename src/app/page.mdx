@@ -3,58 +3,50 @@ title: "Home | Ibrahim Tarigan"
 description: "Hello I'm Ibrahim Tarigan, a passionate Software Engineer with over 4 years of experience in the industry."
 ---
 
+import Link from "next/link";
 import { Flex, Box, IconButton } from "@chakra-ui/react";
 
 <Flex gap="1rem">
-  <IconButton
-    href="mailto:ibrahimtarigan@gmail.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    variant="ghost"
-    passHref
-    rounded="8px"
-  >
-    <i className="fas fa-envelope"></i>
+  <IconButton asChild variant="ghost" rounded="8px">
+    <Link
+      href="mailto:ibrahimtarigan@gmail.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i className="fas fa-envelope"></i>
+    </Link>
   </IconButton>
-  <IconButton
-    href="tel:+6281260009709"
-    target="_blank"
-    rel="noopener noreferrer"
-    variant="ghost"
-    passHref
-    rounded="8px"
-  >
-    <i className="fas fa-phone"></i>
+  <IconButton asChild variant="ghost" rounded="8px">
+    <Link href="tel:+6281260009709" target="_blank" rel="noopener noreferrer">
+      <i className="fas fa-phone"></i>
+    </Link>
   </IconButton>
-  <IconButton
-    href="https://drive.google.com/file/d/1JFWQCAuNlXWJ-eHoMESrFtl-2JkGsITp/view?usp=sharing"
-    target="_blank"
-    rel="noopener noreferrer"
-    variant="ghost"
-    passHref
-    rounded="8px"
-  >
-    <i className="fas fa-file"></i>
+  <IconButton asChild variant="ghost" rounded="8px">
+    <Link
+      href="https://drive.google.com/file/d/1JFWQCAuNlXWJ-eHoMESrFtl-2JkGsITp/view?usp=sharing"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i className="fas fa-file"></i>
+    </Link>
   </IconButton>
-  <IconButton
-    href="https://github.com/ibrahimtrg18"
-    target="_blank"
-    rel="noopener noreferrer"
-    variant="ghost"
-    passHref
-    rounded="8px"
-  >
-    <i className="fab fa-github"></i>
+  <IconButton asChild variant="ghost" rounded="8px">
+    <Link
+      href="https://github.com/ibrahimtrg18"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i className="fab fa-github"></i>
+    </Link>
   </IconButton>
-  <IconButton
-    href="https://www.linkedin.com/in/ibrahimtrg18"
-    target="_blank"
-    rel="noopener noreferrer"
-    variant="ghost"
-    passHref
-    rounded="8px"
-  >
-    <i class="fab fa-linkedin"></i>
+  <IconButton asChild variant="ghost" rounded="8px">
+    <Link
+      href="https://www.linkedin.com/in/ibrahimtrg18"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i className="fab fa-linkedin"></i>
+    </Link>
   </IconButton>
 </Flex>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Geist } from "next/font/google";
 
 import {
   Container,
@@ -11,13 +12,17 @@ import { GOOGLE_ANALYTICS_ID, GOOGLE_TAG_MANAGER_ID } from "@/constants";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export default function IndexLayout({
+const geist = Geist({
+  subsets: ["latin"],
+});
+
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={geist.className} suppressHydrationWarning>
       <head>
         <meta
           name="google-site-verification"
@@ -25,7 +30,7 @@ export default function IndexLayout({
         />
         <link rel="icon" href="/assets/icon.png" sizes="any" />
       </head>
-      <body style={{ overflowY: "auto" }}>
+      <body style={{ overflowY: "auto" }} suppressHydrationWarning>
         {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
         {GOOGLE_ANALYTICS_ID && (
           <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />

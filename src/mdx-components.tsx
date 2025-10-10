@@ -5,16 +5,9 @@ import {
   Heading,
   Image,
   Link,
-  ListItem,
-  OrderedList,
+  List,
   Table,
-  Tbody,
-  Td,
   Text,
-  Th,
-  Thead,
-  Tr,
-  UnorderedList,
 } from "@chakra-ui/react";
 import type { MDXComponents } from "mdx/types";
 
@@ -29,9 +22,9 @@ export function useMDXComponents(components?: MDXComponents): MDXComponents {
     h6: (props) => <Heading as="h6" size="sm" my={1.5} {...props} />,
     p: (props) => <Text my={0.5} {...props} />,
     a: (props) => <Link color="teal.500" {...props} />,
-    ul: (props) => <UnorderedList spacing={2} {...props} />,
-    ol: (props) => <OrderedList spacing={2} {...props} />,
-    li: (props) => <ListItem {...props} />,
+    ul: (props) => <List.Root as="ol" spacing={2} {...props} />,
+    ol: (props) => <List.Root spacing={2} {...props} />,
+    li: (props) => <List.Item {...props} />,
     blockquote: (props) => (
       <Box
         as="blockquote"
@@ -45,12 +38,12 @@ export function useMDXComponents(components?: MDXComponents): MDXComponents {
     pre: (props) => (
       <Box as="pre" p={4} bg="gray.100" rounded="md" {...props} />
     ),
-    table: (props) => <Table {...props} />,
-    thead: (props) => <Thead {...props} />,
-    tbody: (props) => <Tbody {...props} />,
-    tr: (props) => <Tr {...props} />,
-    th: (props) => <Th {...props} />,
-    td: (props) => <Td {...props} />,
+    table: (props) => <Table.Root {...props} />,
+    thead: (props) => <Table.Header {...props} />,
+    tbody: (props) => <Table.Body {...props} />,
+    th: (props) => <Table.ColumnHeader {...props} />,
+    tr: (props) => <Table.Row {...props} />,
+    td: (props) => <Table.Cell {...props} />,
     img: (props) => <Image {...props} as={NextImage} alt="" />,
   };
 }
