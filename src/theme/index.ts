@@ -1,22 +1,19 @@
-import { ColorMode, extendTheme } from "@chakra-ui/react";
+import { createSystem, defaultConfig } from "@chakra-ui/react";
 
-import { Button } from "./button";
-import { Text } from "./text";
+import { buttonRecipe } from "./button";
+import { textRecipe } from "./text";
 
-const config = {
-  initialColorMode: "light",
-  useSystemColorMode: false,
-};
-
-export const theme = extendTheme({
-  config,
-  components: { Button, Text },
-  styles: {
-    global: (props: { colorMode: ColorMode }) => ({
-      body: {
-        color: props.colorMode === "dark" ? "white" : "black",
-        bg: props.colorMode === "dark" ? "black" : "white",
+export const system = createSystem(defaultConfig, {
+  theme: {
+    recipes: {
+      Button: buttonRecipe,
+      Text: textRecipe,
+    },
+    tokens: {
+      fonts: {
+        heading: { value: `'Geist', sans-serif` },
+        body: { value: `'Geist', sans-serif` },
       },
-    }),
+    },
   },
 });

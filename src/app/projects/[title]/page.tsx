@@ -4,8 +4,8 @@ import { Flex } from "@chakra-ui/react";
 import { Element, MDXProps } from "mdx/types";
 
 type Props = {
-  params: { title: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ title: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 const getProject = async (title: string) => {
@@ -13,7 +13,8 @@ const getProject = async (title: string) => {
   return data;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   try {
     const { title } = params;
 
@@ -28,7 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ProjectPage({ params }: Props) {
+export default async function ProjectPage(props0: Props) {
+  const params = await props0.params;
   const { title } = params;
 
   try {

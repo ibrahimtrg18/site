@@ -12,14 +12,10 @@ export default function NotFound() {
     >
       <Heading>Not Found</Heading>
       <Text>Could not find requested resource</Text>
-      <Button
-        variant="ghost"
-        leftIcon={<i className="fa-solid fa-arrow-left"></i>}
-        as={Link}
-        href="/"
-        passHref
-      >
-        Return Home
+      <Button asChild variant="ghost">
+        <Link href="/" passHref>
+          <i className="fa-solid fa-arrow-left"></i> Return Home
+        </Link>
       </Button>
     </Flex>
   );

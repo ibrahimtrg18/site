@@ -4,6 +4,6 @@ module.exports = {
   generateRobotsTxt: true,
   changefreq: "daily",
   robotsTxtOptions: {
-    additionalSitemaps: [process.env.BASE_URL + "/server-sitemap-project.xml"],
+    additionalSitemaps: [process.env.BASE_URL + "/sitemaps/projects.xml"],
   },
 };

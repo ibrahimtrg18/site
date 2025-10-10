@@ -10,7 +10,7 @@ type ContainerProps = ChakraContainerProps;
 export const Container = (props: ContainerProps) => {
   const {
     children,
-    maxW = ["container.sm", "container.md", "container.lg", "container.xl"],
+    maxW = ["breakpoint-sm", "breakpoint-md", "breakpoint-lg", "breakpoint-xl"],
     ...restProps
   } = props;
 
