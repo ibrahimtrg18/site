@@ -1,12 +1,7 @@
 import React from "react";
 import { Geist } from "next/font/google";
 
-import {
-  Container,
-  GoogleAnalytics,
-  GoogleTagManager,
-  Layout,
-} from "@/components";
+import { GoogleAnalytics, GoogleTagManager } from "@/components";
 import { Providers } from "@/components/providers";
 import { GOOGLE_ANALYTICS_ID, GOOGLE_TAG_MANAGER_ID } from "@/constants";
 
@@ -36,11 +31,7 @@ export default function RootLayout({
         {GOOGLE_ANALYTICS_ID && (
           <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />
         )}
-        <Providers>
-          <Layout>
-            <Container>{children}</Container>
-          </Layout>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
