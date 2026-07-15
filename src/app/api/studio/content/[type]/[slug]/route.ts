@@ -53,13 +53,6 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     const config = loadStudioConfig();
     const contentType = getContentType(config, type);
 
-    if (`${slug}.mdx` === contentType.indexFile) {
-      return NextResponse.json(
-        { error: "This file renders the list page and cannot be deleted" },
-        { status: 400 }
-      );
-    }
-
     const filePath = resolveRepoPath(contentType.contentDir, `${slug}.mdx`);
     const assetsPath = resolveAssetsPath(config, contentType.uploadDir, slug);
 

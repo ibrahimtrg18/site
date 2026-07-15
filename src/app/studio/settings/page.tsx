@@ -138,8 +138,8 @@ export default function StudioSettingsPage() {
             }
           />
           <span className="text-xs text-neutral-400">
-            Single shared folder browsed by the file manager — must be inside
-            public/
+            Root folder browsed by the file manager — public or a folder inside
+            it
           </span>
         </label>
       </Card>

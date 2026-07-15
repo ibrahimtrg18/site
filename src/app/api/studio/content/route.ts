@@ -46,18 +46,13 @@ export async function GET() {
             // Unparseable frontmatter; fall back to the slug.
           }
 
-          const isIndex = file === contentType.indexFile;
-
           return {
             type,
             typeLabel: contentType.label,
             slug,
             title,
             description,
-            isIndex,
-            previewUrl: isIndex
-              ? contentType.urlPrefix
-              : `${contentType.urlPrefix}/${slug}`,
+            previewUrl: `${contentType.urlPrefix}/${slug}`,
           };
         });
     }

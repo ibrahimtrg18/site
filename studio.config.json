@@ -1,19 +1,17 @@
 {
-  "assetsRoot": "public/assets",
+  "assetsRoot": "public",
   "contentTypes": {
     "project": {
       "label": "Project",
-      "contentDir": "src/modules/project",
-      "uploadDir": "projects",
-      "urlPrefix": "/projects",
-      "indexFile": "projects.mdx"
+      "contentDir": "public/projects",
+      "uploadDir": "projects/assets",
+      "urlPrefix": "/projects"
     },
     "blog": {
       "label": "Blog post",
-      "contentDir": "src/modules/blog",
-      "uploadDir": "blogs",
-      "urlPrefix": "/blog",
-      "indexFile": "blogs.mdx"
+      "contentDir": "public/blogs",
+      "uploadDir": "blogs/assets",
+      "urlPrefix": "/blog"
     }
   }
 }

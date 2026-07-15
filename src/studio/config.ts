@@ -7,12 +7,10 @@ export type ContentTypeConfig = {
   /** Folder inside assetsRoot where editor uploads for this type go (per entry slug). */
   uploadDir: string;
   urlPrefix: string;
-  /** File in contentDir that renders the list page itself (e.g. projects.mdx); protected from deletion. */
-  indexFile?: string;
 };
 
 export type StudioConfig = {
-  /** Single shared assets folder, browsable in the studio file manager. Must be inside public/. */
+  /** Root folder browsed by the studio file manager. Must be public or inside it. */
   assetsRoot: string;
   contentTypes: Record<string, ContentTypeConfig>;
 };
@@ -88,9 +86,9 @@ export const validateStudioConfig = (config: unknown): StudioConfig => {
     throw new Error("Config must have an assetsRoot string");
   }
 
-  if (!assetsRoot.startsWith("public/")) {
+  if (assetsRoot !== "public" && !assetsRoot.startsWith("public/")) {
     throw new Error(
-      "assetsRoot must be inside public/ so assets are served by Next.js"
+      "assetsRoot must be public or inside it so assets are served by Next.js"
     );
   }
 
