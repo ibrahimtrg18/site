@@ -58,7 +58,11 @@ export async function GET() {
     }
   );
 
-  return NextResponse.json({ entries });
+  const types = Object.entries(config.contentTypes).map(
+    ([type, contentType]) => ({ type, label: contentType.label })
+  );
+
+  return NextResponse.json({ types, entries });
 }
 
 export async function POST(request: NextRequest) {

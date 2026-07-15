@@ -23,7 +23,10 @@ type GitStatus = {
   files: GitFile[];
 };
 
+type ContentTypeSummary = { type: string; label: string };
+
 export default function StudioDashboardPage() {
+  const [types, setTypes] = useState<ContentTypeSummary[]>([]);
   const [entries, setEntries] = useState<EntrySummary[] | null>(null);
   const [gitStatus, setGitStatus] = useState<GitStatus | null>(null);
   const [message, setMessage] = useState("content: update from studio");
@@ -42,6 +45,7 @@ export default function StudioDashboardPage() {
     const content = await contentRes.json();
     const status = await statusRes.json();
 
+    setTypes(content.types ?? []);
     setEntries(content.entries ?? []);
     setGitStatus(statusRes.ok ? status : null);
   }, []);
@@ -115,13 +119,10 @@ export default function StudioDashboardPage() {
   const otherFiles = gitStatus?.files.filter((f) => !f.publishable) ?? [];
   const canPublish = publishableFiles.length > 0 || (gitStatus?.ahead ?? 0) > 0;
 
-  const byType = entries.reduce<Record<string, EntrySummary[]>>(
-    (groups, entry) => {
-      (groups[entry.typeLabel] ??= []).push(entry);
-      return groups;
-    },
-    {}
-  );
+  const sections = types.map((contentType) => ({
+    ...contentType,
+    entries: entries.filter((entry) => entry.type === contentType.type),
+  }));
 
   return (
     <div className="flex flex-col gap-10">
@@ -137,20 +138,25 @@ export default function StudioDashboardPage() {
         </div>
       )}
 
-      {Object.entries(byType).map(([label, typeEntries]) => (
-        <section key={label} className="flex flex-col gap-3">
+      {sections.map(({ type, label, entries: typeEntries }) => (
+        <section key={type} className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <Heading as="h2" size="lg">
               {label}s
             </Heading>
             <Button asChild size="sm">
-              <Link href={`/studio/editor?type=${typeEntries[0].type}`}>
+              <Link href={`/studio/editor?type=${type}`}>
                 <i className="fa-solid fa-plus" /> New {label}
               </Link>
             </Button>
           </div>
 
           <div className="flex flex-col gap-2">
+            {typeEntries.length === 0 && (
+              <Text className="text-sm text-neutral-500 dark:text-neutral-400">
+                No {label.toLowerCase()}s yet — create the first one.
+              </Text>
+            )}
             {typeEntries.map((entry) => (
               <Card
                 key={`${entry.type}/${entry.slug}`}
