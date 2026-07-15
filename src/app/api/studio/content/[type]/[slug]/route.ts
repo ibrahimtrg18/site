@@ -4,6 +4,7 @@ import fs from "fs";
 import {
   getContentType,
   loadStudioConfig,
+  resolveAssetsPath,
   resolveRepoPath,
 } from "@/studio/config";
 import { studioDisabledResponse } from "@/studio/guard";
@@ -60,7 +61,7 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     }
 
     const filePath = resolveRepoPath(contentType.contentDir, `${slug}.mdx`);
-    const assetsPath = resolveRepoPath(contentType.assetsDir, slug);
+    const assetsPath = resolveAssetsPath(config, contentType.uploadDir, slug);
 
     if (fs.existsSync(filePath)) {
       fs.rmSync(filePath);

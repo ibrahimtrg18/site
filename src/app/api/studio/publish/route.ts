@@ -10,12 +10,15 @@ const git = simpleGit(REPO_ROOT);
 const allowedPrefixes = () => {
   const config = loadStudioConfig();
 
-  const prefixes = Object.values(config.contentTypes).flatMap((contentType) => [
-    contentType.contentDir.replace(/\/$/, "") + "/",
-    contentType.assetsDir.replace(/\/$/, "") + "/",
-  ]);
+  const prefixes = Object.values(config.contentTypes).map(
+    (contentType) => contentType.contentDir.replace(/\/$/, "") + "/"
+  );
 
-  return [...prefixes, "studio.config.json"];
+  return [
+    ...prefixes,
+    config.assetsRoot.replace(/\/$/, "") + "/",
+    "studio.config.json",
+  ];
 };
 
 const isAllowedPath = (filePath: string) =>

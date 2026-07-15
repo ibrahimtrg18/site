@@ -7,11 +7,12 @@ import { Button, Card, Heading, Spinner, Text } from "@/components/ui";
 type ContentTypeConfig = {
   label: string;
   contentDir: string;
-  assetsDir: string;
+  uploadDir: string;
   urlPrefix: string;
 };
 
 type StudioConfig = {
+  assetsRoot: string;
   contentTypes: Record<string, ContentTypeConfig>;
 };
 
@@ -27,9 +28,9 @@ const FIELDS: Array<{
     hint: "Where .mdx files are written (repo-relative)",
   },
   {
-    key: "assetsDir",
-    label: "Assets directory",
-    hint: "Where uploads go — must be inside public/",
+    key: "uploadDir",
+    label: "Upload folder",
+    hint: "Folder inside the assets root where editor uploads go (per slug)",
   },
   {
     key: "urlPrefix",
@@ -120,6 +121,28 @@ export default function StudioSettingsPage() {
           {feedback.text}
         </div>
       )}
+
+      <Card className="gap-4 px-4 py-4">
+        <Heading as="h3" size="md">
+          Assets
+        </Heading>
+        <label className="flex max-w-md flex-col gap-1 text-sm">
+          <span className="font-medium">Assets root</span>
+          <input
+            className="h-9 rounded-md border border-neutral-200 bg-transparent px-3 font-mono text-sm dark:border-neutral-800"
+            value={config.assetsRoot}
+            onChange={(event) =>
+              setConfig((current) =>
+                current ? { ...current, assetsRoot: event.target.value } : null
+              )
+            }
+          />
+          <span className="text-xs text-neutral-400">
+            Single shared folder browsed by the file manager — must be inside
+            public/
+          </span>
+        </label>
+      </Card>
 
       {Object.entries(config.contentTypes).map(([type, contentType]) => (
         <Card key={type} className="gap-4 px-4 py-4">

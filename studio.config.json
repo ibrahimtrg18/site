@@ -1,16 +1,17 @@
 {
+  "assetsRoot": "public/assets",
   "contentTypes": {
     "project": {
       "label": "Project",
       "contentDir": "src/modules/project",
-      "assetsDir": "public/assets/projects",
+      "uploadDir": "projects",
       "urlPrefix": "/projects",
       "indexFile": "projects.mdx"
     },
     "blog": {
       "label": "Blog post",
       "contentDir": "src/modules/blog",
-      "assetsDir": "public/assets/blogs",
+      "uploadDir": "blogs",
       "urlPrefix": "/blog",
       "indexFile": "blogs.mdx"
     }

@@ -4,13 +4,16 @@ import path from "path";
 export type ContentTypeConfig = {
   label: string;
   contentDir: string;
-  assetsDir: string;
+  /** Folder inside assetsRoot where editor uploads for this type go (per entry slug). */
+  uploadDir: string;
   urlPrefix: string;
   /** File in contentDir that renders the list page itself (e.g. projects.mdx); protected from deletion. */
   indexFile?: string;
 };
 
 export type StudioConfig = {
+  /** Single shared assets folder, browsable in the studio file manager. Must be inside public/. */
+  assetsRoot: string;
   contentTypes: Record<string, ContentTypeConfig>;
 };
 
@@ -41,6 +44,29 @@ export const resolveRepoPath = (...segments: string[]) => {
   return resolved;
 };
 
+/**
+ * Resolves a path relative to the assets root and ensures it stays inside it.
+ */
+export const resolveAssetsPath = (
+  config: StudioConfig,
+  ...segments: string[]
+) => {
+  const root = resolveRepoPath(config.assetsRoot);
+  const resolved = path.resolve(root, ...segments);
+
+  if (resolved !== root && !resolved.startsWith(root + path.sep)) {
+    throw new Error(`Path escapes assets root: ${segments.join("/")}`);
+  }
+
+  return resolved;
+};
+
+/** Public URL for an absolute file path inside public/. */
+export const toPublicUrl = (filePath: string) => {
+  const publicRoot = resolveRepoPath("public");
+  return "/" + path.relative(publicRoot, filePath).split(path.sep).join("/");
+};
+
 export const getContentType = (config: StudioConfig, type: string) => {
   const contentType = config.contentTypes[type];
 
@@ -56,7 +82,19 @@ export const validateStudioConfig = (config: unknown): StudioConfig => {
     throw new Error("Config must be an object");
   }
 
-  const { contentTypes } = config as StudioConfig;
+  const { assetsRoot, contentTypes } = config as StudioConfig;
+
+  if (typeof assetsRoot !== "string" || assetsRoot.length === 0) {
+    throw new Error("Config must have an assetsRoot string");
+  }
+
+  if (!assetsRoot.startsWith("public/")) {
+    throw new Error(
+      "assetsRoot must be inside public/ so assets are served by Next.js"
+    );
+  }
+
+  resolveRepoPath(assetsRoot);
 
   if (typeof contentTypes !== "object" || contentTypes === null) {
     throw new Error("Config must have a contentTypes object");
@@ -66,7 +104,7 @@ export const validateStudioConfig = (config: unknown): StudioConfig => {
     for (const field of [
       "label",
       "contentDir",
-      "assetsDir",
+      "uploadDir",
       "urlPrefix",
     ] as const) {
       if (typeof value?.[field] !== "string" || value[field].length === 0) {
@@ -76,15 +114,9 @@ export const validateStudioConfig = (config: unknown): StudioConfig => {
       }
     }
 
-    // Throws when a configured directory escapes the repository.
+    // Throws when a configured directory escapes its allowed root.
     resolveRepoPath(value.contentDir);
-    resolveRepoPath(value.assetsDir);
-
-    if (!value.assetsDir.startsWith("public/")) {
-      throw new Error(
-        `contentTypes.${key}.assetsDir must be inside public/ so assets are served by Next.js`
-      );
-    }
+    resolveAssetsPath(config as StudioConfig, value.uploadDir);
   }
 
   return config as StudioConfig;
