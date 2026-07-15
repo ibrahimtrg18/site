@@ -31,7 +31,10 @@ export async function GET(request: NextRequest, context: RouteContext) {
     const source = fs.readFileSync(filePath, "utf-8");
     const entry = parseMdxFile(type, slug, source);
 
-    return NextResponse.json({ entry });
+    return NextResponse.json({
+      entry,
+      previewUrl: `${contentType.urlPrefix}/${slug}`,
+    });
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Failed to read" },

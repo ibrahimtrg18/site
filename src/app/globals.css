@@ -11,3 +11,43 @@
     @apply bg-white text-neutral-950 dark:bg-black dark:text-neutral-50;
   }
 }
+
+/* Typography inside the studio WYSIWYG editor, mirroring the site's MDX styles */
+@layer components {
+  .studio-prose h1 {
+    @apply my-3 text-4xl font-bold tracking-tight;
+  }
+  .studio-prose h2 {
+    @apply my-2.5 text-3xl font-bold tracking-tight;
+  }
+  .studio-prose h3 {
+    @apply my-2 text-2xl font-bold tracking-tight;
+  }
+  .studio-prose h4 {
+    @apply my-2 text-xl font-bold tracking-tight;
+  }
+  .studio-prose h5 {
+    @apply my-1.5 text-lg font-bold tracking-tight;
+  }
+  .studio-prose h6 {
+    @apply my-1.5 text-base font-bold tracking-tight;
+  }
+  .studio-prose ul {
+    @apply list-disc pl-5;
+  }
+  .studio-prose ol {
+    @apply list-decimal pl-5;
+  }
+  .studio-prose blockquote {
+    @apply border-l-4 border-neutral-200 pl-4 dark:border-neutral-800;
+  }
+  .studio-prose a {
+    @apply text-teal-600 hover:underline dark:text-teal-400;
+  }
+  .studio-prose code {
+    @apply rounded bg-neutral-100 px-1 font-mono text-sm dark:bg-neutral-800;
+  }
+  .studio-prose img {
+    @apply max-w-full rounded-md;
+  }
+}

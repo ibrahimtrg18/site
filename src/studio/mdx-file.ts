@@ -1,5 +1,9 @@
 import matter from "gray-matter";
 
+import { slugify } from "./slug";
+
+export { slugify };
+
 export type StudioImage = { url: string };
 
 export type StudioEntry = {
@@ -24,13 +28,6 @@ const ASSETS_BLOCK = /export const assets = \{[\s\S]*?\n\}\s*/;
 const ASSET_URL = /url:\s*["']([^"']+)["']/g;
 const SLIDER_LINE = /^<ProjectSliderImages[^\n]*\/>\s*$/gm;
 const BR_LINE = /^<br\s*\/?>\s*$/gm;
-
-export const slugify = (input: string) =>
-  input
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
 
 const rawEntry = (type: string, slug: string, source: string): StudioEntry => ({
   type,
