@@ -1,8 +1,9 @@
 import fs from "fs";
 import path from "path";
 
-import { BlogCard } from "@/components";
 import { Text } from "@/components/ui";
+
+import { BlogCard } from "./blog-card";
 
 type BlogSummary = {
   slug: string;

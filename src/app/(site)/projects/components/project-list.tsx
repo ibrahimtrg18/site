@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import { ProjectCard } from "@/components";
+import { ProjectCard } from "./project-card";
 
 type ProjectSummary = {
   slug: string;

@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 import { Container } from "@/components";
 import { Button, IconButton } from "@/components/ui";
-import { useAppContext } from "@/contexts/AppContext/AppContext";
+import { useAppContext } from "@/contexts/app-context/app-context";
 import { useNavigation } from "@/hooks/useNavigation";
 
 import { ColorModeButton, useColorModeValue } from "../ui/color-mode";

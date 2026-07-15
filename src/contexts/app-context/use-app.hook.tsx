@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-import { AppAction, AppState } from "./AppContext.types";
+import { AppAction, AppState } from "./app-context.types";
 
 const appReducer = (state: AppState, action: AppAction) => {
   switch (action.type) {

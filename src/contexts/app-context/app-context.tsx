@@ -2,8 +2,8 @@
 
 import { createContext, useContext } from "react";
 
-import { initialAppState, useApp } from "./useApp.hook";
-import { AppProviderProps } from "./AppContext.types";
+import { initialAppState, useApp } from "./use-app.hook";
+import { AppProviderProps } from "./app-context.types";
 
 const AppContext = createContext(initialAppState);
 

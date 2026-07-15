@@ -3,7 +3,7 @@
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 
-import { AppProvider } from "@/contexts/AppContext/AppContext";
+import { AppProvider } from "@/contexts/app-context/app-context";
 import { useMDXComponents } from "@/mdx-components";
 
 import { ColorModeProvider } from "./ui/color-mode";
