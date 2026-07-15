@@ -5,13 +5,13 @@ import path from "path";
 import { BASE_URL } from "@/constants";
 
 export async function GET() {
-  const folderPath = path.join(process.cwd(), "src", "modules", "project"); // Absolute path to the folder
-  const files = fs.readdirSync(folderPath); // Read folder contents
-  const excludedFiles = files.filter((file) => file !== "projects.mdx");
+  const folderPath = path.join(process.cwd(), "public", "projects");
+  const files = fs.readdirSync(folderPath);
+  const excludedFiles = files.filter((file) => /\.mdx?$/.test(file));
 
   const projects = await Promise.all(
     excludedFiles.map(async (fileName) => {
-      const { data } = await import(`@/modules/project/${fileName}`);
+      const { data } = await import(`@public/projects/${fileName}`);
 
       const slug = `/projects/${fileName.replace(/\.mdx?$/, "")}`;
 

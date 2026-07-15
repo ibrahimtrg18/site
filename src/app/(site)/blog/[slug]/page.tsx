@@ -10,7 +10,7 @@ type Props = {
 };
 
 const getBlog = async (slug: string) => {
-  const data = await import(`@/modules/blog/${slug}.mdx`);
+  const data = await import(`@public/blogs/${slug}.mdx`);
   return data;
 };
 
