@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import NextImage, { ImageProps as NextImageProps } from "next/image";
-import { Box, Skeleton } from "@chakra-ui/react";
+
+import { Skeleton } from "./ui";
 
 type ImageProps = NextImageProps;
 
@@ -18,15 +19,8 @@ export const Image = (props: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <Box position="relative" width={width} height={height}>
-      {isLoading && (
-        <Skeleton
-          position="absolute"
-          width="100%"
-          height="100%"
-          borderRadius="md"
-        />
-      )}
+    <div className="relative" style={{ width, height }}>
+      {isLoading && <Skeleton className="absolute h-full w-full rounded-md" />}
 
       <NextImage
         fill={fill}
@@ -38,6 +32,6 @@ export const Image = (props: ImageProps) => {
         {...(src && { blurDataURL: src as string })}
         {...restProps}
       />
-    </Box>
+    </div>
   );
 };

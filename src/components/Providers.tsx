@@ -6,7 +6,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { AppProvider } from "@/contexts/AppContext/AppContext";
 import { useMDXComponents } from "@/mdx-components";
 
-import { Provider } from "./ui/provider";
+import { ColorModeProvider } from "./ui/color-mode";
 
 type ProvidersProps = React.HTMLProps<HTMLElement>;
 
@@ -14,7 +14,7 @@ export const Providers = ({ children }: ProvidersProps) => {
   const mdxComponents = useMDXComponents();
 
   return (
-    <Provider>
+    <ColorModeProvider>
       <MDXProvider components={mdxComponents}>
         <AppProvider
           app={{
@@ -28,6 +28,6 @@ export const Providers = ({ children }: ProvidersProps) => {
           {children}
         </AppProvider>
       </MDXProvider>
-    </Provider>
+    </ColorModeProvider>
   );
 };

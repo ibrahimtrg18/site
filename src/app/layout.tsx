@@ -37,20 +37,8 @@ export default function RootLayout({
           <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />
         )}
         <Providers>
-          <Layout
-            bgRepeat="repeat"
-            backgroundPosition="center"
-            backgroundRepeat="repeat"
-            backgroundSize="333px"
-          >
-            <Container
-              bgRepeat="repeat"
-              backgroundPosition="center"
-              backgroundRepeat="repeat"
-              backgroundSize="333px"
-            >
-              {children}
-            </Container>
+          <Layout>
+            <Container>{children}</Container>
           </Layout>
         </Providers>
       </body>

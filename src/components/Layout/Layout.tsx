@@ -1,51 +1,36 @@
 "use client";
 
-import { Suspense, useMemo } from "react";
-import { Flex, FlexProps, Spinner } from "@chakra-ui/react";
+import React, { Suspense } from "react";
 
 import { Navbar } from "@/components";
+import { Spinner } from "@/components/ui";
+import { cn } from "@/utils/cn";
 
-type LayoutProps = FlexProps & {
+type LayoutProps = React.HTMLAttributes<HTMLElement> & {
   hasNavbar?: boolean;
-  navbarHeight?: number;
 };
 
 export const Layout = (props: LayoutProps) => {
-  const { children, hasNavbar = true, ...restProps } = props;
+  const { children, hasNavbar = true, className, ...restProps } = props;
 
-  const pt = [4, 5, 6].map((v) => `${v}rem`);
-
-  const fallback = useMemo(
-    () => (
-      <Flex
-        w="100%"
-        minHeight="100vh"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Spinner />
-      </Flex>
-    ),
-    []
+  const fallback = (
+    <div className="flex min-h-screen w-full items-center justify-center">
+      <Spinner />
+    </div>
   );
 
   return (
     <Suspense fallback={fallback}>
       {hasNavbar && <Navbar />}
-      <Flex
-        as="main"
-        direction="column"
-        w="100%"
-        h="100%"
-        minHeight="100vh"
-        position="relative"
-        pt={pt}
-        overflowY="auto"
-        zIndex={1}
+      <main
+        className={cn(
+          "relative z-[1] flex h-full min-h-screen w-full flex-col overflow-y-auto pt-16 sm:pt-20 md:pt-24",
+          className
+        )}
         {...restProps}
       >
         {children}
-      </Flex>
+      </main>
     </Suspense>
   );
 };

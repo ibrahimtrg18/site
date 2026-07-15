@@ -1,22 +1,21 @@
-"use client";
+import React from "react";
 
-import {
-  Container as ChakraContainer,
-  ContainerProps as ChakraContainerProps,
-} from "@chakra-ui/react";
+import { cn } from "@/utils/cn";
 
-type ContainerProps = ChakraContainerProps;
+type ContainerProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const Container = (props: ContainerProps) => {
-  const {
-    children,
-    maxW = ["breakpoint-sm", "breakpoint-md", "breakpoint-lg", "breakpoint-xl"],
-    ...restProps
-  } = props;
+  const { children, className, ...restProps } = props;
 
   return (
-    <ChakraContainer maxW={maxW} {...restProps}>
+    <div
+      className={cn(
+        "mx-auto w-full max-w-(--breakpoint-sm) px-4 sm:max-w-(--breakpoint-md) md:max-w-(--breakpoint-lg) lg:max-w-(--breakpoint-xl)",
+        className
+      )}
+      {...restProps}
+    >
       {children}
-    </ChakraContainer>
+    </div>
   );
 };

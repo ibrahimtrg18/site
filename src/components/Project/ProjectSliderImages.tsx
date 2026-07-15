@@ -1,7 +1,6 @@
 "use client";
 
 import { CSSProperties, useState } from "react";
-import { Box, Flex } from "@chakra-ui/react";
 import type { Swiper as SwiperType } from "swiper";
 import {
   Autoplay,
@@ -31,19 +30,8 @@ export const ProjectSliderImages = ({
   const [thumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
-    <Flex direction="column" gap={2} userSelect="none">
-      <Flex
-        flex={1}
-        position="relative"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-        alignSelf="center"
-        width="100%"
-        borderRadius="md"
-        boxShadow="0 0 4px 0 rgba(0, 0, 0, 0.12)"
-        overflow="hidden"
-      >
+    <div className="flex select-none flex-col gap-2">
+      <div className="relative flex w-full flex-1 items-center justify-center self-center overflow-hidden rounded-md text-center shadow-[0_0_4px_0_rgba(0,0,0,0.12)]">
         <Swiper
           style={
             {
@@ -68,12 +56,7 @@ export const ProjectSliderImages = ({
         >
           {media.map((media) => (
             <SwiperSlide key={media.url}>
-              <Box
-                position="relative"
-                flex={1}
-                width="100%"
-                aspectRatio={16 / 9}
-              >
+              <div className="relative aspect-video w-full flex-1">
                 <Image
                   fill
                   placeholder="blur"
@@ -82,11 +65,11 @@ export const ProjectSliderImages = ({
                   src={media.url}
                   alt={String(title)}
                 />
-              </Box>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   );
 };

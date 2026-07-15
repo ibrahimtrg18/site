@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Box, Flex } from "@chakra-ui/react";
 import fs from "fs";
 import path from "path";
 
@@ -47,9 +46,9 @@ export default async function ProjectsPage() {
   const Content = (await import(`@/modules/project/projects.mdx`)).default;
 
   return (
-    <Box>
+    <div>
       <Content />
-      <Flex direction="column" gap={2}>
+      <div className="flex flex-col gap-2">
         {projects.map((project) => (
           <ProjectCard
             key={project.title}
@@ -57,7 +56,7 @@ export default async function ProjectsPage() {
             href={project.slug}
           />
         ))}
-      </Flex>
-    </Box>
+      </div>
+    </div>
   );
 }

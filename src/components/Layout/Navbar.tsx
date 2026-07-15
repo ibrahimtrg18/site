@@ -4,10 +4,10 @@ import React, { useId } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Box, Button, Flex, IconButton, Spacer } from "@chakra-ui/react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import { Container } from "@/components";
+import { Button, IconButton } from "@/components/ui";
 import { useAppContext } from "@/contexts/AppContext/AppContext";
 import { useNavigation } from "@/hooks/useNavigation";
 
@@ -17,10 +17,8 @@ export const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { menu: menus = [], icon } = useAppContext();
-  const layoudId = useId();
+  const layoutId = useId();
   const { scrollY } = useScroll();
-  const color = useColorModeValue("black", "white");
-  const bg = useColorModeValue("white", "black");
   const _boxShadow = useColorModeValue(
     "0 1px 2px 0 rgba(0, 0, 0, 0.10)",
     "0 1px 2px 0 rgba(255, 255, 255, 0.10)"
@@ -34,88 +32,56 @@ export const Navbar = () => {
   };
 
   return (
-    <motion.nav style={{ boxShadow }}>
-      <Box
-        position="fixed"
-        top="0"
-        left="0"
-        right="0"
-        w="100%"
-        zIndex={10}
-        backgroundColor={bg}
-        fontSize={["0.875rem", "1rem"]}
-      >
-        <Container
-          display="flex"
-          minHeight={["3rem", "4rem", "5rem"]}
-          flex={1}
-          justifyContent="center"
-        >
-          <Flex
-            direction="row"
-            flex={1}
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <Flex gap="1rem" alignItems="center">
-              {isNested && (
-                <IconButton
-                  variant="ghost"
-                  onClick={handleGoBack}
-                  aria-label="Toggle Color Mode"
+    <motion.nav
+      style={{ boxShadow }}
+      className="fixed inset-x-0 top-0 z-10 w-full bg-white text-sm dark:bg-black sm:text-base"
+    >
+      <Container className="flex min-h-12 justify-center sm:min-h-16 md:min-h-20">
+        <div className="flex flex-1 items-center justify-between">
+          <div className="flex items-center gap-4">
+            {isNested && (
+              <IconButton
+                variant="ghost"
+                onClick={handleGoBack}
+                aria-label="Go back"
+              >
+                <i className="fa-solid fa-chevron-left" />
+              </IconButton>
+            )}
+            <Image
+              width={32}
+              height={32}
+              loading="lazy"
+              className="rounded-full"
+              src={String(icon)}
+              alt="Avatar image picture"
+            />
+          </div>
+          <nav className="relative flex items-center gap-4">
+            {menus.map((menu) => {
+              return (
+                <Button
+                  asChild
+                  key={menu?.pathname}
+                  variant="navigation"
+                  className="text-inherit"
                 >
-                  <i className="fa-solid fa-chevron-left" />
-                </IconButton>
-              )}
-              <Image
-                width={32}
-                height={32}
-                loading="lazy"
-                style={{ borderRadius: "9999px" }}
-                src={String(icon)}
-                alt="Avatar image picture"
-              />
-            </Flex>
-            <Spacer />
-            <Flex
-              as="nav"
-              position="relative"
-              direction="row"
-              gap="1rem"
-              alignItems="center"
-            >
-              {menus.map((menu) => {
-                return (
-                  <Button
-                    asChild
-                    key={menu?.pathname}
-                    fontSize="inherit"
-                    variant={"navigation" as unknown as never}
-                  >
-                    <Link href={{ pathname: menu.pathname }}>
-                      {menu.label}
-                      {menu.pathname === pathname && (
-                        <Box
-                          asChild
-                          position="absolute"
-                          bottom="-1px"
-                          left="0"
-                          right="0"
-                          height="1px"
-                          background={color}
-                        >
-                          <motion.div layoutId={layoudId} />
-                        </Box>
-                      )}
-                    </Link>
-                  </Button>
-                );
-              })}
-              <ColorModeButton />
-            </Flex>
-          </Flex>
-        </Container>
-      </Box>
+                  <Link href={{ pathname: menu.pathname }}>
+                    {menu.label}
+                    {menu.pathname === pathname && (
+                      <motion.div
+                        layoutId={layoutId}
+                        className="absolute inset-x-0 -bottom-px h-px bg-black dark:bg-white"
+                      />
+                    )}
+                  </Link>
+                </Button>
+              );
+            })}
+            <ColorModeButton />
+          </nav>
+        </div>
+      </Container>
     </motion.nav>
   );
 };

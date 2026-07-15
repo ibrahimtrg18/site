@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Box, Card, Heading, Text } from "@chakra-ui/react";
+
+import { Card, CardBody, CardHeader, Heading, Text } from "@/components/ui";
 
 type ProjectCardProps = {
   title: string;
@@ -11,18 +12,18 @@ export const ProjectCard = (props: ProjectCardProps) => {
   const { title, description, href } = props;
 
   return (
-    <Card.Root asChild px={4} py={3} gap={2}>
+    <Card asChild className="gap-2 px-4 py-3">
       <Link href={href}>
-        <Card.Header p={0}>
-          <Heading size="md">{title}</Heading>
-        </Card.Header>
+        <CardHeader>
+          <Heading as="h3" size="md">
+            {title}
+          </Heading>
+        </CardHeader>
 
-        <Card.Body p={0}>
-          <Box>
-            <Text fontSize="sm">{description}</Text>
-          </Box>
-        </Card.Body>
+        <CardBody>
+          <Text className="text-sm">{description}</Text>
+        </CardBody>
       </Link>
-    </Card.Root>
+    </Card>
   );
 };

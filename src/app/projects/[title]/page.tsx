@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Flex } from "@chakra-ui/react";
 import { Element, MDXProps } from "mdx/types";
 
 type Props = {
@@ -38,9 +37,9 @@ export default async function ProjectPage(props0: Props) {
       await import(`@/modules/project/${title}.mdx`);
 
     return (
-      <Flex flexDirection="column" paddingBottom="1rem">
+      <div className="flex flex-col pb-4">
         <Content />
-      </Flex>
+      </div>
     );
   } catch (error) {
     notFound();

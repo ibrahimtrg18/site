@@ -4,10 +4,10 @@ description: "Hello I'm Ibrahim Tarigan, a passionate Software Engineer with ove
 ---
 
 import Link from "next/link";
-import { Flex, Box, IconButton } from "@chakra-ui/react";
+import { Flex, IconButton } from "@/components/ui";
 
-<Flex gap="1rem">
-  <IconButton asChild variant="ghost" rounded="8px">
+<Flex className="gap-4">
+  <IconButton asChild variant="ghost">
     <Link
       href="mailto:ibrahimtarigan@gmail.com"
       target="_blank"
@@ -16,12 +16,12 @@ import { Flex, Box, IconButton } from "@chakra-ui/react";
       <i className="fas fa-envelope"></i>
     </Link>
   </IconButton>
-  <IconButton asChild variant="ghost" rounded="8px">
+  <IconButton asChild variant="ghost">
     <Link href="tel:+6281260009709" target="_blank" rel="noopener noreferrer">
       <i className="fas fa-phone"></i>
     </Link>
   </IconButton>
-  <IconButton asChild variant="ghost" rounded="8px">
+  <IconButton asChild variant="ghost">
     <Link
       href="https://drive.google.com/file/d/1JFWQCAuNlXWJ-eHoMESrFtl-2JkGsITp/view?usp=sharing"
       target="_blank"
@@ -30,7 +30,7 @@ import { Flex, Box, IconButton } from "@chakra-ui/react";
       <i className="fas fa-file"></i>
     </Link>
   </IconButton>
-  <IconButton asChild variant="ghost" rounded="8px">
+  <IconButton asChild variant="ghost">
     <Link
       href="https://github.com/ibrahimtrg18"
       target="_blank"
@@ -39,7 +39,7 @@ import { Flex, Box, IconButton } from "@chakra-ui/react";
       <i className="fab fa-github"></i>
     </Link>
   </IconButton>
-  <IconButton asChild variant="ghost" rounded="8px">
+  <IconButton asChild variant="ghost">
     <Link
       href="https://www.linkedin.com/in/ibrahimtrg18"
       target="_blank"
