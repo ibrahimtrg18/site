@@ -11,6 +11,7 @@ import { Providers } from "@/components/Providers";
 import { GOOGLE_ANALYTICS_ID, GOOGLE_TAG_MANAGER_ID } from "@/constants";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./globals.css";
 
 const geist = Geist({
   subsets: ["latin"],
