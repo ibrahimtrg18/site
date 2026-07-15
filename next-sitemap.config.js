@@ -3,6 +3,7 @@ module.exports = {
   siteUrl: process.env.BASE_URL,
   generateRobotsTxt: true,
   changefreq: "daily",
+  exclude: ["/studio", "/studio/*"],
   robotsTxtOptions: {
     additionalSitemaps: [process.env.BASE_URL + "/sitemaps/projects.xml"],
   },
