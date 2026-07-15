@@ -7,7 +7,7 @@ import {
   GoogleTagManager,
   Layout,
 } from "@/components";
-import { Providers } from "@/components/Providers";
+import { Providers } from "@/components/providers";
 import { GOOGLE_ANALYTICS_ID, GOOGLE_TAG_MANAGER_ID } from "@/constants";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";

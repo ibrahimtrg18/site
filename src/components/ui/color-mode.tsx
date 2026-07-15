@@ -4,8 +4,8 @@ import * as React from "react";
 import type { ThemeProviderProps } from "next-themes";
 import { ThemeProvider, useTheme } from "next-themes";
 
-import { IconButton, IconButtonProps } from "./IconButton";
-import { Skeleton } from "./Skeleton";
+import { IconButton, IconButtonProps } from "./icon-button";
+import { Skeleton } from "./skeleton";
 
 export type ColorModeProviderProps = ThemeProviderProps;
 

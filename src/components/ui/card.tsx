@@ -2,7 +2,7 @@ import React from "react";
 
 import { cn } from "@/utils/cn";
 
-import { Slot } from "./Slot";
+import { Slot } from "./slot";
 
 type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   asChild?: boolean;

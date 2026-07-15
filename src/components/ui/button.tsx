@@ -2,7 +2,7 @@ import React from "react";
 
 import { cn } from "@/utils/cn";
 
-import { Slot } from "./Slot";
+import { Slot } from "./slot";
 
 export type ButtonVariant = "solid" | "ghost" | "navigation";
 export type ButtonSize = "sm" | "md" | "lg";

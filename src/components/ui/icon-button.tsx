@@ -2,7 +2,7 @@ import React from "react";
 
 import { cn } from "@/utils/cn";
 
-import { Button, ButtonProps, ButtonSize } from "./Button";
+import { Button, ButtonProps, ButtonSize } from "./button";
 
 export type IconButtonProps = ButtonProps;
 
