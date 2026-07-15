@@ -30,6 +30,9 @@ export default function StudioLayout({
           <Link href="/studio" className="hover:underline">
             Content
           </Link>
+          <Link href="/studio/assets" className="hover:underline">
+            Assets
+          </Link>
           <Link href="/studio/settings" className="hover:underline">
             Settings
           </Link>
