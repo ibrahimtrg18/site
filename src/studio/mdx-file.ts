@@ -12,6 +12,8 @@ export type StudioEntry = {
   title: string;
   description: string;
   tags: string;
+  /** ISO date (YYYY-MM-DD); used by blog posts for ordering and display. */
+  date?: string;
   images: StudioImage[];
   body: string;
   /**
@@ -82,6 +84,10 @@ export const parseMdxFile = (
     const description = String(
       properties.description ?? data.description ?? ""
     );
+    const rawDate = properties.date ?? data.date;
+    const date = rawDate
+      ? new Date(String(rawDate)).toISOString().slice(0, 10)
+      : undefined;
 
     return {
       type,
@@ -89,6 +95,7 @@ export const parseMdxFile = (
       title,
       description,
       tags: String(data.tags ?? ""),
+      ...(date && { date }),
       images,
       body,
       raw: false,
@@ -107,15 +114,18 @@ export const serializeMdxFile = (entry: StudioEntry): string => {
     title: `${entry.title}${SITE_TITLE_SUFFIX}`,
     description: entry.description,
     tags: entry.tags,
+    ...(entry.date && { date: entry.date }),
     properties: {
       title: entry.title,
       description: entry.description,
+      ...(entry.date && { date: entry.date }),
     },
   };
 
   const parts: string[] = [];
 
-  if (entry.images.length > 0) {
+  // The image slider is a project-template feature; blog images are inline.
+  if (entry.type === "project" && entry.images.length > 0) {
     const imageLines = entry.images
       .map((image) => `    { url: ${JSON.stringify(image.url)} },`)
       .join("\n");

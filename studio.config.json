@@ -5,6 +5,12 @@
       "contentDir": "src/modules/project",
       "assetsDir": "public/assets/projects",
       "urlPrefix": "/projects"
+    },
+    "blog": {
+      "label": "Blog post",
+      "contentDir": "src/modules/blog",
+      "assetsDir": "public/assets/blogs",
+      "urlPrefix": "/blog"
     }
   }
 }

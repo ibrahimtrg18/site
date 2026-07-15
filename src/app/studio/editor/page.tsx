@@ -30,21 +30,23 @@ type EditorState = {
   title: string;
   description: string;
   tags: string;
+  date?: string;
   slug: string;
   images: StudioImage[];
   body: string;
   raw: boolean;
 };
 
-const emptyState: EditorState = {
+const emptyState = (type: string): EditorState => ({
   title: "",
   description: "",
   tags: "",
+  ...(type === "blog" && { date: new Date().toISOString().slice(0, 10) }),
   slug: "",
   images: [],
   body: "",
   raw: false,
-};
+});
 
 const inputClassName =
   "h-9 w-full rounded-md border border-neutral-200 bg-transparent px-3 text-sm dark:border-neutral-800";
@@ -56,7 +58,7 @@ function EditorInner() {
   const existingSlug = searchParams.get("slug");
 
   const [state, setState] = useState<EditorState | null>(
-    existingSlug ? null : emptyState
+    existingSlug ? null : emptyState(type)
   );
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isNew, setIsNew] = useState(!existingSlug);
@@ -79,7 +81,7 @@ function EditorInner() {
           setPreviewUrl(data.previewUrl ?? null);
         } else {
           setFeedback({ kind: "error", text: data.error ?? "Failed to load" });
-          setState(emptyState);
+          setState(emptyState(type));
         }
       });
   }, [type, existingSlug]);
@@ -286,7 +288,12 @@ function EditorInner() {
                   placeholder="Short description shown in lists and metadata"
                 />
               </label>
-              <label className="flex flex-col gap-1 text-sm sm:col-span-2">
+              <label
+                className={
+                  "flex flex-col gap-1 text-sm" +
+                  (type === "blog" ? "" : " sm:col-span-2")
+                }
+              >
                 <span className="font-medium">Tags</span>
                 <input
                   className={inputClassName}
@@ -295,87 +302,102 @@ function EditorInner() {
                   placeholder="React, TypeScript, Tailwind"
                 />
               </label>
+              {type === "blog" && (
+                <label className="flex flex-col gap-1 text-sm">
+                  <span className="font-medium">Date</span>
+                  <input
+                    type="date"
+                    className={inputClassName}
+                    value={state.date ?? ""}
+                    onChange={(event) => update({ date: event.target.value })}
+                  />
+                </label>
+              )}
             </div>
           </Card>
 
-          <Card className="gap-3 px-4 py-4">
-            <div className="flex items-center justify-between">
-              <Heading as="h3" size="sm">
-                Slider images
-              </Heading>
-              <label className="cursor-pointer text-sm font-medium hover:underline">
-                {uploading ? <Spinner size="sm" /> : "+ Upload images"}
-                <input
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  className="hidden"
-                  disabled={uploading || !state.slug}
-                  onChange={(event) => {
-                    handleSliderImagesUpload(event.target.files);
-                    event.target.value = "";
-                  }}
-                />
-              </label>
-            </div>
+          {type === "project" && (
+            <Card className="gap-3 px-4 py-4">
+              <div className="flex items-center justify-between">
+                <Heading as="h3" size="sm">
+                  Slider images
+                </Heading>
+                <label className="cursor-pointer text-sm font-medium hover:underline">
+                  {uploading ? <Spinner size="sm" /> : "+ Upload images"}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="hidden"
+                    disabled={uploading || !state.slug}
+                    onChange={(event) => {
+                      handleSliderImagesUpload(event.target.files);
+                      event.target.value = "";
+                    }}
+                  />
+                </label>
+              </div>
 
-            {!state.slug && (
-              <Text className="text-xs text-neutral-400">
-                Set a title first — uploads are stored under the slug folder.
-              </Text>
-            )}
+              {!state.slug && (
+                <Text className="text-xs text-neutral-400">
+                  Set a title first — uploads are stored under the slug folder.
+                </Text>
+              )}
 
-            {state.images.length > 0 && (
-              <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {state.images.map((image, index) => (
-                  <li
-                    key={image.url}
-                    className="flex flex-col gap-1 rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={image.url}
-                      alt=""
-                      className="aspect-video w-full rounded object-cover"
-                    />
-                    <span className="truncate text-xs text-neutral-400">
-                      {image.url.split("/").pop()}
-                    </span>
-                    <div className="flex justify-between">
-                      <div className="flex">
+              {state.images.length > 0 && (
+                <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {state.images.map((image, index) => (
+                    <li
+                      key={image.url}
+                      className="flex flex-col gap-1 rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={image.url}
+                        alt=""
+                        className="aspect-video w-full rounded object-cover"
+                      />
+                      <span className="truncate text-xs text-neutral-400">
+                        {image.url.split("/").pop()}
+                      </span>
+                      <div className="flex justify-between">
+                        <div className="flex">
+                          <IconButton
+                            size="sm"
+                            aria-label="Move left"
+                            onClick={() => moveImage(index, -1)}
+                          >
+                            <i className="fa-solid fa-arrow-left text-xs" />
+                          </IconButton>
+                          <IconButton
+                            size="sm"
+                            aria-label="Move right"
+                            onClick={() => moveImage(index, 1)}
+                          >
+                            <i className="fa-solid fa-arrow-right text-xs" />
+                          </IconButton>
+                        </div>
                         <IconButton
                           size="sm"
-                          aria-label="Move left"
-                          onClick={() => moveImage(index, -1)}
+                          aria-label="Remove"
+                          className="text-red-600 dark:text-red-400"
+                          onClick={() =>
+                            update({
+                              images: state.images.filter(
+                                (_, i) => i !== index
+                              ),
+                            })
+                          }
                         >
-                          <i className="fa-solid fa-arrow-left text-xs" />
-                        </IconButton>
-                        <IconButton
-                          size="sm"
-                          aria-label="Move right"
-                          onClick={() => moveImage(index, 1)}
-                        >
-                          <i className="fa-solid fa-arrow-right text-xs" />
+                          <i className="fa-solid fa-trash text-xs" />
                         </IconButton>
                       </div>
-                      <IconButton
-                        size="sm"
-                        aria-label="Remove"
-                        className="text-red-600 dark:text-red-400"
-                        onClick={() =>
-                          update({
-                            images: state.images.filter((_, i) => i !== index),
-                          })
-                        }
-                      >
-                        <i className="fa-solid fa-trash text-xs" />
-                      </IconButton>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </Card>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Card>
+          )}
 
           <Card className="overflow-hidden px-0 py-0">
             <MarkdownEditor
