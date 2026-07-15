@@ -6,6 +6,8 @@ export type ContentTypeConfig = {
   contentDir: string;
   assetsDir: string;
   urlPrefix: string;
+  /** File in contentDir that renders the list page itself (e.g. projects.mdx); protected from deletion. */
+  indexFile?: string;
 };
 
 export type StudioConfig = {

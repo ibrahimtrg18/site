@@ -11,6 +11,7 @@ type EntrySummary = {
   slug: string;
   title: string;
   description: string;
+  isIndex: boolean;
   previewUrl: string;
 };
 
@@ -159,6 +160,11 @@ export default function StudioDashboardPage() {
                 <div className="min-w-0">
                   <Heading as="h3" size="sm" className="truncate">
                     {entry.title}
+                    {entry.isIndex && (
+                      <span className="ml-2 rounded bg-neutral-100 px-1.5 py-0.5 text-xs font-normal text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400">
+                        list page
+                      </span>
+                    )}
                   </Heading>
                   <Text className="truncate text-sm text-neutral-500 dark:text-neutral-400">
                     {entry.slug}.mdx
@@ -178,14 +184,16 @@ export default function StudioDashboardPage() {
                       Preview
                     </a>
                   </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-red-600 dark:text-red-400"
-                    onClick={() => handleDelete(entry)}
-                  >
-                    Delete
-                  </Button>
+                  {!entry.isIndex && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-red-600 dark:text-red-400"
+                      onClick={() => handleDelete(entry)}
+                    >
+                      Delete
+                    </Button>
+                  )}
                 </div>
               </Card>
             ))}
