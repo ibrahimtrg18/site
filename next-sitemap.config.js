@@ -5,6 +5,9 @@ module.exports = {
   changefreq: "daily",
   exclude: ["/studio", "/studio/*"],
   robotsTxtOptions: {
-    additionalSitemaps: [process.env.BASE_URL + "/sitemaps/projects.xml"],
+    additionalSitemaps: [
+      process.env.BASE_URL + "/sitemaps/projects.xml",
+      process.env.BASE_URL + "/sitemaps/blogs.xml",
+    ],
   },
 };
