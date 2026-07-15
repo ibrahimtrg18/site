@@ -1,4 +1,4 @@
-import matter from "gray-matter";
+import matter, { stringify } from "gray-matter";
 
 import { slugify } from "./slug";
 
@@ -137,5 +137,5 @@ export const serializeMdxFile = (entry: StudioEntry): string => {
 
   parts.push(entry.body.trim());
 
-  return matter.stringify("\n" + parts.join("\n\n") + "\n", frontmatter);
+  return stringify("\n" + parts.join("\n\n") + "\n", frontmatter);
 };

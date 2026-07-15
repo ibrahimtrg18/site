@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import { cn } from "@/utils/cn";
 
@@ -12,7 +12,7 @@ const iconSizeStyles: Record<ButtonSize, string> = {
   lg: "w-12 px-0",
 };
 
-export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   function IconButton(props, ref) {
     const { variant = "ghost", size = "md", className, ...restProps } = props;
 

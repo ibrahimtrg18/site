@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import { cn } from "@/utils/cn";
 
@@ -30,7 +30,7 @@ const sizeStyles: Record<ButtonSize, string> = {
   lg: "h-12 px-5 text-lg",
 };
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(props, ref) {
     const {
       asChild,
