@@ -1,0 +1,10 @@
+{
+  "contentTypes": {
+    "project": {
+      "label": "Project",
+      "contentDir": "src/modules/project",
+      "assetsDir": "public/assets/projects",
+      "urlPrefix": "/projects"
+    }
+  }
+}
