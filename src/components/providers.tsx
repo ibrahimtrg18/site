@@ -22,6 +22,7 @@ export const Providers = ({ children }: ProvidersProps) => {
             menu: [
               { pathname: "/", label: "Home" },
               { pathname: "/projects", label: "Projects" },
+              { pathname: "/blog", label: "Blog" },
             ],
           }}
         >
