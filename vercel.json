@@ -2,7 +2,16 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "headers": [
     {
-      "source": "/(sitemap.*\\.xml|robots\\.txt|server-sitemap-project\\.xml)",
+      "source": "/(sitemap.*\\.xml|robots\\.txt)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/sitemaps/(.*\\.xml)",
       "headers": [
         {
           "key": "Cache-Control",
