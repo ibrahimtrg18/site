@@ -6,7 +6,7 @@ Feel free to fork or clone this project and make it your own.
 
 ## Tech stack
 
-- [Next.js 15](https://nextjs.org/) (App Router) + TypeScript
+- [Next.js 16](https://nextjs.org/) (App Router, Turbopack) + TypeScript
 - [Tailwind CSS v4](https://tailwindcss.com/) with a small set of local UI components (`src/components/ui`)
 - [MDX](https://mdxjs.com/) for all content, [MDXEditor](https://mdxeditor.dev/) for the Studio WYSIWYG
 - [next-themes](https://github.com/pacocoursey/next-themes) (dark mode), [Framer Motion](https://www.framer.com/motion/), [Swiper](https://swiperjs.com/)
@@ -31,6 +31,12 @@ Each `.mdx` file has YAML frontmatter (title, description, tags, date for blogs)
 
 > Note: everything in `public/` is served as-is, so the raw `.mdx` source of a page is publicly downloadable. For portfolio content that's usually fine — just don't keep secrets in frontmatter.
 
+### Drafts and the one-file rule
+
+Name a content file with a leading underscore to make it a **draft** — `_my-post.mdx`. Drafts stay in the repo but are hidden everywhere on the site: no listing, no page, no sitemap entry. Studio still shows them under **Content**, so you can keep editing — rename without the `_` to publish.
+
+One thing to know: pages are compiled from whatever `.mdx` files exist at build time, so **each content folder must contain at least one `.mdx` file**, or the build fails. That's why `public/blogs/` ships with `_welcome.mdx` — a hidden draft that keeps the folder buildable until you write your first real post. Whenever you empty a folder, leave at least one file behind (a draft counts).
+
 ### App structure
 
 ```
@@ -52,7 +58,7 @@ Studio only exists while running `npm run dev` — in production every `/studio`
 2. **Content** — create or edit projects/blog posts in a Notion-style editor. Saving writes the `.mdx` file to `public/`, so you can preview it on the real site immediately.
 3. **Assets** — a file manager for `public/`: browse folders, upload images, copy a file's URL to paste into any content.
 4. **Settings** — edit `studio.config.json`: where each content type stores its files, where uploads go, and its public URL prefix.
-5. **Publish** — shows your uncommitted content changes, commits them with your message, and pushes. If the repo is connected to Vercel, that push is the deploy.
+5. **Publish** — commits and pushes your content. It stages only content and asset files (and `studio.config.json`) — never stray code edits — commits them with your message, and pushes the **current branch** to `origin`. So you need a git remote with push access, and you should be on the branch your host deploys (your Vercel production branch). That push is the deploy.
 
 To add a new content type, add an entry to `studio.config.json` and create matching list/detail pages under `src/app/(site)/` (copy the `blog/` folder as a template).
 
@@ -101,7 +107,7 @@ Then:
 
 1. **Site icon** — upload it in `/studio/settings` (used as the navbar avatar and browser favicon). It's saved to the fixed path `public/assets/icon.png`, auto-converted to PNG. Until you upload one, the navbar shows your name's initial.
 2. **Home bio** — rewrite the intro paragraph in [`src/app/(site)/page.mdx`](<src/app/(site)/page.mdx>) (the social links there come from `site.social`, so you only edit the prose).
-3. **Content** — delete my projects from `public/projects/` (via Studio or by hand) and create your own.
+3. **Content** — delete my projects from `public/projects/` (via Studio or by hand) and create your own. Leave at least one `.mdx` in each folder as you go — an empty content folder fails the build (see [Drafts and the one-file rule](#drafts-and-the-one-file-rule)).
 4. **Deploy env** — set `BASE_URL` in your Vercel project (falls back to `site.url` if unset).
 
 ## Scripts
