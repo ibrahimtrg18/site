@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import { Text } from "@/components/ui";
+import { isPublishedMdx } from "@/utils/content";
 
 import { BlogCard } from "./blog-card";
 
@@ -15,13 +16,13 @@ const getBlogs = async (): Promise<BlogSummary[]> => {
 
   if (!fs.existsSync(folderPath)) return [];
 
-  const files = fs
-    .readdirSync(folderPath)
-    .filter((file) => /\.mdx?$/.test(file));
+  const files = fs.readdirSync(folderPath).filter(isPublishedMdx);
 
   const blogs = await Promise.all(
     files.map(async (fileName) => {
-      const { metadata } = await import(`@public/blogs/${fileName}`);
+      const { metadata } = await import(
+        `../../../../../public/blogs/${fileName}`
+      );
 
       const slug = `/blog/${fileName.replace(/\.mdx?$/, "")}`;
 

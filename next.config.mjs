@@ -1,9 +1,5 @@
 import createMDX from "@next/mdx";
 import fs from "fs";
-import rehypeHighlight from "rehype-highlight";
-import remarkFrontmatter from "remark-frontmatter";
-import remarkGfm from "remark-gfm";
-import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -29,15 +25,17 @@ const nextConfig = {
 };
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+  // Add markdown plugins here, as desired.
+  // Turbopack (default in Next 16) can't serialize JS function references, so
+  // remark/rehype plugins are referenced by string name with serializable options.
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
-      remarkGfm,
-      remarkFrontmatter,
-      [remarkMdxFrontmatter, { name: "metadata" }],
+      "remark-gfm",
+      "remark-frontmatter",
+      ["remark-mdx-frontmatter", { name: "metadata" }],
     ],
-    rehypePlugins: [rehypeHighlight],
+    rehypePlugins: ["rehype-highlight"],
   },
 });
 

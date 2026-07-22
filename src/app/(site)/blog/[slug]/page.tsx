@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Heading, Text } from "@/components/ui";
+import { isDraftSlug } from "@/utils/content";
 import { formatDate } from "@/utils/format-date";
 
 type Props = {
@@ -10,7 +11,9 @@ type Props = {
 };
 
 const getBlog = async (slug: string) => {
-  const data = await import(`@public/blogs/${slug}.mdx`);
+  if (isDraftSlug(slug)) notFound();
+
+  const data = await import(`../../../../../public/blogs/${slug}.mdx`);
   return data;
 };
 

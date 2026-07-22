@@ -3,15 +3,18 @@ import fs from "fs";
 import path from "path";
 
 import { BASE_URL } from "@/constants";
+import { isPublishedMdx } from "@/utils/content";
 
 export async function GET() {
   const folderPath = path.join(process.cwd(), "public", "projects");
   const files = fs.readdirSync(folderPath);
-  const excludedFiles = files.filter((file) => /\.mdx?$/.test(file));
+  const excludedFiles = files.filter(isPublishedMdx);
 
   const projects = await Promise.all(
     excludedFiles.map(async (fileName) => {
-      const { data } = await import(`@public/projects/${fileName}`);
+      const { data } = await import(
+        `../../../../../public/projects/${fileName}`
+      );
 
       const slug = `/projects/${fileName.replace(/\.mdx?$/, "")}`;
 

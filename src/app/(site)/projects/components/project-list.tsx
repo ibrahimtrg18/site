@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 
+import { isPublishedMdx } from "@/utils/content";
+
 import { ProjectCard } from "./project-card";
 
 type ProjectSummary = {
@@ -10,13 +12,13 @@ type ProjectSummary = {
 
 const getProjects = async (): Promise<ProjectSummary[]> => {
   const folderPath = path.join(process.cwd(), "public", "projects");
-  const files = fs
-    .readdirSync(folderPath)
-    .filter((file) => /\.mdx?$/.test(file));
+  const files = fs.readdirSync(folderPath).filter(isPublishedMdx);
 
   return Promise.all(
     files.map(async (fileName) => {
-      const { metadata } = await import(`@public/projects/${fileName}`);
+      const { metadata } = await import(
+        `../../../../../public/projects/${fileName}`
+      );
 
       const slug = `/projects/${fileName.replace(/\.mdx?$/, "")}`;
 
