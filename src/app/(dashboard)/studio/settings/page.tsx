@@ -11,10 +11,42 @@ type ContentTypeConfig = {
   urlPrefix: string;
 };
 
+type SiteConfig = {
+  name: string;
+  url: string;
+  icon: string;
+  googleSiteVerification?: string;
+  menu: Array<{ pathname: string; label: string }>;
+};
+
 type StudioConfig = {
+  site: SiteConfig;
   assetsRoot: string;
   contentTypes: Record<string, ContentTypeConfig>;
 };
+
+const SITE_FIELDS: Array<{
+  key: "name" | "url" | "icon" | "googleSiteVerification";
+  label: string;
+  hint: string;
+}> = [
+  {
+    key: "name",
+    label: "Site name",
+    hint: "Your name — appended to every page title (Page | Name)",
+  },
+  {
+    key: "url",
+    label: "Site URL",
+    hint: "Canonical URL used for sitemaps and metadata",
+  },
+  { key: "icon", label: "Icon path", hint: "Public path of the site icon" },
+  {
+    key: "googleSiteVerification",
+    label: "Google site verification",
+    hint: "Optional — content of the google-site-verification meta tag",
+  },
+];
 
 const FIELDS: Array<{
   key: keyof ContentTypeConfig;
@@ -121,6 +153,121 @@ export default function StudioSettingsPage() {
           {feedback.text}
         </div>
       )}
+
+      <Card className="gap-4 px-4 py-4">
+        <Heading as="h3" size="md">
+          Site
+        </Heading>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {SITE_FIELDS.map((field) => (
+            <label key={field.key} className="flex flex-col gap-1 text-sm">
+              <span className="font-medium">{field.label}</span>
+              <input
+                className="h-9 rounded-md border border-neutral-200 bg-transparent px-3 text-sm dark:border-neutral-800"
+                value={config.site[field.key] ?? ""}
+                onChange={(event) =>
+                  setConfig((current) =>
+                    current
+                      ? {
+                          ...current,
+                          site: {
+                            ...current.site,
+                            [field.key]: event.target.value,
+                          },
+                        }
+                      : null
+                  )
+                }
+              />
+              <span className="text-xs text-neutral-400">{field.hint}</span>
+            </label>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <span className="text-sm font-medium">Navbar menu</span>
+          {config.site.menu.map((item, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <input
+                className="h-9 flex-1 rounded-md border border-neutral-200 bg-transparent px-3 text-sm dark:border-neutral-800"
+                value={item.label}
+                placeholder="Label"
+                onChange={(event) =>
+                  setConfig((current) => {
+                    if (!current) return null;
+                    const menu = [...current.site.menu];
+                    menu[index] = { ...menu[index], label: event.target.value };
+                    return { ...current, site: { ...current.site, menu } };
+                  })
+                }
+              />
+              <input
+                className="h-9 flex-1 rounded-md border border-neutral-200 bg-transparent px-3 font-mono text-sm dark:border-neutral-800"
+                value={item.pathname}
+                placeholder="/path"
+                onChange={(event) =>
+                  setConfig((current) => {
+                    if (!current) return null;
+                    const menu = [...current.site.menu];
+                    menu[index] = {
+                      ...menu[index],
+                      pathname: event.target.value,
+                    };
+                    return { ...current, site: { ...current.site, menu } };
+                  })
+                }
+              />
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-red-600 dark:text-red-400"
+                onClick={() =>
+                  setConfig((current) =>
+                    current
+                      ? {
+                          ...current,
+                          site: {
+                            ...current.site,
+                            menu: current.site.menu.filter(
+                              (_, i) => i !== index
+                            ),
+                          },
+                        }
+                      : null
+                  )
+                }
+              >
+                Remove
+              </Button>
+            </div>
+          ))}
+          <div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() =>
+                setConfig((current) =>
+                  current
+                    ? {
+                        ...current,
+                        site: {
+                          ...current.site,
+                          menu: [
+                            ...current.site.menu,
+                            { pathname: "", label: "" },
+                          ],
+                        },
+                      }
+                    : null
+                )
+              }
+            >
+              + Add menu item
+            </Button>
+          </div>
+        </div>
+      </Card>
 
       <Card className="gap-4 px-4 py-4">
         <Heading as="h3" size="md">

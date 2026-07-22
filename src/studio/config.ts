@@ -9,7 +9,26 @@ export type ContentTypeConfig = {
   urlPrefix: string;
 };
 
+export type SiteMenuItem = {
+  pathname: string;
+  label: string;
+};
+
+export type SiteConfig = {
+  /** Owner name — used as the metadata title suffix ("Page | <name>"). */
+  name: string;
+  /** Canonical site URL — fallback for BASE_URL in build configs. */
+  url: string;
+  /** Public path of the site icon. */
+  icon: string;
+  /** Optional google-site-verification meta content. */
+  googleSiteVerification?: string;
+  /** Navbar menu items. */
+  menu: SiteMenuItem[];
+};
+
 export type StudioConfig = {
+  site: SiteConfig;
   /** Root folder browsed by the studio file manager. Must be public or inside it. */
   assetsRoot: string;
   contentTypes: Record<string, ContentTypeConfig>;
@@ -80,7 +99,27 @@ export const validateStudioConfig = (config: unknown): StudioConfig => {
     throw new Error("Config must be an object");
   }
 
-  const { assetsRoot, contentTypes } = config as StudioConfig;
+  const { site, assetsRoot, contentTypes } = config as StudioConfig;
+
+  if (typeof site !== "object" || site === null) {
+    throw new Error("Config must have a site object");
+  }
+
+  for (const field of ["name", "url", "icon"] as const) {
+    if (typeof site[field] !== "string" || site[field].length === 0) {
+      throw new Error(`site.${field} must be a non-empty string`);
+    }
+  }
+
+  if (!Array.isArray(site.menu)) {
+    throw new Error("site.menu must be an array");
+  }
+
+  for (const item of site.menu) {
+    if (!item?.pathname?.trim() || !item?.label?.trim()) {
+      throw new Error("Every site.menu item needs a pathname and a label");
+    }
+  }
 
   if (typeof assetsRoot !== "string" || assetsRoot.length === 0) {
     throw new Error("Config must have an assetsRoot string");
