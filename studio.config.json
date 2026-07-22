@@ -2,8 +2,6 @@
   "site": {
     "name": "Ibrahim Tarigan",
     "url": "https://ibrahimtarigan.vercel.app",
-    "icon": "/assets/icon.png",
-    "favicon": "/assets/icon.png",
     "googleSiteVerification": "Dgh3-7chmF8XSw4RmI2T13hmdsE370jbAOLx8y43OJ0",
     "menu": [
       { "pathname": "/", "label": "Home" },

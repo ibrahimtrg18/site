@@ -11,9 +11,11 @@ import { ColorModeProvider } from "./ui/color-mode";
 
 type ProvidersProps = React.HTMLProps<HTMLElement> & {
   site: SiteConfig;
+  /** Public URL of the site icon, or "" when no icon has been uploaded yet. */
+  icon: string;
 };
 
-export const Providers = ({ site, children }: ProvidersProps) => {
+export const Providers = ({ site, icon, children }: ProvidersProps) => {
   const mdxComponents = useMDXComponents();
 
   return (
@@ -21,7 +23,8 @@ export const Providers = ({ site, children }: ProvidersProps) => {
       <MDXProvider components={mdxComponents}>
         <AppProvider
           app={{
-            icon: site.icon,
+            icon,
+            name: site.name,
             menu: site.menu,
           }}
         >

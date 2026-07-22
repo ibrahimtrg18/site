@@ -27,10 +27,6 @@ export type SiteConfig = {
   name: string;
   /** Canonical site URL — fallback for BASE_URL in build configs. */
   url: string;
-  /** Public path of the navbar/site icon. */
-  icon: string;
-  /** Public path of the browser-tab favicon (falls back to icon). */
-  favicon?: string;
   /** Optional google-site-verification meta content. */
   googleSiteVerification?: string;
   /** Navbar menu items. */
@@ -38,6 +34,16 @@ export type SiteConfig = {
   /** Social/contact links shown on the home page. */
   social?: SiteSocialItem[];
 };
+
+/**
+ * The site icon (navbar avatar + browser favicon) always lives at this fixed
+ * path — it is uploaded through the studio, never configured as a string.
+ */
+export const SITE_ICON_URL = "/assets/icon.png";
+export const SITE_ICON_FILE = "public/assets/icon.png";
+
+export const siteIconExists = () =>
+  fs.existsSync(resolveRepoPath(SITE_ICON_FILE));
 
 export type StudioConfig = {
   site: SiteConfig;
@@ -117,7 +123,7 @@ export const validateStudioConfig = (config: unknown): StudioConfig => {
     throw new Error("Config must have a site object");
   }
 
-  for (const field of ["name", "url", "icon"] as const) {
+  for (const field of ["name", "url"] as const) {
     if (typeof site[field] !== "string" || site[field].length === 0) {
       throw new Error(`site.${field} must be a non-empty string`);
     }

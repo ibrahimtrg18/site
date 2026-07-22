@@ -5,7 +5,11 @@ import { Geist } from "next/font/google";
 import { GoogleAnalytics, GoogleTagManager } from "@/components";
 import { Providers } from "@/components/providers";
 import { GOOGLE_ANALYTICS_ID, GOOGLE_TAG_MANAGER_ID } from "@/constants";
-import { loadStudioConfig } from "@/studio/config";
+import {
+  loadStudioConfig,
+  SITE_ICON_URL,
+  siteIconExists,
+} from "@/studio/config";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./globals.css";
@@ -28,6 +32,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const iconUrl = siteIconExists() ? SITE_ICON_URL : "";
+
   return (
     <html lang="en" className={geist.className} suppressHydrationWarning>
       <head>
@@ -37,14 +43,16 @@ export default function RootLayout({
             content={site.googleSiteVerification}
           />
         )}
-        <link rel="icon" href={site.favicon ?? site.icon} sizes="any" />
+        {iconUrl && <link rel="icon" href={iconUrl} sizes="any" />}
       </head>
       <body style={{ overflowY: "auto" }} suppressHydrationWarning>
         {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
         {GOOGLE_ANALYTICS_ID && (
           <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />
         )}
-        <Providers site={site}>{children}</Providers>
+        <Providers site={site} icon={iconUrl}>
+          {children}
+        </Providers>
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ export type AppAction = {
 
 type App = {
   icon: string;
+  name: string;
   menu: Array<{ pathname: string; label: string }>;
 };
 

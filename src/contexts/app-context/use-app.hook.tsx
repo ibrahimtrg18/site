@@ -11,11 +11,12 @@ const appReducer = (state: AppState, action: AppAction) => {
 
 export const initialAppState: AppState | undefined = {
   icon: "",
+  name: "",
   menu: [],
 };
 
 export const useApp = (initialApp: AppState | undefined = initialAppState) => {
-  const [{ icon, menu }] = useReducer(appReducer, initialApp);
+  const [{ icon, name, menu }] = useReducer(appReducer, initialApp);
 
-  return { icon, menu };
+  return { icon, name, menu };
 };

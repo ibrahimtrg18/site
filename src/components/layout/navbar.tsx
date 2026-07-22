@@ -16,7 +16,7 @@ import { ColorModeButton, useColorModeValue } from "../ui/color-mode";
 export const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const { menu: menus = [], icon } = useAppContext();
+  const { menu: menus = [], icon, name } = useAppContext();
   const layoutId = useId();
   const { scrollY } = useScroll();
   const _boxShadow = useColorModeValue(
@@ -48,14 +48,25 @@ export const Navbar = () => {
                 <i className="fa-solid fa-chevron-left" />
               </IconButton>
             )}
-            <Image
-              width={32}
-              height={32}
-              loading="lazy"
-              className="rounded-full"
-              src={String(icon)}
-              alt="Avatar image picture"
-            />
+            {icon ? (
+              <Image
+                width={32}
+                height={32}
+                loading="lazy"
+                className="rounded-full"
+                src={icon}
+                alt={name ? `${name} avatar` : "Site avatar"}
+              />
+            ) : (
+              <span
+                aria-hidden
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-200 text-sm font-semibold text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400"
+              >
+                {name?.trim()?.[0]?.toUpperCase() ?? (
+                  <i className="fa-solid fa-user" />
+                )}
+              </span>
+            )}
           </div>
           <nav className="relative flex items-center gap-4">
             {menus.map((menu) => {

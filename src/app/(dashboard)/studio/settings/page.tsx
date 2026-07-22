@@ -16,8 +16,6 @@ type SiteSocialItem = { label: string; icon: string; href: string };
 type SiteConfig = {
   name: string;
   url: string;
-  icon: string;
-  favicon?: string;
   googleSiteVerification?: string;
   menu: Array<{ pathname: string; label: string }>;
   social?: SiteSocialItem[];
@@ -29,8 +27,10 @@ type StudioConfig = {
   contentTypes: Record<string, ContentTypeConfig>;
 };
 
+const SITE_ICON_URL = "/assets/icon.png";
+
 const SITE_FIELDS: Array<{
-  key: "name" | "url" | "icon" | "favicon" | "googleSiteVerification";
+  key: "name" | "url" | "googleSiteVerification";
   label: string;
   hint: string;
 }> = [
@@ -43,12 +43,6 @@ const SITE_FIELDS: Array<{
     key: "url",
     label: "Site URL",
     hint: "Canonical URL used for sitemaps and metadata",
-  },
-  { key: "icon", label: "Icon path", hint: "Public path of the navbar icon" },
-  {
-    key: "favicon",
-    label: "Favicon path",
-    hint: "Public path of the browser-tab icon (defaults to icon)",
   },
   {
     key: "googleSiteVerification",
@@ -83,6 +77,9 @@ const FIELDS: Array<{
 export default function StudioSettingsPage() {
   const [config, setConfig] = useState<StudioConfig | null>(null);
   const [saving, setSaving] = useState(false);
+  const [iconExists, setIconExists] = useState(false);
+  const [iconVersion, setIconVersion] = useState(Date.now());
+  const [iconUploading, setIconUploading] = useState(false);
   const [feedback, setFeedback] = useState<{
     kind: "success" | "error";
     text: string;
@@ -92,7 +89,40 @@ export default function StudioSettingsPage() {
     fetch("/api/studio/settings")
       .then((res) => res.json())
       .then((data) => setConfig(data.config));
+
+    fetch("/api/studio/site-icon")
+      .then((res) => res.json())
+      .then((data) => setIconExists(Boolean(data.exists)));
   }, []);
+
+  const handleIconUpload = async (file: File | undefined) => {
+    if (!file) return;
+
+    setIconUploading(true);
+    setFeedback(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/studio/site-icon", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setFeedback({ kind: "error", text: data.error ?? "Upload failed" });
+        return;
+      }
+
+      setIconExists(true);
+      setIconVersion(Date.now()); // cache-bust the preview
+      setFeedback({ kind: "success", text: "Icon updated." });
+    } finally {
+      setIconUploading(false);
+    }
+  };
 
   const updateField = (
     type: string,
@@ -192,6 +222,54 @@ export default function StudioSettingsPage() {
               <span className="text-xs text-neutral-400">{field.hint}</span>
             </label>
           ))}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <span className="text-sm font-medium">Icon</span>
+          <div className="flex items-center gap-4">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900">
+              {iconExists ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={iconVersion}
+                  src={`${SITE_ICON_URL}?v=${iconVersion}`}
+                  alt="Site icon"
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <i className="fa-solid fa-user text-2xl text-neutral-400" />
+              )}
+            </div>
+            <div className="flex flex-col gap-1">
+              <label>
+                <Button asChild size="sm" className="cursor-pointer">
+                  <span>
+                    {iconUploading ? (
+                      <Spinner size="sm" />
+                    ) : iconExists ? (
+                      "Replace icon"
+                    ) : (
+                      "Upload icon"
+                    )}
+                  </span>
+                </Button>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  disabled={iconUploading}
+                  onChange={(event) => {
+                    handleIconUpload(event.target.files?.[0]);
+                    event.target.value = "";
+                  }}
+                />
+              </label>
+              <span className="text-xs text-neutral-400">
+                Used as the navbar avatar and browser favicon. Saved to{" "}
+                <code className="font-mono">{SITE_ICON_URL}</code>.
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col gap-2">
