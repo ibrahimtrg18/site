@@ -79,15 +79,26 @@ Open [http://localhost:4000](http://localhost:4000) for the site, [http://localh
 
 ## Make it your own
 
-After forking, replace the personal bits:
+Almost everything personal lives in one file: [`studio.config.json`](studio.config.json) (editable in the UI at `/studio/settings`).
+
+```jsonc
+{
+  "site": {
+    "name": "Your Name",          // appended to every page title: "Page | Your Name"
+    "url": "https://your.site",   // canonical URL for sitemaps and metadata
+    "icon": "/assets/icon.png",   // site/navbar icon
+    "googleSiteVerification": "", // optional; remove to drop the meta tag
+    "menu": [ { "pathname": "/", "label": "Home" }, ... ]
+  }
+}
+```
+
+Then:
 
 1. **Home page** — rewrite [`src/app/(site)/page.mdx`](<src/app/(site)/page.mdx>) (intro text + social links).
-2. **Site icon** — replace `public/assets/icon.png`.
-3. **Navbar menu** — edit the `menu` array in [`src/components/providers.tsx`](src/components/providers.tsx).
-4. **Site URL** — change the fallback URLs in [`next.config.mjs`](next.config.mjs) and [`next-sitemap.config.js`](next-sitemap.config.js) to your domain, and set `BASE_URL` in your Vercel project.
-5. **Google site verification** — replace or remove the `google-site-verification` meta tag in [`src/app/layout.tsx`](src/app/layout.tsx).
-6. **Content** — delete my projects from `public/projects/` (via Studio or by hand) and create your own.
-7. **Metadata suffix** — Studio appends `| Ibrahim Tarigan` to page titles; change `SITE_TITLE_SUFFIX` in [`src/studio/mdx-file.ts`](src/studio/mdx-file.ts).
+2. **Site icon** — replace `public/assets/icon.png` (or point `site.icon` elsewhere).
+3. **Content** — delete my projects from `public/projects/` (via Studio or by hand) and create your own.
+4. **Deploy env** — set `BASE_URL` in your Vercel project (falls back to `site.url` if unset).
 
 ## Scripts
 
