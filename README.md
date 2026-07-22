@@ -86,17 +86,23 @@ Almost everything personal lives in one file: [`studio.config.json`](studio.conf
   "site": {
     "name": "Your Name",          // appended to every page title: "Page | Your Name"
     "url": "https://your.site",   // canonical URL for sitemaps and metadata
-    "icon": "/assets/icon.png",   // site/navbar icon
+    "icon": "/assets/icon.png",   // navbar icon
+    "favicon": "/assets/icon.png",// browser-tab icon (falls back to icon)
     "googleSiteVerification": "", // optional; remove to drop the meta tag
-    "menu": [ { "pathname": "/", "label": "Home" }, ... ]
+    "menu": [ { "pathname": "/", "label": "Home" }, ... ],
+    "social": [                   // links shown on the home page
+      { "label": "GitHub", "icon": "fab fa-github", "href": "https://github.com/you" }
+    ]
   }
 }
 ```
 
+Icons use [Font Awesome](https://fontawesome.com/search) classes (`fab fa-github`, `fas fa-envelope`, ...), already bundled.
+
 Then:
 
-1. **Home page** — rewrite [`src/app/(site)/page.mdx`](<src/app/(site)/page.mdx>) (intro text + social links).
-2. **Site icon** — replace `public/assets/icon.png` (or point `site.icon` elsewhere).
+1. **Home bio** — rewrite the intro paragraph in [`src/app/(site)/page.mdx`](<src/app/(site)/page.mdx>) (the social links there come from `site.social`, so you only edit the prose).
+2. **Site icon** — replace `public/assets/icon.png` (or point `site.icon` / `site.favicon` elsewhere).
 3. **Content** — delete my projects from `public/projects/` (via Studio or by hand) and create your own.
 4. **Deploy env** — set `BASE_URL` in your Vercel project (falls back to `site.url` if unset).
 
