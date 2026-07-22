@@ -23,8 +23,6 @@ export type StudioEntry = {
   raw: boolean;
 };
 
-const SITE_TITLE_SUFFIX = " | Ibrahim Tarigan";
-
 const IMPORT_LINE = /^import\s.*$/gm;
 const ASSETS_BLOCK = /export const assets = \{[\s\S]*?\n\}\s*/;
 const ASSET_URL = /url:\s*["']([^"']+)["']/g;
@@ -45,7 +43,9 @@ const rawEntry = (type: string, slug: string, source: string): StudioEntry => ({
 export const parseMdxFile = (
   type: string,
   slug: string,
-  source: string
+  source: string,
+  /** Strips a legacy " | <siteName>" suffix from frontmatter titles. */
+  siteName?: string
 ): StudioEntry => {
   try {
     const { data, content } = matter(source);
@@ -78,8 +78,9 @@ export const parseMdxFile = (
 
     const properties = (data.properties ?? {}) as Record<string, unknown>;
     const pageTitle = String(data.title ?? "");
-    const title = String(
-      properties.title ?? pageTitle.replace(SITE_TITLE_SUFFIX, "")
+    const title = String(properties.title ?? pageTitle).replace(
+      siteName ? ` | ${siteName}` : /$^/,
+      ""
     );
     const description = String(
       properties.description ?? data.description ?? ""
@@ -110,8 +111,10 @@ export const serializeMdxFile = (entry: StudioEntry): string => {
     return entry.body.endsWith("\n") ? entry.body : entry.body + "\n";
   }
 
+  // Plain title only — the root layout appends the site-name suffix via
+  // Next's metadata title template (configured in studio.config.json).
   const frontmatter = {
-    title: `${entry.title}${SITE_TITLE_SUFFIX}`,
+    title: entry.title,
     description: entry.description,
     tags: entry.tags,
     ...(entry.date && { date: entry.date }),

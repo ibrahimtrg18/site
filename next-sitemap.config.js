@@ -1,6 +1,9 @@
 // npm runs `postbuild` in a separate process that does not load .env,
-// so fall back to the production URL (same as next.config.mjs).
-const siteUrl = process.env.BASE_URL || "https://ibrahimtarigan.vercel.app";
+// so fall back to the configured site URL (same as next.config.mjs).
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { site } = require("./studio.config.json");
+
+const siteUrl = process.env.BASE_URL || site.url;
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {

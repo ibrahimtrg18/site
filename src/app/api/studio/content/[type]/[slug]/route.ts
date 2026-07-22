@@ -30,7 +30,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
     }
 
     const source = fs.readFileSync(filePath, "utf-8");
-    const entry = parseMdxFile(type, slug, source);
+    const entry = parseMdxFile(type, slug, source, config.site.name);
 
     return NextResponse.json({
       entry,

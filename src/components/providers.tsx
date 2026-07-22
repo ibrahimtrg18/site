@@ -5,12 +5,15 @@ import { MDXProvider } from "@mdx-js/react";
 
 import { AppProvider } from "@/contexts/app-context/app-context";
 import { useMDXComponents } from "@/mdx-components";
+import type { SiteConfig } from "@/studio/config";
 
 import { ColorModeProvider } from "./ui/color-mode";
 
-type ProvidersProps = React.HTMLProps<HTMLElement>;
+type ProvidersProps = React.HTMLProps<HTMLElement> & {
+  site: SiteConfig;
+};
 
-export const Providers = ({ children }: ProvidersProps) => {
+export const Providers = ({ site, children }: ProvidersProps) => {
   const mdxComponents = useMDXComponents();
 
   return (
@@ -18,12 +21,8 @@ export const Providers = ({ children }: ProvidersProps) => {
       <MDXProvider components={mdxComponents}>
         <AppProvider
           app={{
-            icon: "/assets/icon.png",
-            menu: [
-              { pathname: "/", label: "Home" },
-              { pathname: "/projects", label: "Projects" },
-              { pathname: "/blog", label: "Blog" },
-            ],
+            icon: site.icon,
+            menu: site.menu,
           }}
         >
           {children}
