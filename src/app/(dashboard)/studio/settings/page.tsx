@@ -178,7 +178,7 @@ export default function StudioSettingsPage() {
   return (
     <div className="flex flex-col gap-6">
       <Heading as="h2" size="lg">
-        Storage settings
+        Settings
       </Heading>
 
       {feedback && (
