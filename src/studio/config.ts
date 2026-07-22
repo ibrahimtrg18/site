@@ -14,17 +14,29 @@ export type SiteMenuItem = {
   label: string;
 };
 
+export type SiteSocialItem = {
+  /** Accessible label, e.g. "GitHub". */
+  label: string;
+  /** Font Awesome class, e.g. "fab fa-github". */
+  icon: string;
+  href: string;
+};
+
 export type SiteConfig = {
   /** Owner name — used as the metadata title suffix ("Page | <name>"). */
   name: string;
   /** Canonical site URL — fallback for BASE_URL in build configs. */
   url: string;
-  /** Public path of the site icon. */
+  /** Public path of the navbar/site icon. */
   icon: string;
+  /** Public path of the browser-tab favicon (falls back to icon). */
+  favicon?: string;
   /** Optional google-site-verification meta content. */
   googleSiteVerification?: string;
   /** Navbar menu items. */
   menu: SiteMenuItem[];
+  /** Social/contact links shown on the home page. */
+  social?: SiteSocialItem[];
 };
 
 export type StudioConfig = {
@@ -118,6 +130,18 @@ export const validateStudioConfig = (config: unknown): StudioConfig => {
   for (const item of site.menu) {
     if (!item?.pathname?.trim() || !item?.label?.trim()) {
       throw new Error("Every site.menu item needs a pathname and a label");
+    }
+  }
+
+  if (site.social !== undefined) {
+    if (!Array.isArray(site.social)) {
+      throw new Error("site.social must be an array");
+    }
+
+    for (const item of site.social) {
+      if (!item?.label?.trim() || !item?.icon?.trim() || !item?.href?.trim()) {
+        throw new Error("Every site.social item needs a label, icon, and href");
+      }
     }
   }
 

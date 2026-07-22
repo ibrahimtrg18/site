@@ -37,7 +37,7 @@ export default function RootLayout({
             content={site.googleSiteVerification}
           />
         )}
-        <link rel="icon" href={site.icon} sizes="any" />
+        <link rel="icon" href={site.favicon ?? site.icon} sizes="any" />
       </head>
       <body style={{ overflowY: "auto" }} suppressHydrationWarning>
         {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}

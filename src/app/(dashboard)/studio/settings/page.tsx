@@ -11,12 +11,16 @@ type ContentTypeConfig = {
   urlPrefix: string;
 };
 
+type SiteSocialItem = { label: string; icon: string; href: string };
+
 type SiteConfig = {
   name: string;
   url: string;
   icon: string;
+  favicon?: string;
   googleSiteVerification?: string;
   menu: Array<{ pathname: string; label: string }>;
+  social?: SiteSocialItem[];
 };
 
 type StudioConfig = {
@@ -26,7 +30,7 @@ type StudioConfig = {
 };
 
 const SITE_FIELDS: Array<{
-  key: "name" | "url" | "icon" | "googleSiteVerification";
+  key: "name" | "url" | "icon" | "favicon" | "googleSiteVerification";
   label: string;
   hint: string;
 }> = [
@@ -40,7 +44,12 @@ const SITE_FIELDS: Array<{
     label: "Site URL",
     hint: "Canonical URL used for sitemaps and metadata",
   },
-  { key: "icon", label: "Icon path", hint: "Public path of the site icon" },
+  { key: "icon", label: "Icon path", hint: "Public path of the navbar icon" },
+  {
+    key: "favicon",
+    label: "Favicon path",
+    hint: "Public path of the browser-tab icon (defaults to icon)",
+  },
   {
     key: "googleSiteVerification",
     label: "Google site verification",
@@ -264,6 +273,112 @@ export default function StudioSettingsPage() {
               }
             >
               + Add menu item
+            </Button>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <span className="text-sm font-medium">Social links</span>
+          <span className="text-xs text-neutral-400">
+            Shown on the home page. Icon is a Font Awesome class, e.g. “fab
+            fa-github”.
+          </span>
+          {(config.site.social ?? []).map((item, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <input
+                className="h-9 w-28 rounded-md border border-neutral-200 bg-transparent px-3 text-sm dark:border-neutral-800"
+                value={item.label}
+                placeholder="Label"
+                onChange={(event) =>
+                  setConfig((current) => {
+                    if (!current) return null;
+                    const social = [...(current.site.social ?? [])];
+                    social[index] = {
+                      ...social[index],
+                      label: event.target.value,
+                    };
+                    return { ...current, site: { ...current.site, social } };
+                  })
+                }
+              />
+              <input
+                className="h-9 w-40 rounded-md border border-neutral-200 bg-transparent px-3 font-mono text-sm dark:border-neutral-800"
+                value={item.icon}
+                placeholder="fab fa-github"
+                onChange={(event) =>
+                  setConfig((current) => {
+                    if (!current) return null;
+                    const social = [...(current.site.social ?? [])];
+                    social[index] = {
+                      ...social[index],
+                      icon: event.target.value,
+                    };
+                    return { ...current, site: { ...current.site, social } };
+                  })
+                }
+              />
+              <input
+                className="h-9 flex-1 rounded-md border border-neutral-200 bg-transparent px-3 font-mono text-sm dark:border-neutral-800"
+                value={item.href}
+                placeholder="https://…"
+                onChange={(event) =>
+                  setConfig((current) => {
+                    if (!current) return null;
+                    const social = [...(current.site.social ?? [])];
+                    social[index] = {
+                      ...social[index],
+                      href: event.target.value,
+                    };
+                    return { ...current, site: { ...current.site, social } };
+                  })
+                }
+              />
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-red-600 dark:text-red-400"
+                onClick={() =>
+                  setConfig((current) =>
+                    current
+                      ? {
+                          ...current,
+                          site: {
+                            ...current.site,
+                            social: (current.site.social ?? []).filter(
+                              (_, i) => i !== index
+                            ),
+                          },
+                        }
+                      : null
+                  )
+                }
+              >
+                Remove
+              </Button>
+            </div>
+          ))}
+          <div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() =>
+                setConfig((current) =>
+                  current
+                    ? {
+                        ...current,
+                        site: {
+                          ...current.site,
+                          social: [
+                            ...(current.site.social ?? []),
+                            { label: "", icon: "", href: "" },
+                          ],
+                        },
+                      }
+                    : null
+                )
+              }
+            >
+              + Add social link
             </Button>
           </div>
         </div>

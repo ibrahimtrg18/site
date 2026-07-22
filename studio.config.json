@@ -3,11 +3,39 @@
     "name": "Ibrahim Tarigan",
     "url": "https://ibrahimtarigan.vercel.app",
     "icon": "/assets/icon.png",
+    "favicon": "/assets/icon.png",
     "googleSiteVerification": "Dgh3-7chmF8XSw4RmI2T13hmdsE370jbAOLx8y43OJ0",
     "menu": [
       { "pathname": "/", "label": "Home" },
       { "pathname": "/projects", "label": "Projects" },
       { "pathname": "/blog", "label": "Blog" }
+    ],
+    "social": [
+      {
+        "label": "Email",
+        "icon": "fas fa-envelope",
+        "href": "mailto:ibrahimtarigan@gmail.com"
+      },
+      {
+        "label": "Phone",
+        "icon": "fas fa-phone",
+        "href": "tel:+6281260009709"
+      },
+      {
+        "label": "Resume",
+        "icon": "fas fa-file",
+        "href": "https://drive.google.com/file/d/1JFWQCAuNlXWJ-eHoMESrFtl-2JkGsITp/view?usp=sharing"
+      },
+      {
+        "label": "GitHub",
+        "icon": "fab fa-github",
+        "href": "https://github.com/ibrahimtrg18"
+      },
+      {
+        "label": "LinkedIn",
+        "icon": "fab fa-linkedin",
+        "href": "https://www.linkedin.com/in/ibrahimtrg18"
+      }
     ]
   },
   "assetsRoot": "public",
